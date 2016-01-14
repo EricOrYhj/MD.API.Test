@@ -1,0 +1,22 @@
+<div>
+    <div class="modal-header" style="text-align:center;">
+        <h3 class="modal-title">{{alertdata.title}}</h3>
+    </div>
+    <div class="modal-body row">
+        <div class="col-sm-12">
+            <table class="table table-striped">
+                <tr ng-repeat="modelData in alertdata.data">
+                    <td>
+                        <a ng-click="loginProject(modelData.id);">
+                            {{modelData.name}}
+                        </a>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <!--<button class="btn btn-primary" ng-click="ok()">确认</button>-->
+        <button class="btn btn-warning" ng-click="cancel()">取消</button>
+    </div>
+</div>

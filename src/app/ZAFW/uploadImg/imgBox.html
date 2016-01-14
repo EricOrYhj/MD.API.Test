@@ -1,0 +1,7 @@
+<div class="imgbox" ng-mousedown="boxStartMove($event)" ng-mousemove="boxMoving($event)" ng-mouseleave="boxEndMove($event)" ng-mouseup="boxEndMove($event)">
+	<div class="deleteimg" ng-click="deletefun()">X</div>
+	<div class="overimgbox"></div>
+	<div class="tablecell">
+		<img ng-src="{{img}}" alt=""  >
+	</div>
+</div>

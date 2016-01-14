@@ -1,0 +1,125 @@
+﻿<div class="row wrapper">
+    <div class="col-lg-12 viewTabList">
+        <button class="col-sm-1 viewTab" ng-repeat="viewData in viewList">
+            <div class="viewTabClose" ng-click="deleteTab(viewData);">X</div>
+            <a class="col-lg-12 viewTabUrl"
+               ui-sref="view1.views({module:'{{viewData.module}}',version:'{{viewData.version}}',port:'{{viewData.port}}'})">{{viewData.port}}</a>
+        </button>
+    </div>
+</div>
+
+<div class="row wrapper border-bottom white-bg page-heading">
+    <div class="col-lg-10">
+        <h2>{{apiName}}</h2>
+        <ol class="breadcrumb">
+            <li>
+                <a>模块{{module}}</a>
+            </li>
+            <li class="active">
+                <strong>版本{{version}}</strong>
+            </li>
+        </ol>
+    </div>
+    <div class="col-lg-2">
+    </div>
+</div>
+
+<div class="wrapper wrapper-content">
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="ibox float-e-margins">
+                <div class="ibox-title">
+                    <h5>参数列表</h5>
+                </div>
+                <form method="get" name="myForm" novalidate class="form-horizontal">
+                    <div class="ibox-content">
+                        <div class="form-group" ng-repeat="modelData in modelList">
+                            <label class="col-sm-2 control-label"><span class="colorRed" ng-if="modelData.isMust==true">*</span>{{modelData.key+modelData.type}}</label>
+
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" name="summary" placeholder="{{modelData.des}}"
+                                       ng-model="modelData.value" ng-minlength="1" ng-maxlength="200"
+                                       ng-if="modelData.inputType==1" required ng-keydown="keydown();">
+                                <input type="text" class="form-control" name="summary" placeholder="{{modelData.des}}"
+                                       ng-model="modelData.value" ng-minlength="1" ng-maxlength="200"
+                                       ng-if="modelData.inputType==2" ng-keydown="keydown();">
+                                <input type="text" class="form-control" name="summary" placeholder="{{modelData.des}}"
+                                       ng-model="modelData.value" ng-minlength="1" ng-maxlength="200"
+                                       ng-if="modelData.inputType==3" zafw-datepacker-time required ng-keydown="keydown();">
+                                <input type="text" class="form-control" name="summary" placeholder="{{modelData.des}}"
+                                       ng-model="modelData.value" ng-minlength="1" ng-maxlength="200"
+                                       ng-if="modelData.inputType==4" zafw-datepacker-time ng-keydown="keydown();">
+                            </div>
+                        </div>
+
+                        <!--<div class="form-group">-->
+                            <!--<label class="col-sm-2 control-label">上传文件</label>-->
+
+                            <!--<div class="col-sm-10">-->
+                                <!--<zafw-upload-img ng-model="pageData.img"></zafw-upload-img>-->
+                            <!--</div>-->
+                        <!--</div>-->
+
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label"></label>
+
+                            <div class="col-sm-10">
+                                <div class="row">
+                                    <div class="col-sm-12 col-ms-offset-2">
+                                        <label for="submitbtn" ng-class="{'disabled':myForm.$invalid}"
+                                               class="btn  btn-primary Right">提交</label>
+                                        <input type="submit" class="hidesubmitbtn" id="submitbtn"
+                                               ng-disabled="myForm.$invalid" ng-click="CheckApiSuccess()">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div ng-show="isResult==true">
+                            <div id="ControlsRow">
+                                <!--<input type="Button" value="格式化" ng-click="Process()"/>-->
+                              <span id="TabSizeHolder">
+                                缩进量
+                                <select id="TabSize" ng-change="TabSizeChanged(TabSize)" ng-model="TabSize">
+                                    <option value="1">1</option>
+                                    <option value="2">2</option>
+                                    <option value="3">3</option>
+                                    <option value="4">4</option>
+                                    <option value="5">5</option>
+                                    <option value="6">6</option>
+                                </select>
+                              </span>
+                                <label for="QuoteKeys">
+                                    <input type="checkbox" id="QuoteKeys" ng-click="QuoteKeysClicked()" checked="true"/>
+                                    引号
+                                </label>&nbsp;
+                                <a href="javascript:void(0);" ng-click="SelectAllClicked()">全选</a>
+                                &nbsp;
+                              <span id="CollapsibleViewHolder">
+                                  <label for="CollapsibleView">
+                                      <input type="checkbox" id="CollapsibleView" ng-click="CollapsibleViewClicked()"
+                                             checked="true"/>
+                                      显示控制
+                                  </label>
+                              </span>
+                              <span id="CollapsibleViewDetail">
+                                <a href="javascript:void(0);" ng-click="ExpandAllClicked()">展开</a>
+                                <a href="javascript:void(0);" ng-click="CollapseAllClicked()">叠起</a>
+                                <a href="javascript:void(0);" ng-click="CollapseLevel(3)">2级</a>
+                                <a href="javascript:void(0);" ng-click="CollapseLevel(4)">3级</a>
+                                <a href="javascript:void(0);" ng-click="CollapseLevel(5)">4级</a>
+                                <a href="javascript:void(0);" ng-click="CollapseLevel(6)">5级</a>
+                                <a href="javascript:void(0);" ng-click="CollapseLevel(7)">6级</a>
+                                <a href="javascript:void(0);" ng-click="CollapseLevel(8)">7级</a>
+                                <a href="javascript:void(0);" ng-click="CollapseLevel(9)">8级</a>
+                              </span>
+                            </div>
+                            <div id="Canvas" class="Canvas"></div>
+                        </div>
+                        <div class="clearBoth"></div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+

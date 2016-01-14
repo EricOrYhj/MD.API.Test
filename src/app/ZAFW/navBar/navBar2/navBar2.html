@@ -1,0 +1,45 @@
+<nav class="navbar-default navbar-static-side" role="navigation">
+    <div class="sidebar-collapse">
+        <ul side-navigation class="nav metismenu" id="side-menu">
+            <li class="nav-header">
+                <div class="dropdown profile-element" dropdown>
+                    <a class="dropdown-toggle" dropdown-toggle href>
+                        <span class="clear">
+                            <span class="block m-t-xs">
+                                <strong class="font-bold">{{main.userName}}</strong>
+                            </span>
+                            <span class="text-muted text-xs block">菜单<b class="caret"></b></span>
+                        </span>
+                    </a>
+                    <ul class="dropdown-menu animated fadeInRight m-t-xs">
+                        <li><a href="" ng-click="pageFunc.logout()">登出</a></li>
+                    </ul>
+                </div>
+                <div class="logo-element">
+                    IN+
+                </div>
+            </li>
+            <li class="" ng-repeat="apiItem in pageData.apiData track by $index">
+                <a href="">
+                    <i class="fa fa-yelp"></i>
+                    <span class="nav-label">{{apiItem.module}}</span>
+                    <span class="fa arrow"></span>
+                </a>
+                <ul class="nav nav-second-level collapse" ng-repeat="apiParam in apiItem.value track by $index">
+                    <li class="">
+                        <a href="">
+                            <i class="fa fa-yelp"></i>
+                            <span class="nav-label">{{apiParam.version}}</span>
+                            <span class="fa arrow"></span>
+                        </a>
+                        <ul class="nav nav-second-level collapse">
+                            <li ng-repeat="apiParamItem in apiParam.value track by $index">
+                                <a ui-sref="view2.views({module:'{{apiItem.module}}',version:'{{apiParam.version}}',port:'{{apiParamItem}}'})">{{apiParam.version}}/{{apiParamItem}}</a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+</nav>

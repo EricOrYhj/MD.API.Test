@@ -1,0 +1,20 @@
+<div class="col-sm-12">
+
+    <label class="choseimg clearfix" for="{{idName}}" id="zafwChoseImg">
+        <span class="text" ng-if="imgdata.length<=0 && filedata.length<=0">将要上传的文件拖到此处，或者点击选择文件</span>
+        <div class="imgbox" ng-repeat="file in filedata">
+            <div class="tablecell" title="{{file.name}}" ng-if="file.type!='image'">
+                <i class="fa fa-file-word-o" style="font-size: 45px;" ng-if="file.type=='word'||file.type=='msword'"></i>
+                <i class="fa fa-file-text-o" style="font-size: 45px;" ng-if="file.type=='text'"></i>
+                <i class="fa fa-file-excel-o" style="font-size: 45px;" ng-if="file.type=='excel'"></i>
+                <i class="fa fa-file-pdf-o" style="font-size: 45px;" ng-if="file.type=='pdf'"></i>
+                </br>
+            </div>
+
+            <div class="tablecell" ng-if="file.type=='image'">
+                <img ng-src="{{img.url}}" alt="">
+            </div>
+        </div>
+    </label>
+    <input type="file" multiple id="{{idName}}" class="hide zafwUploadImg"/>
+</div>

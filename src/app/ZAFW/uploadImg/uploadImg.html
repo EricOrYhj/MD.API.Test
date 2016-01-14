@@ -1,0 +1,13 @@
+<div class="form-group">
+
+	<div class="col-sm-10 uploadimgbox">
+		<zafw-img-box ng-repeat="img in imgurls" dletefun='deleteimg($index)' changefun='changeimg($index,moveNum)'></zafw-img-box>
+<!-- 		<div class="imgbox" ng-repeat="img in imgurls" >
+			<div class="deleteimg" ng-click="deleteimg($index)">X</div>
+			<div class="tablecell">
+				<img ng-src="{{img}}" alt=""  ></div>
+		</div> -->
+		<div class="btn uploadimg" ng-click="choseimg()">+</div>
+
+	</div>
+</div>

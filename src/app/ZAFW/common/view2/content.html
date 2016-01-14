@@ -1,0 +1,28 @@
+<!-- Wrapper-->
+<div id="wrapper">
+
+    <!-- Navigation -->
+    <!-- <div ng-include="'app/ZAFW/common/navigation.html'"></div> -->
+    <div nav-bar2></div>
+    <!-- Page wraper -->
+    <!-- ng-class with current state name give you the ability to extended customization your view -->
+    <div id="page-wrapper" class="gray-bg">
+
+        <!-- Page wrapper -->
+        <div ng-include="'app/ZAFW/common/view2/topnavbar.html'"></div>
+
+
+
+
+
+        <!-- Main view  -->
+        <div ui-view></div>
+
+        <!-- Footer -->
+        <div ng-include="'app/ZAFW/common/view2/footer.html'"></div>
+
+    </div>
+    <!-- End page wrapper-->
+
+</div>
+<!-- End wrapper-->

@@ -1,0 +1,31 @@
+<div class="row border-bottom">
+    <nav class="navbar navbar-static-top white-bg" role="navigation" style="margin-bottom: 0">
+        <div class="navbar-header col-sm-12">
+            <span minimaliza-sidebar></span>
+
+            <div class="navbar-form-custom">
+                <input type="text" placeholder="请输入接口名" class="form-control" ng-model="searchInput" name="top-search"
+                       id="top-search" ng-keyup="pageFunc.myKeyup($event)">
+            </div>
+            <div class="search col-sm-12">
+                <table class="table table-striped" style="margin-bottom: 0px;">
+                    <tr ng-repeat="modeldata in modelList">
+                        <td>
+                            <a ui-sref="index.views({module:'{{modeldata.module}}',version:'{{modeldata.version}}',port:'{{modeldata.port}}'})"
+                               ng-click="pageFunc.hide1()">
+                                {{modeldata.module}}/{{modeldata.version}}/{{modeldata.port}}
+                            </a>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+        <ul class="nav navbar-top-links navbar-right" style="display: none">
+            <li>
+                <a href="">
+                    <!--<i class="fa fa-sign-out"></i> 登出-->
+                </a>
+            </li>
+        </ul>
+    </nav>
+</div>
