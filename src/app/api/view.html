@@ -74,6 +74,12 @@
                                 </div>
                             </div>
                         </div>
+
+                        <div class="col-sm-12">
+                            <input type="text" class="form-control"  placeholder="输入请求地址及参数直接填充数据"
+                                   ng-model="requestUrl" ng-change="Automatch();">
+                        </div>
+
                         <div ng-show="isResult==true">
                             <div id="ControlsRow">
                                 <!--<input type="Button" value="格式化" ng-click="Process()"/>-->

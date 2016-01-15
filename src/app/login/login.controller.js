@@ -22,6 +22,7 @@
                 p_signature: "",
                 username: pageData.username,
                 password: pageData.password,
+                account:true,
                 format: 'json'
             }, function (data) {
                 if (data && data.access_token) {

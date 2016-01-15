@@ -5,9 +5,9 @@
         .module('mmpadmin')
         .factory('mmpadminAPI', mmpadminAPI);
 
-    var ROOT_URL = "https://api3.mingdao.com";
+//    var ROOT_URL = "https://api3.mingdao.com";
 //    var ROOT_URL = "http://localhost:13351";
-//    var ROOT_URL = "http://localhost:7432";
+    var ROOT_URL = "http://localhost:7432";
 //    var ROOT_URL = "https://devapi.mingdao.com";
     var FRONT_URL = "";
     var userToken = "";
@@ -173,7 +173,7 @@
         // 登录
         function login(actionurl, dataobj, scallback, ecallback) {
             // mmpadminAPI.jsonp(mmpadminAPI.jsonpurl(action, data), scallback, ecallback);
-            mmpadminAPI.get(mmpadminAPI.apiurl(actionurl, dataobj), scallback, ecallback);
+            mmpadminAPI.post(actionurl, dataobj, scallback, ecallback);
         }
 
         // 退出登录

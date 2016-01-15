@@ -74,13 +74,13 @@
 
         if ($rootScope[port]) {
             $scope.modelList = $rootScope[port].modelList;
-            requestMode=$rootScope[port].modelList;
-            requestUrl=$rootScope[port].requestUrl;
+            requestMode = $rootScope[port].modelList;
+            requestUrl = $rootScope[port].requestUrl;
         } else {
             var view = $cookieStore.get("view");
             if (view == 2) {
                 apiSetting2.getApiSetting(module, version, port, function (data) {
-                    requestUrl = data.url;
+                    requestUrl = '/' + version + data.url;
                     requestMode = data.requestMode;
                     $scope.apiName = data.name;
                     angular.forEach(data.params, function (model) {
@@ -138,7 +138,7 @@
         }
 
         $scope.keydown = function () {
-            $rootScope[port] = {'modelList':$scope.modelList,'requestUrl':requestUrl,'requestMode':requestMode};
+            $rootScope[port] = {'modelList': $scope.modelList, 'requestUrl': requestUrl, 'requestMode': requestMode};
         }
 
         //提交请求
@@ -569,6 +569,36 @@
             $id("InvisibleLink").submit();
 
         }
+
+        $scope.Automatch = function Automatch() {
+            var url = $scope.requestUrl;
+            var phone = $scope.modelList;
+            var index = url.indexOf('?');
+            if (index != -1) {
+                url = url.substr(index + 1);
+                var param = url.split('&');
+                var array = [];
+
+                angular.forEach(param, function (name) {
+                    name = name.split('=');
+                    var nameObj = {};
+                    if (name.length > 1) {
+                        nameObj['key'] = name[0];
+                        nameObj['value'] = name[1];
+                    }
+                    array.push(nameObj);
+                });
+
+                angular.forEach(phone, function (info) {
+                    angular.forEach(array, function (item) {
+                        if (item.key == info.key) {
+                            info.value = item.value;
+                        }
+                    });
+                });
+                $scope.modelList = phone;
+            }
+        };
 
 
     }
