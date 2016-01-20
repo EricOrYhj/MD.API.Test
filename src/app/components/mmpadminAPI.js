@@ -5,7 +5,7 @@
         .module('mmpadmin')
         .factory('mmpadminAPI', mmpadminAPI);
 
-//    var ROOT_URL = "https://api3.mingdao.com";
+//    var ROOT_URL = "https://api.mingdao.com";
 //    var ROOT_URL = "http://localhost:13351";
     var ROOT_URL = "http://localhost:7432";
 //    var ROOT_URL = "https://devapi.mingdao.com";

@@ -28,7 +28,7 @@
                 if (data && data.access_token) {
                     mmpadminAPI.checkIsLogin(data.access_token, function () {
                         alertbox('友情提示', '登录成功' + data.access_token);
-                        $state.go('view1');
+                        $state.go('view2');
                     })
                 }
                 else {
@@ -46,7 +46,7 @@
                                 if (data && data.access_token) {
                                     mmpadminAPI.checkIsLogin(data.access_token, function () {
                                         alertbox('友情提示', data.access_token);
-                                        $state.go('view1');
+                                        $state.go('view2');
                                     })
                                 } else {
                                     alertbox('友情提示', data.msg);

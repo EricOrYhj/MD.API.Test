@@ -3,7 +3,7 @@
         <button class="col-sm-1 viewTab" ng-repeat="viewData in viewList">
             <div class="viewTabClose" ng-click="deleteTab(viewData);">X</div>
             <a class="col-lg-12 viewTabUrl"
-               ui-sref="view1.views({module:'{{viewData.module}}',version:'{{viewData.version}}',port:'{{viewData.port}}'})">{{viewData.port}}</a>
+               ui-sref="{{view}}.views({module:'{{viewData.module}}',version:'{{viewData.version}}',port:'{{viewData.port}}'})">{{viewData.port}}</a>
         </button>
     </div>
 </div>

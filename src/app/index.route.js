@@ -41,7 +41,7 @@
             })
         ;
 
-        $urlRouterProvider.otherwise('/view1');
+        $urlRouterProvider.otherwise('/?login');
     }
 
 })();

@@ -14,7 +14,6 @@
             password: '' //hb 登录密码
         };
 
-        $cookieStore.put("view", 2);
         pageFunc.checkIsLogin = function () {
             mmpadminAPI.checkIsLogin('', function (data) {
                     if (!data) {

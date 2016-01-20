@@ -7,7 +7,7 @@
 
 
     /** @ngInject */
-    function viewCtrl($scope, $modal, $http, checklocalimg, mmpadminAPI, $stateParams, alertbox, $state, alertconformbox, apiSetting, $cookieStore, apiSetting2, $rootScope) {
+    function viewCtrl($scope, $modal, $http, checklocalimg, mmpadminAPI, $stateParams, alertbox, $state, alertconformbox, apiSetting, $cookieStore, apiSetting2, $rootScope, $location) {
 
         var access_token = $cookieStore.get("access_token");
         if (!access_token) {
@@ -72,13 +72,14 @@
             $rootScope['viewList'] = newViews;
         }
 
+        $scope.view = $location.path();
+
         if ($rootScope[port]) {
             $scope.modelList = $rootScope[port].modelList;
             requestMode = $rootScope[port].modelList;
             requestUrl = $rootScope[port].requestUrl;
         } else {
-            var view = $cookieStore.get("view");
-            if (view == 2) {
+            if ($scope.view.indexOf('view2') > 0) {
                 apiSetting2.getApiSetting(module, version, port, function (data) {
                     requestUrl = '/' + version + data.url;
                     requestMode = data.requestMode;

@@ -6,7 +6,7 @@
         .controller('view1IndexCtrl', indexCtrl);
 
     /** @ngInject */
-    function indexCtrl($scope, $state, mmpadminAPI, alertbox,$location) {
+    function indexCtrl($scope, $state, mmpadminAPI, alertbox,$location,$cookieStore) {
         var pageFunc = $scope.pageFunc = {};
         var pageData = $scope.pageData = {
             //usertype:'',
