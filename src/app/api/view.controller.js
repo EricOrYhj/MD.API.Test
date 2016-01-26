@@ -8,7 +8,7 @@
 
     /** @ngInject */
     function viewCtrl($scope, $modal, $http, checklocalimg, mmpadminAPI, $stateParams, alertbox, $state, alertconformbox, apiSetting, $cookieStore, apiSetting2, $rootScope, $location) {
-
+        $scope.localUrl=$location.protocol()+'://'+$location.host()+$location.port();
         var access_token = $cookieStore.get("access_token");
         if (!access_token) {
             mmpadminAPI.getUserDetail(function (data) {
@@ -168,13 +168,19 @@
                     $scope.Process();
                 });
             }
+//            mmpadminAPI.jsonp(mmpadminAPI.jsonpurl(requestUrl, pram), function (data) {
+//                $scope.data.result = data;
+//                $scope.isResult = true;
+//                $scope.jsonResult = JSON.stringify($scope.data.result);
+//                $scope.Process();
+//            });
         }
 
         //Json序列化呈现
         $scope.TabSize = '2';
         window.SINGLE_TAB = "  ";
-        window.ImgCollapsed = "/assets/images/Collapsed.gif";
-        window.ImgExpanded = "/assets/images/Expanded.gif";
+        window.ImgCollapsed = "assets/images/Collapsed.gif";
+        window.ImgExpanded = "assets/images/Expanded.gif";
         window.QuoteKeys = true;
         function $id(id) {
             return document.getElementById(id);

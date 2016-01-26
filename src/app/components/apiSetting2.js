@@ -11,7 +11,7 @@
                 get_my_groups: {
                     name: '我的群组',
                     docUrl: {type: '', url: '/v1user.html'},
-                    url: '/user/get_my_groups',
+                    url: '/group/get_my_groups',
                     requestMode: 'get',
                     params: [
                         { key: 'access_token', isMust: true, type: 'string', des: '当前登录用户访问令牌' },
@@ -52,6 +52,7 @@
                     requestMode: 'get',
                     params: [
                         { key: 'access_token', isMust: true, type: 'string', des: '当前登录用户访问令牌' },
+                        { key: 'project_id', isMust: true, type: 'string', des: '网络ID' },
                         { key: 'department', isMust: false, type: 'string', des: '部门名称' },
                         { key: 'pageindex', isMust: false, type: 'int', des: '指定当前的页码（不指定页码返回所有）' },
                         { key: 'pagesize', isMust: false, type: 'int', des: '指定要返回的记录条数(默认值20，最大值100)' }
@@ -122,22 +123,12 @@
         passport: {
             v1: {
                 detail: {
-                    name: '创建一个投票动态',
+                    name: '登录用户基本信息',
                     docUrl: {type: 'string', url: ''},
-                    url: '/vote/create',
-                    requestMode: 'post',
+                    url: '/passport/detail',
+                    requestMode: 'get',
                     params: [
                         { key: 'access_token', isMust: true, type: 'string', des: '当前登录用户访问令牌' },
-                        { key: 'p_msg', isMust: true, type: 'int', des: '动态更新内容(###userID###代表@某个人,$$$groupID$$$代表@某个群组，#标签内容#代表给动态定义标签)' },
-                        { key: 'vote_options', isMust: true, type: 'string', des: '投票选项，如：a[Option]b[Option]c[Option] 代表有选项1:a；2:b;3:c 以此类推' },
-                        { key: 'v_img', isMust: false, type: 'binary', des: '要上传的图片。图片仅支持JPEG,GIF,PNG,目前上传图片大小限制为<8M.' },
-                        { key: 'v_img_options', isMust: false, type: 'string', des: '	要上传的图片对应的投票选项， 如：1,2 代表上传的两张图片是对应投票选项1和2' },
-                        { key: 'vote_lasttime', isMust: false, type: 'string', des: '截止日期 默认明天的这时间' },
-                        { key: 'available_number', isMust: false, type: 'int', des: '允许选择多少选项 默认1项 最多3项' },
-                        { key: 'vote_anonymous	', isMust: false, type: 'bool', des: '是否匿名投票 默认0：不匿名；1：匿名' },
-                        { key: 'vote_visble', isMust: false, type: 'bool', des: '	是否允许投票人员查看投票结果 0：不允许；1：允许 默认1允许' },
-                        { key: 'g_id', isMust: false, type: 'string', des: '可为空，动态分享群组编号(多个群组用逗号隔开)' },
-                        { key: 's_type', isMust: false, type: 'int', des: '分享范围 0表示分享给所有同事;1表示群内分享；2表示所有关注者和群组；3表示分享给自己； 默认0表示分享给所有同事' }
                     ]
                 }
             }
