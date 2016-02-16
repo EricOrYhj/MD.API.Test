@@ -8,7 +8,16 @@
 
     /** @ngInject */
     function viewCtrl($scope, $modal, $http, checklocalimg, mmpadminAPI, $stateParams, alertbox, $state, alertconformbox, apiSetting, $cookieStore, apiSetting2, $rootScope, $location) {
-        $scope.localUrl=$location.protocol()+'://'+$location.host()+$location.port();
+
+        var port = '';
+        if ($location.port() == '80') {
+            port = '/MD.API'
+        } else {
+            port = $location.port();
+        }
+
+        $scope.localUrl = $location.protocol() + '://' + $location.host() + port;
+
         var access_token = $cookieStore.get("access_token");
         if (!access_token) {
             mmpadminAPI.getUserDetail(function (data) {
@@ -72,14 +81,17 @@
             $rootScope['viewList'] = newViews;
         }
 
-        $scope.view = $location.path();
+        $scope.view = 'view1';
+        if ($location.path().indexOf('view2') > 0) {
+            $scope.view = 'view2';
+        }
 
         if ($rootScope[port]) {
             $scope.modelList = $rootScope[port].modelList;
             requestMode = $rootScope[port].modelList;
             requestUrl = $rootScope[port].requestUrl;
         } else {
-            if ($scope.view.indexOf('view2') > 0) {
+            if ($scope.view == 'view2') {
                 apiSetting2.getApiSetting(module, version, port, function (data) {
                     requestUrl = '/' + version + data.url;
                     requestMode = data.requestMode;
