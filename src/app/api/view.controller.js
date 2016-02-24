@@ -9,6 +9,15 @@
     /** @ngInject */
     function viewCtrl($scope, $modal, $http, checklocalimg, mmpadminAPI, $stateParams, alertbox, $state, alertconformbox, apiSetting, $cookieStore, apiSetting2, $rootScope, $location) {
 
+        var port = '';
+        if ($location.port() == '80') {
+            port = '/MD.API'
+        } else {
+            port = $location.port();
+        }
+
+        $scope.localUrl = $location.protocol() + '://' + $location.host() + port;
+
         var access_token = $cookieStore.get("access_token");
         if (!access_token) {
             mmpadminAPI.getUserDetail(function (data) {
@@ -72,14 +81,17 @@
             $rootScope['viewList'] = newViews;
         }
 
-        $scope.view = $location.path();
+        $scope.view = 'view1';
+        if ($location.path().indexOf('view2') > 0) {
+            $scope.view = 'view2';
+        }
 
         if ($rootScope[port]) {
             $scope.modelList = $rootScope[port].modelList;
             requestMode = $rootScope[port].modelList;
             requestUrl = $rootScope[port].requestUrl;
         } else {
-            if ($scope.view.indexOf('view2') > 0) {
+            if ($scope.view == 'view2') {
                 apiSetting2.getApiSetting(module, version, port, function (data) {
                     requestUrl = '/' + version + data.url;
                     requestMode = data.requestMode;
@@ -168,13 +180,19 @@
                     $scope.Process();
                 });
             }
+//            mmpadminAPI.jsonp(mmpadminAPI.jsonpurl(requestUrl, pram), function (data) {
+//                $scope.data.result = data;
+//                $scope.isResult = true;
+//                $scope.jsonResult = JSON.stringify($scope.data.result);
+//                $scope.Process();
+//            });
         }
 
         //Json序列化呈现
         $scope.TabSize = '2';
         window.SINGLE_TAB = "  ";
-        window.ImgCollapsed = "/assets/images/Collapsed.gif";
-        window.ImgExpanded = "/assets/images/Expanded.gif";
+        window.ImgCollapsed = "assets/images/Collapsed.gif";
+        window.ImgExpanded = "assets/images/Expanded.gif";
         window.QuoteKeys = true;
         function $id(id) {
             return document.getElementById(id);
