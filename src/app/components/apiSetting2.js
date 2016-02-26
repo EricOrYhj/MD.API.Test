@@ -11,7 +11,7 @@
                 get_all_posts: {
                     name: '获取全公司的动态更新 ',
                     docUrl: {type: '', url: ''},
-                    url: '/post/v1/get_all_posts',
+                    url: '/post/get_all_posts',
                     requestMode: 'get',
                     params: [
                         { key: 'access_token', isMust: true, type: 'string', des: '当前登录用户访问令牌' },
@@ -25,7 +25,7 @@
                 get_at_me_posts: {
                     name: '获取提及@我的动态更新(适用inbox中的提到我的)',
                     docUrl: {type: '', url: ''},
-                    url: '/post/v1/get_at_me_posts',
+                    url: '/post/get_at_me_posts',
                     requestMode: 'get',
                     params: [
                         { key: 'access_token', isMust: true, type: 'string', des: '当前登录用户访问令牌' },
@@ -36,20 +36,20 @@
                         { key: 'pagesize', isMust: false, type: 'int', des: '指定要返回的记录条数(int默认值20，最大值100)' }
                     ]
                 },
-                get_detail_post: {
+                get_post_detail: {
                     name: '根据动态更新编号获取单条动态更新内容',
                     docUrl: {type: '', url: ''},
-                    url: '/post/v1/get_detail_post',
+                    url: '/post/get_post_detail',
                     requestMode: 'get',
                     params: [
                         { key: 'access_token', isMust: true, type: 'string', des: '当前登录用户访问令牌' },
                         { key: 'post_id', isMust: true, type: 'string', des: '动态更新编号' }
                     ]
                 },
-                get_doc_faq_img: {
+                get_doc_faq_img_posts: {
                     name: '获取 文档/图片/问答 列表信息 ',
                     docUrl: {type: '', url: ''},
-                    url: '/post/v1/get_doc_faq_img',
+                    url: '/post/get_doc_faq_img_posts',
                     requestMode: 'get',
                     params: [
                         { key: 'access_token', isMust: true, type: 'string', des: '当前登录用户访问令牌' },
@@ -65,7 +65,7 @@
                 get_favorite_posts: {
                     name: '获取当前登录用户收藏的动态更新',
                     docUrl: {type: '', url: ''},
-                    url: '/post/v1/get_favorite_posts',
+                    url: '/post/get_favorite_posts',
                     requestMode: 'get',
                     params: [
                         { key: 'access_token', isMust: true, type: 'string', des: '当前登录用户访问令牌' },
@@ -78,7 +78,7 @@
                 get_group_groups: {
                     name: '获取群组的动态更新',
                     docUrl: {type: '', url: ''},
-                    url: '/post/v1/get_group_groups',
+                    url: '/post/get_group_groups',
                     requestMode: 'get',
                     params: [
                         { key: 'access_token', isMust: true, type: 'string', des: '当前登录用户访问令牌' },
@@ -88,10 +88,10 @@
                         { key: 'pagesize', isMust: false, type: 'int', des: '指定要返回的记录条数(int默认值20，最大值100)' }
                     ]
                 },
-                get_list_top_posts: {
+                get_company_top_posts: {
                     name: '获取全公司的置顶动态更新',
                     docUrl: {type: '', url: ''},
-                    url: '/post/v1/get_list_top_posts',
+                    url: '/post/get_company_top_posts',
                     requestMode: 'get',
                     params: [
                         { key: 'access_token', isMust: true, type: 'string', des: '当前登录用户访问令牌' }
@@ -100,7 +100,7 @@
                 get_my_posts: {
                     name: '获取当前登录用户发布的动态更新',
                     docUrl: {type: '', url: ''},
-                    url: '/post/v1/get_my_posts',
+                    url: '/post/get_my_posts',
                     requestMode: 'get',
                     params: [
                         { key: 'access_token', isMust: true, type: 'string', des: '当前登录用户访问令牌' },
@@ -114,7 +114,7 @@
                 get_reply_by_me_posts: {
                     name: '获取我回复的最新回复信息',
                     docUrl: {type: '', url: ''},
-                    url: '/post/v1/get_reply_by_me_posts',
+                    url: '/post/get_reply_by_me_posts',
                     requestMode: 'get',
                     params: [
                         { key: 'access_token', isMust: true, type: 'string', des: '当前登录用户访问令牌' },
@@ -126,7 +126,7 @@
                 get_reply_me_posts: {
                     name: '获取回复我的最新回复信息',
                     docUrl: {type: '', url: ''},
-                    url: '/post/v1/get_reply_me_posts',
+                    url: '/post/get_reply_me_posts',
                     requestMode: 'get',
                     params: [
                         { key: 'access_token', isMust: true, type: 'string', des: '当前登录用户访问令牌' },
@@ -139,7 +139,7 @@
                 get_reply_post: {
                     name: '根据动态更新编号获取某条动态更新的回复列表信息',
                     docUrl: {type: '', url: ''},
-                    url: '/post/v1/get_reply_post',
+                    url: '/post/get_reply_post',
                     requestMode: 'get',
                     params: [
                         { key: 'access_token', isMust: true, type: 'string', des: '当前登录用户访问令牌' },
@@ -149,7 +149,7 @@
                 get_tag_posts: {
                     name: '获取某个标签下的动态更新',
                     docUrl: {type: '', url: ''},
-                    url: '/post/v1/get_tag_posts',
+                    url: '/post/get_tag_posts',
                     requestMode: 'get',
                     params: [
                         { key: 'access_token', isMust: true, type: 'string', des: '当前登录用户访问令牌' },
@@ -161,7 +161,7 @@
                 get_user_posts: {
                     name: '获取用户发布的动态更新',
                     docUrl: {type: '', url: ''},
-                    url: '/post/v1/get_user_posts',
+                    url: '/post/get_user_posts',
                     requestMode: 'get',
                     params: [
                         { key: 'access_token', isMust: true, type: 'string', des: '当前登录用户访问令牌' },
@@ -170,10 +170,10 @@
                         { key: 'pagesize', isMust: false, type: 'int', des: '指定要返回的记录条数(int默认值20，最大值100)' }
                     ]
                 },
-                get_list_tag: {
+                get_company_tag: {
                     name: '获取当前企业动态更新标签信息',
                     docUrl: {type: '', url: ''},
-                    url: '/post/v1/get_list_tag',
+                    url: '/post/get_company_tag',
                     requestMode: 'get',
                     params: [
                         { key: 'access_token', isMust: true, type: 'string', des: '当前登录用户访问令牌' },
@@ -182,10 +182,10 @@
                         { key: 'pagesize', isMust: false, type: 'int', des: '指定要返回的记录条数（默认值20，最大值100' }
                     ]
                 },
-                post_add_favorite_or_like: {
+                add_favorite_or_like_post: {
                     name: '增加当前登录用户的一条动态更新 收藏/喜欢',
                     docUrl: {type: '', url: ''},
-                    url: '/post/v1/post_add_favorite_or_like',
+                    url: '/post/add_favorite_or_like_post',
                     requestMode: 'post',
                     params: [
                         { key: 'access_token', isMust: true, type: 'string', des: '当前登录用户访问令牌' },
@@ -193,10 +193,10 @@
                         { key: 'choose_type', isMust: false, type: 'int', des: '操作类型 1:喜欢 2：收藏' }
                     ]
                 },
-                post_add_reply: {
+                add_reply_post: {
                     name: '增加一条动态更新的回复',
                     docUrl: {type: '', url: ''},
-                    url: '/post/v1/post_add_reply',
+                    url: '/post/add_reply_post',
                     requestMode: 'post',
                     params: [
                         { key: 'access_token', isMust: true, type: 'string', des: '当前登录用户访问令牌' },
@@ -211,10 +211,10 @@
 
                     ]
                 },
-                post_delete_tag: {
+                add_or_delete_post_tag: {
                     name: '增加/删除一条动态更新的标签',
                     docUrl: {type: '', url: ''},
-                    url: '/post/v1/post_delete_tag',
+                    url: '/post/add_or_delete_post_tag',
                     requestMode: 'post',
                     params: [
                         { key: 'access_token', isMust: true, type: 'string', des: '当前登录用户访问令牌' },
@@ -223,20 +223,20 @@
                         { key: 'choose_type', isMust: true, type: 'bool', des: '操作类型 添加=true/删除=false' }
                     ]
                 },
-                post_delete: {
+                delete_post: {
                     name: '根据动态更新编号删除一条动态更新',
                     docUrl: {type: '', url: ''},
-                    url: '/post/v1/post_delete',
+                    url: '/post/delete_post',
                     requestMode: 'post',
                     params: [
                         { key: 'access_token', isMust: true, type: 'string', des: '当前登录用户访问令牌' },
                         { key: 'post_id', isMust: true, type: 'binary', des: '动态更新编号' }
                     ]
                 },
-                post_delete_favorite_or_like: {
+              delete_favorite_or_like_post: {
                     name: '删除当前登录用户 收藏/喜欢 的一条动态更新 ',
                     docUrl: {type: '', url: ''},
-                    url: '/post/v1/post_delete_favorite_or_like',
+                    url: '/post/delete_favorite_or_like_post',
                     requestMode: 'post',
                     params: [
                         { key: 'access_token', isMust: true, type: 'string', des: '当前登录用户访问令牌' },
@@ -244,10 +244,10 @@
                         { key: 'choose_type', isMust: true, type: 'int', des: '操作类型 喜欢=1/收藏=2' }
                     ]
                 },
-                post_delete_reply: {
+                delete_reply_post: {
                     name: '根据回复编号删除一条回复 *',
                     docUrl: {type: '', url: ''},
-                    url: '/post/v1/post_delete_reply',
+                    url: '/post/delete_reply_post',
                     requestMode: 'post',
                     params: [
                         { key: 'access_token', isMust: true, type: 'string', des: '当前登录用户访问令牌' },
@@ -255,10 +255,10 @@
                         { key: 'reply_id', isMust: false, type: 'string', des: '回复编号（必须是当前登录用户自己创建的回复' }
                     ]
                 },
-                post_top: {
+                top_post: {
                     name: '置顶一条动态更新（仅限网络管理员使用） ',
                     docUrl: {type: '', url: ''},
-                    url: '/post/post_top',
+                    url: '/post/top_post',
                     requestMode: 'post',
                     params: [
                         { key: 'access_token', isMust: true, type: 'string', des: '当前登录用户访问令牌' },
@@ -266,30 +266,32 @@
                         { key: 'duration', isMust: false, type: 'int', des: '置顶时长 默认为:不限时长 1:代表时长24小时；2:代表时长48小时；3:代表时长72小时.' }
                     ]
                 },
-                update: {
-                    name: '', docUrl: {type: '', url: ''}, url: '/post/update',
+                issue_post: {
+                    name: '发布一条动态更新',
+                    docUrl: {type: '', url: ''},
+                    url: '/post/issue_post',
                     requestMode: 'post',
                     params: [
                         { key: 'access_token', isMust: true, type: 'string', des: '当前登录用户访问令牌' },
-                        { key: 'g_id', isMust: false, type: 'string', des: '可为空，动态分享群组编号(多个群组用逗号隔开)' },
-                        { key: 'p_msg', isMust: true, type: 'string', des: '动态更新内容(###userID###代表@某个人,$$$groupID$$$代表@某个群组，#标签内容#代表给动态定义标签)' },
-                        { key: 'p_type', isMust: false, type: 'int', des: '动态更新类型( 0表示普通动态更新（默认值）;1表示链接动态更新 ;4表示问答动态更新	)' },
-                        { key: 's_type', isMust: false, type: 'int', des: '分享范围(0表示分享给所有同事;1表示群内分享；2表示所有关注者和群组；3表示分享给自己； 默认0表示分享给所有同事)' },
-                        { key: 'format', isMust: false, type: 'string', des: '返回数据的格式（json）' }
+                        { key: 'group_ids', isMust: false, type: 'string', des: '可为空，动态分享群组编号(多个群组用逗号隔开)' },
+                        { key: 'post_msg', isMust: true, type: 'string', des: '动态更新内容(###userID###代表@某个人,$$$groupID$$$代表@某个群组，#标签内容#代表给动态定义标签)' },
+                        { key: 'post_type', isMust: false, type: 'int', des: '动态更新类型( 0表示普通动态更新（默认值）;1表示链接动态更新 ;4表示问答动态更新	)' },
+                        { key: 'share_type', isMust: false, type: 'int', des: '分享范围(0表示分享给所有同事;1表示群内分享；2表示所有关注者和群组；3表示分享给自己； 默认0表示分享给所有同事)' }
                     ]
                 },
-                upload: {
-                    name: '', docUrl: {type: '', url: ''}, url: '/post/upload',
+                upload_post: {
+                    name: '上传图片、文档并发布一条动态更新',
+                    docUrl: {type: '', url: ''},
+                    url: '/post/upload_post',
                     requestMode: 'post',
                     params: [
                         { key: 'access_token', isMust: true, type: 'string', des: '当前登录用户访问令牌' },
-                        { key: 'g_id', isMust: false, type: 'string', des: '可为空，动态分享群组编号(多个群组用逗号隔开)' },
-                        { key: 'p_msg', isMust: true, type: 'string', des: '动态更新内容(###userID###代表@某个人,$$$groupID$$$代表@某个群组，#标签内容#代表给动态定义标签)' },
-                        { key: 'f_type', isMust: false, type: 'int', des: '可为空，默认为picture：表示上传图片；document：表示上传文档' },
+                        { key: 'group_ids', isMust: false, type: 'string', des: '可为空，动态分享群组编号(多个群组用逗号隔开)' },
+                        { key: 'post_msg', isMust: true, type: 'string', des: '动态更新内容(###userID###代表@某个人,$$$groupID$$$代表@某个群组，#标签内容#代表给动态定义标签)' },
+                        { key: 'file_type', isMust: false, type: 'int', des: '可为空，默认为picture：表示上传图片；document：表示上传文档' },
                         { key: 'p_img或p_doc', isMust: true, type: 'binary', des: '要上传的图片、文档。图片仅支持JPEG,GIF,PNG,目前上传图片大小限制为<8M。文档仅支持DOC,PDF,XLS,PPT,TXT,压缩包,目前上传文件大小限制为<50M' },
-                        { key: 'is_center', isMust: false, type: 'int', des: '是否加入中心(0表示不加入；1表示加入 默认为1加入)' },
-                        { key: 's_type', isMust: false, type: 'string', des: '分享范围(0表示分享给所有同事;1表示群内分享；2表示所有关注者和群组；3表示分享给自己； 默认0表示分享给所有同事)' },
-                        { key: 'format', isMust: false, type: 'string', des: '返回数据的格式（json）' }
+                        { key: 'is_knowledge', isMust: false, type: 'int', des: '是否加入中心(0表示不加入；1表示加入 默认为1加入)' },
+                        { key: 'share_type', isMust: false, type: 'string', des: '分享范围(0表示分享给所有同事;1表示群内分享；2表示所有关注者和群组；3表示分享给自己； 默认0表示分享给所有同事)' }
                     ]
                 }
             }
@@ -312,10 +314,10 @@
 //        },
         group: {
             v1: {
-                post_create: {
+                create_group: {
                     name: '创建一个新的群组',
                     docUrl: {type: '', url: '/v1group.html'},
-                    url: '/group/post_create',
+                    url: '/group/create_group',
                     requestMode: 'post',
                     params: [
                         { key: 'access_token', isMust: true, type: 'string', des: '当前登录用户访问令牌' },
@@ -328,20 +330,20 @@
                         { key: 'account_ids', isMust: false, type: 'string', des: '群组成员' }
                     ]
                 },
-                post_exit: {
+                exit_group: {
                     name: '群组操作退出',
                     docUrl: {type: '', url: ''},
-                    url: '/group/post_exit',
+                    url: '/group/exit_group',
                     requestMode: 'post',
                     params: [
                         { key: 'access_token', isMust: true, type: 'string', des: '当前登录用户访问令牌' },
                         { key: 'group_id', isMust: true, type: 'string', des: '群组编号' }
                     ]
                 },
-                post_invite: {
+                invite_user_join_group: {
                     name: '邀请用户（同事邮箱）加入群组',
                     docUrl: {type: '', url: ''},
-                    url: '/group/post_invite',
+                    url: '/group/invite_user_join_group',
                     requestMode: 'post',
                     params: [
                         { key: 'access_token', isMust: true, type: 'string', des: '当前登录用户访问令牌' },
@@ -350,10 +352,10 @@
                         { key: 'invite_type', isMust: false, type: 'int', des: '邀请类型 0：内部用户或来宾；1：外联群组用户' }
                     ]
                 },
-                post_add_admin: {
+                add_group_admin: {
                     name: '	添加群组管理员（仅限群组管理员和网络管理员）',
                     docUrl: {type: '', url: ''},
-                    url: '/group/post_add_admin',
+                    url: '/group/add_group_admin',
                     requestMode: 'post',
                     params: [
                         { key: 'access_token', isMust: true, type: 'string', des: '当前登录用户访问令牌' },
@@ -361,10 +363,10 @@
                         { key: 'account_id', isMust: true, type: 'string', des: '用户编号' }
                     ]
                 },
-                post_remove_user_or_admin: {
+                remove_group_user_or_admin: {
                     name: '	移除群组用户/管理员（仅限群组管理员和网络管理员）',
                     docUrl: {type: '', url: ''},
-                    url: '/group/post_remove_user_or_admin',
+                    url: '/group/remove_group_user_or_admin',
                     requestMode: 'post',
                     params: [
                         { key: 'access_token', isMust: true, type: 'string', des: '当前登录用户访问令牌' },
@@ -373,10 +375,10 @@
                         { key: 'choose_type', isMust: true, type: 'int', des: '操作类型 1：移除用户 2：移除管理员(仅限群组管理员)' }
                     ]
                 },
-                post_again_invite: {
+                again_invite_group_user: {
                     name: '重新邀请群组成员',
                     docUrl: {type: '', url: ''},
-                    url: '/group/post_again_invite',
+                    url: '/group/again_invite_group_user',
                     requestMode: 'post',
                     params: [
                         { key: 'access_token', isMust: true, type: 'string', des: '当前登录用户访问令牌' },
@@ -385,10 +387,10 @@
                         { key: 'invite_type', isMust: false, type: 'int', des: '邀请类型 0：内部用户或来宾；1：外联群组用户' }
                     ]
                 },
-                post_egroup_invite: {
+                invite_egroup_user_join_group: {
                     name: '邀请外联成员',
                     docUrl: {type: '', url: ''},
-                    url: '/group/post_egroup_invite',
+                    url: '/group/invite_egroup_user_join_group',
                     requestMode: 'post',
                     params: [
                         { key: 'access_token', isMust: true, type: 'string', des: '当前登录用户访问令牌' },
@@ -398,10 +400,10 @@
                         { key: 'egroup_mobilephones', isMust: false, type: 'string', des: '邀请外联用户手机号码 多个手机号码用逗号隔开' }
                     ]
                 },
-                post_pass_unaudited_user: {
+                pass_unaudited_user_join_group: {
                     name: '审批用户加入群组（仅限群组管理员）',
                     docUrl: {type: '', url: ''},
-                    url: '/group/post_pass_unaudited_user',
+                    url: '/group/pass_unaudited_user_join_group',
                     requestMode: 'post',
                     params: [
                         { key: 'access_token', isMust: true, type: 'string', des: '当前登录用户访问令牌' },
@@ -409,10 +411,10 @@
                         { key: 'account_ids', isMust: true, type: 'string', des: '待审批用户编号 多个用,号隔开' }
                     ]
                 },
-                post_refuse_unaudited_user: {
+                refuse_unaudited_user_join_group: {
                     name: '拒绝待审批用户加入群组（仅限群组管理员）',
                     docUrl: {type: '', url: ''},
-                    url: '/group/post_refuse_unaudited_user',
+                    url: '/group/refuse_unaudited_user_join_group',
                     requestMode: 'post',
                     params: [
                         { key: 'access_token', isMust: true, type: 'string', des: '当前登录用户访问令牌' },
@@ -420,43 +422,30 @@
                         { key: 'account_id', isMust: true, type: 'string', des: '待审批用户编号' }
                     ]
                 },
-                post_chat_to_post: {
+                chat_to_post_group: {
                     name: '聊天群组转永久动态群组',
                     docUrl: {type: '', url: ''},
-                    url: '/group/post_chat_to_post',
+                    url: '/group/chat_to_post_group',
                     requestMode: 'post',
                     params: [
                         { key: 'access_token', isMust: true, type: 'string', des: '当前登录用户访问令牌' },
                         { key: 'group_id', isMust: true, type: 'string', des: '群组编号' }
                     ]
                 },
-                get_all: {
-                    name: '获取企业所有的群组 *',
-                    docUrl: {type: '', url: '/v1group.html'},
-                    url: '/group/get_all',
-                    requestMode: 'get',
-                    params: [
-                        { key: 'access_token', isMust: true, type: 'string', des: '当前登录用户访问令牌' },
-                        { key: 'keywords', isMust: false, type: 'string', des: '关键词模糊搜索，当为空时则返回所有的群组' },
-                        { key: 'sort_type', isMust: false, type: 'int', des: '按群组名称排序 默认0：倒序；1：升序' },
-                        { key: 'pageindex', isMust: false, type: 'int', des: '指定当前的页码（不指定页码返回所有）' },
-                        { key: 'pagesize', isMust: false, type: 'int', des: '指定要返回的记录条数（默认值20，最大值100）' }
-                    ]
-                },
-                get_detail: {
+                get_group_detail: {
                     name: '根据群组编号获取群组的基本资料',
                     docUrl: {type: '', url: '/v1group_detail.html'},
-                    url: '/group/get_detail',
+                    url: '/group/get_group_detail',
                     requestMode: 'get',
                     params: [
                         { key: 'access_token', isMust: true, type: 'string', des: '当前登录用户访问令牌' },
                         { key: 'group_id', isMust: true, type: 'string', des: '群组编号' }
                     ]
                 },
-                get_my_created: {
+                get_my_created_groups: {
                     name: '获取用户创建的群组',
                     docUrl: {type: '', url: '/v1group.html'},
-                    url: '/group/get_my_created',
+                    url: '/group/get_my_created_groups',
                     requestMode: 'get',
                     params: [
                         { key: 'access_token', isMust: true, type: 'string', des: '当前登录用户访问令牌' },
@@ -484,20 +473,20 @@
                         { key: 'pagesize', isMust: false, type: 'int', des: '指定要返回的记录条数（默认值20，最大值100）' }
                     ]
                 },
-                get_my_joined: {
+                get_my_joined_groups: {
                     name: '获取用户加入的群组',
                     docUrl: {type: '', url: '/v1group.html'},
-                    url: '/group/get_my_joined',
+                    url: '/group/get_my_joined_groups',
                     requestMode: 'get',
                     params: [
                         { key: 'access_token', isMust: true, type: 'string', des: '当前登录用户访问令牌' },
                         { key: 'account_id', isMust: false, type: 'string', des: '指定用户编号，获取此用户创建的群组，默认为当前授权用户' }
                     ]
                 },
-                get_user: {
+                get_group_user: {
                     name: '获取群组成员的用户信息',
                     docUrl: {type: '', url: '/v1group.html'},
-                    url: '/group/get_user',
+                    url: '/group/get_group_user',
                     requestMode: 'get',
                     params: [
                         { key: 'access_token', isMust: true, type: 'string', des: '当前登录用户访问令牌' },
@@ -617,10 +606,10 @@
         },
         calendar: {
             v1: {
-                get_to_do: {
+                get_calendar_to_do: {
                     name: '获取当前登录用户待办日程列表',
                     docUrl: {type: '', url: ''},
-                    url: '/calendar/get_to_do',
+                    url: '/calendar/get_calendar_to_do',
                     requestMode: 'get',
                     params: [
                         { key: 'access_token', isMust: true, type: 'string', des: '当前登录用户访问令牌' },
@@ -633,10 +622,10 @@
                         { key: 'categorys', isMust: false, type: 'string', des: '用户日程分类，多个以逗号相隔' }
                     ]
                 },
-                get_day_week_month: {
+                get_calendar_day_week_month: {
                     name: '获取当前登录用户某日/某周/某月 日程列表',
                     docUrl: {type: '', url: ''},
-                    url: '/calendar/get_day_week_month',
+                    url: '/calendar/get_calendar_day_week_month',
                     requestMode: 'get',
                     params: [
                         { key: 'access_token', isMust: true, type: 'string', des: '当前登录用户访问令牌' },
@@ -650,10 +639,10 @@
                         { key: 'categorys', isMust: false, type: 'string', des: '用户日程分类，多个以逗号相隔' }
                     ]
                 },
-                get_detail: {
+                get_calendar_detail: {
                     name: '日程详情',
                     docUrl: {type: '', url: ''},
-                    url: '/calendar/get_detail',
+                    url: '/calendar/get_calendar_detail',
                     requestMode: 'get',
                     params: [
                         { key: 'access_token', isMust: true, type: 'string', des: '当前登录用户访问令牌' },
@@ -691,10 +680,10 @@
                         { key: 'calendar_end_time', isMust: false, type: 'string', des: '日程结束时间' }
                     ]
                 },
-                post_create: {
+                create_calendar: {
                     name: '创建一个新的日程',
                     docUrl: {type: '', url: '/v1calendar_detail.html'},
-                    url: '/calendar/post_create',
+                    url: '/calendar/create_calendar',
                     requestMode: 'post',
                     params: [
                         { key: 'access_token', isMust: true, type: 'string', des: '当前登录用户访问令牌' },
@@ -719,10 +708,10 @@
                         { key: 'calendar_category_id', isMust: false, type: 'string', des: '日程分类id' }
                     ]
                 },
-                post_edit: {
+                edit_calendar: {
                     name: '根据日程编号修改日程',
                     docUrl: {type: '', url: '/v1calendar_detail.html'},
-                    url: '/calendar/post_edit',
+                    url: '/calendar/edit_calendar',
                     requestMode: 'post',
                     params: [
                         { key: 'access_token', isMust: true, type: 'string', des: '当前登录用户访问令牌' },
@@ -749,10 +738,10 @@
 
                     ]
                 },
-                post_join_or_deny: {
+                join_or_deny_calendar: {
                     name: '确认/拒绝一个日程',
                     docUrl: {type: '', url: ''},
-                    url: '/calendar/post_join_or_deny',
+                    url: '/calendar/join_or_deny_calendar',
                     requestMode: 'post',
                     params: [
                         { key: 'access_token', isMust: true, type: 'string', des: '当前登录用户访问令牌' },
@@ -760,20 +749,20 @@
                         { key: 'choose_type', isMust: true, type: 'int', des: 'join=1/ deny=2' }
                     ]
                 },
-                post_exit: {
+                exit_calendar: {
                     name: '退出一个日程',
                     docUrl: {type: '', url: ''},
-                    url: '/calendar/post_exit',
+                    url: '/calendar/exit_calendar',
                     requestMode: 'post',
                     params: [
                         { key: 'access_token', isMust: true, type: 'string', des: '当前登录用户访问令牌' },
                         { key: 'calendar_id', isMust: true, type: 'string', des: '日程id' }
                     ]
                 },
-                post_reinvite_member: {
+                reinvite_calendar_member: {
                     name: '重新邀请一个日程与会人员',
                     docUrl: {type: '', url: ''},
-                    url: '/calendar/post_reinvite_member',
+                    url: '/calendar/reinvite_calendar_member',
                     requestMode: 'post',
                     params: [
                         { key: 'access_token', isMust: true, type: 'string', des: '当前登录用户访问令牌' },
@@ -783,20 +772,20 @@
 
                     ]
                 },
-                post_delete: {
+                delete_calendar: {
                     name: '删除日程',
                     docUrl: {type: '', url: ''},
-                    url: '/calendar/post_delete',
+                    url: '/calendar/delete_calendar',
                     requestMode: 'post',
                     params: [
                         { key: 'access_token', isMust: true, type: 'string', des: '当前登录用户访问令牌' },
                         { key: 'calendar_id', isMust: true, type: 'string', des: '日程id' }
                     ]
                 },
-                post_user_category_operate: {
+                user_category_operate: {
                     name: '删除/添加/修改用户日程分类',
                     docUrl: {type: '', url: ''},
-                    url: '/calendar/post_user_category_operate',
+                    url: '/calendar/user_category_operate',
                     requestMode: 'post',
                     params: [
                         { key: 'access_token', isMust: true, type: 'string', des: '当前登录用户访问令牌' },
@@ -807,10 +796,10 @@
                         { key: 'choose_type', isMust: true, type: 'string', des: '操作类型 删除=0/添加=1/修改=2' }
                     ]
                 },
-                post_update_cal_remind: {
+                update_calendar_remind: {
                     name: '更新日程提醒',
                     docUrl: {type: '', url: ''},
-                    url: '/calendar/post_update_cal_remind',
+                    url: '/calendar/update_calendar_remind',
                     requestMode: 'post',
                     params: [
                         { key: 'access_token', isMust: true, type: 'string', des: '当前登录用户访问令牌' },
@@ -868,21 +857,24 @@
                         { key: 'access_token', isMust: true, type: 'string', des: '当前登录用户访问令牌' }
                     ]
                 }
-            },
-            WebChatV1: {
+            }
+        },
+
+        WebChat: {
+            V1: {
                 get_chat_list: {
                     name: '获取个人和群聊最近联系人',
                     docUrl: {type: 'string', url: ''},
-                    url: '/message/get_chat_list',
+                    url: '/webchat/get_chat_list',
                     requestMode: 'get',
                     params: [
                         { key: 'access_token', isMust: true, type: 'string', des: '当前登录用户访问令牌' }
                     ]
                 },
-                get_un_read_count: {
+                get_chat_un_read_count: {
                     name: '获取未读计数',
                     docUrl: {type: 'string', url: ''},
-                    url: '/message/get_un_read_count',
+                    url: '/webchat/get_chat_un_read_count',
                     requestMode: 'get',
                     params: [
                         { key: 'access_token', isMust: true, type: 'string', des: '当前登录用户访问令牌' }
@@ -891,7 +883,7 @@
                 get_user_or_group_message: {
                     name: '获取与某个用户或某个群组的消息列表',
                     docUrl: {type: 'string', url: ''},
-                    url: '/message/get_user_or_group_message',
+                    url: '/webchat/get_user_or_group_message',
                     requestMode: 'get',
                     params: [
                         { key: 'access_token', isMust: true, type: 'string', des: '当前登录用户访问令牌' },
@@ -906,9 +898,9 @@
                     ]
                 },
                 get_user_or_group_message_count: {
-                    name:'私聊会话中用户/群组消息的总条数',
+                    name: '私聊会话中用户/群组消息的总条数',
                     docUrl: {type: 'string', url: ''},
-                    url: '/message/get_user_or_group_message_count',
+                    url: '/webchat/get_user_or_group_message_count',
                     requestMode: 'get',
                     params: [
                         { key: 'access_token', isMust: true, type: 'string', des: '当前登录用户访问令牌' },
@@ -919,9 +911,9 @@
                 },
 
                 get_user_or_group_message_by_id: {
-                    name:'获取跟某个用户/某个群组的前后几条信息',
+                    name: '获取跟某个用户/某个群组的前后几条信息',
                     docUrl: {type: 'string', url: ''},
-                    url: '/message/get_user_or_group_message_by_id',
+                    url: '/webchat/get_user_or_group_message_by_id',
                     requestMode: 'get',
                     params: [
                         { key: 'access_token', isMust: true, type: 'string', des: '当前登录用户访问令牌' },
@@ -933,28 +925,28 @@
                     ]
                 },
                 get_joined_group: {
-                    name:'获取已加入的群',
+                    name: '获取已加入的群',
                     docUrl: {type: 'string', url: ''},
-                    url: '/message/get_joined_group',
+                    url: '/webchat/get_joined_group',
                     requestMode: 'get',
                     params: [
                         { key: 'access_token', isMust: true, type: 'string', des: '当前登录用户访问令牌' }
                     ]
                 },
                 get_group_members: {
-                    name:'获取群组的用户',
+                    name: '获取群组的用户',
                     docUrl: {type: 'string', url: ''},
-                    url: '/message/get_group_members',
+                    url: '/webchat/get_group_members',
                     requestMode: 'get',
                     params: [
                         { key: 'access_token', isMust: true, type: 'string', des: '当前登录用户访问令牌' },
                         { key: 'group_id', isMust: true, type: 'string', des: '群组编号' }
                     ]
                 },
-                post_delete_history_item: {
-                    name:'删除历史聊天记录',
+                delete_chat_history_item: {
+                    name: '删除历史聊天记录',
                     docUrl: {type: 'string', url: ''},
-                    url: '/message/post_delete_history_item',
+                    url: '/webchat/delete_chat_history_item',
                     requestMode: 'get',
                     params: [
                         { key: 'access_token', isMust: true, type: 'string', des: '当前登录用户访问令牌' },
@@ -962,10 +954,10 @@
                         { key: 'group_id', isMust: false, type: 'string', des: '群组编号' }
                     ]
                 },
-                post_set_single_or_all_group_push: {
-                    name:'设置单个/所有群组push',
+                set_single_or_all_group_push: {
+                    name: '设置单个/所有群组push',
                     docUrl: {type: 'string', url: ''},
-                    url: '/message/post_delete_history_item',
+                    url: '/webchat/post_delete_history_item',
                     requestMode: 'get',
                     params: [
                         { key: 'access_token', isMust: true, type: 'string', des: '当前登录用户访问令牌' },
@@ -976,6 +968,7 @@
                 }
             }
         }
+
     };
 
     function apiSetting() {
@@ -1038,7 +1031,8 @@
             scallback(list)
         }
     }
-})();
+})
+();
 
 
 
