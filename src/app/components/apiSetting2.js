@@ -296,22 +296,354 @@
                 }
             }
         },
-
-//        group: {
-//            v1: {
-//                get_my_groups: {
-//                    name: '我的群组',
-//                    docUrl: {type: '', url: '/v1user.html'},
-//                    url: '/user/get_my_groups',
-//                    requestMode: 'get',
-//                    params: [
-//                        { key: 'access_token', isMust: true, type: 'string', des: '当前登录用户访问令牌' },
-//                        { key: 'pageindex', isMust: false, type: 'int', des: '指定当前的页码（不指定页码返回所有）' },
-//                        { key: 'pagesize', isMust: false, type: 'int', des: '指定要返回的记录条数(默认值20，最大值100)' }
-//                    ]
-//                }
-//            }
-//        },
+        task: {
+            v1: {
+                get_top_folders: {
+                    name: '获取用户置顶项目',
+                    docUrl: {type: '', url: '/v1task.html'},
+                    url: '/task/get_top_folders',
+                    requestMode: 'get',
+                    params: [
+                        { key: 'access_token', isMust: true, type: 'string', des: '当前登录用户访问令牌' }
+                    ]
+                },
+                get_main_folders: {
+                    name: '获取个人或网络下文件夹和初层项目列表',
+                    docUrl: {type: '', url: '/v1task.html'},
+                    url: '/task/get_main_folders',
+                    requestMode: 'get',
+                    params: [
+                        { key: 'access_token', isMust: true, type: 'string', des: '当前登录用户访问令牌' },
+                        { key: 'project_id', isMust: false, type: 'string', des: '哪个网络（默认个人自由网络）' }
+                    ]
+                },
+                get_file_folders: {
+                    name: '获取项目文件夹下的项目列表',
+                    docUrl: {type: '', url: '/v1task.html'},
+                    url: '/task/get_file_folders',
+                    requestMode: 'get',
+                    params: [
+                        { key: 'access_token', isMust: true, type: 'string', des: '当前登录用户访问令牌' },
+                        { key: 'folder_file_id', isMust: true, type: 'string', des: '指定的文件夹id' },
+                        { key: 'project_id', isMust: false, type: 'string', des: '哪个网络（默认个人自由网络）' }
+                    ]
+                },
+                add_folder: {
+                    name: '创建项目',
+                    docUrl: {type: '', url: ''},
+                    url: '/task/add_folder',
+                    requestMode: 'post',
+                    params: [
+                        { key: 'access_token', isMust: true, type: 'string', des: '当前登录用户访问令牌' },
+                        { key: 'name', isMust: true, type: 'string', des: '项目名称' },
+                        { key: 'charge_user', isMust: false, type: 'string', des: '项目负责人 默认当前登录用户' },
+                        { key: 'dead_time', isMust: false, type: 'datetime', des: '项目截止日期' },
+                        { key: 'is_star', isMust: false, type: 'bool', des: '是否给项目标星（默认：false）' },
+                        { key: 'members', isMust: false, type: 'string', des: '项目成员ID多个以，相隔' },
+                        { key: 'admins', isMust: false, type: 'string', des: '项目管理员ID多个以，相隔' },
+                        { key: 'visibility', isMust: false, type: 'string', des: '项目可见性 0私密 1公开仅群组 2全公司(默认0)' },
+                        { key: 'groups', isMust: false, type: 'string', des: '当项目可见性为公开群组时群组ID（多个群组已，相隔）' },
+                        { key: 'folder_file_id', isMust: false, type: 'string', des: '项目文件夹ID' },
+                        { key: 'is_top', isMust: false, type: 'bool', des: '是否置顶（默认：false）' },
+                        { key: 'project_id', isMust: false, type: 'string', des: '哪个网络（默认个人自由网络）' }
+                    ]
+                },
+                delete_folder: {
+                    name: '删除项目',
+                    docUrl: {type: '', url: ''},
+                    url: '/task/delete_folder',
+                    requestMode: 'post',
+                    params: [
+                        { key: 'access_token', isMust: true, type: 'string', des: '当前登录用户访问令牌' },
+                        { key: 'folder_id', isMust: true, type: 'string', des: '项目ID' }
+                    ]
+                },
+                duplicate_folder:{
+                    name: '复制项目',
+                    docUrl: {type: '', url: '/v1task.html'},
+                    url: '/task/duplicate_folder',
+                    requestMode: 'post',
+                    params: [
+                        { key: 'access_token', isMust: true, type: 'string', des: '当前登录用户访问令牌' },
+                        { key: 'folder_id', isMust: true, type: 'string', des: '指定的项目id' },
+                        { key: 'is_stage', isMust: false, type: 'bool', des: '是否复制项目阶段' },
+                        { key: 'is_describe', isMust: false, type: 'bool', des: '是否复制项目描述' },
+                        { key: 'project_id', isMust: false, type: 'string', des: '哪个网络（默认个人自由网络）' }
+                    ]
+                },
+                update_folder_archived:{
+                    name: '修改项目是否归档',
+                    docUrl: {type: '', url: '/v1task.html'},
+                    url: '/task/update_folder_archived',
+                    requestMode: 'post',
+                    params: [
+                        { key: 'access_token', isMust: true, type: 'string', des: '当前登录用户访问令牌' },
+                        { key: 'folder_id', isMust: true, type: 'string', des: '指定的项目id' },
+                        { key: 'is_archived', isMust: true, type: 'bool', des: '是否归档默认false' },
+                        { key: 'project_id', isMust: false, type: 'string', des: '哪个网络（默认个人自由网络）' }
+                    ]
+                },
+                update_folder_visibility:{
+                    name: '修改项目可见性',
+                    docUrl: {type: '', url: '/v1task.html'},
+                    url: '/task/update_folder_visibility',
+                    requestMode: 'post',
+                    params: [
+                        { key: 'access_token', isMust: true, type: 'string', des: '当前登录用户访问令牌' },
+                        { key: 'folder_id', isMust: true, type: 'string', des: '指定的项目id' },
+                        { key: 'visibility', isMust: true, type: 'int', des: '0:私密成员可见，1：群组公开,2全公司公开' },
+                        { key: 'groups', isMust: false, type: 'string', des: '群组公开时群组ID（多个，相隔）' },
+                        { key: 'project_id', isMust: false, type: 'string', des: '哪个网络（默认个人自由网络）' }
+                    ]
+                },
+                update_folder_detail:{
+                    name: '修改项目基本属性(负责人,项目名,项目描述)全部修改或多选一',
+                    docUrl: {type: '', url: '/v1task.html'},
+                    url: '/task/update_folder_detail',
+                    requestMode: 'post',
+                    params: [
+                        { key: 'access_token', isMust: true, type: 'string', des: '当前登录用户访问令牌' },
+                        { key: 'folder_id', isMust: true, type: 'string', des: '指定的项目id' },
+                        { key: 'change_user', isMust: false, type: 'string', des: '负责人ID' },
+                        { key: 'folder_name', isMust: false, type: 'string', des: '项目名' },
+                        { key: 'describe', isMust: false, type: 'string', des: '项目描述' },
+                        { key: 'project_id', isMust: false, type: 'string', des: '哪个网络（默认个人自由网络）' }
+                    ]
+                },
+                get_folder_stages: {
+                    name: '获取项目下的阶段',
+                    docUrl: {type: '', url: '/v1task.html'},
+                    url: '/task/get_folder_stages',
+                    requestMode: 'get',
+                    params: [
+                        { key: 'access_token', isMust: true, type: 'string', des: '当前登录用户访问令牌' },
+                        { key: 'folder_id', isMust: true, type: 'string', des: '指定的项目id' },
+                        { key: 'project_id', isMust: false, type: 'string', des: '哪个网络（默认个人自由网络）' }
+                    ]
+                },
+                add_folder_stage: {
+                    name: '创建项目阶段',
+                    docUrl: {type: '', url: ''},
+                    url: '/task/add_folder_stage',
+                    requestMode: 'post',
+                    params: [
+                        { key: 'access_token', isMust: true, type: 'string', des: '当前登录用户访问令牌' },
+                        { key: 'folder_id', isMust: true, type: 'string', des: '项目ID' },
+                        { key: 'folder_stage_name', isMust: true, type: 'string', des: '项目阶段名字' },
+                        { key: 'sort', isMust: false, type: 'int', des: '阶段次序（默认排在第一个）' },
+                        { key: 'project_id', isMust: false, type: 'string', des: '哪个网络（默认个人自由网络）' }
+                    ]
+                },
+                delete_folder_stage: {
+                    name: '删除项目阶段',
+                    docUrl: {type: '', url: ''},
+                    url: '/task/delete_folder_stage',
+                    requestMode: 'post',
+                    params: [
+                        { key: 'access_token', isMust: true, type: 'string', des: '当前登录用户访问令牌' },
+                        { key: 'folder_id', isMust: true, type: 'string', des: '项目ID' },
+                        { key: 'folder_stage_id', isMust: true, type: 'string', des: '项目阶段ID' },
+                        { key: 'project_id', isMust: false, type: 'string', des: '哪个网络（默认个人自由网络）' }
+                    ]
+                },
+                update_folder_stage: {
+                    name: '修改项目阶段顺序或名字',
+                    docUrl: {type: '', url: ''},
+                    url: '/task/update_folder_stage',
+                    requestMode: 'post',
+                    params: [
+                        { key: 'access_token', isMust: true, type: 'string', des: '当前登录用户访问令牌' },
+                        { key: 'folder_id', isMust: true, type: 'string', des: '项目ID' },
+                        { key: 'folder_stage_id', isMust: true, type: 'string', des: '项目阶段ID' },
+                        { key: 'folder_stage_name', isMust: true, type: 'string', des: '新项目阶段名字' },
+                        { key: 'folder_stage_sort', isMust: true, type: 'string', des: '新项目阶段顺序' },
+                        { key: 'project_id', isMust: false, type: 'string', des: '哪个网络（默认个人自由网络）' }
+                    ]
+                },
+                apply_folder_member: {
+                    name: '申请成为项目成员',
+                    docUrl: {type: '', url: ''},
+                    url: '/task/apply_folder_member',
+                    requestMode: 'post',
+                    params: [
+                        { key: 'access_token', isMust: true, type: 'string', des: '当前登录用户访问令牌' },
+                        { key: 'folder_id', isMust: true, type: 'string', des: '项目ID' },
+                        { key: 'apply_info', isMust: true, type: 'string', des: '申请成为成员的理由' },
+                        { key: 'project_id', isMust: false, type: 'string', des: '哪个网络（默认个人自由网络）' }
+                    ]
+                },
+                add_folder_member: {
+                    name: '新增项目成员',
+                    docUrl: {type: '', url: ''},
+                    url: '/task/add_folder_member',
+                    requestMode: 'post',
+                    params: [
+                        { key: 'access_token', isMust: true, type: 'string', des: '当前登录用户访问令牌' },
+                        { key: 'folder_id', isMust: true, type: 'string', des: '项目ID' },
+                        { key: 'members', isMust: true, type: 'string', des: '成员ID（多个，相隔）' },
+                        { key: 'project_id', isMust: false, type: 'string', des: '哪个网络（默认个人自由网络）' }
+                    ]
+                },
+                delete_folder_member: {
+                    name: '移除或退出项目',
+                    docUrl: {type: '', url: ''},
+                    url: '/task/delete_folder_member',
+                    requestMode: 'post',
+                    params: [
+                        { key: 'access_token', isMust: true, type: 'string', des: '当前登录用户访问令牌' },
+                        { key: 'folder_id', isMust: true, type: 'string', des: '项目ID' },
+                        { key: 'members', isMust:false, type: 'string', des: '成员ID（多个，相隔）为空默认退出' },
+                        { key: 'is_remove_task', isMust:false, type: 'bool', des: '是否同时退出项目下的任务（默认false）' },
+                        { key: 'project_id', isMust: false, type: 'string', des: '哪个网络（默认个人自由网络）' }
+                    ]
+                },
+                update_folder_member_star: {
+                    name: '项目标星',
+                    docUrl: {type: '', url: ''},
+                    url: '/task/update_folder_membe_star',
+                    requestMode: 'post',
+                    params: [
+                        { key: 'access_token', isMust: true, type: 'string', des: '当前登录用户访问令牌' },
+                        { key: 'folder_id', isMust: true, type: 'string', des: '项目ID' },
+                        { key: 'is_star', isMust:true, type: 'bool', des: '是否标星（默认false）' },
+                        { key: 'project_id', isMust: false, type: 'string', des: '哪个网络（默认个人自由网络）' }
+                    ]
+                },
+                update_folder_member_top: {
+                    name: '项目置顶',
+                    docUrl: {type: '', url: ''},
+                    url: '/task/update_folder_member_top',
+                    requestMode: 'post',
+                    params: [
+                        { key: 'access_token', isMust: true, type: 'string', des: '当前登录用户访问令牌' },
+                        { key: 'folder_id', isMust: true, type: 'string', des: '项目ID' },
+                        { key: 'is_top', isMust:true, type: 'bool', des: '是否置顶(默认false)' },
+                        { key: 'project_id', isMust: false, type: 'string', des: '哪个网络（默认个人自由网络）' }
+                    ]
+                },
+                update_folder_member_hidden: {
+                    name: '项目隐藏',
+                    docUrl: {type: '', url: ''},
+                    url: '/task/update_folder_member_hidden',
+                    requestMode: 'post',
+                    params: [
+                        { key: 'access_token', isMust: true, type: 'string', des: '当前登录用户访问令牌' },
+                        { key: 'folder_id', isMust: true, type: 'string', des: '项目ID' },
+                        { key: 'is_hidden', isMust:true, type: 'bool', des: '是否隐藏(默认false)' },
+                        { key: 'project_id', isMust: false, type: 'string', des: '哪个网络（默认个人自由网络）' }
+                    ]
+                },
+                update_folder_member_admin: {
+                    name: '设置项目成员为管理员',
+                    docUrl: {type: '', url: ''},
+                    url: '/task/update_folder_member_admin',
+                    requestMode: 'post',
+                    params: [
+                        { key: 'access_token', isMust: true, type: 'string', des: '当前登录用户访问令牌' },
+                        { key: 'folder_id', isMust: true, type: 'string', des: '项目ID' },
+                        { key: 'change_user', isMust: true, type: 'string', des: '项目ID' },
+                        { key: 'is_admin', isMust:true, type: 'bool', des: '是否设置为管理员(默认false)' },
+                        { key: 'project_id', isMust: false, type: 'string', des: '哪个网络（默认个人自由网络）' }
+                    ]
+                },
+                add_folder_file: {
+                    name: '创建项目文件夹',
+                    docUrl: {type: '', url: ''},
+                    url: '/task/add_folder_file',
+                    requestMode: 'post',
+                    params: [
+                        { key: 'access_token', isMust: true, type: 'string', des: '当前登录用户访问令牌' },
+                        { key: 'folder_file_name', isMust: true, type: 'string', des: '项目文件夹名称' },
+                        { key: 'folder_file_sort', isMust: false, type: 'int', des: '项目文件夹序号(默认第一个)' },
+                        { key: 'folders', isMust:false, type: 'string', des: '放入项目文件夹的项目ID（多个，相隔）' },
+                        { key: 'project_id', isMust: false, type: 'string', des: '哪个网络（默认个人自由网络）' }
+                    ]
+                },
+                delete_folder_file: {
+                    name: '删除项目文件夹',
+                    docUrl: {type: '', url: ''},
+                    url: '/task/delete_folder_file',
+                    requestMode: 'post',
+                    params: [
+                        { key: 'access_token', isMust: true, type: 'string', des: '当前登录用户访问令牌' },
+                        { key: 'folder_file_id', isMust: true, type: 'string', des: '项目文件夹ID' },
+                        { key: 'project_id', isMust: false, type: 'string', des: '哪个网络（默认个人自由网络）' }
+                    ]
+                },
+                update_folder_file: {
+                    name: '修改项目文件夹',
+                    docUrl: {type: '', url: ''},
+                    url: '/task/update_folder_file',
+                    requestMode: 'post',
+                    params: [
+                        { key: 'access_token', isMust: true, type: 'string', des: '当前登录用户访问令牌' },
+                        { key: 'folder_file_id', isMust: true, type: 'string', des: '项目文件夹ID' },
+                        { key: 'folder_file_sort', isMust: false, type: 'int', des: '项目文件夹序号' },
+                        { key: 'folder_file_name', isMust: false, type: 'string', des: '项目文件夹名称' },
+                        { key: 'project_id', isMust: false, type: 'string', des: '哪个网络（默认个人自由网络）' }
+                    ]
+                },
+                get_task_list: {
+                    name: '获取任务列表',
+                    docUrl: {type: '', url: '/task_v2.html'},
+                    url: '/task/get_task_list',
+                    requestMode: 'get',
+                    params: [
+                        { key: 'access_token', isMust: true, type: 'string', des: '当前登录用户访问令牌' },
+                        { key: 'project_id', isMust: false, type: 'string', des: '哪个网络（默认个人自由网络）' },
+                        { key: 'pageindex', isMust: false, type: 'int64', des: '指定当前的页码（不指定页码返回所有）' },
+                        { key: 'pagesize', isMust: false, type: 'int', des: '指定要返回的记录条数(默认值20，最大值100)' },
+                        { key: 't_folder_id', isMust: false, type: 'string', des: '项目ID (folderID=1 表示获取未关联项目的任务列表)' },
+                        { key: 'stage_id', isMust: false, type: 'string', des: '项目阶段ID' },
+                        { key: 'filter_type', isMust: false, type: 'int', des: '过滤类型 默认1：我参与的任务；2：我负责的任务；3：我托付的任务；7：查看同事(与我协作的任务)；8:自己加星的任务' },
+                        { key: 'color', isMust: false, type: 'int', des: '任务颜色 默认-1：全部；0：无颜色；1：蓝色；2：紫色；3：红色；4：橙色；5：黄色' },
+                        { key: 'status', isMust: false, type: 'int', des: '筛选任务状态 默认0：进行中；1：已完成；-1：全部' },
+                        { key: 'tags', isMust: false, type: 'string', des: '过滤任务标签 多个用,隔开' },
+                        { key: 'other', isMust: false, type: 'string', des: '指定用户编号 查看其他同事的任务列表' },
+                        { key: 'classifys', isMust: false, type: 'string', des: '任务所处分类默认全部' },
+                        { key: 'is_top', isMust: false, type: 'string', des: '是否置顶' },
+                        { key: 'sort', isMust: false, type: 'int', des: '任务排序 1：按首字母;2:按到期日期;3:按任务创建时间；4:按项目(查询结果结构有变化);5:任务负责人；7：按颜色；8:完成时间；9:进行中;10:最近更新' },
+                        { key: 'completeTime', isMust: false, type: 'int', des: '查询的时间起始点，当sort为8时(查询时间到当前的) 格式(2015-06-10)' },
+                        { key: 'keywords', isMust: false, type: 'string', des: '关键词模糊搜索' }
+                    ]
+                },
+                get_folder_task_list: {
+                    name: '获取项目下任务列表',
+                    docUrl: {type: '', url: '/task_v2.html'},
+                    url: '/task/get_folder_task_list',
+                    requestMode: 'get',
+                    params: [
+                        { key: 'access_token', isMust: true, type: 'string', des: '当前登录用户访问令牌' },
+                        { key: 'project_id', isMust: false, type: 'string', des: '哪个网络（默认个人自由网络）' },
+                        { key: 'pageindex', isMust: false, type: 'int64', des: '指定当前的页码（不指定页码返回所有）' },
+                        { key: 'pagesize', isMust: false, type: 'int', des: '指定要返回的记录条数(默认值20，最大值100)' },
+                        { key: 't_folder_id', isMust: false, type: 'string', des: '项目ID (folderID=1 表示获取未关联项目的任务列表)' },
+                        { key: 'stage_id', isMust: false, type: 'string', des: '项目阶段ID' },
+                        { key: 'filter_type', isMust: false, type: 'int', des: '过滤类型 默认1：我参与的任务；2：我负责的任务；3：我托付的任务；7：查看同事(与我协作的任务)；8:自己加星的任务' },
+                        { key: 'color', isMust: false, type: 'int', des: '任务颜色 默认-1：全部；0：无颜色；1：蓝色；2：紫色；3：红色；4：橙色；5：黄色' },
+                        { key: 'status', isMust: false, type: 'int', des: '筛选任务状态 默认0：进行中；1：已完成；-1：全部' },
+                        { key: 'tags', isMust: false, type: 'string', des: '过滤任务标签 多个用,隔开' },
+                        { key: 'other', isMust: false, type: 'string', des: '指定用户编号 查看其他同事的任务列表' },
+                        { key: 'classifys', isMust: false, type: 'string', des: '任务所处分类默认全部' },
+                        { key: 'is_top', isMust: false, type: 'string', des: '是否置顶' },
+                        { key: 'sort', isMust: false, type: 'int', des: '任务排序 1：按首字母;2:按到期日期;3:按任务创建时间；4:按项目(查询结果结构有变化);5:任务负责人；7：按颜色；8:完成时间；9:进行中;10:最近更新' },
+                        { key: 'completeTime', isMust: false, type: 'int', des: '查询的时间起始点，当sort为8时(查询时间到当前的) 格式(2015-06-10)' },
+                        { key: 'keywords', isMust: false, type: 'string', des: '关键词模糊搜索' }
+                    ]
+                },
+                get_task_detail: {
+                    name: '获取任务详情',
+                    docUrl: {type: '', url: ''},
+                    url: '/task/get_task_detail',
+                    requestMode: 'get',
+                    params: [
+                        { key: 'access_token', isMust: true, type: 'string', des: '当前登录用户访问令牌' },
+                        { key: 'task_id', isMust: true, type: 'string', des: '任务ID' },
+                        { key: 'project_id', isMust: false, type: 'string', des: '哪个网络（默认个人自由网络）' }
+                    ]
+                }
+            }
+        },
         group: {
             v1: {
                 create_group: {
