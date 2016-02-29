@@ -641,6 +641,178 @@
                         { key: 'task_id', isMust: true, type: 'string', des: '任务ID' },
                         { key: 'project_id', isMust: false, type: 'string', des: '哪个网络（默认个人自由网络）' }
                     ]
+                },
+                add_task: {
+                    name: '创建一个任务',
+                    docUrl: {type: 'taskId', url: ''},
+                    url: '/task/add_task',
+                    requestMode: 'post',
+                    params: [
+                        { key: 'access_token', isMust: true, type: 'string', des: '当前登录用户访问令牌' },
+                        { key: 'task_name', isMust: true, type: 'string', des: '任务名称' },
+                        { key: 'parent_id', isMust: false, type: 'string', des: '母任务ID' },
+                        { key: 'describe', isMust: false, type: 'string', des: '任务描述' },
+                        { key: 'dead_time', isMust: false, type: 'string', des: '任务截止日期，yyyy-MM-dd形式', isDate: true },
+                        { key: 'charge_user', isMust: false, type: 'string', des: '指定的任务负责人' },
+                        { key: 'members', isMust: false, type: 'string', des: '指定的任务成员 (多个成员用逗号隔开)' },
+                        { key: 'folder_id', isMust: false, type: 'string', des: '指定的隶属项目' },
+                        { key: 'color', isMust: false, type: 'int', des: '任务颜色 默认0：无颜色；1：蓝色；2：紫色；3：红色；4：橙色；5：黄色' },
+                        { key: 'post_id', isMust: false, type: 'string', des: '动态ID（创建任务时，如果需要某个动态的附件添加到任务中必传）' },
+                        { key: 'folder_stage_id', isMust: false, type: 'string', des: '指定的隶属项目下的阶段ID' },
+                        { key: 'is_star', isMust: false, type: 'bool', des: '是否给任务标星（默认：0：否，1：是）' },
+                        { key: 'groups', isMust: false, type: 'string', des: '指定任务群组' },
+                        { key: 'project_id', isMust: false, type: 'string', des: '哪个网络（默认个人自由网络）' }
+                    ]
+                },
+                delete_task: {
+                    name: '删除任务',
+                    docUrl: {type: '', url: ''},
+                    url: '/task/delete_task',
+                    requestMode: 'post',
+                    params: [
+                        { key: 'access_token', isMust: true, type: 'string', des: '当前登录用户访问令牌' },
+                        { key: 'task_id', isMust: true, type: 'string', des: '任务ID' },
+                        { key: 'is_subtask', isMust:false, type: 'bool', des: '是否同时删除子任务' },
+                        { key: 'project_id', isMust: false, type: 'string', des: '哪个网络（默认个人自由网络）' }
+                    ]
+                },
+                update_task_detail: {
+                    name: '修改任务详情（包括字段如下）',
+                    docUrl: {type: '', url: ''},
+                    url: '/task/update_task_detail',
+                    requestMode: 'post',
+                    params: [
+                        { key: 'access_token', isMust: true, type: 'string', des: '当前登录用户访问令牌' },
+                        { key: 'task_id', isMust: true, type: 'string', des: '任务ID' },
+                        { key: 'task_name', isMust:false, type: 'string', des: '任务名称' },
+                        { key: 'describe', isMust:false, type: 'string', des: '任务描述' },
+                        { key: 'parent_id', isMust:false, type: 'string', des: '母任务ID' },
+                        { key: 'folder_id', isMust:false, type: 'string', des: '项目ID' },
+                        { key: 'project_id', isMust: false, type: 'string', des: '哪个网络（默认个人自由网络）' }
+                    ]
+                },
+                update_task_locked: {
+                    name: '是否锁定任务',
+                    docUrl: {type: '', url: ''},
+                    url: '/task/update_task_locked',
+                    requestMode: 'post',
+                    params: [
+                        { key: 'access_token', isMust: true, type: 'string', des: '当前登录用户访问令牌' },
+                        { key: 'task_id', isMust: true, type: 'string', des: '任务ID' },
+                        { key: 'is_lock', isMust:false, type: 'bool', des: '是否锁定任务（默认false）' },
+                        { key: 'project_id', isMust: false, type: 'string', des: '哪个网络（默认个人自由网络）' }
+                    ]
+                },
+                update_task_status: {
+                    name: '是否标记任务完成',
+                    docUrl: {type: '', url: ''},
+                    url: '/task/update_task_status',
+                    requestMode: 'post',
+                    params: [
+                        { key: 'access_token', isMust: true, type: 'string', des: '当前登录用户访问令牌' },
+                        { key: 'task_id', isMust: true, type: 'string', des: '任务ID' },
+                        { key: 'status', isMust:true, type: 'int', des: '任务完成状态（0：未完成，1：完成）' },
+                        { key: 'project_id', isMust: false, type: 'string', des: '哪个网络（默认个人自由网络）' }
+                    ]
+                },
+                update_task_member_star: {
+                    name: '任务标星',
+                    docUrl: {type: '', url: ''},
+                    url: '/task/update_task_member_star',
+                    requestMode: 'post',
+                    params: [
+                        { key: 'access_token', isMust: true, type: 'string', des: '当前登录用户访问令牌' },
+                        { key: 'task_id', isMust: true, type: 'string', des: '任务ID' },
+                        { key: 'is_star', isMust:true, type: 'bool', des: '是否标星（默认false）' },
+                        { key: 'project_id', isMust: false, type: 'string', des: '哪个网络（默认个人自由网络）' }
+                    ]
+                },
+                update_task_member_color: {
+                    name: '修改任务颜色',
+                    docUrl: {type: '', url: ''},
+                    url: '/task/update_task_member_color',
+                    requestMode: 'post',
+                    params: [
+                        { key: 'access_token', isMust: true, type: 'string', des: '当前登录用户访问令牌' },
+                        { key: 'task_id', isMust: true, type: 'string', des: '任务ID' },
+                        { key: 'color', isMust: true, type: 'int', des: '任务颜色 默认0：无颜色；1：蓝色；2：紫色；3：红色；4：橙色；5：黄色' },
+                        { key: 'project_id', isMust: false, type: 'string', des: '哪个网络（默认个人自由网络）' }
+                    ]
+                },
+                update_task_member_notice: {
+                    name: '修改任务是否接收提醒',
+                    docUrl: {type: '', url: ''},
+                    url: '/task/update_task_member_notice',
+                    requestMode: 'post',
+                    params: [
+                        { key: 'access_token', isMust: true, type: 'string', des: '当前登录用户访问令牌' },
+                        { key: 'task_id', isMust: true, type: 'string', des: '任务ID' },
+                        { key: 'is_notice', isMust: true, type: 'bool', des: '是否接收提醒（默认false）' },
+                        { key: 'project_id', isMust: false, type: 'string', des: '哪个网络（默认个人自由网络）' }
+                    ]
+                },
+                update_task_member_classify: {
+                    name: '修改任务分类（待分配，现在要做等）',
+                    docUrl: {type: '', url: ''},
+                    url: '/task/update_task_member_classify',
+                    requestMode: 'post',
+                    params: [
+                        { key: 'access_token', isMust: true, type: 'string', des: '当前登录用户访问令牌' },
+                        { key: 'task_id', isMust: true, type: 'string', des: '任务ID' },
+                        { key: 'classify', isMust: true, type: 'int', des: '1：现在要做，2：将要做，3：以后再说' },
+                        { key: 'project_id', isMust: false, type: 'string', des: '哪个网络（默认个人自由网络）' }
+                    ]
+                },
+                update_task_stage: {
+                    name: '修改任务所处项目阶段',
+                    docUrl: {type: '', url: ''},
+                    url: '/task/update_task_stage',
+                    requestMode: 'post',
+                    params: [
+                        { key: 'access_token', isMust: true, type: 'string', des: '当前登录用户访问令牌' },
+                        { key: 'task_id', isMust: true, type: 'string', des: '任务ID' },
+                        { key: 'folder_stage_id', isMust: true, type: 'string', des: '项目阶段ID' },
+                        { key: 'project_id', isMust: false, type: 'string', des: '哪个网络（默认个人自由网络）' }
+                    ]
+                },
+                get_task_topics: {
+                    name: '获取任务评论',
+                    docUrl: {type: '', url: ''},
+                    url: '/task/get_task_topics',
+                    requestMode: 'get',
+                    params: [
+                        { key: 'access_token', isMust: true, type: 'string', des: '当前登录用户访问令牌' },
+                        { key: 'task_id', isMust: true, type: 'string', des: '任务ID' },
+                        { key: 'project_id', isMust: false, type: 'string', des: '哪个网络（默认个人自由网络）' }
+                    ]
+                },
+                add_task_topic: {
+                    name: '新增任务评论',
+                    docUrl: {type: '', url: ''},
+                    url: '/task/add_task_topic',
+                    requestMode: 'post',
+                    params: [
+                        { key: 'access_token', isMust: true, type: 'string', des: '当前登录用户访问令牌' },
+                        { key: 'task_id', isMust: true, type: 'string', des: '任务ID' },
+                        { key: 'message', isMust: true, type: 'string', des: '评论内容' },
+                        { key: 'file_type', isMust: false, type: 'int', des: '评论类型（1：图片，2：文档）默认0普通' },
+                        { key: 'reply_topic_id', isMust: false, type: 'string', des: '回复哪条评论的ID' },
+                        { key: 'attachments', isMust: false, type: 'string', des: '附件JSON字符串' },
+                        { key: 'project_id', isMust: false, type: 'string', des: '哪个网络（默认个人自由网络）' }
+                    ]
+                },
+                delete_task_topic: {
+                    name: '删除任务评论',
+                    docUrl: {type: '', url: ''},
+                    url: '/task/delete_task_topic',
+                    requestMode: 'post',
+                    params: [
+                        { key: 'access_token', isMust: true, type: 'string', des: '当前登录用户访问令牌' },
+                        { key: 'task_id', isMust: true, type: 'string', des: '任务ID' },
+                        { key: 'topic_id', isMust: true, type: 'string', des: '任务评论ID' },
+                        { key: 'delete_file', isMust:false, type: 'bool', des: '是否同时删除文件（默认为false）' },
+                        { key: 'project_id', isMust: false, type: 'string', des: '哪个网络（默认个人自由网络）' }
+                    ]
                 }
             }
         },
