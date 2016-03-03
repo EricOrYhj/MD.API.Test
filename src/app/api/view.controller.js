@@ -30,9 +30,11 @@
             $('html, body').animate({ scrollTop: 0 }, 'slow');
         }
 
-        var port = $scope.port = $stateParams.port;
         var module = $scope.module = $stateParams.module;
         var version = $scope.version = $stateParams.version;
+        var port = $scope.port = $stateParams.port;
+        var item = $scope.item = $stateParams.item;
+
         $scope.apiName = '';
         $scope.modelList = [];
         $scope.isResult = false;
@@ -45,7 +47,8 @@
         var urlParams = {
             port: port,
             module: module,
-            version: version
+            version: version,
+            item: item
         };
 
         var viewList = [];
@@ -92,7 +95,7 @@
             requestUrl = $rootScope[port].requestUrl;
         } else {
             if ($scope.view == 'view2') {
-                apiSetting2.getApiSetting(module, version, port, function (data) {
+                apiSetting2.getApiSetting(module, version, port,item, function (data) {
                     requestUrl = '/' + version + data.url;
                     requestMode = data.requestMode;
                     $scope.apiName = data.name;

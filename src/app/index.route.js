@@ -39,6 +39,11 @@
                 templateUrl: 'app/api/view.html',
                 controller: 'viewCtrl'
             })
+            .state('view2.private', {
+                url: '/{module}/{version}/{port}/{item}',
+                templateUrl: 'app/api/view.html',
+                controller: 'viewCtrl'
+            })
         ;
 
         $urlRouterProvider.otherwise('/?login');

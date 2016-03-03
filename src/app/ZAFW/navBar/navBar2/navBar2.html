@@ -35,7 +35,19 @@
                             <span class="fa arrow"></span>
                         </a>
                         <ul class="nav nav-second-level collapse">
-                            <li ng-repeat="apiParamItem in apiParam.value track by $index">
+                            <li ng-repeat="apiParamItem in apiParam.value track by $index" ng-if="apiItem.module=='admin'">
+                                <a href="" style="padding-left: 35px;">
+                                    <i class="fa fa-yelp"></i>
+                                    <span class="nav-label">{{apiParamItem.port}}</span>
+                                    <span class="fa arrow"></span>
+                                </a>
+                                <ul class="nav nav-second-level collapse" ng-repeat="item in apiParamItem.value track by $index">
+                                    <li class="" style="margin-bottom: 0">
+                                        <a ui-sref="view2.private({module:'{{apiItem.module}}',version:'{{apiParam.version}}',port:'{{apiParamItem.port}}',item:'{{item}}'})">{{item}}</a>
+                                        </li>
+                                    </ul>
+                            </li>
+                            <li ng-repeat="apiParamItem in apiParam.value track by $index" ng-if="apiItem.module!='admin'">
                                 <a ui-sref="view2.views({module:'{{apiItem.module}}',version:'{{apiParam.version}}',port:'{{apiParamItem}}'})">{{apiParamItem}}</a>
                             </li>
                         </ul>
