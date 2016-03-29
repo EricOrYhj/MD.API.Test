@@ -819,60 +819,58 @@
         admin: {
             v1: {
                 application: {
-                    create_group: {
-                        name: '创建一个新的群组',
-                        docUrl: {type: '', url: '/v1group.html'},
-                        url: '/group/create_group',
-                        requestMode: 'post',
-                        params: [
-                            { key: 'access_token', isMust: true, type: 'string', des: '当前登录用户访问令牌' },
-                            { key: 'group_name', isMust: true, type: 'string', des: '要创建的群组的名称' },
-                            { key: 'about', isMust: false, type: 'string', des: '群组的简介' },
-                            { key: 'is_hidden', isMust: false, type: 'bool', des: '是否列入公司群组列表(*只有私有群组才有此功能)，0不隐藏，1隐藏' },
-                            { key: 'is_approval', isMust: false, type: 'string', des: '用户加入是否审批（0：否，1：是）' },
-                            { key: 'is_post', isMust: false, type: 'string', des: '是否作为动态分享群组（0：否，1：是）' },
-                            { key: 'dept_id', isMust: false, type: 'int', des: '部门ID（如果设置官方群组需传关联的部门ID）' },
-                            { key: 'account_ids', isMust: false, type: 'string', des: '群组成员' }
-                        ]
-                    },
-                    get_project_list: {
-                        name: '获取我的网络列表',
+                    get_project_apps: {
+                        name: '获取网络安装应用列表',
                         docUrl: {type: 'string', url: ''},
-                        url: '/company/get_project_list',
+                        url: '/admin/application/get_application_list',
                         requestMode: 'get',
                         params: [
                             { key: 'access_token', isMust: true, type: 'string', des: '当前登录用户访问令牌' },
+                            { key: 'project_id', isMust: true, type: 'string', des: '哪个网络必传' },
                             { key: 'pageindex', isMust: false, type: 'int', des: '指定当前的页码（不指定页码返回所有）' },
                             { key: 'pagesize', isMust: false, type: 'int', des: '指定要返回的记录条数（默认值20，最大值100）' }
                         ]
                     }
                 },
-                billing: {
-                    create_group: {
-                        name: '创建一个新的群组',
+                department: {
+                    get_project_departments: {
+                        name: '获取网络部门',
                         docUrl: {type: '', url: '/v1group.html'},
-                        url: '/group/create_group',
-                        requestMode: 'post',
-                        params: [
-                            { key: 'access_token', isMust: true, type: 'string', des: '当前登录用户访问令牌' },
-                            { key: 'group_name', isMust: true, type: 'string', des: '要创建的群组的名称' },
-                            { key: 'about', isMust: false, type: 'string', des: '群组的简介' },
-                            { key: 'is_hidden', isMust: false, type: 'bool', des: '是否列入公司群组列表(*只有私有群组才有此功能)，0不隐藏，1隐藏' },
-                            { key: 'is_approval', isMust: false, type: 'string', des: '用户加入是否审批（0：否，1：是）' },
-                            { key: 'is_post', isMust: false, type: 'string', des: '是否作为动态分享群组（0：否，1：是）' },
-                            { key: 'dept_id', isMust: false, type: 'int', des: '部门ID（如果设置官方群组需传关联的部门ID）' },
-                            { key: 'account_ids', isMust: false, type: 'string', des: '群组成员' }
-                        ]
-                    },
-                    get_project_list: {
-                        name: '获取我的网络列表',
-                        docUrl: {type: 'string', url: ''},
-                        url: '/company/get_project_list',
+                        url: '/admin/department/get_project_departments',
                         requestMode: 'get',
                         params: [
                             { key: 'access_token', isMust: true, type: 'string', des: '当前登录用户访问令牌' },
-                            { key: 'pageindex', isMust: false, type: 'int', des: '指定当前的页码（不指定页码返回所有）' },
-                            { key: 'pagesize', isMust: false, type: 'int', des: '指定要返回的记录条数（默认值20，最大值100）' }
+                            { key: 'project_id', isMust: true, type: 'string', des: '哪个网络必传' },
+                            { key: 'keywords', isMust: false, type: 'string', des: '群组的简介' },
+                            { key: 'pageindex', isMust: false, type: 'int', des: '第几页' },
+                            { key: 'pagesize', isMust: false, type: 'int', des: '每页条数' },
+                            { key: 'sort_field', isMust: false, type: 'int', des: '排序条件' },
+                            { key: 'sort_type', isMust: false, type: 'int', des: '排序类型' }
+                        ]
+                    },
+                    add_project_department: {
+                        name: '新增网络部门',
+                        docUrl: {type: 'string', url: ''},
+                        url: '/admin/department/add_project_department',
+                        requestMode: 'post',
+                        params: [
+                            { key: 'access_token', isMust: true, type: 'string', des: '当前登录用户访问令牌' },
+                            { key: 'project_id', isMust: true, type: 'string', des: '哪个网络必传' },
+                            { key: 'department_name', isMust: true, type: 'string', des: '部门名字' },
+                            { key: 'mapping_group_id', isMust: false, type: 'string', des: '关联群组ID' }
+                        ]
+                    },
+                    update_project_department: {
+                        name: '修改网络部门',
+                        docUrl: {type: 'string', url: ''},
+                        url: '/admin/department/update_project_department',
+                        requestMode: 'post',
+                        params: [
+                            { key: 'access_token', isMust: true, type: 'string', des: '当前登录用户访问令牌' },
+                            { key: 'project_id', isMust: true, type: 'string', des: '哪个网络必传' },
+                            { key: 'department_id', isMust: true, type: 'string', des: '部门ID' },
+                            { key: 'department_name', isMust: true, type: 'string', des: '部门名字' },
+                            { key: 'mapping_group_id', isMust: false, type: 'string', des: '关联群组ID' }
                         ]
                     }
                 }
