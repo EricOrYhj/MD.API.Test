@@ -42,6 +42,7 @@
 
         var requestMode = '';
         var requestUrl = '';
+        var docUrl =$scope.docUrl ='';
 
         //现在的地址
         var urlParams = {
@@ -91,13 +92,15 @@
 
         if ($rootScope[port]) {
             $scope.modelList = $rootScope[port].modelList;
-            requestMode = $rootScope[port].modelList;
+            requestMode = $rootScope[port].requestMode;
             requestUrl = $rootScope[port].requestUrl;
+            docUrl =$scope.docUrl = $rootScope[port].docUrl;
         } else {
             if ($scope.view == 'view2') {
-                apiSetting2.getApiSetting(module, version, port,item, function (data) {
+                apiSetting2.getApiSetting(module, version, port, item, function (data) {
                     requestUrl = '/' + version + data.url;
                     requestMode = data.requestMode;
+                    docUrl =$scope.docUrl = data.docUrl;
                     $scope.apiName = data.name;
                     angular.forEach(data.params, function (model) {
                         var value = '';
@@ -126,6 +129,7 @@
                 apiSetting.getApiSetting(module, version, port, function (data) {
                     requestUrl = data.url + '.aspx';
                     requestMode = data.requestMode;
+                    docUrl =$scope.docUrl = data.docUrl;
                     $scope.apiName = data.name;
                     angular.forEach(data.params, function (model) {
                         var value = '';
@@ -154,7 +158,7 @@
         }
 
         $scope.keydown = function () {
-            $rootScope[port] = {'modelList': $scope.modelList, 'requestUrl': requestUrl, 'requestMode': requestMode};
+            $rootScope[port] = {'modelList': $scope.modelList, 'requestUrl': requestUrl, 'requestMode': requestMode, 'docUrl': docUrl};
         }
 
         //提交请求

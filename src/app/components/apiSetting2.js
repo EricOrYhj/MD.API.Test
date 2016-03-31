@@ -10,7 +10,7 @@
             v1: {
                 get_all_posts: {
                     name: '获取全公司的动态更新 ',
-                    docUrl: {type: '', url: ''},
+                    docUrl: '/doc/post/post_detail.html',
                     url: '/post/get_all_posts',
                     requestMode: 'get',
                     params: [
@@ -24,7 +24,7 @@
                 },
                 get_at_me_posts: {
                     name: '获取提及@我的动态更新(适用inbox中的提到我的)',
-                    docUrl: {type: '', url: ''},
+                    docUrl: '/doc/post/post_detail.html',
                     url: '/post/get_at_me_posts',
                     requestMode: 'get',
                     params: [
@@ -38,7 +38,7 @@
                 },
                 get_post_detail: {
                     name: '根据动态更新编号获取单条动态更新内容',
-                    docUrl: {type: '', url: ''},
+                    docUrl: '/doc/post/post_detail.html',
                     url: '/post/get_post_detail',
                     requestMode: 'get',
                     params: [
@@ -48,7 +48,7 @@
                 },
                 get_doc_faq_img_posts: {
                     name: '获取 文档/图片/问答 列表信息 ',
-                    docUrl: {type: '', url: ''},
+                    docUrl: '/doc/post/post_detail.html',
                     url: '/post/get_doc_faq_img_posts',
                     requestMode: 'get',
                     params: [
@@ -64,7 +64,7 @@
                 },
                 get_favorite_posts: {
                     name: '获取当前登录用户收藏的动态更新',
-                    docUrl: {type: '', url: ''},
+                    docUrl: '/doc/post/post_detail.html',
                     url: '/post/get_favorite_posts',
                     requestMode: 'get',
                     params: [
@@ -77,7 +77,7 @@
                 },
                 get_group_groups: {
                     name: '获取群组的动态更新',
-                    docUrl: {type: '', url: ''},
+                    docUrl: '/doc/post/post_detail.html',
                     url: '/post/get_group_groups',
                     requestMode: 'get',
                     params: [
@@ -90,7 +90,7 @@
                 },
                 get_company_top_posts: {
                     name: '获取全公司的置顶动态更新',
-                    docUrl: {type: '', url: ''},
+                    docUrl: '/doc/post/post_detail.html',
                     url: '/post/get_company_top_posts',
                     requestMode: 'get',
                     params: [
@@ -99,7 +99,7 @@
                 },
                 get_my_posts: {
                     name: '获取当前登录用户发布的动态更新',
-                    docUrl: {type: '', url: ''},
+                    docUrl: '/doc/post/post_detail.html',
                     url: '/post/get_my_posts',
                     requestMode: 'get',
                     params: [
@@ -113,7 +113,7 @@
                 },
                 get_reply_by_me_posts: {
                     name: '获取我回复的最新回复信息',
-                    docUrl: {type: '', url: ''},
+                    docUrl: '/doc/post/post_detail.html',
                     url: '/post/get_reply_by_me_posts',
                     requestMode: 'get',
                     params: [
@@ -125,7 +125,7 @@
                 },
                 get_reply_me_posts: {
                     name: '获取回复我的最新回复信息',
-                    docUrl: {type: '', url: ''},
+                    docUrl: '/doc/post/post_detail.html',
                     url: '/post/get_reply_me_posts',
                     requestMode: 'get',
                     params: [
@@ -138,7 +138,7 @@
                 },
                 get_reply_post: {
                     name: '根据动态更新编号获取某条动态更新的回复列表信息',
-                    docUrl: {type: '', url: ''},
+                    docUrl: '/doc/post/post_detail.html',
                     url: '/post/get_reply_post',
                     requestMode: 'get',
                     params: [
@@ -148,7 +148,7 @@
                 },
                 get_tag_posts: {
                     name: '获取某个标签下的动态更新',
-                    docUrl: {type: '', url: ''},
+                    docUrl: '/doc/post/post_detail.html',
                     url: '/post/get_tag_posts',
                     requestMode: 'get',
                     params: [
@@ -160,7 +160,7 @@
                 },
                 get_user_posts: {
                     name: '获取用户发布的动态更新',
-                    docUrl: {type: '', url: ''},
+                    docUrl: '/doc/post/post_detail.html',
                     url: '/post/get_user_posts',
                     requestMode: 'get',
                     params: [
@@ -1132,6 +1132,7 @@
                     requestMode: 'get',
                     params: [
                         { key: 'access_token', isMust: true, type: 'string', des: '当前登录用户访问令牌' },
+                        { key: 'project_id', isMust: true, type: 'string', des: '要获取的网络ID' },
                         { key: 'department', isMust: false, type: 'string', des: '部门名称' },
                         { key: 'pageindex', isMust: false, type: 'int', des: '指定当前的页码（不指定页码返回所有）' },
                         { key: 'pagesize', isMust: false, type: 'int', des: '指定要返回的记录条数(默认值20，最大值100)' }
@@ -1409,22 +1410,12 @@
         passport: {
             v1: {
                 detail: {
-                    name: '创建一个投票动态',
-                    docUrl: {type: 'string', url: ''},
-                    url: '/vote/create',
-                    requestMode: 'post',
+                    name: '当前登录用户基本信息',
+                    docUrl: '/doc/passport/passport_detail.html',
+                    url: '/passport/get_passport_detail',
+                    requestMode: 'get',
                     params: [
-                        { key: 'access_token', isMust: true, type: 'string', des: '当前登录用户访问令牌' },
-                        { key: 'p_msg', isMust: true, type: 'int', des: '动态更新内容(###userID###代表@某个人,$$$groupID$$$代表@某个群组，#标签内容#代表给动态定义标签)' },
-                        { key: 'vote_options', isMust: true, type: 'string', des: '投票选项，如：a[Option]b[Option]c[Option] 代表有选项1:a；2:b;3:c 以此类推' },
-                        { key: 'v_img', isMust: false, type: 'binary', des: '要上传的图片。图片仅支持JPEG,GIF,PNG,目前上传图片大小限制为<8M.' },
-                        { key: 'v_img_options', isMust: false, type: 'string', des: '	要上传的图片对应的投票选项， 如：1,2 代表上传的两张图片是对应投票选项1和2' },
-                        { key: 'vote_lasttime', isMust: false, type: 'string', des: '截止日期 默认明天的这时间' },
-                        { key: 'available_number', isMust: false, type: 'int', des: '允许选择多少选项 默认1项 最多3项' },
-                        { key: 'vote_anonymous	', isMust: false, type: 'bool', des: '是否匿名投票 默认0：不匿名；1：匿名' },
-                        { key: 'vote_visble', isMust: false, type: 'bool', des: '	是否允许投票人员查看投票结果 0：不允许；1：允许 默认1允许' },
-                        { key: 'g_id', isMust: false, type: 'string', des: '可为空，动态分享群组编号(多个群组用逗号隔开)' },
-                        { key: 's_type', isMust: false, type: 'int', des: '分享范围 0表示分享给所有同事;1表示群内分享；2表示所有关注者和群组；3表示分享给自己； 默认0表示分享给所有同事' }
+                        { key: 'access_token', isMust: true, type: 'string', des: '当前登录用户访问令牌' }
                     ]
                 }
             }

@@ -13,11 +13,14 @@
         <h2>{{apiName}}</h2>
         <ol class="breadcrumb">
             <li class="active">
-                <a>请求地址: {{localUrl}}/{{version}}/{{module}}/{{port}} </a>
+                <a>请求地址: {{localUrl}}/{{version}}/{{module}}/{{port}}</a>
             </li>
         </ol>
     </div>
     <div class="col-lg-2">
+        <h2>
+            <a href="{{localUrl}}{{docUrl}}" target="_blank">文档说明</a>
+        </h2>
     </div>
 </div>
 
@@ -42,7 +45,8 @@
                                        ng-if="modelData.inputType==2" ng-keydown="keydown();">
                                 <input type="text" class="form-control" name="summary" placeholder="{{modelData.des}}"
                                        ng-model="modelData.value" ng-minlength="1" ng-maxlength="200"
-                                       ng-if="modelData.inputType==3" zafw-datepacker-time required ng-keydown="keydown();">
+                                       ng-if="modelData.inputType==3" zafw-datepacker-time required
+                                       ng-keydown="keydown();">
                                 <input type="text" class="form-control" name="summary" placeholder="{{modelData.des}}"
                                        ng-model="modelData.value" ng-minlength="1" ng-maxlength="200"
                                        ng-if="modelData.inputType==4" zafw-datepacker-time ng-keydown="keydown();">
@@ -50,11 +54,11 @@
                         </div>
 
                         <!--<div class="form-group">-->
-                            <!--<label class="col-sm-2 control-label">上传文件</label>-->
+                        <!--<label class="col-sm-2 control-label">上传文件</label>-->
 
-                            <!--<div class="col-sm-10">-->
-                                <!--<zafw-upload-img ng-model="pageData.img"></zafw-upload-img>-->
-                            <!--</div>-->
+                        <!--<div class="col-sm-10">-->
+                        <!--<zafw-upload-img ng-model="pageData.img"></zafw-upload-img>-->
+                        <!--</div>-->
                         <!--</div>-->
 
                         <div class="form-group">
@@ -73,7 +77,7 @@
                         </div>
 
                         <div class="col-sm-12">
-                            <input type="text" class="form-control"  placeholder="输入请求地址及参数直接填充数据"
+                            <input type="text" class="form-control" placeholder="输入请求地址及参数直接填充数据"
                                    ng-model="requestUrl" ng-change="Automatch();">
                         </div>
                         <div class="form-group">
