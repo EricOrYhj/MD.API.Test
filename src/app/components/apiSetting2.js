@@ -300,7 +300,7 @@
             v1: {
                 get_top_folders: {
                     name: '获取用户置顶项目',
-                    docUrl: {type: '', url: '/v1task.html'},
+                    docUrl: '/doc/task/folder_detail.html',
                     url: '/task/get_top_folders',
                     requestMode: 'get',
                     params: [
@@ -309,7 +309,7 @@
                 },
                 get_main_folders: {
                     name: '获取个人或网络下文件夹和初层项目列表',
-                    docUrl: {type: '', url: '/v1task.html'},
+                    docUrl: '/doc/task/folder_user_file_detail.html',
                     url: '/task/get_main_folders',
                     requestMode: 'get',
                     params: [
@@ -319,7 +319,7 @@
                 },
                 get_file_folders: {
                     name: '获取项目文件夹下的项目列表',
-                    docUrl: {type: '', url: '/v1task.html'},
+                    docUrl: '/doc/task/folder_detail.html',
                     url: '/task/get_file_folders',
                     requestMode: 'get',
                     params: [
@@ -330,7 +330,7 @@
                 },
                 add_folder: {
                     name: '创建项目',
-                    docUrl: {type: '', url: ''},
+                    docUrl: '/doc/task/folder_detail.html',
                     url: '/task/add_folder',
                     requestMode: 'post',
                     params: [
@@ -412,7 +412,7 @@
                 },
                 get_folder_stages: {
                     name: '获取项目下的阶段',
-                    docUrl: {type: '', url: '/v1task.html'},
+                    docUrl: '/doc/task/folder_stage_detail.html',
                     url: '/task/get_folder_stages',
                     requestMode: 'get',
                     params: [
@@ -585,7 +585,7 @@
                 },
                 get_task_list: {
                     name: '获取任务列表',
-                    docUrl: {type: '', url: '/task_v2.html'},
+                    docUrl: '/doc/task/task_detail.html',
                     url: '/task/get_task_list',
                     requestMode: 'get',
                     params: [
@@ -609,11 +609,12 @@
                 },
                 get_folder_task_list: {
                     name: '获取项目下任务列表',
-                    docUrl: {type: '', url: '/task_v2.html'},
+                    docUrl: '/doc/task/task_detail.html',
                     url: '/task/get_folder_task_list',
                     requestMode: 'get',
                     params: [
                         { key: 'access_token', isMust: true, type: 'string', des: '当前登录用户访问令牌' },
+                        { key: 'folder_id', isMust: true, type: 'string', des: '项目id' },
                         { key: 'project_id', isMust: false, type: 'string', des: '哪个网络（默认个人自由网络）' },
                         { key: 'pageindex', isMust: false, type: 'int64', des: '指定当前的页码（不指定页码返回所有）' },
                         { key: 'pagesize', isMust: false, type: 'int', des: '指定要返回的记录条数(默认值20，最大值100)' },
@@ -633,7 +634,7 @@
                 },
                 get_task_detail: {
                     name: '获取任务详情',
-                    docUrl: {type: '', url: ''},
+                    docUrl: '/doc/task/task_detail.html',
                     url: '/task/get_task_detail',
                     requestMode: 'get',
                     params: [
@@ -777,7 +778,7 @@
                 },
                 get_task_topics: {
                     name: '获取任务评论',
-                    docUrl: {type: '', url: ''},
+                    docUrl: '/doc/task/task_topic_detail.html',
                     url: '/task/get_task_topics',
                     requestMode: 'get',
                     params: [
@@ -909,7 +910,78 @@
         },
         group: {
             v1: {
-                create_group: {
+                get_group_detail: {
+                    name: '根据群组编号获取群组的基本资料',
+                    docUrl: {type: '', url: '/v1group_detail.html'},
+                    url: '/group/get_group_detail',
+                    requestMode: 'get',
+                    params: [
+                        { key: 'access_token', isMust: true, type: 'string', des: '当前登录用户访问令牌' },
+                        { key: 'group_id', isMust: true, type: 'string', des: '群组编号' }
+                    ]
+                },
+                get_my_groups: {
+                    name: '获取我的群组',
+                    docUrl: {type: '', url: '/v1group.html'},
+                    url: '/group/get_my_groups',
+                    requestMode: 'get',
+                    params: [
+                        { key: 'access_token', isMust: true, type: 'string', des: '当前登录用户访问令牌' }
+                    ]
+                },
+                get_my_created_groups: {
+                    name: '获取用户创建的群组',
+                    docUrl: {type: '', url: '/v1group.html'},
+                    url: '/group/get_my_created_groups',
+                    requestMode: 'get',
+                    params: [
+                        { key: 'access_token', isMust: true, type: 'string', des: '当前登录用户访问令牌' },
+                        { key: 'account_id', isMust: false, type: 'string', des: '指定用户编号，获取此用户创建的群组，默认为当前授权用户' }
+                    ]
+                },
+                get_project_groups: {
+                    name: '获取公司群组',
+                    docUrl: {type: '', url: '/v1group.html'},
+                    url: '/group/get_project_groups',
+                    requestMode: 'get',
+                    params: [
+                        { key: 'access_token', isMust: true, type: 'string', des: '当前登录用户访问令牌' },
+                        { key: 'project_id', isMust: true, type: 'string', des: '要获取的网络ID' },
+                        { key: 'sort_type', isMust: false, type: 'int', des: '按群组名称排序 默认0：倒序；1：升序' },
+                        { key: 'pageindex', isMust: false, type: 'int', des: '指定当前的页码（不指定页码返回所有）' },
+                        { key: 'pagesize', isMust: false, type: 'int', des: '指定要返回的记录条数（默认值20，最大值100）' }
+                    ]
+                },
+                get_account_joined_groups: {
+                    name: '获取用户加入的群组',
+                    docUrl: {type: '', url: '/v1group.html'},
+                    url: '/group/get_account_joined_groups',
+                    requestMode: 'get',
+                    params: [
+                        { key: 'access_token', isMust: true, type: 'string', des: '当前登录用户访问令牌' },
+                        { key: 'account_id', isMust: false, type: 'string', des: '指定用户编号，获取此用户创建的群组，默认为当前授权用户' }
+                    ]
+                },
+                get_group_members: {
+                    name: '获取群组成员信息',
+                    docUrl: {type: '', url: '/v1group.html'},
+                    url: '/group/get_group_members',
+                    requestMode: 'get',
+                    params: [
+                        { key: 'access_token', isMust: true, type: 'string', des: '当前登录用户访问令牌' },
+                        { key: 'group_id', isMust: true, type: 'string', des: '群组编号' }
+                    ]
+                },
+                get_unaudited_members: {
+                    name: '获取群组待审批成员信息',
+                    docUrl: {type: '', url: '/v1group.html'},
+                    url: '/group/get_unaudited_members',
+                    requestMode: 'get',
+                    params: [
+                        { key: 'access_token', isMust: true, type: 'string', des: '当前登录用户访问令牌' },
+                        { key: 'group_id', isMust: true, type: 'string', des: '群组编号' }
+                    ]
+                },                create_group: {
                     name: '创建一个新的群组',
                     docUrl: {type: '', url: '/v1group.html'},
                     url: '/group/create_group',
@@ -1026,79 +1098,7 @@
                         { key: 'access_token', isMust: true, type: 'string', des: '当前登录用户访问令牌' },
                         { key: 'group_id', isMust: true, type: 'string', des: '群组编号' }
                     ]
-                },
-                get_group_detail: {
-                    name: '根据群组编号获取群组的基本资料',
-                    docUrl: {type: '', url: '/v1group_detail.html'},
-                    url: '/group/get_group_detail',
-                    requestMode: 'get',
-                    params: [
-                        { key: 'access_token', isMust: true, type: 'string', des: '当前登录用户访问令牌' },
-                        { key: 'group_id', isMust: true, type: 'string', des: '群组编号' }
-                    ]
-                },
-                get_my_created_groups: {
-                    name: '获取用户创建的群组',
-                    docUrl: {type: '', url: '/v1group.html'},
-                    url: '/group/get_my_created_groups',
-                    requestMode: 'get',
-                    params: [
-                        { key: 'access_token', isMust: true, type: 'string', des: '当前登录用户访问令牌' },
-                        { key: 'account_id', isMust: false, type: 'string', des: '指定用户编号，获取此用户创建的群组，默认为当前授权用户' }
-                    ]
-                },
-                get_my_groups: {
-                    name: '获取我的群组',
-                    docUrl: {type: '', url: '/v1group.html'},
-                    url: '/group/get_my_groups',
-                    requestMode: 'get',
-                    params: [
-                        { key: 'access_token', isMust: true, type: 'string', des: '当前登录用户访问令牌' }
-                    ]
-                },
-                get_project_groups: {
-                    name: '获取公司群组',
-                    docUrl: {type: '', url: '/v1group.html'},
-                    url: '/group/get_project_groups',
-                    requestMode: 'get',
-                    params: [
-                        { key: 'access_token', isMust: true, type: 'string', des: '当前登录用户访问令牌' },
-                        { key: 'sort_type', isMust: false, type: 'int', des: '按群组名称排序 默认0：倒序；1：升序' },
-                        { key: 'pageindex', isMust: false, type: 'int', des: '指定当前的页码（不指定页码返回所有）' },
-                        { key: 'pagesize', isMust: false, type: 'int', des: '指定要返回的记录条数（默认值20，最大值100）' }
-                    ]
-                },
-                get_my_joined_groups: {
-                    name: '获取用户加入的群组',
-                    docUrl: {type: '', url: '/v1group.html'},
-                    url: '/group/get_my_joined_groups',
-                    requestMode: 'get',
-                    params: [
-                        { key: 'access_token', isMust: true, type: 'string', des: '当前登录用户访问令牌' },
-                        { key: 'account_id', isMust: false, type: 'string', des: '指定用户编号，获取此用户创建的群组，默认为当前授权用户' }
-                    ]
-                },
-                get_group_user: {
-                    name: '获取群组成员的用户信息',
-                    docUrl: {type: '', url: '/v1group.html'},
-                    url: '/group/get_group_user',
-                    requestMode: 'get',
-                    params: [
-                        { key: 'access_token', isMust: true, type: 'string', des: '当前登录用户访问令牌' },
-                        { key: 'group_id', isMust: true, type: 'string', des: '群组编号' }
-                    ]
-                },
-                get_unaudited_users: {
-                    name: '获取群组成员的用户信息',
-                    docUrl: {type: '', url: '/v1group.html'},
-                    url: '/group/get_unaudited_users',
-                    requestMode: 'get',
-                    params: [
-                        { key: 'access_token', isMust: true, type: 'string', des: '当前登录用户访问令牌' },
-                        { key: 'group_id', isMust: true, type: 'string', des: '群组编号' }
-                    ]
                 }
-
             }
         },
         user: {
