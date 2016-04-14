@@ -920,15 +920,6 @@
                         { key: 'group_id', isMust: true, type: 'string', des: '群组编号' }
                     ]
                 },
-                get_my_groups: {
-                    name: '获取我的群组',
-                    docUrl: {type: '', url: '/v1group.html'},
-                    url: '/group/get_my_groups',
-                    requestMode: 'get',
-                    params: [
-                        { key: 'access_token', isMust: true, type: 'string', des: '当前登录用户访问令牌' }
-                    ]
-                },
                 get_my_created_groups: {
                     name: '获取用户创建的群组',
                     docUrl: {type: '', url: '/v1group.html'},
@@ -981,7 +972,8 @@
                         { key: 'access_token', isMust: true, type: 'string', des: '当前登录用户访问令牌' },
                         { key: 'group_id', isMust: true, type: 'string', des: '群组编号' }
                     ]
-                },                create_group: {
+                },
+                create_group: {
                     name: '创建一个新的群组',
                     docUrl: {type: '', url: '/v1group.html'},
                     url: '/group/create_group',
@@ -1005,18 +997,6 @@
                     params: [
                         { key: 'access_token', isMust: true, type: 'string', des: '当前登录用户访问令牌' },
                         { key: 'group_id', isMust: true, type: 'string', des: '群组编号' }
-                    ]
-                },
-                invite_user_join_group: {
-                    name: '邀请用户（同事邮箱）加入群组',
-                    docUrl: {type: '', url: ''},
-                    url: '/group/invite_user_join_group',
-                    requestMode: 'post',
-                    params: [
-                        { key: 'access_token', isMust: true, type: 'string', des: '当前登录用户访问令牌' },
-                        { key: 'group_id', isMust: true, type: 'string', des: '群组编号' },
-                        { key: 'emails', isMust: true, type: 'string', des: '重新邀请用户email 多个邮箱用逗号隔开' },
-                        { key: 'invite_type', isMust: false, type: 'int', des: '邀请类型 0：内部用户或来宾；1：外联群组用户' }
                     ]
                 },
                 add_group_admin: {
@@ -1054,10 +1034,10 @@
                         { key: 'invite_type', isMust: false, type: 'int', des: '邀请类型 0：内部用户或来宾；1：外联群组用户' }
                     ]
                 },
-                invite_egroup_user_join_group: {
-                    name: '邀请外联成员',
+                invite_user_join_group: {
+                    name: '邀请成员',
                     docUrl: {type: '', url: ''},
-                    url: '/group/invite_egroup_user_join_group',
+                    url: '/group/invite_user_join_group',
                     requestMode: 'post',
                     params: [
                         { key: 'access_token', isMust: true, type: 'string', des: '当前登录用户访问令牌' },
@@ -1067,28 +1047,20 @@
                         { key: 'egroup_mobilephones', isMust: false, type: 'string', des: '邀请外联用户手机号码 多个手机号码用逗号隔开' }
                     ]
                 },
-                pass_unaudited_user_join_group: {
-                    name: '审批用户加入群组（仅限群组管理员）',
+                pass_or_refuse_user_join_group: {
+                    name: '同意/拒绝 用户加入群组（仅限群组管理员）',
                     docUrl: {type: '', url: ''},
-                    url: '/group/pass_unaudited_user_join_group',
+                    url: '/group/pass_or_refuse_user_join_group',
                     requestMode: 'post',
                     params: [
                         { key: 'access_token', isMust: true, type: 'string', des: '当前登录用户访问令牌' },
                         { key: 'group_id', isMust: true, type: 'string', des: '群组编号' },
-                        { key: 'account_ids', isMust: true, type: 'string', des: '待审批用户编号 多个用,号隔开' }
+                        { key: 'account_ids', isMust: true, type: 'string', des: '待审批用户编号 多个用,号隔开' },
+                        { key: 'choose_type', isMust: true, type: 'bool', des: '同意1/拒绝0' }
+
                     ]
                 },
-                refuse_unaudited_user_join_group: {
-                    name: '拒绝待审批用户加入群组（仅限群组管理员）',
-                    docUrl: {type: '', url: ''},
-                    url: '/group/refuse_unaudited_user_join_group',
-                    requestMode: 'post',
-                    params: [
-                        { key: 'access_token', isMust: true, type: 'string', des: '当前登录用户访问令牌' },
-                        { key: 'group_id', isMust: true, type: 'string', des: '群组编号' },
-                        { key: 'account_id', isMust: true, type: 'string', des: '待审批用户编号' }
-                    ]
-                },
+
                 chat_to_post_group: {
                     name: '聊天群组转永久动态群组',
                     docUrl: {type: '', url: ''},
@@ -1138,6 +1110,17 @@
                         { key: 'pagesize', isMust: false, type: 'int', des: '指定要返回的记录条数(默认值20，最大值100)' }
                     ]
                 },
+                get_user_card_full_info: {
+                    name: '个人卡片全部信息',
+                    docUrl: {type: '', url: '/v1user.html'},
+                    url: '/user/get_user_card_full_info',
+                    requestMode: 'get',
+                    params: [
+                        { key: 'access_token', isMust: true, type: 'string', des: '当前登录用户访问令牌' },
+                        { key: 'account_id', isMust: true, type: 'string', des: '用户账号ID' }
+                    ]
+                },
+
                 add_friend: {
                     name: '请求添加好友',
                     docUrl: {type: '', url: '/v1user.html'},
@@ -1170,7 +1153,19 @@
                         { key: 'account_id', isMust: true, type: 'string', des: '需要移除的用户账号ID' },
                         { key: 'status', isMust: true, type: 'int', des: '同意=1,忽略=2,拒绝=3' }
                     ]
+                },
+                shiled_friend: {
+                    name: '屏蔽/取消屏蔽 好友',
+                    docUrl: {type: '', url: '/v1user.html'},
+                    url: '/user/shiled_friend',
+                    requestMode: 'post',
+                    params: [
+                        { key: 'access_token', isMust: true, type: 'string', des: '当前登录用户访问令牌' },
+                        { key: 'account_id', isMust: true, type: 'string', des: '需要移除的用户账号ID' },
+                        { key: 'is_shiled', isMust: true, type: 'bool', des: '屏蔽1 / 取消屏蔽0' }
+                    ]
                 }
+
             }
         },
         company: {
@@ -1409,10 +1404,37 @@
         },
         passport: {
             v1: {
-                detail: {
+                get_passport_detail: {
                     name: '当前登录用户基本信息',
                     docUrl: '/doc/passport/passport_detail.html',
                     url: '/passport/get_passport_detail',
+                    requestMode: 'get',
+                    params: [
+                        { key: 'access_token', isMust: true, type: 'string', des: '当前登录用户访问令牌' }
+                    ]
+                },
+                get_passport_setting: {
+                    name: '当前登录用户的设置信息',
+                    docUrl: '/doc/passport/passport_detail.html',
+                    url: '/passport/get_passport_setting',
+                    requestMode: 'get',
+                    params: [
+                        { key: 'access_token', isMust: true, type: 'string', des: '当前登录用户访问令牌' }
+                    ]
+                },
+                get_un_read_count: {
+                    name: '获取当前登录用户的各种未读消息数量',
+                    docUrl: '/doc/passport/passport_detail.html',
+                    url: '/passport/get_un_read_count',
+                    requestMode: 'get',
+                    params: [
+                        { key: 'access_token', isMust: true, type: 'string', des: '当前登录用户访问令牌' }
+                    ]
+                },
+                get_common_category: {
+                    name: '获取当前登录用户最常用的的前10个标签',
+                    docUrl: '/doc/passport/passport_detail.html',
+                    url: '/passport/get_common_category',
                     requestMode: 'get',
                     params: [
                         { key: 'access_token', isMust: true, type: 'string', des: '当前登录用户访问令牌' }
