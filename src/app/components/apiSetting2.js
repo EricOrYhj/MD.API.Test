@@ -2097,7 +2097,8 @@
                     params: [
                         { key: 'access_token', isMust: true, type: 'string', des: '当前登录用户访问令牌' },
                         { key: 'project_id', isMust: true, type: 'string', des: '要获取的网络ID' },
-                        { key: 'sort_type', isMust: false, type: 'int', des: '按群组名称排序 默认0：倒序；1：升序' },
+                        { key: 'sort_group', isMust: false, type: 'int', des: '默认按群组名称排序（2：按动态数量最常协作群组）' },
+                        { key: 'sort_type', isMust: false, type: 'bool', des: '升序还是降序' },
                         { key: 'pageindex', isMust: false, type: 'int', des: '指定当前的页码(不指定页码返回所有)' },
                         { key: 'pagesize', isMust: false, type: 'int', des: '指定要返回的记录条数(默认值20，最大值100)' }
                     ]

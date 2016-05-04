@@ -40,9 +40,9 @@
         $scope.isResult = false;
         $scope.jsonResult = '';
 
-        var requestMode = '';
+        var requestMode = $scope.requestMode = '';
         var requestUrl = '';
-        var docUrl =$scope.docUrl ='';
+        var docUrl = $scope.docUrl = '';
 
         //现在的地址
         var urlParams = {
@@ -92,15 +92,15 @@
 
         if ($rootScope[port]) {
             $scope.modelList = $rootScope[port].modelList;
-            requestMode = $rootScope[port].requestMode;
+            $scope.requestMode = $rootScope[port].requestMode;
             requestUrl = $rootScope[port].requestUrl;
-            docUrl =$scope.docUrl = $rootScope[port].docUrl;
+            docUrl = $scope.docUrl = $rootScope[port].docUrl;
         } else {
             if ($scope.view == 'view2') {
                 apiSetting2.getApiSetting(module, version, port, item, function (data) {
                     requestUrl = '/' + version + data.url;
-                    requestMode = data.requestMode;
-                    docUrl =$scope.docUrl = data.docUrl;
+                    $scope.requestMode = data.requestMode;
+                    docUrl = $scope.docUrl = data.docUrl;
                     $scope.apiName = data.name;
                     angular.forEach(data.params, function (model) {
                         var value = '';
@@ -128,8 +128,8 @@
             } else {
                 apiSetting.getApiSetting(module, version, port, function (data) {
                     requestUrl = data.url + '.aspx';
-                    requestMode = data.requestMode;
-                    docUrl =$scope.docUrl = data.docUrl;
+                    $scope.requestMode = data.requestMode;
+                    docUrl = $scope.docUrl = data.docUrl;
                     $scope.apiName = data.name;
                     angular.forEach(data.params, function (model) {
                         var value = '';
@@ -172,14 +172,14 @@
                 }
                 pram[model.key] = model.value;
             });
-            if (requestMode.toLowerCase() == 'post') {
+            if ($scope.requestMode.toLowerCase() == 'post') {
                 mmpadminAPI.post(requestUrl, pram, function (data) {
                     $scope.data.result = data;
                     $scope.isResult = true;
                     $scope.jsonResult = JSON.stringify($scope.data.result);
                     $scope.Process();
                 });
-            } else if (requestMode.toLowerCase() == 'get') {
+            } else if ($scope.requestMode.toLowerCase() == 'get') {
                 mmpadminAPI.get(mmpadminAPI.apiurl(requestUrl, pram), function (data) {
                     $scope.data.result = data;
                     $scope.isResult = true;
