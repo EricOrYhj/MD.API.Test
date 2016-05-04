@@ -323,28 +323,10 @@
               "des": "项目负责人 默认当前登录用户"
             },
             {
-              "key": "dead_time",
-              "isMust": false,
-              "type": "datetime",
-              "des": "项目截止日期"
-            },
-            {
-              "key": "is_star",
-              "isMust": false,
-              "type": "bool",
-              "des": "是否给项目标星（默认：false）"
-            },
-            {
               "key": "members",
               "isMust": false,
               "type": "string",
               "des": "项目成员ID多个以，相隔"
-            },
-            {
-              "key": "admins",
-              "isMust": false,
-              "type": "string",
-              "des": "项目管理员ID多个以，相隔"
             },
             {
               "key": "visibility",
