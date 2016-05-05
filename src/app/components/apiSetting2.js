@@ -1088,6 +1088,56 @@
             }
           ]
         },
+		 "Get_Task_Count": {
+          "name": "传入Filter获取task的数量， 改扫描不支持传入ProjectId",
+          "docUrl": "/doc/task/folder_user_file_detail.html",
+          "url": "/task/Get_Task_Count",
+          "requestMode": "get",
+          "params": [
+            {
+              "key": "access_token",
+              "isMust": true,
+              "type": "string",
+              "des": "当前登录用户访问令牌"
+            },
+            {
+              "key": "Status",
+              "isMust": false,
+              "type": "string",
+              "des": "  任务状态 All = -1,Incomplete = 0, Complete = 1"
+            },
+            {
+              "key": "Filter_Type",
+              "isMust": false,
+              "type": "string",
+              "des": "讨论类型 Participate = 1, Charge = 2, Release = 3, AllTask = 6, WithMe = 7, MeTask = 9"
+            },
+            {
+              "key": "Classify",
+              "isMust": false,
+              "type": "string",
+              "des": "什么时候做 All = -1, Default = 0, Now = 1, Will = 2,  After = 3"
+            },
+            {
+              "key": "Color",
+              "isMust": false,
+              "type": "string",
+              "des": "项目颜色All = -1, None = 0, Purple = 1, Blue = 2, Yellow = 3, Orange = 4, Red = 5"
+            },
+            {
+              "key": "Star",
+              "isMust": false,
+              "type": "bool",
+              "des": "是否星标"
+            },
+            {
+              "key": "Project_id",
+              "isMust": false,
+              "type": "bool",
+              "des": "那个网络，传入all表明所有网络"
+            }
+          ]
+        },
         "get_task_detail": {
           "name": "获取任务详情",
           "docUrl": "/doc/task/task_detail.html",
@@ -1244,6 +1294,46 @@
             }
           ]
         },
+		"Get_Teamwork_Member": {
+          "name": "获取协作成员",
+          "docUrl": "/doc/task/task_topic_detail.html",
+          "url": "/task/Get_Teamwork_Member",
+          "requestMode": "get",
+          "params": [
+            {
+              "key": "access_token",
+              "isMust": true,
+              "type": "string",
+              "des": "当前登录用户访问令牌"
+            },
+            {
+              "key": "project_id",
+              "isMust": false,
+              "type": "string",
+              "des": "哪个网络（默认个人自由网络）不支持传入all"
+            }
+          ]
+        },
+		 "Get_Subordinates": {
+          "name": "获取用户置顶项目",
+          "docUrl": "/doc/task/folder_detail.html",
+          "url": "/task/Get_Subordinates",
+          "requestMode": "get",
+          "params": [
+            {
+              "key": "access_token",
+              "isMust": true,
+              "type": "string",
+              "des": "当前登录用户访问令牌"
+            },
+			{
+              "key": "project_id",
+              "isMust": false,
+              "type": "string",
+              "des": "哪个网络（默认个人自由网络）不支持传入all"
+            }
+          ]
+        },
         "get_top_folders": {
           "name": "获取用户置顶项目",
           "docUrl": "/doc/task/folder_detail.html",
@@ -1255,6 +1345,35 @@
               "isMust": true,
               "type": "string",
               "des": "当前登录用户访问令牌"
+            }
+          ]
+        },
+		"Search_Folders": {
+          "name": "通过关键词搜索项目",
+          "docUrl": {
+            "type": "",
+            "url": "/v1task.html"
+          },
+          "url": "/task/Search_Folders",
+          "requestMode": "get",
+          "params": [
+            {
+              "key": "access_token",
+              "isMust": true,
+              "type": "string",
+              "des": "当前登录用户访问令牌"
+            },
+            {
+              "key": "Keyword",
+              "isMust": true,
+              "type": "string",
+              "des": "要搜索的关键词"
+            },
+            {
+              "key": "Account_ID_Other",
+              "isMust": false,
+              "type": "Guid",
+              "des": "查询他人的任务, 他人ID"
             }
           ]
         },
