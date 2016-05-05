@@ -1148,10 +1148,10 @@
             }
           ]
         },
-		 "Get_Task_Count": {
-          "name": "传入Filter获取task的数量， 改扫描不支持传入ProjectId",
-          "docUrl": "/doc/task/folder_user_file_detail.html",
-          "url": "/task/Get_Task_Count",
+		 "Get_Task_Attachments": {
+          "name": "获取任务的所有附件信息",
+          "docUrl": "/doc/task/Get_Task_Attachments.html",
+          "url": "/task/Get_Task_Attachments",
           "requestMode": "get",
           "params": [
             {
@@ -1161,41 +1161,17 @@
               "des": "当前登录用户访问令牌"
             },
             {
-              "key": "Status",
-              "isMust": false,
+              "key": "Task_Id",
+              "isMust": true,
               "type": "string",
-              "des": "  任务状态 All = -1,Incomplete = 0, Complete = 1"
+              "des": "任务ID"
             },
             {
-              "key": "Filter_Type",
-              "isMust": false,
+              "key": "Project_Id",
+              "isMust": true,
               "type": "string",
-              "des": "讨论类型 Participate = 1, Charge = 2, Release = 3, AllTask = 6, WithMe = 7, MeTask = 9"
+              "des": "任务所在网络"
             },
-            {
-              "key": "Classify",
-              "isMust": false,
-              "type": "string",
-              "des": "什么时候做 All = -1, Default = 0, Now = 1, Will = 2,  After = 3"
-            },
-            {
-              "key": "Color",
-              "isMust": false,
-              "type": "string",
-              "des": "项目颜色All = -1, None = 0, Purple = 1, Blue = 2, Yellow = 3, Orange = 4, Red = 5"
-            },
-            {
-              "key": "Star",
-              "isMust": false,
-              "type": "bool",
-              "des": "是否星标"
-            },
-            {
-              "key": "Project_id",
-              "isMust": false,
-              "type": "bool",
-              "des": "那个网络，传入all表明所有网络"
-            }
           ]
         },
         "get_task_detail": {
@@ -1326,6 +1302,38 @@
               "type": "string",
               "des": "关键词模糊搜索"
             }
+          ]
+        },
+		 "get_task_Log": {
+          "name": "获取任务日志",
+          "docUrl": "/doc/task/get_task_Log.html",
+          "url": "/task/get_task_Log",
+          "requestMode": "get",
+          "params": [
+            {
+              "key": "access_token",
+              "isMust": true,
+              "type": "string",
+              "des": "当前登录用户访问令牌"
+            },
+            {
+              "key": "Page_Id",
+              "isMust": true,
+              "type": "int",
+              "des": "指定当前的页码, 从第一页开始"
+            },
+            {
+              "key": "Page_Size",
+              "isMust": true,
+              "type": "int",
+              "des": "指定要返回的记录条数"
+            },
+			{
+              "key": "task_id",
+              "isMust": true,
+              "type": "string",
+              "des": "任务ID"
+            },
           ]
         },
         "get_task_topics": {
@@ -1774,6 +1782,35 @@
               "type": "string",
               "des": "哪个网络（默认个人自由网络）"
             }
+          ]
+        },
+		 "Update_Task_Charger": {
+          "name": "更新任务负责人",
+          "docUrl": {
+            "type": "",
+            "url": ""
+          },
+          "url": "/task/Update_Task_Charger",
+          "requestMode": "post",
+          "params": [
+            {
+              "key": "access_token",
+              "isMust": true,
+              "type": "string",
+              "des": "当前登录用户访问令牌"
+            },
+            {
+              "key": "task_id",
+              "isMust": true,
+              "type": "Guid",
+              "des": "任务id"
+            },
+            {
+              "key": "New_Charger",
+              "isMust": true,
+              "type": "Guid",
+              "des": "新负责人的ID"
+            },
           ]
         },
         "Update_Task_Deadline": {
