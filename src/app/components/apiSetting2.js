@@ -2216,7 +2216,8 @@
                     params: [
                         { key: 'access_token', isMust: true, type: 'string', des: '当前登录用户访问令牌' },
                         { key: 'project_id', isMust: true, type: 'string', des: '要获取的网络ID' },
-                        { key: 'sort_type', isMust: false, type: 'int', des: '按群组名称排序 默认0：倒序；1：升序' },
+                        { key: 'sort_group', isMust: false, type: 'int', des: '默认按群组名称排序（2：按动态数量最常协作群组）' },
+                        { key: 'sort_type', isMust: false, type: 'bool', des: '升序还是降序' },
                         { key: 'pageindex', isMust: false, type: 'int', des: '指定当前的页码(不指定页码返回所有)' },
                         { key: 'pagesize', isMust: false, type: 'int', des: '指定要返回的记录条数(默认值20，最大值100)' }
                     ]
@@ -2372,7 +2373,27 @@
                     params: [
                         { key: 'access_token', isMust: true, type: 'string', des: '当前登录用户访问令牌' },
                         { key: 'pageindex', isMust: false, type: 'int', des: '指定当前的页码(不指定页码返回所有)' },
-                        { key: 'pagesize', isMust: false, type: 'int', des: '指定要返回的记录条数(默认值20，最大值100)' }
+                        { key: 'pagesize', isMust: false, type: 'int', des: '指定要返回的记录条数(默认值20，最大值100)' },
+                        { key: 'timestamp', isMust: false, type: 'string', des: '上次拉取列表返回的时间戳' }
+                    ]
+                },
+                get_metioned_users: {
+                    name: '获取我的最常协作人(不区分网络)',
+                    docUrl: '',
+                    url: '/user/get_metioned_users',
+                    requestMode: 'get',
+                    params: [
+                        { key: 'access_token', isMust: true, type: 'string', des: '当前登录用户访问令牌' }
+                    ]
+                },
+                get_account_byphone: {
+                    name: '根据手机号获取是否是明道用户',
+                    docUrl: '',
+                    url: '/user/get_account_byphone',
+                    requestMode: 'get',
+                    params: [
+                        { key: 'access_token', isMust: true, type: 'string', des: '当前登录用户访问令牌' },
+                        { key: 'phone', isMust: true, type: 'string', des: '手机号码' }
                     ]
                 },
                 get_project_users: {
@@ -2385,11 +2406,12 @@
                         { key: 'project_id', isMust: true, type: 'string', des: '要获取的网络ID' },
                         { key: 'department', isMust: false, type: 'string', des: '部门名称' },
                         { key: 'pageindex', isMust: false, type: 'int', des: '指定当前的页码(不指定页码返回所有)' },
-                        { key: 'pagesize', isMust: false, type: 'int', des: '指定要返回的记录条数(默认值20，最大值100)' }
+                        { key: 'pagesize', isMust: false, type: 'int', des: '指定要返回的记录条数(默认值20，最大值100)' },
+                        { key: 'timestamp', isMust: false, type: 'string', des: '上次拉取列表返回的时间戳' }
                     ]
                 },
-                get_user_card_full_info: {
-                    name: '个人卡片全部信息',
+                get_user_card: {
+                    name: '个人卡片信息',
                     docUrl: {type: '', url: '/v1user.html'},
                     url: '/user/get_user_card_full_info',
                     requestMode: 'get',
@@ -2428,8 +2450,7 @@
                     requestMode: 'post',
                     params: [
                         { key: 'access_token', isMust: true, type: 'string', des: '当前登录用户访问令牌' },
-                        { key: 'account_id', isMust: true, type: 'string', des: '需要移除的用户账号ID' },
-                        { key: 'status', isMust: true, type: 'int', des: '同意=1,忽略=2,拒绝=3' }
+                        { key: 'account_id', isMust: true, type: 'string', des: '需要移除的用户账号ID' }
                     ]
                 },
                 shiled_friend: {
@@ -2440,7 +2461,7 @@
                     params: [
                         { key: 'access_token', isMust: true, type: 'string', des: '当前登录用户访问令牌' },
                         { key: 'account_id', isMust: true, type: 'string', des: '需要移除的用户账号ID' },
-                        { key: 'is_shiled', isMust: true, type: 'bool', des: '屏蔽1 / 取消屏蔽0' }
+                        { key: 'is_shiled', isMust: true, type: 'bool', des: '是否屏蔽好友' }
                     ]
                 }
 
