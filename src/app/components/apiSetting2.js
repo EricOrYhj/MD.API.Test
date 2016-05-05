@@ -906,6 +906,26 @@
             }
           ]
         },
+		"Get_Archived_Folders": {
+          "name": "获取个人或网络下归档项目文件夹下项目",
+          "docUrl": "/doc/task/folder_user_file_detail.html",
+          "url": "/task/Get_Archived_Folders",
+          "requestMode": "get",
+          "params": [
+            {
+              "key": "access_token",
+              "isMust": true,
+              "type": "string",
+              "des": "当前登录用户访问令牌"
+            },
+            {
+              "key": "project_id",
+              "isMust": false,
+              "type": "string",
+              "des": "哪个网络， 不支持all"
+            }
+          ]
+        },
         "get_file_folders": {
           "name": "获取项目文件夹下的项目列表",
           "docUrl": "/doc/task/folder_detail.html",
@@ -1068,6 +1088,26 @@
             }
           ]
         },
+		"get_Hidden_folders": {
+          "name": "获取个人或网络下隐藏项目文件夹下项目",
+          "docUrl": "/doc/task/folder_user_file_detail.html",
+          "url": "/task/get_Hidden_folders",
+          "requestMode": "get",
+          "params": [
+            {
+              "key": "access_token",
+              "isMust": true,
+              "type": "string",
+              "des": "当前登录用户访问令牌"
+            },
+            {
+              "key": "project_id",
+              "isMust": false,
+              "type": "string",
+              "des": "哪个网络， 不支持all"
+            }
+          ]
+        },
         "get_main_folders": {
           "name": "获取个人或网络下文件夹和初层项目列表",
           "docUrl": "/doc/task/folder_user_file_detail.html",
@@ -1085,6 +1125,26 @@
               "isMust": false,
               "type": "string",
               "des": "哪个网络（默认个人自由网络）"
+            }
+          ]
+        },
+		"Get_Subordinates": {
+          "name": "获取用户置顶项目",
+          "docUrl": "/doc/task/folder_detail.html",
+          "url": "/task/Get_Subordinates",
+          "requestMode": "get",
+          "params": [
+            {
+              "key": "access_token",
+              "isMust": true,
+              "type": "string",
+              "des": "当前登录用户访问令牌"
+            },
+			{
+              "key": "project_id",
+              "isMust": false,
+              "type": "string",
+              "des": "哪个网络, 不支持传入all"
             }
           ]
         },
@@ -1294,6 +1354,7 @@
             }
           ]
         },
+	
 		"Get_Teamwork_Member": {
           "name": "获取协作成员",
           "docUrl": "/doc/task/task_topic_detail.html",
@@ -1310,30 +1371,11 @@
               "key": "project_id",
               "isMust": false,
               "type": "string",
-              "des": "哪个网络（默认个人自由网络）不支持传入all"
+              "des": "哪个网络, 不支持传入all"
             }
           ]
         },
-		 "Get_Subordinates": {
-          "name": "获取用户置顶项目",
-          "docUrl": "/doc/task/folder_detail.html",
-          "url": "/task/Get_Subordinates",
-          "requestMode": "get",
-          "params": [
-            {
-              "key": "access_token",
-              "isMust": true,
-              "type": "string",
-              "des": "当前登录用户访问令牌"
-            },
-			{
-              "key": "project_id",
-              "isMust": false,
-              "type": "string",
-              "des": "哪个网络（默认个人自由网络）不支持传入all"
-            }
-          ]
-        },
+		
         "get_top_folders": {
           "name": "获取用户置顶项目",
           "docUrl": "/doc/task/folder_detail.html",
