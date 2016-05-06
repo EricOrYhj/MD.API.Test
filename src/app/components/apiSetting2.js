@@ -322,12 +322,12 @@
               "type": "string",
               "des": "项目负责人 默认当前登录用户"
             },
-            {
+  /*           {
               "key": "members",
               "isMust": false,
               "type": "string",
               "des": "项目成员ID多个以，相隔"
-            },
+            }, */
             {
               "key": "visibility",
               "isMust": false,
@@ -346,12 +346,12 @@
               "type": "string",
               "des": "项目文件夹ID"
             },
-            {
+ /*            {
               "key": "is_top",
               "isMust": false,
               "type": "bool",
               "des": "是否置顶（默认：false）"
-            },
+            }, */
             {
               "key": "project_id",
               "isMust": false,
@@ -574,10 +574,10 @@
           ]
         },
         "add_task_topic": {
-          "name": "新增任务评论",
+          "name": "增加一条评论",
           "docUrl": {
             "type": "",
-            "url": ""
+            "url": "/task/add_task_topic"
           },
           "url": "/task/add_task_topic",
           "requestMode": "post",
@@ -596,15 +596,9 @@
             },
             {
               "key": "message",
-              "isMust": true,
+              "isMust": false,
               "type": "string",
               "des": "评论内容"
-            },
-            {
-              "key": "file_type",
-              "isMust": false,
-              "type": "int",
-              "des": "评论类型（1：图片，2：文档）默认0普通"
             },
             {
               "key": "reply_topic_id",
@@ -616,13 +610,7 @@
               "key": "attachments",
               "isMust": false,
               "type": "string",
-              "des": "附件JSON字符串"
-            },
-            {
-              "key": "project_id",
-              "isMust": false,
-              "type": "string",
-              "des": "哪个网络（默认个人自由网络）"
+              "des": "附件JSON字符串，请参照：{\"Value\":[{\"OriginalFileName\":\"原文件名\",\"FileName\":\"新文件名\",\"FilePath\":\"文件路径\",\"FileSize\":大小(int),\"AttachmentType\":附件类型}}]} 文件类型： Other = 0, Picture = 1, Document = 2, Compress = 3"
             }
           ]
         },
@@ -1810,7 +1798,7 @@
               "isMust": true,
               "type": "Guid",
               "des": "新负责人的ID"
-            },
+            }
           ]
         },
         "Update_Task_Deadline": {
