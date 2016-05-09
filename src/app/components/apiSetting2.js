@@ -300,7 +300,7 @@
       v1: {
         "add_folder": {
           "name": "创建项目",
-          "docUrl": "/doc/task/folder_detail.html",
+          "docUrl": "/doc/task/add_folder.html",
           "url": "/task/add_folder",
           "requestMode": "post",
           "params": [
@@ -362,10 +362,7 @@
         },
         "add_folder_file": {
           "name": "创建项目文件夹",
-          "docUrl": {
-            "type": "",
-            "url": ""
-          },
+          "docUrl":"/doc/task/add_folder_file.html",
           "url": "/task/add_folder_file",
           "requestMode": "post",
           "params": [
@@ -403,10 +400,7 @@
         },
         "add_folder_member": {
           "name": "新增项目成员",
-          "docUrl": {
-            "type": "",
-            "url": ""
-          },
+          "docUrl": "/doc/task/add_folder_member.html",
           "url": "/task/add_folder_member",
           "requestMode": "post",
           "params": [
@@ -438,10 +432,7 @@
         },
         "add_folder_stage": {
           "name": "创建项目阶段",
-          "docUrl": {
-            "type": "",
-            "url": ""
-          },
+          "docUrl": "/doc/task/add_folder_stage.html",
           "url": "/task/add_folder_stage",
           "requestMode": "post",
           "params": [
@@ -479,10 +470,7 @@
         },
         "add_task": {
           "name": "创建一个任务",
-          "docUrl": {
-            "type": "taskId",
-            "url": ""
-          },
+          "docUrl":"/doc/task/add_task.html",
           "url": "/task/add_task",
           "requestMode": "post",
           "params": [
@@ -575,10 +563,7 @@
         },
         "add_task_topic": {
           "name": "增加一条评论",
-          "docUrl": {
-            "type": "",
-            "url": "/task/add_task_topic"
-          },
+          "docUrl": "/doc/task/add_task_topic.html",
           "url": "/task/add_task_topic",
           "requestMode": "post",
           "params": [
@@ -616,10 +601,7 @@
         },
         "apply_folder_member": {
           "name": "申请成为项目成员",
-          "docUrl": {
-            "type": "",
-            "url": ""
-          },
+          "docUrl":"/doc/task/apply_folder_member.html",
           "url": "/task/apply_folder_member",
           "requestMode": "post",
           "params": [
@@ -651,10 +633,7 @@
         },
         "delete_folder": {
           "name": "删除项目",
-          "docUrl": {
-            "type": "",
-            "url": ""
-          },
+          "docUrl": "/doc/task/delete_folder.html",
           "url": "/task/delete_folder",
           "requestMode": "post",
           "params": [
@@ -674,10 +653,7 @@
         },
         "delete_folder_file": {
           "name": "删除项目文件夹",
-          "docUrl": {
-            "type": "",
-            "url": ""
-          },
+          "docUrl": "/doc/task/delete_folder_file.html",
           "url": "/task/delete_folder_file",
           "requestMode": "post",
           "params": [
@@ -702,12 +678,9 @@
           ]
         },
         "delete_folder_members": {
-          "name": "移除或退出项目",
-          "docUrl": {
-            "type": "",
-            "url": ""
-          },
-          "url": "/task/delete_folder_members",
+          "name": "移除项目成员",
+          "docUrl": "/doc/task/Delete_Folder_Members.html",
+          "url": "/task/Delete_Folder_Members",
           "requestMode": "post",
           "params": [
             {
@@ -729,7 +702,7 @@
               "des": "成员ID（多个，相隔）为空默认退出"
             },
             {
-              "key": "is_remove_task",
+              "key": "Removed_From_Tasks",
               "isMust": false,
               "type": "bool",
               "des": "是否同时退出项目下的任务（默认false）"
@@ -744,10 +717,7 @@
         },
         "delete_folder_stage": {
           "name": "删除项目阶段",
-          "docUrl": {
-            "type": "",
-            "url": ""
-          },
+          "docUrl": "/doc/task/delete_folder_stage.html",
           "url": "/task/delete_folder_stage",
           "requestMode": "post",
           "params": [
@@ -779,10 +749,7 @@
         },
         "delete_task": {
           "name": "删除任务",
-          "docUrl": {
-            "type": "",
-            "url": ""
-          },
+          "docUrl": "/doc/task/delete_task.html",
           "url": "/task/delete_task",
           "requestMode": "post",
           "params": [
@@ -814,10 +781,7 @@
         },
         "delete_task_topic": {
           "name": "删除任务评论",
-          "docUrl": {
-            "type": "",
-            "url": ""
-          },
+          "docUrl":"/doc/task/delete_task_topic.html",
           "url": "/task/delete_task_topic",
           "requestMode": "post",
           "params": [
@@ -855,10 +819,7 @@
         },
         "duplicate_folder": {
           "name": "复制项目",
-          "docUrl": {
-            "type": "",
-            "url": "/v1task.html"
-          },
+          "docUrl": "/doc/task/duplicate_folder.html",
           "url": "/task/duplicate_folder",
           "requestMode": "post",
           "params": [
@@ -894,9 +855,9 @@
             }
           ]
         },
-		"Get_Archived_Folders": {
+		"get_archived_folders": {
           "name": "获取个人或网络下归档项目文件夹下项目",
-          "docUrl": "/doc/task/folder_user_file_detail.html",
+          "docUrl": "/doc/task/Get_Archived_Folders.html",
           "url": "/task/Get_Archived_Folders",
           "requestMode": "get",
           "params": [
@@ -914,10 +875,10 @@
             }
           ]
         },
-        "get_file_folders": {
-          "name": "获取项目文件夹下的项目列表",
-          "docUrl": "/doc/task/folder_detail.html",
-          "url": "/task/get_file_folders",
+		 "get_first_level_folders_and_files_by_project_id": {
+          "name": "获取个人或网络下文件夹和初层项目列表",
+          "docUrl": "/doc/task/get_first_level_folders_and_files_by_project_id.html",
+          "url": "/task/get_first_level_folders_and_files_by_project_id",
           "requestMode": "get",
           "params": [
             {
@@ -925,12 +886,6 @@
               "isMust": true,
               "type": "string",
               "des": "当前登录用户访问令牌"
-            },
-            {
-              "key": "folder_file_id",
-              "isMust": true,
-              "type": "string",
-              "des": "指定的文件夹id"
             },
             {
               "key": "project_id",
@@ -942,7 +897,7 @@
         },
         "get_folder_stages": {
           "name": "获取项目下的阶段",
-          "docUrl": "/doc/task/folder_stage_detail.html",
+          "docUrl": "/doc/task/get_folder_stages.html",
           "url": "/task/get_folder_stages",
           "requestMode": "get",
           "params": [
@@ -968,7 +923,7 @@
         },
         "get_folder_task_list": {
           "name": "获取项目下任务列表",
-          "docUrl": "/doc/task/task_detail.html",
+          "docUrl": "/doc/task/get_folder_task_list.html",
           "url": "/task/get_folder_task_list",
           "requestMode": "get",
           "params": [
@@ -1076,9 +1031,35 @@
             }
           ]
         },
+		"get_folders_by_fileID": {
+          "name": "获取项目文件夹下的项目列表",
+          "docUrl": "/doc/task/get_folders_by_fileID.html",
+          "url": "/task/get_folders_by_fileID",
+          "requestMode": "get",
+          "params": [
+            {
+              "key": "access_token",
+              "isMust": true,
+              "type": "string",
+              "des": "当前登录用户访问令牌"
+            },
+            {
+              "key": "folder_file_id",
+              "isMust": true,
+              "type": "string",
+              "des": "指定的文件夹id"
+            },
+            {
+              "key": "project_id",
+              "isMust": false,
+              "type": "string",
+              "des": "哪个网络（默认个人自由网络）"
+            }
+          ]
+        },
 		"get_Hidden_folders": {
           "name": "获取个人或网络下隐藏项目文件夹下项目",
-          "docUrl": "/doc/task/folder_user_file_detail.html",
+          "docUrl": "/doc/task/get_Hidden_folders.html",
           "url": "/task/get_Hidden_folders",
           "requestMode": "get",
           "params": [
@@ -1096,30 +1077,10 @@
             }
           ]
         },
-        "get_main_folders": {
-          "name": "获取个人或网络下文件夹和初层项目列表",
-          "docUrl": "/doc/task/folder_user_file_detail.html",
-          "url": "/task/get_main_folders",
-          "requestMode": "get",
-          "params": [
-            {
-              "key": "access_token",
-              "isMust": true,
-              "type": "string",
-              "des": "当前登录用户访问令牌"
-            },
-            {
-              "key": "project_id",
-              "isMust": false,
-              "type": "string",
-              "des": "哪个网络（默认个人自由网络）"
-            }
-          ]
-        },
-		"Get_Subordinates": {
+		"get_subordinates": {
           "name": "获取用户置顶项目",
-          "docUrl": "/doc/task/folder_detail.html",
-          "url": "/task/Get_Subordinates",
+          "docUrl": "/doc/task/get_subordinates.html",
+          "url": "/task/get_subordinates",
           "requestMode": "get",
           "params": [
             {
@@ -1136,7 +1097,7 @@
             }
           ]
         },
-		 "Get_Task_Attachments": {
+		 "get_task_attachments": {
           "name": "获取任务的所有附件信息",
           "docUrl": "/doc/task/Get_Task_Attachments.html",
           "url": "/task/Get_Task_Attachments",
@@ -1153,18 +1114,13 @@
               "isMust": true,
               "type": "string",
               "des": "任务ID"
-            },
-            {
-              "key": "Project_Id",
-              "isMust": true,
-              "type": "string",
-              "des": "任务所在网络"
-            },
+            }
           ]
         },
+		
         "get_task_detail": {
           "name": "获取任务详情",
-          "docUrl": "/doc/task/task_detail.html",
+          "docUrl": "/doc/task/get_task_detail.html",
           "url": "/task/get_task_detail",
           "requestMode": "get",
           "params": [
@@ -1190,7 +1146,7 @@
         },
         "get_task_list": {
           "name": "获取任务列表",
-          "docUrl": "/doc/task/task_detail.html",
+          "docUrl": "/doc/task/get_task_list.html",
           "url": "/task/get_task_list",
           "requestMode": "get",
           "params": [
@@ -1326,7 +1282,7 @@
         },
         "get_task_topics": {
           "name": "获取任务评论",
-          "docUrl": "/doc/task/task_topic_detail.html",
+          "docUrl": "/doc/task/get_task_topics.html",
           "url": "/task/get_task_topics",
           "requestMode": "get",
           "params": [
@@ -1350,11 +1306,74 @@
             }
           ]
         },
-	
-		"Get_Teamwork_Member": {
+		"get_tasks_count": {
+          "name": "根据传入的筛选条件查询任务的数量",
+          "docUrl": "/doc/task/get_tasks_count.html",
+          "url": "/task/get_tasks_count",
+          "requestMode": "Get",
+          "params": [
+            {
+              "key": "access_token",
+              "isMust": true,
+              "type": "string",
+              "des": "当前登录用户访问令牌"
+            },
+            {
+              "key": "Status",
+              "isMust": true,
+              "type": "bool",
+              "des": "与任务是否完成相关的条件  All = -1 所有任务, Incomplete = 0 未完成, Complete = 1 已经完成"
+            },
+            {
+              "key": "Filter_Type",
+              "isMust": true,
+              "type": "string",
+              "des": "与协作相关的条件 Participate = 1 我参与的 , Charge = 2 我负责, Release = 3（我托付的）, AllTask = 6 所有人物, WithMe = 7 与我协作的, MeTask = 9 包含 我参与、我负责、我托付 "
+            },
+            {
+              "key": "Classify",
+              "isMust": true,
+              "type": "string",
+              "des": "与任务调度有关的条件 All = -1 不进行过滤，Now = 1 今天要做的， Will = 2 最近要做, After = 3 以后再说"
+            },
+            {
+              "key": "Color",
+              "isMust": true,
+              "type": "string",
+              "des": "任务颜色 All = -1 全部颜色 不进行过滤，None = 0 无颜色， Purple = 1, Blue = 2, Yellow = 3, Orange = 4, Red = 5"
+            },
+            {
+              "key": "Star",
+              "isMust": false,
+              "type": "bool",
+              "des": "是否有星标，为false则包含所有类别"
+            },
+            {
+              "key": "project_id",
+              "isMust": false,
+              "type": "string",
+              "des": "哪个网络（默认个人自由网络）"
+            }
+          ]
+        },
+		  "get_sticky_folders": {
+          "name": "获取用户置顶项目",
+          "docUrl": "/doc/task/get_sticky_folders.html",
+          "url": "/task/get_sticky_folders",
+          "requestMode": "get",
+          "params": [
+            {
+              "key": "access_token",
+              "isMust": true,
+              "type": "string",
+              "des": "当前登录用户访问令牌"
+            }
+          ]
+        },
+		"get_teamwork_member": {
           "name": "获取协作成员",
-          "docUrl": "/doc/task/task_topic_detail.html",
-          "url": "/task/Get_Teamwork_Member",
+          "docUrl": "/doc/task/get_teamwork_member.html",
+          "url": "/task/get_teamwork_member",
           "requestMode": "get",
           "params": [
             {
@@ -1371,27 +1390,9 @@
             }
           ]
         },
-		
-        "get_top_folders": {
-          "name": "获取用户置顶项目",
-          "docUrl": "/doc/task/folder_detail.html",
-          "url": "/task/get_top_folders",
-          "requestMode": "get",
-          "params": [
-            {
-              "key": "access_token",
-              "isMust": true,
-              "type": "string",
-              "des": "当前登录用户访问令牌"
-            }
-          ]
-        },
-		"Search_Folders": {
+		"search_folders": {
           "name": "通过关键词搜索项目",
-          "docUrl": {
-            "type": "",
-            "url": "/v1task.html"
-          },
+          "docUrl": "/doc/task/search_folders.html",
           "url": "/task/Search_Folders",
           "requestMode": "get",
           "params": [
@@ -1415,13 +1416,10 @@
             }
           ]
         },
-        "update_folder_archived": {
+        "update_folder_archived_property": {
           "name": "修改项目是否归档",
-          "docUrl": {
-            "type": "",
-            "url": "/v1task.html"
-          },
-          "url": "/task/update_folder_archived",
+          "docUrl": "/doc/task/update_folder_archived_property.html",
+          "url": "/task/update_folder_archived_property",
           "requestMode": "post",
           "params": [
             {
@@ -1452,10 +1450,7 @@
         },
         "update_folder_detail": {
           "name": "修改项目基本属性(负责人,项目名,项目描述)全部修改或多选一",
-          "docUrl": {
-            "type": "",
-            "url": "/v1task.html"
-          },
+          "docUrl": "/doc/task/update_folder_detail.html",
           "url": "/task/update_folder_detail",
           "requestMode": "post",
           "params": [
@@ -1499,10 +1494,7 @@
         },
         "update_folder_file": {
           "name": "修改项目文件夹",
-          "docUrl": {
-            "type": "",
-            "url": ""
-          },
+          "docUrl":"/doc/task/update_folder_file.html",
           "url": "/task/update_folder_file",
           "requestMode": "post",
           "params": [
@@ -1540,11 +1532,8 @@
         },
         "update_folder_isHidden_property": {
           "name": "项目隐藏",
-          "docUrl": {
-            "type": "",
-            "url": ""
-          },
-          "url": "/task/update_folder_isHidden_property",
+          "docUrl": "/doc/task/Update_Folder_IsHidden_Property.html",
+          "url": "/task/Update_Folder_IsHidden_Property",
           "requestMode": "post",
           "params": [
             {
@@ -1573,13 +1562,10 @@
             }
           ]
         },
-        "update_folder_isTop_property": {
+        "Update_Folder_IsTop_Property": {
           "name": "项目置顶",
-          "docUrl": {
-            "type": "",
-            "url": ""
-          },
-          "url": "/task/update_folder_isTop_property",
+          "docUrl":"/doc/task/post_detail.html",
+          "url": "/task/Update_Folder_IsTop_Property",
           "requestMode": "post",
           "params": [
             {
@@ -1610,10 +1596,7 @@
         },
         "update_folder_member_admin": {
           "name": "设置项目成员为管理员",
-          "docUrl": {
-            "type": "",
-            "url": ""
-          },
+          "docUrl": "/doc/task/update_folder_member_admin.html",
           "url": "/task/update_folder_member_admin",
           "requestMode": "post",
           "params": [
@@ -1651,10 +1634,7 @@
         },
         "update_folder_member_star": {
           "name": "项目标星",
-          "docUrl": {
-            "type": "",
-            "url": ""
-          },
+          "docUrl": "/doc/task/update_folder_member_star.html",
           "url": "/task/update_folder_member_star",
           "requestMode": "post",
           "params": [
@@ -1686,10 +1666,7 @@
         },
         "update_folder_stage": {
           "name": "修改项目阶段顺序或名字",
-          "docUrl": {
-            "type": "",
-            "url": ""
-          },
+          "docUrl": "/doc/task/update_folder_stage.html",
           "url": "/task/update_folder_stage",
           "requestMode": "post",
           "params": [
@@ -1731,13 +1708,10 @@
             }
           ]
         },
-        "update_folder_visibility": {
+        "update_folder_visibility_property": {
           "name": "修改项目可见性",
-          "docUrl": {
-            "type": "",
-            "url": "/v1task.html"
-          },
-          "url": "/task/update_folder_visibility",
+          "docUrl": "/doc/task/update_folder_visibility_property.html",
+          "url": "/task/Update_Folder_Visibility_Property",
           "requestMode": "post",
           "params": [
             {
@@ -1772,13 +1746,10 @@
             }
           ]
         },
-		 "Update_Task_Charger": {
+		 "update_task_charger_property": {
           "name": "更新任务负责人",
-          "docUrl": {
-            "type": "",
-            "url": ""
-          },
-          "url": "/task/Update_Task_Charger",
+          "docUrl": "/doc/task/update_task_charger_property.html",
+          "url": "/task/update_task_charger_property",
           "requestMode": "post",
           "params": [
             {
@@ -1801,13 +1772,10 @@
             }
           ]
         },
-        "Update_Task_Deadline": {
+        "update_task_deadline": {
           "name": "更新任务截止日期",
-          "docUrl": {
-            "type": "",
-            "url": ""
-          },
-          "url": "/task/Update_Task_Deadline",
+          "docUrl": "/doc/task/update_task_deadline.html",
+          "url": "/task/update_task_deadline",
           "requestMode": "post",
           "params": [
             {
@@ -1836,13 +1804,9 @@
             }
           ]
         },
-        "Update_Task_Description": {
-          "name": "更新任务描述",
-          "docUrl": {
-            "type": "",
-            "url": ""
-          },
-          "url": "/task/Update_Task_Description",
+        "update_task_description": {
+          "name":"/doc/task/update_task_description.html",
+          "url": "/task/update_task_description",
           "requestMode": "post",
           "params": [
             {
@@ -1867,10 +1831,7 @@
         },
         "update_task_detail": {
           "name": "修改任务详情（包括字段如下）",
-          "docUrl": {
-            "type": "",
-            "url": ""
-          },
+          "docUrl":"/doc/task/update_task_detail.html",
           "url": "/task/update_task_detail",
           "requestMode": "post",
           "params": [
@@ -1918,13 +1879,10 @@
             }
           ]
         },
-        "Update_Task_FolderID": {
+        "update_task_folderID": {
           "name": "更新任务所在的项目",
-          "docUrl": {
-            "type": "",
-            "url": ""
-          },
-          "url": "/task/Update_Task_FolderID",
+          "docUrl": "/doc/task/update_task_folderID.html",
+          "url": "/task/update_task_folderID",
           "requestMode": "post",
           "params": [
             {
@@ -1949,10 +1907,7 @@
         },
         "update_task_locked": {
           "name": "是否锁定任务",
-          "docUrl": {
-            "type": "",
-            "url": ""
-          },
+          "docUrl": "/doc/task/update_task_locked.html",
           "url": "/task/update_task_locked",
           "requestMode": "post",
           "params": [
@@ -1984,10 +1939,7 @@
         },
         "update_task_member_classify": {
           "name": "修改任务分类（待分配，现在要做等）",
-          "docUrl": {
-            "type": "",
-            "url": ""
-          },
+          "docUrl": "/doc/task/update_task_member_classify.html",
           "url": "/task/update_task_member_classify",
           "requestMode": "post",
           "params": [
@@ -2019,10 +1971,7 @@
         },
         "update_task_member_color": {
           "name": "修改任务颜色",
-          "docUrl": {
-            "type": "",
-            "url": ""
-          },
+          "docUrl": "/doc/task/update_task_member_color.html",
           "url": "/task/update_task_member_color",
           "requestMode": "post",
           "params": [
@@ -2054,10 +2003,7 @@
         },
         "update_task_member_notice": {
           "name": "修改任务是否接收提醒",
-          "docUrl": {
-            "type": "",
-            "url": ""
-          },
+          "docUrl": "/doc/task/update_task_member_notice.html",
           "url": "/task/update_task_member_notice",
           "requestMode": "post",
           "params": [
@@ -2089,10 +2035,7 @@
         },
         "update_task_member_star": {
           "name": "任务标星",
-          "docUrl": {
-            "type": "",
-            "url": ""
-          },
+          "docUrl": "/doc/task/update_task_member_star.html",
           "url": "/task/update_task_member_star",
           "requestMode": "post",
           "params": [
@@ -2122,13 +2065,10 @@
             }
           ]
         },
-        "Update_Task_Name": {
+        "update_task_name": {
           "name": "更新任务名称",
-          "docUrl": {
-            "type": "",
-            "url": ""
-          },
-          "url": "/task/Update_Task_Name",
+          "docUrl":"/doc/task/update_task_name.html",
+          "url": "/task/update_task_name",
           "requestMode": "post",
           "params": [
             {
@@ -2151,13 +2091,10 @@
             }
           ]
         },
-        "Update_Task_ParentID": {
+        "update_task_parentID": {
           "name": "更新母任务",
-          "docUrl": {
-            "type": "",
-            "url": ""
-          },
-          "url": "/task/Update_Task_ParentID",
+          "docUrl":"/doc/task/update_task_parentID.html",
+          "url": "/task/update_task_parentID",
           "requestMode": "post",
           "params": [
             {
@@ -2182,10 +2119,7 @@
         },
         "update_task_stage": {
           "name": "修改任务所处项目阶段",
-          "docUrl": {
-            "type": "",
-            "url": ""
-          },
+          "docUrl": "/doc/task/update_task_stage.html",
           "url": "/task/update_task_stage",
           "requestMode": "post",
           "params": [
@@ -2217,10 +2151,7 @@
         },
         "update_task_status": {
           "name": "是否标记任务完成",
-          "docUrl": {
-            "type": "",
-            "url": ""
-          },
+          "docUrl": "/doc/task/update_task_status.html",
           "url": "/task/update_task_status",
           "requestMode": "post",
           "params": [
