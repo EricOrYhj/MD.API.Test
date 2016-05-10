@@ -2482,7 +2482,7 @@
                 get_user_card: {
                     name: '个人卡片信息',
                     docUrl: {type: '', url: '/v1user.html'},
-                    url: '/user/get_user_card_full_info',
+                    url: '/user/get_user_card',
                     requestMode: 'get',
                     params: [
                         { key: 'access_token', isMust: true, type: 'string', des: '当前登录用户访问令牌' },
