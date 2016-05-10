@@ -2483,8 +2483,13 @@
                 },
                 get_user_card: {
                     name: '个人卡片信息',
-                    docUrl: '/doc/user/account_base.html',
+<<<<<<< HEAD
+                    docUrl: {type: '', url: '/v1user.html'},
                     url: '/user/get_user_card',
+=======
+                    docUrl: '/doc/user/account_base.html',
+                    url: '/user/get_user_card_full_info',
+>>>>>>> 10cfa65b7a3748f0e9ad79caa3d18348f8696c4c
                     requestMode: 'get',
                     params: [
                         { key: 'access_token', isMust: true, type: 'string', des: '当前登录用户访问令牌' },
