@@ -982,10 +982,12 @@
                         { key: 'access_token', isMust: true, type: 'string', des: '当前登录用户访问令牌' },
                         { key: 'group_name', isMust: true, type: 'string', des: '要创建的群组的名称' },
                         { key: 'about', isMust: false, type: 'string', des: '群组的简介' },
-                        { key: 'is_hidden', isMust: false, type: 'bool', des: '是否列入公司群组列表(*只有私有群组才有此功能)，0不隐藏，1隐藏' },
-                        { key: 'is_approval', isMust: false, type: 'string', des: '用户加入是否审批(0：否，1：是)' },
-                        { key: 'is_post', isMust: false, type: 'string', des: '是否作为动态分享群组(0：否，1：是)' },
-                        { key: 'dept_id', isMust: false, type: 'int', des: '部门ID(如果设置官方群组需传关联的部门ID)' },
+//                        { key: 'is_hidden', isMust: false, type: 'bool', des: '是否列入公司群组列表(*只有私有群组才有此功能)，0不隐藏，1隐藏' },
+//                        { key: 'is_approval', isMust: false, type: 'string', des: '用户加入是否审批(0：否，1：是)' },
+//                        { key: 'is_post', isMust: false, type: 'string', des: '是否作为动态分享群组(0：否，1：是)' },
+//                        { key: 'dept_id', isMust: false, type: 'int', des: '部门ID(如果设置官方群组需传关联的部门ID)' },
+                        { key: 'project_id', isMust: false, type: 'string', des: '群组网络' },
+                        { key: 'avatar', isMust: false, type: 'string', des: '群组头像' },
                         { key: 'account_ids', isMust: false, type: 'string', des: '群组成员' }
                     ]
                 },
