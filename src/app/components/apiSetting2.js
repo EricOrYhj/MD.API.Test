@@ -1072,7 +1072,9 @@
                     requestMode: 'post',
                     params: [
                         { key: 'access_token', isMust: true, type: 'string', des: '当前登录用户访问令牌' },
-                        { key: 'group_id', isMust: true, type: 'string', des: '群组编号' }
+                        { key: 'group_id', isMust: true, type: 'string', des: '群组编号' },
+                        { key: 'operation_type', isMust: true, type: 'int', des: '操作类型 0/关闭 2/解散 3/退出' }
+
                     ]
                 },
                 add_group_admin: {
