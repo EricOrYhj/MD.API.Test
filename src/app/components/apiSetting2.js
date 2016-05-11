@@ -1692,8 +1692,37 @@
                     ]
                 }
             }
+        },
+        invitation: {
+            v1: {
+                get_invite_link: {
+                    name: '获取通用邀请链接',
+                    docUrl: '',
+                    url: '/invitation/get_invite_link',
+                    requestMode: 'get',
+                    params: [
+                        { key: 'access_token', isMust: true, type: 'string', des: '当前登录用户访问令牌' },
+                        { key: 'source_id', isMust: true, type: 'string', des: '来源id(如账号id,网络id,任务id,日程id)' },
+                        { key: 'from_type', isMust: true, type: 'int', des: ' 邀请来源 0邀请好友1邀请群组2邀请任务3邀请知识4邀请网络5邀请日程6邀请项目' },
+                        { key: 'link_type', isMust: true, type: 'int', des: '邀请去向 1微信2QQ3链接4二维码' }
+                    ]
+                },
+                get_qrcode_invite_link: {
+                    name: '获取通用邀请链接二维码',
+                    docUrl: '',
+                    url: '/invitation/get_qrcode_invite_link',
+                    requestMode: 'get',
+                    params: [
+                        { key: 'access_token', isMust: true, type: 'string', des: '当前登录用户访问令牌' },
+                        { key: 'source_id', isMust: true, type: 'string', des: '来源id(如账号id,网络id,任务id,日程id)' },
+                        { key: 'from_type', isMust: true, type: 'int', des: ' 邀请来源 0邀请好友1邀请群组2邀请任务3邀请知识4邀请网络5邀请日程6邀请项目' },
+                        { key: 'link_type', isMust: true, type: 'int', des: '邀请去向 1微信2QQ3链接4二维码' },
+                        { key: 'width', isMust: false, type: 'string', des: '二维码宽默认200px' },
+                        { key: 'height', isMust: false, type: 'string', des: '二维码高默认200px' }
+                    ]
+                }
+            }
         }
-
     };
 
     function apiSetting() {
