@@ -1072,7 +1072,9 @@
                     requestMode: 'post',
                     params: [
                         { key: 'access_token', isMust: true, type: 'string', des: '当前登录用户访问令牌' },
-                        { key: 'group_id', isMust: true, type: 'string', des: '群组编号' }
+                        { key: 'group_id', isMust: true, type: 'string', des: '群组编号' },
+                        { key: 'operation_type', isMust: true, type: 'int', des: '操作类型 0/关闭 2/解散 3/退出' }
+
                     ]
                 },
                 add_group_admin: {
@@ -1174,10 +1176,10 @@
                         { key: 'timestamp', isMust: false, type: 'string', des: '上次拉取列表返回的时间戳' }
                     ]
                 },
-                get_metioned_users: {
+                get_mentioned_users: {
                     name: '获取我的最常协作人(不区分网络)',
                     docUrl: '/doc/user/account_base.html',
-                    url: '/user/get_metioned_users',
+                    url: '/user/get_mentioned_users',
                     requestMode: 'get',
                     params: [
                         { key: 'access_token', isMust: true, type: 'string', des: '当前登录用户访问令牌' }
@@ -1250,15 +1252,15 @@
                         { key: 'account_id', isMust: true, type: 'string', des: '需要移除的用户账号ID' }
                     ]
                 },
-                shiled_friend: {
+                shield_friend: {
                     name: '屏蔽/取消屏蔽 好友',
                     docUrl: {type: '', url: '/v1user.html'},
-                    url: '/user/shiled_friend',
+                    url: '/user/shield_friend',
                     requestMode: 'post',
                     params: [
                         { key: 'access_token', isMust: true, type: 'string', des: '当前登录用户访问令牌' },
                         { key: 'account_id', isMust: true, type: 'string', des: '需要移除的用户账号ID' },
-                        { key: 'is_shiled', isMust: true, type: 'bool', des: '是否屏蔽好友' }
+                        { key: 'is_shield', isMust: true, type: 'bool', des: '是否屏蔽好友' }
                     ]
                 },
                 add_mobile_address: {
