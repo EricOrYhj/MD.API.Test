@@ -524,7 +524,7 @@
                         {"key": "project_id", "isMust": false, "type": "string", "des": "哪个网络（默认个人自由网络）"            },
                         {"key": "pageindex", "isMust": false, "type": "int64", "des": "指定当前的页码（不指定页码返回所有）"            },
                         {"key": "pagesize", "isMust": false, "type": "int", "des": "指定要返回的记录条数(默认值20，最大值100)"            },
-                        {"key": "t_folder_id", "isMust": false, "type": "string", "des": "项目ID (folderID=1 表示获取未关联项目的任务列表)"            },
+                        {"key": "folder_id", "isMust": false, "type": "string", "des": "项目ID (folderID=1 表示获取未关联项目的任务列表)"            },
                         {"key": "stage_id", "isMust": false, "type": "string", "des": "项目阶段ID"            },
                         {"key": "filter_type", "isMust": false, "type": "int", "des": "过滤类型 默认1：我参与的任务；2：我负责的任务；3：我托付的任务；7：查看同事(与我协作的任务)；8:自己加星的任务"            },
                         {"key": "color", "isMust": false, "type": "int", "des": "任务颜色 默认-1：全部；0：无颜色；1：蓝色；2：紫色；3：红色；4：橙色；5：黄色"            },
@@ -601,7 +601,7 @@
                         {"key": "project_id", "isMust": false, "type": "string", "des": "哪个网络（默认个人自由网络）"            },
                         {"key": "pageindex", "isMust": false, "type": "int64", "des": "指定当前的页码（不指定页码返回所有）"            },
                         {"key": "pagesize", "isMust": false, "type": "int", "des": "指定要返回的记录条数(默认值20，最大值100)"            },
-                        {"key": "t_folder_id", "isMust": false, "type": "string", "des": "项目ID (folderID=1 表示获取未关联项目的任务列表)"            },
+                        {"key": "folder_id", "isMust": false, "type": "string", "des": "项目ID (folderID=1 表示获取未关联项目的任务列表)"            },
                         {"key": "stage_id", "isMust": false, "type": "string", "des": "项目阶段ID"            },
                         {"key": "filter_type", "isMust": false, "type": "int", "des": "过滤类型 默认1：我参与的任务；2：我负责的任务；3：我托付的任务；7：查看同事(与我协作的任务)；8:自己加星的任务"            },
                         {"key": "color", "isMust": false, "type": "int", "des": "任务颜色 默认-1：全部；0：无颜色；1：蓝色；2：紫色；3：红色；4：橙色；5：黄色"            },
@@ -1175,10 +1175,10 @@
                         { key: 'timestamp', isMust: false, type: 'string', des: '上次拉取列表返回的时间戳' }
                     ]
                 },
-                get_metioned_users: {
+                get_mentioned_users: {
                     name: '获取我的最常协作人(不区分网络)',
                     docUrl: '/doc/user/account_base.html',
-                    url: '/user/get_metioned_users',
+                    url: '/user/get_mentioned_users',
                     requestMode: 'get',
                     params: [
                         { key: 'access_token', isMust: true, type: 'string', des: '当前登录用户访问令牌' }
@@ -1251,15 +1251,15 @@
                         { key: 'account_id', isMust: true, type: 'string', des: '需要移除的用户账号ID' }
                     ]
                 },
-                shiled_friend: {
+                shield_friend: {
                     name: '屏蔽/取消屏蔽 好友',
                     docUrl: {type: '', url: '/v1user.html'},
-                    url: '/user/shiled_friend',
+                    url: '/user/shield_friend',
                     requestMode: 'post',
                     params: [
                         { key: 'access_token', isMust: true, type: 'string', des: '当前登录用户访问令牌' },
                         { key: 'account_id', isMust: true, type: 'string', des: '需要移除的用户账号ID' },
-                        { key: 'is_shiled', isMust: true, type: 'bool', des: '是否屏蔽好友' }
+                        { key: 'is_shield', isMust: true, type: 'bool', des: '是否屏蔽好友' }
                     ]
                 },
                 add_mobile_address: {
