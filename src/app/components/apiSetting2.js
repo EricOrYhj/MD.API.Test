@@ -969,7 +969,7 @@
             v1: {
                 get_group_detail: {
                     name: '根据群组编号获取群组的基本资料',
-                    docUrl: {type: '', url: '/v1group_detail.html'},
+                    docUrl:"/doc/group/group_detail.html",
                     url: '/group/get_group_detail',
                     requestMode: 'get',
                     params: [
@@ -1020,7 +1020,10 @@
                     requestMode: 'get',
                     params: [
                         { key: 'access_token', isMust: true, type: 'string', des: '当前登录用户访问令牌' },
-                        { key: 'group_id', isMust: true, type: 'string', des: '群组编号' }
+                        { key: 'group_id', isMust: true, type: 'string', des: '群组编号' },
+                        { key: 'pageindex', isMust: false, type: 'int', des: '页码' },
+                        { key: 'pagesize', isMust: false, type: 'int', des: '显示数量' }
+
                     ]
                 },
                 get_unaudited_members: {
@@ -1042,13 +1045,9 @@
                         { key: 'access_token', isMust: true, type: 'string', des: '当前登录用户访问令牌' },
                         { key: 'group_name', isMust: true, type: 'string', des: '要创建的群组的名称' },
                         { key: 'about', isMust: false, type: 'string', des: '群组的简介' },
-//                        { key: 'is_hidden', isMust: false, type: 'bool', des: '是否列入公司群组列表(*只有私有群组才有此功能)，0不隐藏，1隐藏' },
-//                        { key: 'is_approval', isMust: false, type: 'string', des: '用户加入是否审批(0：否，1：是)' },
                         { key: 'is_post', isMust: false, type: 'bool', des: '是否作为动态分享群组(false：否，true：是)' },
-//                        { key: 'dept_id', isMust: false, type: 'int', des: '部门ID(如果设置官方群组需传关联的部门ID)' },
                         { key: 'project_id', isMust: false, type: 'string', des: '群组网络' },
-                        { key: 'avatar', isMust: false, type: 'string', des: '群组头像' },
-                        { key: 'account_ids', isMust: false, type: 'string', des: '群组成员' }
+                        { key: 'avatar', isMust: false, type: 'string', des: '群组头像' }
                     ]
                 },
                 edit_group: {
@@ -1096,23 +1095,20 @@
                     params: [
                         { key: 'access_token', isMust: true, type: 'string', des: '当前登录用户访问令牌' },
                         { key: 'group_id', isMust: false, type: 'string', des: '群组编号' },
-                        { key: 'account_id', isMust: false, type: 'string', des: '用户编号' },
-                        { key: 'choose_type', isMust: true, type: 'int', des: '操作类型 1：移除用户 2：移除管理员(仅限群组管理员)' }
+                        { key: 'account_id', isMust: false, type: 'string', des: '用户编号' }
                     ]
                 },
-//                again_invite_group_user: {
-//                    name: '重新邀请群组成员',
-//                    docUrl: {type: '', url: ''},
-//                    url: '/group/again_invite_group_user',
-//                    requestMode: 'post',
-//                    params: [
-//                        { key: 'access_token', isMust: true, type: 'string', des: '当前登录用户访问令牌' },
-//                        { key: 'group_id', isMust: true, type: 'string', des: '群组编号' },
-//                        { key: 'emails', isMust: true, type: 'string', des: '重新邀请用户email 多个邮箱用逗号隔开' },
-//                        { key: 'invite_type', isMust: false, type: 'int', des: '邀请类型 0：内部用户或来宾；1：外联群组用户' }
-//                    ]
-//                },
-
+                remove_group_admin_role: {
+                    name: '移除管理员权限',
+                    docUrl: "",
+                    url: '/group/remove_group_admin_role',
+                    requestMode: 'post',
+                    params: [
+                        { key: 'access_token', isMust: true, type: 'string', des: '当前登录用户访问令牌' },
+                        { key: 'group_id', isMust: false, type: 'string', des: '群组编号' },
+                        { key: 'account_id', isMust: false, type: 'string', des: '用户编号' }
+                    ]
+                },
                 pass_or_refuse_user_join_group: {
                     name: '同意/拒绝 用户加入群组(仅限群组管理员)',
                     docUrl: {type: '', url: ''},
@@ -1147,7 +1143,6 @@
                         { key: 'group_id', isMust: true, type: 'string', des: '群组编号' }
                     ]
                 }
-                Apply_Join_Group
             }
         },
         user: {

@@ -9,8 +9,6 @@
    //var ROOT_URL = "http://localhost:13351";
 //    var ROOT_URL = "http://localhost:7432";
 //    var ROOT_URL = "https://devapi.mingdao.com";
-//    var ROOT_URL = "http://172.17.30.247/MD.API";
-//    var ROOT_URL = "";//本机
     var ROOT_URL = "/MD.API";//测试环境
     var FRONT_URL = "";
     var userToken = "";
