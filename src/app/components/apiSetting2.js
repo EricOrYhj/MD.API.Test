@@ -398,6 +398,16 @@
                         {"key": "project_id", "isMust": false, "type": "string", "des": "哪个网络（默认个人自由网络）"            }
                     ]
                 },
+				"apply_for_joining_a_task": {
+                    "name": "申请成为任务成员",
+                    "docUrl": "",
+                    "url": "/task/apply_for_joining_a_task",
+                    "requestMode": "post",
+                    "params": [
+                        {"key": "access_token", "isMust": true, "type": "string", "des": "当前登录用户访问令牌"            },
+                        {"key": "task_id", "isMust": true, "type": "string", "des": "任务ID"            }
+                    ]
+                },
                 "delete_folder": {
                     "name": "删除项目",
                     "docUrl": "/doc/task/delete_folder.html",
@@ -796,6 +806,17 @@
                         {"key": "visibility", "isMust": true, "type": "int", "des": "0:私密成员可见，1：群组公开,2全公司公开"            },
                         {"key": "groups", "isMust": false, "type": "string", "des": "群组公开时群组ID（多个，相隔）"            },
                         {"key": "project_id", "isMust": false, "type": "string", "des": "哪个网络（默认个人自由网络）"            }
+                    ]
+                },
+				"update_joining_status_on_task": {
+                    "name": "修改当前用户加入一个Task的状态",
+                    "docUrl": "",
+                    "url": "/task/update_joining_status_on_task",
+                    "requestMode": "post",
+                    "params": [
+                        {"key": "access_token", "isMust": true, "type": "string", "des": "当前登录用户访问令牌"            },
+                        {"key": "task_id", "isMust": true, "type": "string", "des": "任务ID"            },
+                        {"key": "joining_state", "isMust": true, "type": "int", "des": "0:None 无申请，1：NoneToMember 从非成员申请成为成员, 2: BeenRefusedToMember 被拒绝成为成员，拒绝填写2，同意填写0"            }
                     ]
                 },
                 "update_task_charger_property": {
