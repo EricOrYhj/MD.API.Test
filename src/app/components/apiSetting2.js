@@ -998,7 +998,7 @@
             v1: {
                 get_group_detail: {
                     name: '根据群组编号获取群组的基本资料',
-                    docUrl: {type: '', url: '/v1group_detail.html'},
+                    docUrl:"/doc/group/group_detail.html",
                     url: '/group/get_group_detail',
                     requestMode: 'get',
                     params: [
@@ -1049,7 +1049,10 @@
                     requestMode: 'get',
                     params: [
                         { key: 'access_token', isMust: true, type: 'string', des: '当前登录用户访问令牌' },
-                        { key: 'group_id', isMust: true, type: 'string', des: '群组编号' }
+                        { key: 'group_id', isMust: true, type: 'string', des: '群组编号' },
+                        { key: 'pageindex', isMust: false, type: 'int', des: '页码' },
+                        { key: 'pagesize', isMust: false, type: 'int', des: '显示数量' }
+
                     ]
                 },
                 get_unaudited_members: {
@@ -1071,13 +1074,9 @@
                         { key: 'access_token', isMust: true, type: 'string', des: '当前登录用户访问令牌' },
                         { key: 'group_name', isMust: true, type: 'string', des: '要创建的群组的名称' },
                         { key: 'about', isMust: false, type: 'string', des: '群组的简介' },
-//                        { key: 'is_hidden', isMust: false, type: 'bool', des: '是否列入公司群组列表(*只有私有群组才有此功能)，0不隐藏，1隐藏' },
-//                        { key: 'is_approval', isMust: false, type: 'string', des: '用户加入是否审批(0：否，1：是)' },
-//                        { key: 'is_post', isMust: false, type: 'string', des: '是否作为动态分享群组(0：否，1：是)' },
-//                        { key: 'dept_id', isMust: false, type: 'int', des: '部门ID(如果设置官方群组需传关联的部门ID)' },
+                        { key: 'is_post', isMust: false, type: 'bool', des: '是否作为动态分享群组(false：否，true：是)' },
                         { key: 'project_id', isMust: false, type: 'string', des: '群组网络' },
-                        { key: 'avatar', isMust: false, type: 'string', des: '群组头像' },
-                        { key: 'account_ids', isMust: false, type: 'string', des: '群组成员' }
+                        { key: 'avatar', isMust: false, type: 'string', des: '群组头像' }
                     ]
                 },
                 edit_group: {
@@ -1090,7 +1089,7 @@
                         { key: 'group_id', isMust: true, type: 'string', des: '群组id' },
                         { key: 'group_name', isMust: true, type: 'string', des: '要创建的群组的名称' },
                         { key: 'about', isMust: false, type: 'string', des: '群组的简介' },
-                        { key: 'is_approval', isMust: false, type: 'string', des: '群组网络' },
+                        { key: 'is_approval', isMust: false, type: 'bool', des: '用户加入是否审批 0 否 1 是' },
                         { key: 'avatar', isMust: false, type: 'string', des: '群组头像' }
                     ]
                 },
@@ -1125,33 +1124,18 @@
                     params: [
                         { key: 'access_token', isMust: true, type: 'string', des: '当前登录用户访问令牌' },
                         { key: 'group_id', isMust: false, type: 'string', des: '群组编号' },
-                        { key: 'account_id', isMust: false, type: 'string', des: '用户编号' },
-                        { key: 'choose_type', isMust: true, type: 'int', des: '操作类型 1：移除用户 2：移除管理员(仅限群组管理员)' }
+                        { key: 'account_id', isMust: false, type: 'string', des: '用户编号' }
                     ]
                 },
-                again_invite_group_user: {
-                    name: '重新邀请群组成员',
-                    docUrl: {type: '', url: ''},
-                    url: '/group/again_invite_group_user',
+                remove_group_admin_role: {
+                    name: '移除管理员权限',
+                    docUrl: "",
+                    url: '/group/remove_group_admin_role',
                     requestMode: 'post',
                     params: [
                         { key: 'access_token', isMust: true, type: 'string', des: '当前登录用户访问令牌' },
-                        { key: 'group_id', isMust: true, type: 'string', des: '群组编号' },
-                        { key: 'emails', isMust: true, type: 'string', des: '重新邀请用户email 多个邮箱用逗号隔开' },
-                        { key: 'invite_type', isMust: false, type: 'int', des: '邀请类型 0：内部用户或来宾；1：外联群组用户' }
-                    ]
-                },
-                invite_user_join_group: {
-                    name: '邀请成员',
-                    docUrl: {type: '', url: ''},
-                    url: '/group/invite_user_join_group',
-                    requestMode: 'post',
-                    params: [
-                        { key: 'access_token', isMust: true, type: 'string', des: '当前登录用户访问令牌' },
-                        { key: 'group_id', isMust: true, type: 'string', des: '群组编号' },
-                        { key: 'account_ids', isMust: false, type: 'string', des: '邀请加入群组的现有用户ID 多个用户用逗号隔开' },
-                        { key: 'egroup_emails', isMust: false, type: 'string', des: '邀请外联用户email 多个邮箱用逗号隔开' },
-                        { key: 'egroup_mobilephones', isMust: false, type: 'string', des: '邀请外联用户手机号码 多个手机号码用逗号隔开' }
+                        { key: 'group_id', isMust: false, type: 'string', des: '群组编号' },
+                        { key: 'account_id', isMust: false, type: 'string', des: '用户编号' }
                     ]
                 },
                 pass_or_refuse_user_join_group: {
@@ -1172,6 +1156,16 @@
                     name: '聊天群组转永久动态群组',
                     docUrl: {type: '', url: ''},
                     url: '/group/chat_to_post_group',
+                    requestMode: 'post',
+                    params: [
+                        { key: 'access_token', isMust: true, type: 'string', des: '当前登录用户访问令牌' },
+                        { key: 'group_id', isMust: true, type: 'string', des: '群组编号' }
+                    ]
+                },
+                apply_join_group: {
+                    name: '申请加入群组',
+                    docUrl: {type: '', url: ''},
+                    url: '/group/apply_join_group',
                     requestMode: 'post',
                     params: [
                         { key: 'access_token', isMust: true, type: 'string', des: '当前登录用户访问令牌' },
@@ -1678,30 +1672,11 @@
                         { key: 'choose_type', isMust: true, type: 'bool', des: '用户true/群组false 消息列表' }
                     ]
                 },
-                get_joined_group: {
-                    name: '获取已加入的群',
-                    docUrl: {type: 'string', url: ''},
-                    url: '/webchat/get_joined_group',
-                    requestMode: 'get',
-                    params: [
-                        { key: 'access_token', isMust: true, type: 'string', des: '当前登录用户访问令牌' }
-                    ]
-                },
-                get_group_members: {
-                    name: '获取群组的用户',
-                    docUrl: {type: 'string', url: ''},
-                    url: '/webchat/get_group_members',
-                    requestMode: 'get',
-                    params: [
-                        { key: 'access_token', isMust: true, type: 'string', des: '当前登录用户访问令牌' },
-                        { key: 'group_id', isMust: true, type: 'string', des: '群组编号' }
-                    ]
-                },
                 delete_chat_history_item: {
                     name: '删除历史聊天记录',
                     docUrl: {type: 'string', url: ''},
                     url: '/webchat/delete_chat_history_item',
-                    requestMode: 'get',
+                    requestMode: 'post',
                     params: [
                         { key: 'access_token', isMust: true, type: 'string', des: '当前登录用户访问令牌' },
                         { key: 'account_id', isMust: false, type: 'string', des: '用户编号' },
@@ -1711,8 +1686,8 @@
                 set_single_or_all_group_push: {
                     name: '设置单个/所有群组push',
                     docUrl: {type: 'string', url: ''},
-                    url: '/webchat/post_delete_history_item',
-                    requestMode: 'get',
+                    url: '/webchat/set_single_or_all_group_push',
+                    requestMode: 'post',
                     params: [
                         { key: 'access_token', isMust: true, type: 'string', des: '当前登录用户访问令牌' },
                         { key: 'is_push', isMust: true, type: 'bool', des: '是否开启推送 ' },
@@ -1748,6 +1723,19 @@
                         { key: 'link_type', isMust: true, type: 'int', des: '邀请去向 1微信2QQ3链接4二维码' },
                         { key: 'width', isMust: false, type: 'string', des: '二维码宽默认200px' },
                         { key: 'height', isMust: false, type: 'string', des: '二维码高默认200px' }
+                    ]
+                },
+                invite_user_join_group: {
+                    name: '邀请成员',
+                    docUrl: {type: '', url: ''},
+                    url: '/invitation/invite_user_join_group',
+                    requestMode: 'post',
+                    params: [
+                        { key: 'access_token', isMust: true, type: 'string', des: '当前登录用户访问令牌' },
+                        { key: 'group_id', isMust: true, type: 'string', des: '群组编号' },
+                        { key: 'account_ids', isMust: false, type: 'List<string>', des: '邀请加入群组的现有用户ID' },
+                        { key: 'accounts', isMust: false, type: 'Dictionary<string,string>', des: '邀请手机/邮箱的人加入群组 key:手机or邮箱 value:邀请的备注 没有传空' }
+
                     ]
                 }
             }
