@@ -1055,6 +1055,19 @@
 
                     ]
                 },
+                get_project_group_members: {
+                    name: '获取所属网络的群组成员信息',
+                    docUrl: {type: '', url: '/v1group.html'},
+                    url: '/group/get_project_group_members',
+                    requestMode: 'get',
+                    params: [
+                        { key: 'access_token', isMust: true, type: 'string', des: '当前登录用户访问令牌' },
+                        { key: 'group_id', isMust: true, type: 'string', des: '群组编号' },
+                        { key: 'pageindex', isMust: false, type: 'int', des: '页码' },
+                        { key: 'pagesize', isMust: false, type: 'int', des: '显示数量' }
+
+                    ]
+                },
                 get_unaudited_members: {
                     name: '获取群组待审批成员信息',
                     docUrl: {type: '', url: '/v1group.html'},
