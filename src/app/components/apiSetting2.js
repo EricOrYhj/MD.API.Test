@@ -298,6 +298,22 @@
         },
         task: {
             v1: {
+				"add_a_comment_on_folder": {
+                    "name": "创建项目",
+                    "docUrl": "/doc/task/add_a_comment_on_folder.html",
+                    "url": "/task/add_a_comment_on_folder",
+                    "requestMode": "post",
+                    "params": [
+                        {"key": "access_token", "isMust": true, "type": "string", "des": "当前登录用户访问令牌"},
+                        {"key": "folder_id", "isMust": true, "type": "string", "des": "项目id"},
+                        {"key": "has_attachment", "isMust": false, "type": "string", "des": "是否有attachment, 默认false"},
+                        {"key": "comment_id_to_reply", "isMust": false, "type": "string", "des": "回复的comment填写comment id"},
+                        {"key": "account_id_to_reply", "isMust": false, "type": "string", "des": "回复的comment时填写被回复的account id"},
+                        {"key": "message", "isMust": true, "type": "string", "des": "comment内容"},
+						{"key": "attachments", "isMust": false, "type": "string", "des": "参看[{\"fileID\":\"o_1aj15jdgj16aj1811180121n1hukk\",\"fileSize\":105828,\"serverName\":\"https://dn-mdoc.qbox.me/\",\"filePath\":\"doc/201605/\",\"fileName\":\"gqNvxiOMGJpcBAk_553513842\",\"fileExt\":\".txt\",\"originalFileName\":\"new 3\",\"key\":\"doc/201605/gqNvxiOMGJpcBAk_553513842.txt\",\"allowDown\":true,\"docVersionID\":\"\",\"oldOriginalFileName\":\"new 3\"}] "},
+						{"key": "project_id", "isMust": false, "type": "string", "des": "不填为自由网络"}
+                    ]
+                },
                 "add_folder": {
                     "name": "创建项目",
                     "docUrl": "/doc/task/add_folder.html",
@@ -321,7 +337,7 @@
                         {"key": "access_token", "isMust": true, "type": "string", "des": "当前登录用户访问令牌"            },
                         {"key": "folder_file_name", "isMust": true, "type": "string", "des": "项目文件夹名称"            },
                         {"key": "folder_file_sort", "isMust": false, "type": "int", "des": "项目文件夹序号(默认第一个)"            },
-                        {"key": "folders", "isMust": false, "type": "string", "des": "放入项目文件夹的项目ID（多个，相隔）"            },
+                        {"key": "folders", "isMust": true, "type": "string", "des": "放入项目文件夹的项目ID（多个，相隔）"            },
                         {"key": "project_id", "isMust": false, "type": "string", "des": "哪个网络（默认个人自由网络）"            }
                     ]
                 },
@@ -511,6 +527,19 @@
                         {"key": "project_id", "isMust": false, "type": "string", "des": "哪个网络（默认个人自由网络）"            }
                     ]
                 },
+				"get_folder_logs": {
+                    "name": "获取项目下的日志",
+                    "docUrl": "/doc/task/get_folder_logs.html",
+                    "url": "/task/get_folder_logs",
+                    "requestMode": "get",
+                    "params": [
+                        {"key": "access_token", "isMust": true, "type": "string", "des": "当前登录用户访问令牌"            },
+                        {"key": "folder_id", "isMust": true, "type": "string", "des": "指定的项目id"            },
+                        {"key": "page_index", "isMust": true, "type": "int", "des": "分页获取的页码, 从1开始"            },
+						{"key": "page_size", "isMust": true, "type": "int", "des": "该页面有多少项"            },
+						{"key": "project_id", "isMust": false, "type": "string", "des": "在那个网络下，不填为个人网络"            }
+                    ]
+                },
                 "get_folder_stages": {
                     "name": "获取项目下的阶段",
                     "docUrl": "/doc/task/get_folder_stages.html",
@@ -567,7 +596,7 @@
                         {"key": "project_id", "isMust": false, "type": "string", "des": "指定网络id，不填则为个人自由网络"            }
                     ]
                 },
-                "get_Hidden_folders": {
+                "get_hidden_folders": {
                     "name": "获取个人或网络下隐藏项目文件夹下项目",
                     "docUrl": "/doc/task/get_Hidden_folders.html",
                     "url": "/task/get_Hidden_folders",
@@ -575,6 +604,15 @@
                     "params": [
                         {"key": "access_token", "isMust": true, "type": "string", "des": "当前登录用户访问令牌"            },
                         {"key": "project_id", "isMust": false, "type": "string", "des": "哪个网络， 不支持all"            }
+                    ]
+                },
+				"get_sticky_folders": {
+                    "name": "获取用户置顶项目",
+                    "docUrl": "/doc/task/get_sticky_folders.html",
+                    "url": "/task/get_sticky_folders",
+                    "requestMode": "get",
+                    "params": [
+                        {"key": "access_token", "isMust": true, "type": "string", "des": "当前登录用户访问令牌"            }
                     ]
                 },
                 "get_subordinates": {
@@ -597,7 +635,30 @@
                         {"key": "task_id", "isMust": true, "type": "string", "des": "任务ID"            }
                     ]
                 },
-
+				"get_comments_by_folder_id": {
+                    "name": "获取项目上的会话",
+                    "docUrl": "/doc/task/get_comments_by_folder_id.html",
+                    "url": "/task/get_comments_by_folder_id",
+                    "requestMode": "get",
+                    "params": [
+                        {"key": "access_token", "isMust": true, "type": "string", "des": "当前登录用户访问令牌"            },
+                        {"key": "folder_id", "isMust": true, "type": "string", "des": "项目ID"            },
+						{"key": "only_include_mine", "isMust": false, "type": "bool", "des": "是否只包含我的帖子，默认为false"            },
+						{"key": "project_id", "isMust": false, "type": "bool", "des": "不填为自由网络"            },
+						{"key": "page_index", "isMust": true, "type": "bool", "des": "分页的index"            },
+						{"key": "page_size", "isMust": true, "type": "bool", "des": "分页的页面大小"            }
+                    ]
+                },
+				"get_folder_details_by_folder_id": {
+                    "name": "根据项目id获取项目详情",
+                    "docUrl": "/doc/task/get_folder_details_by_folder_id.html",
+                    "url": "/task/get_folder_details_by_folder_id",
+                    "requestMode": "get",
+                    "params": [
+                        {"key": "access_token", "isMust": true, "type": "string", "des": "当前登录用户访问令牌"            },
+                        {"key": "folder_id", "isMust": true, "type": "string", "des": "项目ID"            }
+                    ]
+                },
                 "get_task_detail": {
                     "name": "获取任务详情",
                     "docUrl": "/doc/task/get_task_detail.html",
@@ -671,13 +732,21 @@
                         {"key": "project_id", "isMust": false, "type": "string", "des": "哪个网络（默认个人自由网络）"            }
                     ]
                 },
-                "get_sticky_folders": {
-                    "name": "获取用户置顶项目",
-                    "docUrl": "/doc/task/get_sticky_folders.html",
-                    "url": "/task/get_sticky_folders",
+				"get_orphaned_tasks": {
+                    "name": "获取任务列表",
+                    "docUrl": "/doc/task/get_orphaned_tasks.html",
+                    "url": "/task/get_orphaned_tasks",
                     "requestMode": "get",
                     "params": [
-                        {"key": "access_token", "isMust": true, "type": "string", "des": "当前登录用户访问令牌"            }
+                        {"key": "access_token", "isMust": true, "type": "string", "des": "当前登录用户访问令牌"            },
+                        {"key": "project_id", "isMust": false, "type": "string", "des": "哪个网络（默认个人自由网络）"            },
+                        {"key": "pageindex", "isMust": false, "type": "int64", "des": "指定当前的页码（不指定页码返回所有）"            },
+                        {"key": "pagesize", "isMust": false, "type": "int", "des": "指定要返回的记录条数(默认值20，最大值100)"            },
+                        {"key": "stage_id", "isMust": false, "type": "string", "des": "项目阶段ID"            },
+                        {"key": "color", "isMust": false, "type": "int", "des": "任务颜色 默认-1：全部；0：无颜色；1：蓝色；2：紫色；3：红色；4：橙色；5：黄色"            },
+                        {"key": "status", "isMust": false, "type": "int", "des": "筛选任务状态 默认0：进行中；1：已完成；-1：全部"            },
+                        {"key": "tags", "isMust": false, "type": "string", "des": "过滤任务标签 多个用,隔开"            },
+                        {"key": "sort", "isMust": false, "type": "int", "des": "任务排序 1：按首字母;2:按到期日期;3:按任务创建时间；4:按项目(查询结果结构有变化);5:任务负责人；7：按颜色；8:完成时间；9:进行中;10:最近更新"            }
                     ]
                 },
                 "get_teamwork_member": {
@@ -688,6 +757,18 @@
                     "params": [
                         {"key": "access_token", "isMust": true, "type": "string", "des": "当前登录用户访问令牌"            },
                         {"key": "project_id", "isMust": false, "type": "string", "des": "哪个网络, 不支持传入all"            }
+                    ]
+                },
+				"remove_a_comment_on_folder": {
+                    "name": "删除一个项目上的comment",
+                    "docUrl": "",
+                    "url": "/task/remove_a_comment_on_folder",
+                    "requestMode": "post",
+                    "params": [
+                        {"key": "access_token", "isMust": true, "type": "string", "des": "当前登录用户访问令牌"            },
+                        {"key": "project_id", "isMust": false, "type": "string", "des": "哪个网络, 不支持传入all"            },
+						{"key": "folder_id", "isMust": true, "type": "string", "des": "项目id"            },
+						{"key": "comment_id", "isMust": true, "type": "string", "des": "comment id"            },
                     ]
                 },
                 "search_folders": {
