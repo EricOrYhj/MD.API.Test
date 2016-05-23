@@ -768,7 +768,7 @@
                         {"key": "access_token", "isMust": true, "type": "string", "des": "当前登录用户访问令牌"            },
                         {"key": "project_id", "isMust": false, "type": "string", "des": "哪个网络, 不支持传入all"            },
 						{"key": "folder_id", "isMust": true, "type": "string", "des": "项目id"            },
-						{"key": "comment_id", "isMust": true, "type": "string", "des": "comment id"            },
+						{"key": "comment_id", "isMust": true, "type": "string", "des": "comment id"            }
                     ]
                 },
                 "search_folders": {
@@ -1398,8 +1398,17 @@
                     params: [
                         { key: 'access_token', isMust: true, type: 'string', des: '当前登录用户访问令牌' }
                     ]
+                },
+                get_users_bykeywords: {
+                    name: '联系人搜索（范围个人通讯录和全部企业网络通讯录）包括手机号邮箱',
+                    docUrl: '/doc/user/account_base.html',
+                    url: '/user/get_users_bykeywords',
+                    requestMode: 'get',
+                    params: [
+                        { key: 'access_token', isMust: true, type: 'string', des: '当前登录用户访问令牌' },
+                        { key: 'keywords', isMust: true, type: 'string', des: '搜索关键字' }
+                    ]
                 }
-
             }
         },
         company: {
