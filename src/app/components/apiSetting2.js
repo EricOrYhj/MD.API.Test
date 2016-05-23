@@ -1397,6 +1397,15 @@
                     params: [
                         { key: 'access_token', isMust: true, type: 'string', des: '当前登录用户访问令牌' }
                     ]
+                } ,
+                 get_user_subordinate: {
+                    name: '获取下属用户列表',
+                    docUrl: '/doc/user/account_base.html',
+                    url: '/user/get_user_subordinate',
+                    requestMode: 'get',
+                    params: [
+                           { key: 'access_token', isMust: true, type: 'string', des: '当前登录用户访问令牌' }
+                         ]
                 },
                 get_users_bykeywords: {
                     name: '联系人搜索（范围个人通讯录和全部企业网络通讯录）包括手机号邮箱',
