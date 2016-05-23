@@ -1400,7 +1400,7 @@
                 },
                 get_users_bykeywords: {
                     name: '联系人搜索（范围个人通讯录和全部企业网络通讯录）包括手机号邮箱',
-                    docUrl: '/doc/user/account_base.html',
+                    docUrl: '/doc/user/keywords.html',
                     url: '/user/get_users_bykeywords',
                     requestMode: 'get',
                     params: [
