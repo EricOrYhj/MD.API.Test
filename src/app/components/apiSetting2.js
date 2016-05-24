@@ -310,7 +310,7 @@
                         {"key": "comment_id_to_reply", "isMust": false, "type": "string", "des": "回复的comment填写comment id"},
                         {"key": "account_id_to_reply", "isMust": false, "type": "string", "des": "回复的comment时填写被回复的account id"},
                         {"key": "message", "isMust": true, "type": "string", "des": "comment内容"},
-                        {"key": "attachments", "isMust": false, "type": "string", "des": "参看[{\"fileID\":\"o_1aj15jdgj16aj1811180121n1hukk\",\"fileSize\":105828,\"serverName\":\"https://dn-mdoc.qbox.me/\",\"filePath\":\"doc/201605/\",\"fileName\":\"gqNvxiOMGJpcBAk_553513842\",\"fileExt\":\".txt\",\"originalFileName\":\"new 3\",\"key\":\"doc/201605/gqNvxiOMGJpcBAk_553513842.txt\",\"allowDown\":true,\"docVersionID\":\"\",\"oldOriginalFileName\":\"new 3\"}] "},
+                        {"key": "attachments", "isMust": false, "type": "string", "des": "参看[{'fileID':'o_1aj15jdgj16aj1811180121n1hukk','fileSize':105828,'serverName':'https://dn-mdoc.qbox.me/','filePath':'doc/201605/','fileName':'gqNvxiOMGJpcBAk_553513842','fileExt':'.txt','originalFileName':'new 3','key':'doc/201605/gqNvxiOMGJpcBAk_553513842.txt','allowDown':true,'docVersionID':'','oldOriginalFileName':'new 3'}] "},
                         {"key": "project_id", "isMust": false, "type": "string", "des": "不填为自由网络"}
                     ]
                 },
@@ -398,7 +398,7 @@
                         {"key": "task_id", "isMust": true, "type": "string", "des": "任务ID"            },
                         {"key": "message", "isMust": false, "type": "string", "des": "评论内容"            },
                         {"key": "reply_topic_id", "isMust": false, "type": "string", "des": "回复哪条评论的ID"            },
-                        {"key": "attachments", "isMust": false, "type": "string", "des": "附件JSON字符串，请参照：{\"Value\":[{\"OriginalFileName\":\"原文件名\",\"FileName\":\"新文件名\",\"FilePath\":\"文件路径\",\"FileSize\":大小(int),\"AttachmentType\":附件类型}}]} 文件类型： Other = 0, Picture = 1, Document = 2, Compress = 3"            }
+                        {"key": "attachments", "isMust": false, "type": "string", "des": "附件JSON字符串，请参照：{'Value':[{'OriginalFileName':'原文件名','FileName':'新文件名','FilePath':'文件路径','FileSize':大小(int),'AttachmentType':附件类型}}]} 文件类型： Other = 0, Picture = 1, Document = 2, Compress = 3"            }
                     ]
                 },
                 "apply_folder_member": {
@@ -1845,8 +1845,8 @@
                     params: [
                         { key: 'access_token', isMust: true, type: 'string', des: '当前登录用户访问令牌' },
                         { key: 'group_id', isMust: true, type: 'string', des: '群组编号' },
-                        { key: 'account_ids', isMust: false, type: 'List<string>', des: '邀请加入群组的现有用户ID' },
-                        { key: 'accounts', isMust: false, type: 'Dictionary<string,string>', des: '邀请手机/邮箱的人加入群组 key:手机or邮箱 value:邀请的备注 没有传空' }
+                        { key: 'account_ids', isMust: false, type: 'string', des: '邀请加入群组的现有用户ID' },
+                        { key: 'accounts', isMust: false, type: 'string', des:'[{key:value}]邀请手机/邮箱的人加入群组key:手机or邮箱value:邀请的备注没有传空' }
 
                     ]
                 }
@@ -1893,8 +1893,8 @@
                     params: [
                         { key: 'access_token', isMust: true, type: 'string', des: '当前登录用户访问令牌' },
                         { key: 'group_id', isMust: true, type: 'string', des: '群组编号' },
-                        { key: 'account_ids', isMust: false, type: 'List<string>', des: '邀请加入群组的现有用户ID' },
-                        { key: 'accounts', isMust: false, type: 'Dictionary<string,string>', des: '邀请手机/邮箱的人加入群组 key:手机or邮箱 value:邀请的备注 没有传空' }
+                        { key: 'account_ids', isMust: false, type: 'string', des: '邀请加入群组的现有用户ID' },
+                        { key: 'accounts', isMust: false, type: 'string', des:'[{key:value}]邀请手机/邮箱的人加入群组key:手机or邮箱value:邀请的备注没有传空' }
 
                     ]
                 }
