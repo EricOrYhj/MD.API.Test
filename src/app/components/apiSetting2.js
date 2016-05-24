@@ -298,7 +298,7 @@
         },
         task: {
             v1: {
-                "add_a_comment_on_folder": {
+				"add_a_comment_on_folder": {
                     "name": "创建项目",
                     "docUrl": "/doc/task/add_a_comment_on_folder.html",
                     "url": "/task/add_a_comment_on_folder",
@@ -310,8 +310,8 @@
                         {"key": "comment_id_to_reply", "isMust": false, "type": "string", "des": "回复的comment填写comment id"},
                         {"key": "account_id_to_reply", "isMust": false, "type": "string", "des": "回复的comment时填写被回复的account id"},
                         {"key": "message", "isMust": true, "type": "string", "des": "comment内容"},
-                        {"key": "attachments", "isMust": false, "type": "string", "des": "参看[{'fileID':'o_1aj15jdgj16aj1811180121n1hukk','fileSize':105828,'serverName':'https://dn-mdoc.qbox.me/','filePath':'doc/201605/','fileName':'gqNvxiOMGJpcBAk_553513842','fileExt':'.txt','originalFileName':'new 3','key':'doc/201605/gqNvxiOMGJpcBAk_553513842.txt','allowDown':true,'docVersionID':'','oldOriginalFileName':'new 3'}] "},
-                        {"key": "project_id", "isMust": false, "type": "string", "des": "不填为自由网络"}
+						{"key": "attachments", "isMust": false, "type": "string", "des": "参看[{'fileID':'o_1aj15jdgj16aj1811180121n1hukk','fileSize':105828,'serverName':'https://dn-mdoc.qbox.me/','filePath':'doc/201605/','fileName':'gqNvxiOMGJpcBAk_553513842','fileExt':'.txt','originalFileName':'new 3','key':'doc/201605/gqNvxiOMGJpcBAk_553513842.txt','allowDown':true,'docVersionID':'','oldOriginalFileName':'new 3'}] "},
+						{"key": "project_id", "isMust": false, "type": "string", "des": "不填为自由网络"}
                     ]
                 },
                 "add_folder": {
@@ -413,7 +413,7 @@
                         {"key": "project_id", "isMust": false, "type": "string", "des": "哪个网络（默认个人自由网络）"            }
                     ]
                 },
-                "apply_for_joining_a_task": {
+				"apply_for_joining_a_task": {
                     "name": "申请成为任务成员",
                     "docUrl": "",
                     "url": "/task/apply_for_joining_a_task",
@@ -517,6 +517,17 @@
                         {"key": "project_id", "isMust": false, "type": "string", "des": "哪个网络， 不支持all"            }
                     ]
                 },
+				"get_direct_children_tasks": {
+                    "name": "获取某个任务下的直接子任务，返回值文档请参考get_task_list",
+                    "docUrl": "/doc/task/get_direct_children_tasks.html",
+                    "url": "/task/get_direct_children_tasks",
+                    "requestMode": "get",
+                    "params": [
+                        {"key": "access_token", "isMust": true, "type": "string", "des": "当前登录用户访问令牌"            },
+                        {"key": "project_id", "isMust": false, "type": "string", "des": "哪个网络，不支持all"            },
+						{"key": "task_id", "isMust": false, "type": "string", "des": "任务id"            },
+                    ]
+                },
                 "get_first_level_folders_and_files_by_project_id": {
                     "name": "获取个人或网络下文件夹和初层项目列表",
                     "docUrl": "/doc/task/get_first_level_folders_and_files_by_project_id.html",
@@ -527,7 +538,7 @@
                         {"key": "project_id", "isMust": false, "type": "string", "des": "哪个网络（默认个人自由网络）"            }
                     ]
                 },
-                "get_folder_logs": {
+				"get_folder_logs": {
                     "name": "获取项目下的日志",
                     "docUrl": "/doc/task/get_folder_logs.html",
                     "url": "/task/get_folder_logs",
@@ -536,8 +547,8 @@
                         {"key": "access_token", "isMust": true, "type": "string", "des": "当前登录用户访问令牌"            },
                         {"key": "folder_id", "isMust": true, "type": "string", "des": "指定的项目id"            },
                         {"key": "page_index", "isMust": true, "type": "int", "des": "分页获取的页码, 从1开始"            },
-                        {"key": "page_size", "isMust": true, "type": "int", "des": "该页面有多少项"            },
-                        {"key": "project_id", "isMust": false, "type": "string", "des": "在那个网络下，不填为个人网络"            }
+						{"key": "page_size", "isMust": true, "type": "int", "des": "该页面有多少项"            },
+						{"key": "project_id", "isMust": false, "type": "string", "des": "在那个网络下，不填为个人网络"            }
                     ]
                 },
                 "get_folder_stages": {
@@ -563,15 +574,15 @@
                         {"key": "pageindex", "isMust": false, "type": "int64", "des": "指定当前的页码（不指定页码返回所有）"            },
                         {"key": "pagesize", "isMust": false, "type": "int", "des": "指定要返回的记录条数(默认值20，最大值100)"            },
                         {"key": "stage_id", "isMust": false, "type": "string", "des": "项目阶段ID"            },
-                        {"key": "filter_type", "isMust": false, "type": "int", "des": "过滤类型 默认1：我参与的任务；2：我负责的任务；3：我托付的任务；6：全部任务  7：查看同事(与我协作的任务) 9： 我的任务"            },
+                        /*{"key": "filter_type", "isMust": false, "type": "int", "des": "过滤类型 默认1：我参与的任务；2：我负责的任务；3：我托付的任务；6：全部任务  7：查看同事(与我协作的任务) 9： 我的任务"            },*/
                         {"key": "color", "isMust": false, "type": "int", "des": "任务颜色 默认-1：全部；0：无颜色；1：蓝色；2：紫色；3：红色；4：橙色；5：黄色"            },
                         {"key": "status", "isMust": false, "type": "int", "des": "筛选任务状态 默认0：进行中；1：已完成；-1：全部"            },
                         {"key": "tags", "isMust": false, "type": "string", "des": "过滤任务标签 多个用,隔开"            },
                         {"key": "other", "isMust": false, "type": "string", "des": "指定用户编号 查看其他同事的任务列表"            },
                         {"key": "classifys", "isMust": false, "type": "string", "des": "不过滤 -1 现在要做 Now = 1，将要做 Will = 2, 以后再说 After = 3"            },
-                        {"key": "is_top", "isMust": false, "type": "string", "des": "是否置顶"            },
+                        /*{"key": "is_top", "isMust": false, "type": "string", "des": "是否置顶"            },*/
                         {"key": "sort", "isMust": false, "type": "int", "des": "任务排序 1：按首字母;2:按到期日期;3:按任务创建时间；4:按项目(查询结果结构有变化);5:任务负责人；7：按颜色；8:完成时间；9:进行中;10:最近更新" },
-                        {"key": "completeTime", "isMust": false, "type": "int", "des": "查询的时间起始点，当sort为8时(查询时间到当前的) 格式(2015-06-10)"            },
+                        /*{"key": "completeTime", "isMust": false, "type": "int", "des": "查询的时间起始点，当sort为8时(查询时间到当前的) 格式(2015-06-10)"            },8*/
                         {"key": "keywords", "isMust": false, "type": "string", "des": "关键词模糊搜索"            }
                     ]
                 },
@@ -586,7 +597,7 @@
                         {"key": "project_id", "isMust": false, "type": "string", "des": "哪个网络（默认个人自由网络）"            }
                     ]
                 },
-                "get_folders_files_count_by_project_id": {
+				"get_folders_files_count_by_project_id": {
                     "name": "获取项目下项目文件夹以及项目的数量",
                     "docUrl": "/doc/task/get_folders_files_count_by_project_id.html",
                     "url": "/task/get_folders_files_count_by_project_id",
@@ -606,7 +617,7 @@
                         {"key": "project_id", "isMust": false, "type": "string", "des": "哪个网络， 不支持all"            }
                     ]
                 },
-                "get_sticky_folders": {
+				"get_sticky_folders": {
                     "name": "获取用户置顶项目",
                     "docUrl": "/doc/task/get_sticky_folders.html",
                     "url": "/task/get_sticky_folders",
@@ -635,7 +646,7 @@
                         {"key": "task_id", "isMust": true, "type": "string", "des": "任务ID"            }
                     ]
                 },
-                "get_comments_by_folder_id": {
+				"get_comments_by_folder_id": {
                     "name": "获取项目上的会话",
                     "docUrl": "/doc/task/get_comments_by_folder_id.html",
                     "url": "/task/get_comments_by_folder_id",
@@ -643,13 +654,13 @@
                     "params": [
                         {"key": "access_token", "isMust": true, "type": "string", "des": "当前登录用户访问令牌"            },
                         {"key": "folder_id", "isMust": true, "type": "string", "des": "项目ID"            },
-                        {"key": "only_include_mine", "isMust": false, "type": "bool", "des": "是否只包含我的帖子，默认为false"            },
-                        {"key": "project_id", "isMust": false, "type": "bool", "des": "不填为自由网络"            },
-                        {"key": "page_index", "isMust": true, "type": "bool", "des": "分页的index"            },
-                        {"key": "page_size", "isMust": true, "type": "bool", "des": "分页的页面大小"            }
+						{"key": "only_include_mine", "isMust": false, "type": "bool", "des": "是否只包含我的帖子，默认为false"            },
+						{"key": "project_id", "isMust": false, "type": "bool", "des": "不填为自由网络"            },
+						{"key": "page_index", "isMust": true, "type": "bool", "des": "分页的index"            },
+						{"key": "page_size", "isMust": true, "type": "bool", "des": "分页的页面大小"            }
                     ]
                 },
-                "get_folder_details_by_folder_id": {
+				"get_folder_details_by_folder_id": {
                     "name": "根据项目id获取项目详情",
                     "docUrl": "/doc/task/get_folder_details_by_folder_id.html",
                     "url": "/task/get_folder_details_by_folder_id",
@@ -732,7 +743,7 @@
                         {"key": "project_id", "isMust": false, "type": "string", "des": "哪个网络（默认个人自由网络）"            }
                     ]
                 },
-                "get_orphaned_tasks": {
+				"get_orphaned_tasks": {
                     "name": "获取任务列表",
                     "docUrl": "/doc/task/get_orphaned_tasks.html",
                     "url": "/task/get_orphaned_tasks",
@@ -759,7 +770,19 @@
                         {"key": "project_id", "isMust": false, "type": "string", "des": "哪个网络, 不支持传入all"            }
                     ]
                 },
-                "remove_a_comment_on_folder": {
+				"move_a_folder_into_a_file": {
+                    "name": "将项目移入一个项目文件夹",
+                    "docUrl": "/doc/task/move_a_folder_into_a_file.html",
+                    "url": "/task/move_a_folder_into_a_file",
+                    "requestMode": "post",
+                    "params": [
+                        {"key": "access_token", "isMust": true, "type": "string", "des": "当前登录用户访问令牌"            },
+                        {"key": "folder_id", "isMust": true, "type": "string", "des": "项目ID"            },
+						{"key": "file_id", "isMust": true, "type": "string", "des": "文件夹ID"            },
+						{"key": "project_id", "isMust": false, "type": "string", "des": "网络id, 不填为个人自由网络"            }
+                    ]
+                },
+				"remove_a_comment_on_folder": {
                     "name": "删除一个项目上的comment",
                     "docUrl": "",
                     "url": "/task/remove_a_comment_on_folder",
@@ -767,8 +790,8 @@
                     "params": [
                         {"key": "access_token", "isMust": true, "type": "string", "des": "当前登录用户访问令牌"            },
                         {"key": "project_id", "isMust": false, "type": "string", "des": "哪个网络, 不支持传入all"            },
-                        {"key": "folder_id", "isMust": true, "type": "string", "des": "项目id"            },
-						{"key": "comment_id", "isMust": true, "type": "string", "des": "comment id"            }
+						{"key": "folder_id", "isMust": true, "type": "string", "des": "项目id"            },
+						{"key": "comment_id", "isMust": true, "type": "string", "des": "comment id"            },
                     ]
                 },
                 "search_folders": {
@@ -897,7 +920,7 @@
                         {"key": "project_id", "isMust": false, "type": "string", "des": "哪个网络（默认个人自由网络）"            }
                     ]
                 },
-                "update_joining_status_on_task": {
+				"update_joining_status_on_task": {
                     "name": "修改当前用户加入一个Task的状态",
                     "docUrl": "",
                     "url": "/task/update_joining_status_on_task",
