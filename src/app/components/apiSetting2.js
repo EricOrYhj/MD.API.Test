@@ -525,7 +525,7 @@
                     "params": [
                         {"key": "access_token", "isMust": true, "type": "string", "des": "当前登录用户访问令牌"            },
                         {"key": "project_id", "isMust": false, "type": "string", "des": "哪个网络，不支持all"            },
-						{"key": "task_id", "isMust": false, "type": "string", "des": "任务id"            },
+						{"key": "task_id", "isMust": false, "type": "string", "des": "任务id"            }
                     ]
                 },
                 "get_first_level_folders_and_files_by_project_id": {
@@ -574,15 +574,12 @@
                         {"key": "pageindex", "isMust": false, "type": "int64", "des": "指定当前的页码（不指定页码返回所有）"            },
                         {"key": "pagesize", "isMust": false, "type": "int", "des": "指定要返回的记录条数(默认值20，最大值100)"            },
                         {"key": "stage_id", "isMust": false, "type": "string", "des": "项目阶段ID"            },
-                        /*{"key": "filter_type", "isMust": false, "type": "int", "des": "过滤类型 默认1：我参与的任务；2：我负责的任务；3：我托付的任务；6：全部任务  7：查看同事(与我协作的任务) 9： 我的任务"            },*/
                         {"key": "color", "isMust": false, "type": "int", "des": "任务颜色 默认-1：全部；0：无颜色；1：蓝色；2：紫色；3：红色；4：橙色；5：黄色"            },
                         {"key": "status", "isMust": false, "type": "int", "des": "筛选任务状态 默认0：进行中；1：已完成；-1：全部"            },
                         {"key": "tags", "isMust": false, "type": "string", "des": "过滤任务标签 多个用,隔开"            },
                         {"key": "other", "isMust": false, "type": "string", "des": "指定用户编号 查看其他同事的任务列表"            },
                         {"key": "classifys", "isMust": false, "type": "string", "des": "不过滤 -1 现在要做 Now = 1，将要做 Will = 2, 以后再说 After = 3"            },
-                        /*{"key": "is_top", "isMust": false, "type": "string", "des": "是否置顶"            },*/
                         {"key": "sort", "isMust": false, "type": "int", "des": "任务排序 1：按首字母;2:按到期日期;3:按任务创建时间；4:按项目(查询结果结构有变化);5:任务负责人；7：按颜色；8:完成时间；9:进行中;10:最近更新" },
-                        /*{"key": "completeTime", "isMust": false, "type": "int", "des": "查询的时间起始点，当sort为8时(查询时间到当前的) 格式(2015-06-10)"            },8*/
                         {"key": "keywords", "isMust": false, "type": "string", "des": "关键词模糊搜索"            }
                     ]
                 },
@@ -791,7 +788,7 @@
                         {"key": "access_token", "isMust": true, "type": "string", "des": "当前登录用户访问令牌"            },
                         {"key": "project_id", "isMust": false, "type": "string", "des": "哪个网络, 不支持传入all"            },
 						{"key": "folder_id", "isMust": true, "type": "string", "des": "项目id"            },
-						{"key": "comment_id", "isMust": true, "type": "string", "des": "comment id"            },
+						{"key": "comment_id", "isMust": true, "type": "string", "des": "comment id"            }
                     ]
                 },
                 "search_folders": {
