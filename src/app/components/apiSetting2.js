@@ -1119,7 +1119,8 @@
                     requestMode: 'get',
                     params: [
                         { key: 'access_token', isMust: true, type: 'string', des: '当前登录用户访问令牌' },
-                        { key: 'account_id', isMust: false, type: 'string', des: '指定用户编号，获取此用户创建的群组，默认为当前授权用户' }
+                        { key: 'account_id', isMust: false, type: 'string', des: '指定用户编号，获取此用户创建的群组，默认为当前授权用户' },
+                        { key: 'project_id', isMust: true, type: 'string', des: '要获取的网络ID' }
                     ]
                 },
                 get_group_members: {
