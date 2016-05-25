@@ -315,7 +315,7 @@
                     "params": [
                         {"key": "access_token", "isMust": true, "type": "string", "des": "当前登录用户访问令牌"},
                         {"key": "folder_id", "isMust": true, "type": "string", "des": "项目id"},
-                        {"key": "has_attachment", "isMust": false, "type": "string", "des": "是否有attachment, 默认false"},
+                        {"key": "has_attachment", "isMust": false, "type": "bool", "des": "是否有attachment, 默认false"},
                         {"key": "comment_id_to_reply", "isMust": false, "type": "string", "des": "回复的comment填写comment id"},
                         {"key": "account_id_to_reply", "isMust": false, "type": "string", "des": "回复的comment时填写被回复的account id"},
                         {"key": "message", "isMust": true, "type": "string", "des": "comment内容"},
@@ -332,7 +332,7 @@
                         {"key": "access_token", "isMust": true, "type": "string", "des": "当前登录用户访问令牌"},
                         {"key": "folder_name", "isMust": true, "type": "string", "des": "项目名称"},
                         {"key": "charge_user", "isMust": false, "type": "string", "des": "项目负责人 默认当前登录用户"},
-                        {"key": "visibility", "isMust": false, "type": "string", "des": "项目可见性 0私密 1公开仅群组 2全公司(默认0)"},
+                        {"key": "visibility", "isMust": false, "type": "int", "des": "项目可见性 0私密 1公开仅群组 2全公司(默认0)"},
                         {"key": "groups", "isMust": false, "type": "string", "des": "当项目可见性为公开群组时群组ID（多个群组已，相隔）"},
                         {"key": "project_id", "isMust": false, "type": "string", "des": "哪个网络（默认个人自由网络）"}
                     ]
@@ -455,8 +455,8 @@
                 },
                 "delete_folder_members": {
                     "name": "移除项目成员",
-                    "docUrl": "/doc/task/Delete_Folder_Members.html",
-                    "url": "/task/Delete_Folder_Members",
+                    "docUrl": "/doc/task/delete_folder_members.html",
+                    "url": "/task/delete_folder_members",
                     "requestMode": "post",
                     "params": [
                         {"key": "access_token", "isMust": true, "type": "string", "des": "当前登录用户访问令牌"            },
@@ -534,7 +534,7 @@
                     "params": [
                         {"key": "access_token", "isMust": true, "type": "string", "des": "当前登录用户访问令牌"            },
                         {"key": "project_id", "isMust": false, "type": "string", "des": "哪个网络，不支持all"            },
-						{"key": "task_id", "isMust": false, "type": "string", "des": "任务id"            },
+						{"key": "task_id", "isMust": true, "type": "string", "des": "任务id"            }
                     ]
                 },
                 "get_first_level_folders_and_files_by_project_id": {
@@ -583,15 +583,12 @@
                         {"key": "pageindex", "isMust": false, "type": "int64", "des": "指定当前的页码（不指定页码返回所有）"            },
                         {"key": "pagesize", "isMust": false, "type": "int", "des": "指定要返回的记录条数(默认值20，最大值100)"            },
                         {"key": "stage_id", "isMust": false, "type": "string", "des": "项目阶段ID"            },
-                        /*{"key": "filter_type", "isMust": false, "type": "int", "des": "过滤类型 默认1：我参与的任务；2：我负责的任务；3：我托付的任务；6：全部任务  7：查看同事(与我协作的任务) 9： 我的任务"            },*/
                         {"key": "color", "isMust": false, "type": "int", "des": "任务颜色 默认-1：全部；0：无颜色；1：蓝色；2：紫色；3：红色；4：橙色；5：黄色"            },
                         {"key": "status", "isMust": false, "type": "int", "des": "筛选任务状态 默认0：进行中；1：已完成；-1：全部"            },
                         {"key": "tags", "isMust": false, "type": "string", "des": "过滤任务标签 多个用,隔开"            },
                         {"key": "other", "isMust": false, "type": "string", "des": "指定用户编号 查看其他同事的任务列表"            },
                         {"key": "classifys", "isMust": false, "type": "string", "des": "不过滤 -1 现在要做 Now = 1，将要做 Will = 2, 以后再说 After = 3"            },
-                        /*{"key": "is_top", "isMust": false, "type": "string", "des": "是否置顶"            },*/
                         {"key": "sort", "isMust": false, "type": "int", "des": "任务排序 1：按首字母;2:按到期日期;3:按任务创建时间；4:按项目(查询结果结构有变化);5:任务负责人；7：按颜色；8:完成时间；9:进行中;10:最近更新" },
-                        /*{"key": "completeTime", "isMust": false, "type": "int", "des": "查询的时间起始点，当sort为8时(查询时间到当前的) 格式(2015-06-10)"            },8*/
                         {"key": "keywords", "isMust": false, "type": "string", "des": "关键词模糊搜索"            }
                     ]
                 },
@@ -604,16 +601,6 @@
                         {"key": "access_token", "isMust": true, "type": "string", "des": "当前登录用户访问令牌"            },
                         {"key": "folder_file_id", "isMust": true, "type": "string", "des": "指定的文件夹id"            },
                         {"key": "project_id", "isMust": false, "type": "string", "des": "哪个网络（默认个人自由网络）"            }
-                    ]
-                },
-				"get_folders_files_count_by_project_id": {
-                    "name": "获取项目下项目文件夹以及项目的数量",
-                    "docUrl": "/doc/task/get_folders_files_count_by_project_id.html",
-                    "url": "/task/get_folders_files_count_by_project_id",
-                    "requestMode": "get",
-                    "params": [
-                        {"key": "access_token", "isMust": true, "type": "string", "des": "当前登录用户访问令牌"            },
-                        {"key": "project_id", "isMust": false, "type": "string", "des": "指定网络id，不填则为个人自由网络"            }
                     ]
                 },
                 "get_hidden_folders": {
@@ -647,8 +634,8 @@
                 },
                 "get_task_attachments": {
                     "name": "获取任务的所有附件信息",
-                    "docUrl": "/doc/task/Get_Task_Attachments.html",
-                    "url": "/task/Get_Task_Attachments",
+                    "docUrl": "/doc/task/get_task_attachments.html",
+                    "url": "/task/get_task_attachments",
                     "requestMode": "get",
                     "params": [
                         {"key": "access_token", "isMust": true, "type": "string", "des": "当前登录用户访问令牌"            },
@@ -664,9 +651,9 @@
                         {"key": "access_token", "isMust": true, "type": "string", "des": "当前登录用户访问令牌"            },
                         {"key": "folder_id", "isMust": true, "type": "string", "des": "项目ID"            },
 						{"key": "only_include_mine", "isMust": false, "type": "bool", "des": "是否只包含我的帖子，默认为false"            },
-						{"key": "project_id", "isMust": false, "type": "bool", "des": "不填为自由网络"            },
-						{"key": "page_index", "isMust": true, "type": "bool", "des": "分页的index"            },
-						{"key": "page_size", "isMust": true, "type": "bool", "des": "分页的页面大小"            }
+						{"key": "project_id", "isMust": false, "type": "string", "des": "不填为自由网络"            },
+						{"key": "page_index", "isMust": true, "type": "int", "des": "分页的index"            },
+						{"key": "page_size", "isMust": true, "type": "int", "des": "分页的页面大小"            }
                     ]
                 },
 				"get_folder_details_by_folder_id": {
@@ -708,9 +695,8 @@
                         {"key": "tags", "isMust": false, "type": "string", "des": "过滤任务标签 多个用,隔开"            },
                         {"key": "other", "isMust": false, "type": "string", "des": "指定用户编号 查看其他同事的任务列表"            },
                         {"key": "classifys", "isMust": false, "type": "string", "des": "不过滤 -1 现在要做 Now = 1，将要做 Will = 2, 以后再说 After = 3"            },
-                        {"key": "is_top", "isMust": false, "type": "string", "des": "是否置顶"            },
                         {"key": "sort", "isMust": false, "type": "int", "des": "任务排序 1：按首字母;2:按到期日期;3:按任务创建时间；4:按项目(查询结果结构有变化);5:任务负责人；7：按颜色；8:完成时间；9:进行中;10:最近更新"            },
-                        {"key": "completeTime", "isMust": false, "type": "int", "des": "查询的时间起始点，当sort为8时(查询时间到当前的) 格式(2015-06-10)"            },
+                        {"key": "complete_time", "isMust": false, "type": "string", "des": "查询的时间起始点，当sort为8时(查询时间到当前的) 格式(2015-06-10)"            },
                         {"key": "keywords", "isMust": false, "type": "string", "des": "关键词模糊搜索"            }
                     ]
                 },
@@ -744,10 +730,10 @@
                     "requestMode": "Get",
                     "params": [
                         {"key": "access_token", "isMust": true, "type": "string", "des": "当前登录用户访问令牌"            },
-                        {"key": "status", "isMust": true, "type": "bool", "des": "与任务是否完成相关的条件  All = -1 所有任务, Incomplete = 0 未完成, Complete = 1 已经完成"            },
-                        {"key": "filter_type", "isMust": true, "type": "string", "des": "与协作相关的条件 Participate = 1 我参与的 , Charge = 2 我负责, Release = 3（我托付的）, AllTask = 6 所有人物, WithMe = 7 与我协作的, MeTask = 9 包含 我参与、我负责、我托付 "            },
-                        {"key": "classify", "isMust": true, "type": "string", "des": "与任务调度有关的条件 All = -1 不进行过滤，Now = 1 今天要做的， Will = 2 最近要做, After = 3 以后再说"            },
-                        {"key": "color", "isMust": true, "type": "string", "des": "任务颜色 All = -1 全部颜色 不进行过滤，None = 0 无颜色， Purple = 1, Blue = 2, Yellow = 3, Orange = 4, Red = 5"            },
+                        {"key": "status", "isMust": true, "type": "int", "des": "与任务是否完成相关的条件  All = -1 所有任务, Incomplete = 0 未完成, Complete = 1 已经完成"            },
+                        {"key": "filter_type", "isMust": true, "type": "int", "des": "与协作相关的条件 Participate = 1 我参与的 , Charge = 2 我负责, Release = 3（我托付的）, AllTask = 6 所有人物, WithMe = 7 与我协作的, MeTask = 9 包含 我参与、我负责、我托付 "            },
+                        {"key": "classify", "isMust": true, "type": "int", "des": "与任务调度有关的条件 All = -1 不进行过滤，Now = 1 今天要做的， Will = 2 最近要做, After = 3 以后再说"            },
+                        {"key": "color", "isMust": true, "type": "int", "des": "任务颜色 All = -1 全部颜色 不进行过滤，None = 0 无颜色， Purple = 1, Blue = 2, Yellow = 3, Orange = 4, Red = 5"            },
                         {"key": "star", "isMust": false, "type": "bool", "des": "是否有星标，为false则包含所有类别"            },
                         {"key": "project_id", "isMust": false, "type": "string", "des": "哪个网络（默认个人自由网络）"            }
                     ]
@@ -800,7 +786,7 @@
                         {"key": "access_token", "isMust": true, "type": "string", "des": "当前登录用户访问令牌"            },
                         {"key": "project_id", "isMust": false, "type": "string", "des": "哪个网络, 不支持传入all"            },
 						{"key": "folder_id", "isMust": true, "type": "string", "des": "项目id"            },
-						{"key": "comment_id", "isMust": true, "type": "string", "des": "comment id"            },
+						{"key": "comment_id", "isMust": true, "type": "string", "des": "comment id"            }
                     ]
                 },
                 "search_folders": {
@@ -811,7 +797,7 @@
                     "params": [
                         {"key": "access_token", "isMust": true, "type": "string", "des": "当前登录用户访问令牌"            },
                         {"key": "keyword", "isMust": true, "type": "string", "des": "要搜索的关键词"            },
-                        {"key": "account_id_other", "isMust": false, "type": "Guid", "des": "查询他人的任务, 他人ID"            }
+                        {"key": "account_id_other", "isMust": false, "type": "string", "des": "查询他人的任务, 他人ID"            }
                     ]
                 },
                 "update_folder_archived_property": {
@@ -822,7 +808,7 @@
                     "params": [
                         {"key": "access_token", "isMust": true, "type": "string", "des": "当前登录用户访问令牌"            },
                         {"key": "folder_id", "isMust": true, "type": "string", "des": "指定的项目id"            },
-                        {"key": "is_archived", "isMust": true, "type": "bool", "des": "是否归档默认false"            },
+                        {"key": "is_archived", "isMust": false, "type": "bool", "des": "是否归档默认false"            },
                         {"key": "project_id", "isMust": false, "type": "string", "des": "哪个网络（默认个人自由网络）"            }
                     ]
                 },
@@ -855,25 +841,25 @@
                 },
                 "update_folder_isHidden_property": {
                     "name": "项目隐藏",
-                    "docUrl": "/doc/task/Update_Folder_IsHidden_Property.html",
-                    "url": "/task/Update_Folder_IsHidden_Property",
+                    "docUrl": "",
+                    "url": "",
                     "requestMode": "post",
                     "params": [
                         {"key": "access_token", "isMust": true, "type": "string", "des": "当前登录用户访问令牌"            },
                         {"key": "folder_id", "isMust": true, "type": "string", "des": "项目ID"            },
-                        {"key": "is_hidden", "isMust": true, "type": "bool", "des": "是否隐藏(默认false)"            },
+                        {"key": "is_hidden", "isMust": false, "type": "bool", "des": "是否隐藏(默认false)"            },
                         {"key": "project_id", "isMust": false, "type": "string", "des": "哪个网络（默认个人自由网络）"            }
                     ]
                 },
                 "update_folder_isTop_property": {
                     "name": "项目置顶",
-                    "docUrl": "/doc/task/post_detail.html",
-                    "url": "/task/Update_Folder_IsTop_Property",
+                    "docUrl": "",
+                    "url": "",
                     "requestMode": "post",
                     "params": [
                         {"key": "access_token", "isMust": true, "type": "string", "des": "当前登录用户访问令牌"            },
                         {"key": "folder_id", "isMust": true, "type": "string", "des": "项目ID"            },
-                        {"key": "is_top", "isMust": true, "type": "bool", "des": "是否置顶(默认false)"            },
+                        {"key": "is_top", "isMust": false, "type": "bool", "des": "是否置顶(默认false)"            },
                         {"key": "project_id", "isMust": false, "type": "string", "des": "哪个网络（默认个人自由网络）"            }
                     ]
                 },
@@ -885,8 +871,8 @@
                     "params": [
                         {"key": "access_token", "isMust": true, "type": "string", "des": "当前登录用户访问令牌"            },
                         {"key": "folder_id", "isMust": true, "type": "string", "des": "项目ID"            },
-                        {"key": "change_user", "isMust": true, "type": "string", "des": "项目ID"            },
-                        {"key": "is_admin", "isMust": true, "type": "bool", "des": "是否设置为管理员(默认false)"            },
+                        {"key": "change_user", "isMust": true, "type": "string", "des": "项目负责人"            },
+                        {"key": "is_admin", "isMust": false, "type": "bool", "des": "是否设置为管理员(默认false)"            },
                         {"key": "project_id", "isMust": false, "type": "string", "des": "哪个网络（默认个人自由网络）"            }
                     ]
                 },
@@ -898,7 +884,7 @@
                     "params": [
                         {"key": "access_token", "isMust": true, "type": "string", "des": "当前登录用户访问令牌"            },
                         {"key": "folder_id", "isMust": true, "type": "string", "des": "项目ID"            },
-                        {"key": "is_star", "isMust": true, "type": "bool", "des": "是否标志为star（默认false）"            },
+                        {"key": "is_star", "isMust": false, "type": "bool", "des": "是否标志为star（默认false）"            },
                         {"key": "project_id", "isMust": false, "type": "string", "des": "哪个网络（默认个人自由网络）"            }
                     ]
                 },
@@ -911,8 +897,8 @@
                         {"key": "access_token", "isMust": true, "type": "string", "des": "当前登录用户访问令牌"            },
                         {"key": "folder_id", "isMust": true, "type": "string", "des": "项目ID"            },
                         {"key": "folder_stage_id", "isMust": true, "type": "string", "des": "项目阶段ID"            },
-                        {"key": "folder_stage_name", "isMust": true, "type": "string", "des": "新项目阶段名字"            },
-                        {"key": "folder_stage_sort", "isMust": true, "type": "string", "des": "新项目阶段顺序"            },
+                        {"key": "folder_stage_name", "isMust": false, "type": "string", "des": "新项目阶段名字"            },
+                        {"key": "folder_stage_sort", "isMust": false, "type": "string", "des": "新项目阶段顺序"            },
                         {"key": "project_id", "isMust": false, "type": "string", "des": "哪个网络（默认个人自由网络）"            }
                     ]
                 },
@@ -947,8 +933,8 @@
                     "requestMode": "post",
                     "params": [
                         {"key": "access_token", "isMust": true, "type": "string", "des": "当前登录用户访问令牌"            },
-                        {"key": "task_id", "isMust": true, "type": "Guid", "des": "任务id"            },
-                        {"key": "new_charger", "isMust": true, "type": "Guid", "des": "新负责人的ID"            }
+                        {"key": "task_id", "isMust": true, "type": "string", "des": "任务id"            },
+                        {"key": "new_charger", "isMust": true, "type": "string", "des": "新负责人的ID"            }
                     ]
                 },
                 "update_task_deadline": {
@@ -971,21 +957,6 @@
                         {"key": "access_token", "isMust": true, "type": "string", "des": "当前登录用户访问令牌"            },
                         {"key": "task_id", "isMust": true, "type": "string", "des": "任务id"            },
                         {"key": "description", "isMust": true, "type": "string", "des": "任务描述"            }
-                    ]
-                },
-                "update_task_detail": {
-                    "name": "修改任务详情（包括字段如下）",
-                    "docUrl": "/doc/task/update_task_detail.html",
-                    "url": "/task/update_task_detail",
-                    "requestMode": "post",
-                    "params": [
-                        {"key": "access_token", "isMust": true, "type": "string", "des": "当前登录用户访问令牌"            },
-                        {"key": "task_id", "isMust": true, "type": "string", "des": "任务ID"            },
-                        {"key": "task_name", "isMust": false, "type": "string", "des": "任务名称"            },
-                        {"key": "describe", "isMust": false, "type": "string", "des": "任务描述"            },
-                        {"key": "parent_id", "isMust": false, "type": "string", "des": "母任务ID"            },
-                        {"key": "folder_id", "isMust": false, "type": "string", "des": "项目ID"            },
-                        {"key": "project_id", "isMust": false, "type": "string", "des": "哪个网络（默认个人自由网络）"            }
                     ]
                 },
                 "update_task_folderID": {
