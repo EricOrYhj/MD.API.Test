@@ -274,7 +274,7 @@
                     params: [
                         { key: 'access_token', isMust: true, type: 'string', des: '当前登录用户访问令牌' },
                         { key: 'group_ids', isMust: false, type: 'string', des: '可为空，动态分享群组编号(多个群组用逗号隔开)' },
-                        { key: 'post_msg', isMust: true, type: 'string', des: '动态更新内容(###userID###代表@某个人,$$$groupID$$$代表@某个群组，#标签内容#代表给动态定义标签)' },
+                        { key: 'post_msg', isMust: true, type: 'string', des: '动态更新内容([aid]AccountID[/aid]代表@某个人,,[gid]groupID[/gid]代表@某个群组，#标签内容#代表给动态定义标签)' },
                         { key: 'post_type', isMust: false, type: 'int', des: '动态更新类型(0表示普通动态更新(默认值);1表示链接动态更新 ;4表示问答动态更新)' },
                         { key: 'share_type', isMust: false, type: 'int', des: '分享范围(0表示分享给所有同事;1表示群内分享；2表示所有关注者和群组；3表示分享给自己； 默认0表示分享给所有同事)' }
                     ]
@@ -287,11 +287,20 @@
                     params: [
                         { key: 'access_token', isMust: true, type: 'string', des: '当前登录用户访问令牌' },
                         { key: 'group_ids', isMust: false, type: 'string', des: '可为空，动态分享群组编号(多个群组用逗号隔开)' },
-                        { key: 'post_msg', isMust: true, type: 'string', des: '动态更新内容(###userID###代表@某个人,$$$groupID$$$代表@某个群组，#标签内容#代表给动态定义标签)' },
+                        { key: 'post_msg', isMust: true, type: 'string', des: '动态更新内容([aid]AccountID[/aid]代表@某个人,[gid]groupID[/gid]代表@某个群组，#标签内容#代表给动态定义标签)' },
                         { key: 'file_type', isMust: false, type: 'int', des: '可为空，默认为picture：表示上传图片；document：表示上传文档' },
                         { key: 'p_img或p_doc', isMust: true, type: 'binary', des: '要上传的图片、文档。图片仅支持JPEG,GIF,PNG,目前上传图片大小限制为<8M。文档仅支持DOC,PDF,XLS,PPT,TXT,压缩包,目前上传文件大小限制为<50M' },
                         { key: 'is_knowledge', isMust: false, type: 'int', des: '是否加入中心(0表示不加入；1表示加入 默认为1加入)' },
                         { key: 'share_type', isMust: false, type: 'string', des: '分享范围(0表示分享给所有同事;1表示群内分享；2表示所有关注者和群组；3表示分享给自己； 默认0表示分享给所有同事)' }
+                    ]
+                },
+                get_post_select_groups: {
+                    name: '动态发布可选群组的范围',
+                    docUrl:"",
+                    url: '/post/get_post_select_groups',
+                    requestMode: 'get',
+                    params: [
+                        { key: 'access_token', isMust: true, type: 'string', des: '当前登录用户访问令牌' }
                     ]
                 }
             }
@@ -509,8 +518,8 @@
                 },
                 "get_archived_folders": {
                     "name": "获取个人或网络下归档项目文件夹下项目",
-                    "docUrl": "/doc/task/Get_Archived_Folders.html",
-                    "url": "/task/Get_Archived_Folders",
+                    "docUrl": "/doc/task/get_archived_folders.html",
+                    "url": "/task/get_archived_folders",
                     "requestMode": "get",
                     "params": [
                         {"key": "access_token", "isMust": true, "type": "string", "des": "当前登录用户访问令牌"            },
@@ -1143,7 +1152,7 @@
                     params: [
                         { key: 'access_token', isMust: true, type: 'string', des: '当前登录用户访问令牌' },
                         { key: 'account_id', isMust: false, type: 'string', des: '指定用户编号，获取此用户创建的群组，默认为当前授权用户' },
-                        { key: 'project_id', isMust: true, type: 'string', des: '要获取的网络ID' }
+                        { key: 'project_id', isMust: false, type: 'string', des: '要获取的网络ID，不填默认个人网络' }
                     ]
                 },
                 get_group_members: {
@@ -1862,15 +1871,14 @@
                 },
                 invite_user_join_group: {
                     name: '邀请成员',
-                    docUrl: {type: '', url: ''},
+                    docUrl: '/doc/invitation/invitation.html',
                     url: '/invitation/invite_user_join_group',
                     requestMode: 'post',
                     params: [
                         { key: 'access_token', isMust: true, type: 'string', des: '当前登录用户访问令牌' },
                         { key: 'group_id', isMust: true, type: 'string', des: '群组编号' },
                         { key: 'account_ids', isMust: false, type: 'string', des: '邀请加入群组的现有用户ID' },
-                        { key: 'accounts', isMust: false, type: 'string', des:'[{key:value}]邀请手机/邮箱的人加入群组key:手机or邮箱value:邀请的备注没有传空' }
-
+                        { key: 'accounts', isMust: false, type: 'string', des:'邀请非明道加入群组 手机/邮箱' }
                     ]
                 }
             }
