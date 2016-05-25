@@ -1312,7 +1312,8 @@
                     requestMode: 'get',
                     params: [
                         { key: 'access_token', isMust: true, type: 'string', des: '当前登录用户访问令牌' },
-                        { key: 'phone', isMust: true, type: 'string', des: '手机号码' }
+                        { key: 'phone', isMust: false, type: 'string', des: '手机号码' },
+                        { key: 'email', isMust: false, type: 'string', des: '邮箱(跟手机号2选1进行查询)' }
                     ]
                 },
                 get_project_users: {
@@ -1841,7 +1842,7 @@
                     ]
                 },
                 invite_user_join_group: {
-                    name: '邀请成员',
+                    name: '邀请群组成员',
                     docUrl: '/doc/invitation/invitation.html',
                     url: '/invitation/invite_user_join_group',
                     requestMode: 'post',
@@ -1850,6 +1851,29 @@
                         { key: 'group_id', isMust: true, type: 'string', des: '群组编号' },
                         { key: 'account_ids', isMust: false, type: 'string', des: '邀请加入群组的现有用户ID' },
                         { key: 'accounts', isMust: false, type: 'string', des:'邀请非明道加入群组 手机/邮箱' }
+                    ]
+                },
+                invite_user_join_friend: {
+                    name: '邀请加为好友',
+                    docUrl: '/doc/invitation/invitation.html',
+                    url: '/invitation/invite_user_join_friend',
+                    requestMode: 'post',
+                    params: [
+                        { key: 'access_token', isMust: true, type: 'string', des: '当前登录用户访问令牌' },
+                        { key: 'account_ids', isMust: false, type: 'string', des: '邀请加为好友的现有用户(格式[id,id]序列化)' },
+                        { key: 'accounts', isMust: false, type: 'string', des:'邀请非明道加入群组 手机/邮箱(格式[phone,email]序列化)' }
+                    ]
+                },
+                invite_user_join_project: {
+                    name: '邀请加入网络',
+                    docUrl: '/doc/invitation/invitation.html',
+                    url: '/invitation/invite_user_join_project',
+                    requestMode: 'post',
+                    params: [
+                        { key: 'access_token', isMust: true, type: 'string', des: '当前登录用户访问令牌' },
+                        { key: 'project_id', isMust: true, type: 'string', des: '网络ID' },
+                        { key: 'account_ids', isMust: false, type: 'string', des: '邀请加为好友的现有用户(格式[id,id]序列化)' },
+                        { key: 'accounts', isMust: false, type: 'string', des:'邀请非明道加入群组 手机/邮箱(格式[phone,email]序列化)' }
                     ]
                 }
             }
