@@ -1878,6 +1878,33 @@
                 }
             }
         },
+        register: {
+            v1: {
+                send_register_code: {
+                    name: '发送注册验证码',
+                    docUrl: '',
+                    url: '/register/send_register_code',
+                    requestMode: 'post',
+                    params: [
+                        { key: 'account', isMust: true, type: 'string', des: '注册的手机号' },
+                        { key: 'is_first', isMust: true, type: 'bool', des: '是否是第一次发送(跟选择发送通道有关)' },
+                        { key: 'type', isMust:false, type: 'int', des: '验证码类型（0:短信,1:语音）默认短信' }
+                    ]
+                },
+                register_account: {
+                    name: '注册账号',
+                    docUrl: '',
+                    url: '/register/register_account',
+                    requestMode: 'post',
+                    params: [
+                        { key: 'account', isMust: true, type: 'string', des: '注册的手机号' },
+                        { key: 'code', isMust: true, type: 'string', des: '验证码' },
+                        { key: 'full_name', isMust: true, type: 'string', des: '用户名' },
+                        { key: 'password', isMust:false, type: 'string', des: '账号密码(如果没有添密码只验证验证码的正确不注册)' }
+                    ]
+                }
+            }
+        },
         vote: {
             v1: {
                 create_vote: {
