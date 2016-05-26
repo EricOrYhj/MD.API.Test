@@ -1841,6 +1841,29 @@
                         { key: 'height', isMust: false, type: 'string', des: '二维码高默认200px' }
                     ]
                 },
+                get_invite_links: {
+                    name: '获取来源邀请链接列表',
+                    docUrl: '',
+                    url: '/invitation/get_invite_links',
+                    requestMode: 'get',
+                    params: [
+                        { key: 'access_token', isMust: true, type: 'string', des: '当前登录用户访问令牌' },
+                        { key: 'source_id', isMust: true, type: 'string', des: '来源id(如账号id,网络id,任务id,日程id)' },
+                        { key: 'is_all', isMust: false, type: 'bool', des: '是否获取这个来源全部邀请链接（默认false：只获取我创建的）' },
+                        { key: 'pageindex', isMust: false, type: 'int', des: '当前页码(以1开始，1代表第一页)' },
+                        { key: 'pagesize', isMust: false, type: 'int', des: '指定要返回的记录条数' }
+                    ]
+                },
+                update_link_expire: {
+                    name: '更新链接为失效',
+                    docUrl: '',
+                    url: '/invitation/update_link_expire',
+                    requestMode: 'post',
+                    params: [
+                        { key: 'access_token', isMust: true, type: 'string', des: '当前登录用户访问令牌' },
+                        { key: 'token', isMust: true, type: 'string', des: '链接的token值' }
+                    ]
+                },
                 invite_user_join_group: {
                     name: '邀请群组成员',
                     docUrl: '/doc/invitation/invitation.html',
@@ -1874,6 +1897,18 @@
                         { key: 'project_id', isMust: true, type: 'string', des: '网络ID' },
                         { key: 'account_ids', isMust: false, type: 'string', des: '邀请加为好友的现有用户(格式[id,id]序列化)' },
                         { key: 'accounts', isMust: false, type: 'string', des:'邀请非明道加入群组 手机/邮箱(格式[phone,email]序列化)' }
+                    ]
+                },
+                get_invite_user_join_project_log: {
+                    name: '获取我邀请用户加入网络的历史记录',
+                    docUrl: '',
+                    url: '/invitation/get_invite_user_join_project_log',
+                    requestMode: 'get',
+                    params: [
+                        { key: 'access_token', isMust: true, type: 'string', des: '当前登录用户访问令牌' },
+                        { key: 'project_id', isMust: true, type: 'string', des: '网络ID' },
+                        { key: 'pageindex', isMust: false, type: 'int', des: '当前页码(以1开始，1代表第一页)' },
+                        { key: 'pagesize', isMust: false, type: 'int', des: '指定要返回的记录条数' }
                     ]
                 }
             }
