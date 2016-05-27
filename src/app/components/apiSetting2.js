@@ -1934,7 +1934,7 @@
                     params: [
                         { key: 'account', isMust: true, type: 'string', des: '注册的手机号' },
                         { key: 'code', isMust: true, type: 'string', des: '验证码' },
-                        { key: 'full_name', isMust: true, type: 'string', des: '用户名' },
+                        { key: 'full_name', isMust: false, type: 'string', des: '用户名' },
                         { key: 'password', isMust:false, type: 'string', des: '账号密码(如果没有添密码只验证验证码的正确不注册)' }
                     ]
                 }
