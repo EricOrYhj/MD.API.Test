@@ -1724,7 +1724,7 @@
             }
         },
 
-        WebChat: {
+        webchat: {
             V1: {
                 get_chat_list: {
                     name: '获取个人和群聊最近联系人',
@@ -1816,7 +1816,7 @@
         invitation: {
             v1: {
                 get_invite_link: {
-                    name: '获取通用邀请链接',
+                    name: '获取通用邀请链接(返回key:link)',
                     docUrl: '',
                     url: '/invitation/get_invite_link',
                     requestMode: 'get',
@@ -1828,7 +1828,7 @@
                     ]
                 },
                 get_qrcode_invite_link: {
-                    name: '获取通用邀请链接二维码',
+                    name: '获取通用邀请链接二维码(返回key:link)',
                     docUrl: '',
                     url: '/invitation/get_qrcode_invite_link',
                     requestMode: 'get',
@@ -1841,10 +1841,10 @@
                         { key: 'height', isMust: false, type: 'string', des: '二维码高默认200px' }
                     ]
                 },
-                get_invite_links: {
+                get_source_invite_links: {
                     name: '获取来源邀请链接列表',
-                    docUrl: '',
-                    url: '/invitation/get_invite_links',
+                    docUrl: '/doc/invitation/invite_link.html',
+                    url: '/invitation/get_source_invite_links',
                     requestMode: 'get',
                     params: [
                         { key: 'access_token', isMust: true, type: 'string', des: '当前登录用户访问令牌' },
@@ -1901,7 +1901,7 @@
                 },
                 get_invite_user_join_project_log: {
                     name: '获取我邀请用户加入网络的历史记录',
-                    docUrl: '',
+                    docUrl: '/doc/invitation/invite_project_log.html',
                     url: '/invitation/get_invite_user_join_project_log',
                     requestMode: 'get',
                     params: [
