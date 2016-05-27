@@ -580,8 +580,8 @@
                         {"key": "access_token", "isMust": true, "type": "string", "des": "当前登录用户访问令牌"            },
                         {"key": "folder_id", "isMust": true, "type": "string", "des": "项目id"            },
                         {"key": "project_id", "isMust": false, "type": "string", "des": "哪个网络（默认个人自由网络）"            },
-                        {"key": "pageindex", "isMust": false, "type": "int64", "des": "指定当前的页码（不指定页码返回所有）"            },
-                        {"key": "pagesize", "isMust": false, "type": "int", "des": "指定要返回的记录条数(默认值20，最大值100)"            },
+                        {"key": "page_index", "isMust": false, "type": "int64", "des": "指定当前的页码（不指定页码返回所有）"            },
+                        {"key": "page_size", "isMust": false, "type": "int", "des": "指定要返回的记录条数(默认值20，最大值100)"            },
                         {"key": "stage_id", "isMust": false, "type": "string", "des": "项目阶段ID"            },
                         {"key": "color", "isMust": false, "type": "int", "des": "任务颜色 默认-1：全部；0：无颜色；1：蓝色；2：紫色；3：红色；4：橙色；5：黄色"            },
                         {"key": "status", "isMust": false, "type": "int", "des": "筛选任务状态 默认0：进行中；1：已完成；-1：全部"            },
@@ -685,8 +685,8 @@
                     "params": [
                         {"key": "access_token", "isMust": true, "type": "string", "des": "当前登录用户访问令牌"            },
                         {"key": "project_id", "isMust": false, "type": "string", "des": "哪个网络（默认个人自由网络）"            },
-                        {"key": "pageindex", "isMust": false, "type": "int64", "des": "指定当前的页码（不指定页码返回所有）"            },
-                        {"key": "pagesize", "isMust": false, "type": "int", "des": "指定要返回的记录条数(默认值20，最大值100)"            },
+                        {"key": "page_index", "isMust": false, "type": "int64", "des": "指定当前的页码（不指定页码返回所有）"            },
+                        {"key": "page_size", "isMust": false, "type": "int", "des": "指定要返回的记录条数(默认值20，最大值100)"            },
                         {"key": "folder_id", "isMust": false, "type": "string", "des": "项目ID 没有项目要传入Null"            },
                         {"key": "stage_id", "isMust": false, "type": "string", "des": "项目阶段ID"            },
                         {"key": "filter_type", "isMust": false, "type": "int", "des": "过滤类型 默认1：我参与的任务；2：我负责的任务；3：我托付的任务；6：全部任务  7：查看同事(与我协作的任务) 9： 我的任务"            },
@@ -707,7 +707,7 @@
                     "requestMode": "get",
                     "params": [
                         {"key": "access_token", "isMust": true, "type": "string", "des": "当前登录用户访问令牌"            },
-                        {"key": "page_id", "isMust": true, "type": "int", "des": "指定当前的页码, 从第一页开始"            },
+                        {"key": "page_index", "isMust": true, "type": "int", "des": "指定当前的页码, 从第一页开始"            },
                         {"key": "page_size", "isMust": true, "type": "int", "des": "指定要返回的记录条数"            },
                         {"key": "task_id", "isMust": true, "type": "string", "des": "任务ID"            }
                     ]
@@ -720,6 +720,8 @@
                     "params": [
                         {"key": "access_token", "isMust": true, "type": "string", "des": "当前登录用户访问令牌"            },
                         {"key": "task_id", "isMust": true, "type": "string", "des": "任务ID"            },
+						{"key": "page_index", "isMust": true, "type": "int", "des": "指定当前的页码, 从1开始"            },
+                        {"key": "page_size", "isMust": true, "type": "int", "des": "指定要返回的记录条数"            },
                         {"key": "project_id", "isMust": false, "type": "string", "des": "哪个网络（默认个人自由网络）"            }
                     ]
                 },
@@ -746,8 +748,8 @@
                     "params": [
                         {"key": "access_token", "isMust": true, "type": "string", "des": "当前登录用户访问令牌"            },
                         {"key": "project_id", "isMust": false, "type": "string", "des": "哪个网络（默认个人自由网络）"            },
-                        {"key": "pageindex", "isMust": false, "type": "int64", "des": "指定当前的页码（不指定页码返回所有）"            },
-                        {"key": "pagesize", "isMust": false, "type": "int", "des": "指定要返回的记录条数(默认值20，最大值100)"            },
+                        {"key": "page_index", "isMust": false, "type": "int64", "des": "指定当前的页码（不指定页码返回所有）"            },
+                        {"key": "page_size", "isMust": false, "type": "int", "des": "指定要返回的记录条数(默认值20，最大值100)"            },
                         {"key": "stage_id", "isMust": false, "type": "string", "des": "项目阶段ID"            },
                         {"key": "color", "isMust": false, "type": "int", "des": "任务颜色 默认-1：全部；0：无颜色；1：蓝色；2：紫色；3：红色；4：橙色；5：黄色"            },
                         {"key": "status", "isMust": false, "type": "int", "des": "筛选任务状态 默认0：进行中；1：已完成；-1：全部"            },
