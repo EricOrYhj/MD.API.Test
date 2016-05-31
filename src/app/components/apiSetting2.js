@@ -1697,6 +1697,44 @@
                     params: [
                         { key: 'access_token', isMust: true, type: 'string', des: '当前登录用户访问令牌' }
                     ]
+                },
+                get_user_card: {
+                    name: '获取加入的网络单个企业名片',
+                    docUrl: '',
+                    url: '/passport/get_user_card',
+                    requestMode: 'get',
+                    params: [
+                        { key: 'access_token', isMust: true, type: 'string', des: '当前登录用户访问令牌' },
+                        { key: 'project_id', isMust: true, type: 'string', des: '要获取的网络ID' }
+                    ]
+                },
+                update_user_card: {
+                    name: '修改加入的网络单个企业名片',
+                    docUrl: '',
+                    url: '/passport/update_user_card',
+                    requestMode: 'post',
+                    params: [
+                        { key: 'access_token', isMust: true, type: 'string', des: '当前登录用户访问令牌' },
+                        { key: 'project_id', isMust: true, type: 'string', des: '要修改的网络ID' },
+                        { key: 'company_name', isMust: true, type: 'string', des: '公司名' },
+                        { key: 'department', isMust: true, type: 'string', des: '部门' },
+                        { key: 'contact_phone', isMust: true, type: 'string', des: '工作座机号码' },
+                        { key: 'work_site', isMust: true, type: 'string', des: '工作地' },
+                        { key: 'job', isMust: true, type: 'string', des: '职业' },
+                        { key: 'job_number', isMust: true, type: 'string', des: '工号' }
+                    ]
+                },
+                update_passport_pwd: {
+                    name: '修改当前登录用户密码',
+                    docUrl: '',
+                    url: '/passport/update_passport_pwd',
+                    requestMode: 'post',
+                    params: [
+                        { key: 'access_token', isMust: true, type: 'string', des: '当前登录用户访问令牌' },
+                        { key: 'old_pwd', isMust: true, type: 'string', des: '旧密码' },
+                        { key: 'new_pwd', isMust: true, type: 'string', des: '新密码' },
+                        { key: 'confirm_pwd', isMust: true, type: 'string', des: '确认新密码' }
+                    ]
                 }
             }
         },
@@ -1917,6 +1955,14 @@
         },
         register: {
             v1: {
+                get_country_code: {
+                    name: '获取国家号列表',
+                    docUrl: '',
+                    url: '/register/get_country_code',
+                    requestMode: 'get',
+                    params: [
+                    ]
+                },
                 send_register_code: {
                     name: '发送注册验证码',
                     docUrl: '',
