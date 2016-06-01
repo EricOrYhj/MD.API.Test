@@ -814,6 +814,18 @@
                         {"key": "comment_id", "isMust": true, "type": "string", "des": "comment id"            }
                     ]
                 },
+                "remove_a_member_from_a_task": {
+                    "name": "在任务上删除一个member",
+                    "docUrl": "",
+                    "url": "/task/remove_a_member_from_a_task",
+                    "requestMode": "post",
+                    "params": [
+                        {"key": "access_token", "isMust": true, "type": "string", "des": "当前登录用户访问令牌"            },
+                        {"key": "project_id", "isMust": false, "type": "string", "des": "哪个网络, 不支持传入all"            },
+                        {"key": "task_id", "isMust": true, "type": "string", "des": "任务id"            },
+                        {"key": "account_id", "isMust": true, "type": "string", "des": "member的id"            }
+                    ]
+                },
                 "search_folders": {
                     "name": "通过关键词搜索项目",
                     "docUrl": "/doc/task/search_folders.html",
