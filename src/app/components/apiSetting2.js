@@ -1469,6 +1469,31 @@
                         { key: 'pageindex', isMust: false, type: 'int', des: '指定当前的页码(不指定页码返回所有)' },
                         { key: 'pagesize', isMust: false, type: 'int', des: '指定要返回的记录条数(默认值20，最大值100)' }
                     ]
+                },
+                get_project_byprojectcode: {
+                    name: '根据企业号获取网络信息和设置',
+                    docUrl: {type: 'string', url: ''},
+                    url: '/company/get_project_byprojectcode',
+                    requestMode: 'get',
+                    params: [
+                        { key: 'access_token', isMust: true, type: 'string', des: '当前登录用户访问令牌' },
+                        { key: 'project_code', isMust: true, type: 'string', des: '企业号' }
+                    ]
+                },
+                join_project_byprojectcode: {
+                    name: '根据企业号加入网络',
+                    docUrl: {type: 'string', url: ''},
+                    url: '/company/join_project_byprojectcode',
+                    requestMode: 'post',
+                    params: [
+                        { key: 'access_token', isMust: true, type: 'string', des: '当前登录用户访问令牌' },
+                        { key: 'project_code', isMust: true, type: 'string', des: '企业号' },
+                        { key: 'company_name', isMust: false, type: 'string', des: '公司名' },
+                        { key: 'work_site', isMust: false, type: 'string', des: '工作地' },
+                        { key: 'department', isMust: false, type: 'string', des: '部门(从公司部门列表中选择)' },
+                        { key: 'job', isMust: false, type: 'string', des: '职位' },
+                        { key: 'job_number', isMust: false, type: 'string', des: '工号' }
+                    ]
                 }
             }
         },
@@ -1784,7 +1809,7 @@
             v1: {
                 get_chat_list: {
                     name: '获取个人和群聊最近联系人',
-                    docUrl: {type: 'string', url: ''},
+                    docUrl: '/doc/webchat/chat_list.html',
                     url: '/webchat/get_chat_list',
                     requestMode: 'get',
                     params: [
@@ -1793,7 +1818,7 @@
                 },
                 get_chat_un_read_count: {
                     name: '获取未读计数',
-                    docUrl: {type: 'string', url: ''},
+                    docUrl: '/doc/webchat/un_read.html',
                     url: '/webchat/get_chat_un_read_count',
                     requestMode: 'get',
                     params: [
@@ -1802,7 +1827,7 @@
                 },
                 get_user_or_group_message: {
                     name: '获取与某个用户或某个群组的消息列表',
-                    docUrl: {type: 'string', url: ''},
+                    docUrl: '/doc/webchat/message_list.html',
                     url: '/webchat/get_user_or_group_message',
                     requestMode: 'get',
                     params: [
@@ -1810,7 +1835,7 @@
                         { key: 'type', isMust: true, type: 'int', des: '1用户 2群组' },
                         { key: 'account_id', isMust: false, type: 'string', des: '用户编号' },
                         { key: 'group_id', isMust: false, type: 'string', des: '群组编号' },
-                        { key: 'since_time', isMust: false, type: 'string', des: '' },
+                        { key: 'since_time', isMust: false, type: 'string', des: '起始时间如 2016-06-03 13:12:58.342' },
                         { key: 'direction', isMust: false, type: 'bool', des: '向前 true/向后 false' },
                         { key: 'keyword', isMust: false, type: 'string', des: '搜索关键字' },
                         { key: 'pageindex', isMust: false, type: 'int', des: '当前页码(以1开始，1代表第一页)' },
@@ -1824,9 +1849,9 @@
                     requestMode: 'get',
                     params: [
                         { key: 'access_token', isMust: true, type: 'string', des: '当前登录用户访问令牌' },
+                        { key: 'type', isMust: true, type: 'int', des: '1用户 2群组' },
                         { key: 'account_id', isMust: false, type: 'string', des: '用户编号' },
                         { key: 'group_id', isMust: false, type: 'string', des: '群组编号' },
-                        { key: 'choose_type', isMust: true, type: 'bool', des: '用户true/群组false 消息列表' }
                     ]
                 },
                 get_user_or_group_message_by_id: {
@@ -1836,11 +1861,11 @@
                     requestMode: 'get',
                     params: [
                         { key: 'access_token', isMust: true, type: 'string', des: '当前登录用户访问令牌' },
+                        { key: 'type', isMust: true, type: 'int', des: '1用户 2群组' },
                         { key: 'account_id', isMust: false, type: 'string', des: '用户编号' },
                         { key: 'group_id', isMust: false, type: 'string', des: '群组编号' },
                         { key: 'message_id', isMust: true, type: 'string', des: '消息id' },
-                        { key: 'size', isMust: false, type: 'int', des: '群组编号' },
-                        { key: 'choose_type', isMust: true, type: 'bool', des: '用户true/群组false 消息列表' }
+                        { key: 'size', isMust: false, type: 'int', des: '群组编号' }
                     ]
                 },
                 delete_chat_history_item: {
@@ -2151,6 +2176,52 @@
                         requestMode: 'get',
                         params: [
                             { key: 'account_id', isMust: true, type: 'string', des: '账号ID' }
+                        ]
+                    }
+                },
+                company:{
+                    delete_project_cache:{
+                        name: '根据订单消费类型清除网络缓存',
+                        docUrl: {type: '', url: ''},
+                        url: '/private/company/delete_project_cache',
+                        requestMode: 'post',
+                        params: [
+                            { key: 'project_id', isMust: true, type: 'string', des: '网络ID' },
+                            { key: 'record_type', isMust: true, type: 'int', des: '订单消费类型（1短信2充值3升级高级模式4购买用户包5应用手动账单6应用自动账单7应用归还扣款8天数包'}
+                        ]
+                    }
+                },
+                billing:{
+                    add_transaction_record: {
+                        name: '添加订单消费记录',
+                        docUrl: {type: '', url: ''},
+                        url: '/private/billing/add_transaction_record',
+                        requestMode: 'post',
+                        params: [
+                            { key: 'project_id', isMust: true, type: 'string', des: '网络ID'},
+                            { key: 'order_id', isMust: true, type: 'string', des: '订单ID' },
+                            { key: 'record_type', isMust: true, type: 'string', des: '订单消费类型（1短信2充值3升级高级模式4购买用户包5应用手动账单6应用自动账单7应用归还扣款8天数包'},
+                            { key: 'record_status', isMust: true, type: 'string', des: '订单状态（1等待支付2交易成功3交易失败4取消订单5订单过期6质疑中）'},
+                            { key: 'create_account_id', isMust: true, type: 'string', des: '创建人ID'},
+                            { key: 'pay_account_id', isMust: false, type: 'string', des: '付款人ID'},
+                            { key: 'app_id', isMust: true, type: 'string', des: '应用号'},
+                            { key: 'price', isMust: true, type: 'string', des: '订单价格'},
+                            { key: 'remark', isMust: true, type: 'string', des: '订单描述'}
+                        ]
+                    },
+                    update_transaction_record: {
+                        name: '修改订单消费记录',
+                        docUrl: {type: '', url: ''},
+                        url: '/private/billing/update_transaction_record',
+                        requestMode: 'post',
+                        params: [
+                            { key: 'project_id', isMust: true, type: 'string', des: '网络ID'},
+                            { key: 'order_id', isMust: true, type: 'string', des: '订单ID' },
+                            { key: 'record_status', isMust: true, type: 'string', des: '订单状态（1等待支付2交易成功3交易失败4取消订单5订单过期6质疑中）'},
+                            { key: 'pay_account_id', isMust: true, type: 'string', des: '付款人ID'},
+                            { key: 'app_id', isMust:false, type: 'string', des: '应用号'},
+                            { key: 'price', isMust: false, type: 'string', des: '订单价格'},
+                            { key: 'remark', isMust: true, type: 'string', des: '修改描述'}
                         ]
                     }
                 }
