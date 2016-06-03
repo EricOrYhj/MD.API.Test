@@ -1488,6 +1488,7 @@
                     params: [
                         { key: 'access_token', isMust: true, type: 'string', des: '当前登录用户访问令牌' },
                         { key: 'project_code', isMust: true, type: 'string', des: '企业号' },
+                        { key: 'verify_code', isMust: true, type: 'string', des: '验证码' },
                         { key: 'company_name', isMust: false, type: 'string', des: '公司名' },
                         { key: 'work_site', isMust: false, type: 'string', des: '工作地' },
                         { key: 'department', isMust: false, type: 'string', des: '部门(从公司部门列表中选择)' },
