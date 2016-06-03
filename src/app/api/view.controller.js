@@ -13,7 +13,7 @@
         if ($location.port() == '80') {
             port = '/MD.API'
         } else {
-            port = $location.port();
+            port = ':'+$location.port();
         }
 
         $scope.localUrl = $location.protocol() + '://' + $location.host() + port;
