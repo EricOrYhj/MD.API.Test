@@ -1334,7 +1334,7 @@
                 },
                 get_user_card: {
                     name: '个人卡片信息',
-                    docUrl: '/doc/user/account_base.html',
+                    docUrl: '/doc/user/user_card.html',
                     url: '/user/get_user_card',
                     requestMode: 'get',
                     params: [
@@ -1700,7 +1700,7 @@
                 },
                 get_user_card: {
                     name: '获取加入的网络单个企业名片',
-                    docUrl: '',
+                    docUrl: '/doc/passport/user_card.html',
                     url: '/passport/get_user_card',
                     requestMode: 'get',
                     params: [
@@ -1710,7 +1710,7 @@
                 },
                 update_user_card: {
                     name: '修改加入的网络单个企业名片',
-                    docUrl: '',
+                    docUrl: '/doc/passport/user_card.html',
                     url: '/passport/update_user_card',
                     requestMode: 'post',
                     params: [
@@ -1957,7 +1957,7 @@
             v1: {
                 get_country_code: {
                     name: '获取国家号列表',
-                    docUrl: '',
+                    docUrl: '/doc/register/country_code.html',
                     url: '/register/get_country_code',
                     requestMode: 'get',
                     params: [
