@@ -1340,14 +1340,13 @@
                     ]
                 },
                 get_account_byphone: {
-                    name: '根据手机号获取是否是明道用户',
+                    name: '根据手机号或邮箱获取是否是明道用户',
                     docUrl: '',
                     url: '/user/get_account_byphone',
                     requestMode: 'get',
                     params: [
                         { key: 'access_token', isMust: true, type: 'string', des: '当前登录用户访问令牌' },
-                        { key: 'phone', isMust: false, type: 'string', des: '手机号码' },
-                        { key: 'email', isMust: false, type: 'string', des: '邮箱(跟手机号2选1进行查询)' }
+                        { key: 'identifier', isMust: true, type: 'string', des: '邮箱或手机号' }
                     ]
                 },
                 get_project_users: {
@@ -1793,7 +1792,7 @@
             }
         },
         webchat: {
-            V1: {
+            v1: {
                 get_chat_list: {
                     name: '获取个人和群聊最近联系人',
                     docUrl: {type: 'string', url: ''},
@@ -1819,14 +1818,14 @@
                     requestMode: 'get',
                     params: [
                         { key: 'access_token', isMust: true, type: 'string', des: '当前登录用户访问令牌' },
+                        { key: 'type', isMust: true, type: 'int', des: '1用户 2群组' },
                         { key: 'account_id', isMust: false, type: 'string', des: '用户编号' },
                         { key: 'group_id', isMust: false, type: 'string', des: '群组编号' },
                         { key: 'since_time', isMust: false, type: 'string', des: '' },
                         { key: 'direction', isMust: false, type: 'bool', des: '向前 true/向后 false' },
                         { key: 'keyword', isMust: false, type: 'string', des: '搜索关键字' },
                         { key: 'pageindex', isMust: false, type: 'int', des: '当前页码(以1开始，1代表第一页)' },
-                        { key: 'pagesize', isMust: false, type: 'int', des: '指定要返回的记录条数' },
-                        { key: 'choose_type', isMust: true, type: 'bool', des: '用户true/群组false 消息列表' }
+                        { key: 'pagesize', isMust: false, type: 'int', des: '指定要返回的记录条数' }
                     ]
                 },
                 get_user_or_group_message_count: {
