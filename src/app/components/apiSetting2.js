@@ -64,23 +64,23 @@
 //                        { key: 'select_type', isMust: true, type: 'int', des: '查询类型 (2：图片,3:文档，4：问答)' }
 //                    ]
 //                },
-                get_favorite_posts: {
-                    name: '获取当前登录用户收藏的动态更新',
-                    docUrl: '/doc/post/post_detail.html',
-                    url: '/post/get_favorite_posts',
-                    requestMode: 'get',
-                    params: [
-                        { key: 'access_token', isMust: true, type: 'string', des: '当前登录用户访问令牌' },
-                        { key: 'keywords', isMust: false, type: 'string', des: '关键词模糊搜索，当为空时则返回所有的动态更新' },
-                        { key: 'post_type', isMust: false, type: 'int', des: '筛选动态更新类型,默认-1：表示全部动态；0：普通消息；1：链接；2：图片；3：文档；4：提问；7：投票' },
-                        { key: 'max_id', isMust: false, type: 'int64', des: '若指定此参数，则只返回ID比max_id小的动态更新(即比max_id发表时间早的动态更新)' },
-                        { key: 'pagesize', isMust: false, type: 'int', des: '指定要返回的记录条数(int默认值20，最大值100)' }
-                    ]
-                },
-                get_group_groups: {
+//                get_favorite_posts: {
+//                    name: '获取当前登录用户收藏的动态更新',
+//                    docUrl: '/doc/post/post_detail.html',
+//                    url: '/post/get_favorite_posts',
+//                    requestMode: 'get',
+//                    params: [
+//                        { key: 'access_token', isMust: true, type: 'string', des: '当前登录用户访问令牌' },
+//                        { key: 'keywords', isMust: false, type: 'string', des: '关键词模糊搜索，当为空时则返回所有的动态更新' },
+//                        { key: 'post_type', isMust: false, type: 'int', des: '筛选动态更新类型,默认-1：表示全部动态；0：普通消息；1：链接；2：图片；3：文档；4：提问；7：投票' },
+//                        { key: 'max_id', isMust: false, type: 'int64', des: '若指定此参数，则只返回ID比max_id小的动态更新(即比max_id发表时间早的动态更新)' },
+//                        { key: 'pagesize', isMust: false, type: 'int', des: '指定要返回的记录条数(int默认值20，最大值100)' }
+//                    ]
+//                },
+                get_group_posts: {
                     name: '获取群组的动态更新',
                     docUrl: '/doc/post/post_detail.html',
-                    url: '/post/get_group_groups',
+                    url: '/post/get_group_posts',
                     requestMode: 'get',
                     params: [
                         { key: 'access_token', isMust: true, type: 'string', des: '当前登录用户访问令牌' },
@@ -139,10 +139,10 @@
                         { key: 'pagesize', isMust: false, type: 'int', des: '指定要返回的记录条数(int默认值20，最大值100)' }
                     ]
                 },
-                get_reply_post: {
+                get_post_reply: {
                     name: '根据动态更新编号获取某条动态更新的回复列表信息',
                     docUrl: '/doc/post/post_detail.html',
-                    url: '/post/get_reply_post',
+                    url: '/post/get_post_reply',
                     requestMode: 'get',
                     params: [
                         { key: 'access_token', isMust: true, type: 'string', des: '当前登录用户访问令牌' },
@@ -158,6 +158,7 @@
                         { key: 'access_token', isMust: true, type: 'string', des: '当前登录用户访问令牌' },
                         { key: 'topic', isMust: true, type: 'string', des: '话题名称' },
                         { key: 'keywords', isMust: false, type: 'string', des: '关键词模糊搜索' },
+                        { key: 'max_id', isMust: false, type: 'int64', des: '若指定此参数，则只返回ID比max_id小的动态更新(即比max_id发表时间早的动态更新)' },
                         { key: 'pagesize', isMust: false, type: 'int', des: '指定要返回的记录条数(默认值20，最大值100' }
                     ]
                 },
@@ -185,21 +186,21 @@
                         { key: 'pagesize', isMust: false, type: 'int', des: '指定要返回的记录条数(默认值20，最大值100' }
                     ]
                 },
-                add_favorite_or_like_post: {
-                    name: '增加当前登录用户的一条动态更新 收藏/喜欢',
+                update_collect_or_canle_collect_post: {
+                    name: '增加当前登录用户的一条动态更新 收藏/不收藏',
                     docUrl: {type: '', url: ''},
-                    url: '/post/add_favorite_or_like_post',
+                    url: '/post/update_collect_or_canle_collect_post',
                     requestMode: 'post',
                     params: [
                         { key: 'access_token', isMust: true, type: 'string', des: '当前登录用户访问令牌' },
                         { key: 'post_id', isMust: true, type: 'string', des: '动态更新编号' },
-                        { key: 'choose_type', isMust: false, type: 'int', des: '操作类型 1:喜欢 2：收藏' }
+                        { key: 'is_collect', isMust: false, type: 'bool', des: '操作类型 true 收藏 false 取消收藏' }
                     ]
                 },
-                add_reply_post: {
+                add_post_reply: {
                     name: '增加一条动态更新的回复',
-                    docUrl: {type: '', url: ''},
-                    url: '/post/add_reply_post',
+                    docUrl: '',
+                    url: '/post/add_post_reply',
                     requestMode: 'post',
                     params: [
                         { key: 'access_token', isMust: true, type: 'string', des: '当前登录用户访问令牌' },
@@ -207,11 +208,9 @@
                         { key: 'reply_id', isMust: false, type: 'string', des: '回复编号(可以对别人的回复进行回复)[可选]' },
                         { key: 'reply_account_id', isMust: false, type: 'string', des: '原回复创建人，不填默认动态创建者[可选]' },
                         { key: 'reply_msg', isMust: true, type: 'int', des: '回复的消息内容([aid]accountID[/aid]代表@某个人,[gid]groupID[/gid]代表@某个群组)' },
-                        { key: 'file_type', isMust: false, type: 'int', des: '可为空(为空时 p_img或p_doc也必须为空)，picture：表示上传图片；document：表示上传文档' },
-                        { key: 'p_img或p_doc', isMust: true, type: 'binary', des: '要上传的图片、文档。图片仅支持JPEG,GIF,PNG,目前上传图片大小限制为<8M。文档仅支持DOC,PDF,XLS,PPT,TXT,压缩包,目前上传文件大小限制为<50M' },
+                        { key: 'attachments', isMust: true, type: 'binary', des: '本地附件' },
                         { key: 'is_share', isMust: false, type: 'bool', des: '同时转发动态(0表示不转发动态；1表示同时转发动态)' },
-                        { key: 'group_ids', isMust: false, type: 'string', des: '可为空，动态分享群组编号(多个群组用逗号隔开)' },
-                        { key: 'share_type', isMust: false, type: 'int', des: '分享范围(0表示分享给所有同事;1表示群内分享；2表示所有关注者和群组；3表示分享给自己； 默认0表示分享给所有同事)' }
+                        { key: 'group_ids', isMust: false, type: 'string', des: '可为空，动态分享群组编号(多个群组用逗号隔开)' }
                     ]
                 },
                 delete_post: {
@@ -224,21 +223,21 @@
                         { key: 'post_id', isMust: true, type: 'binary', des: '动态更新编号' }
                     ]
                 },
-                delete_favorite_or_like_post: {
-                    name: '删除当前登录用户 收藏/喜欢 的一条动态更新 ',
+                update_like_or_canle_like_post: {
+                    name: '当前登录用户 喜欢/不喜欢 一条动态更新 ',
                     docUrl: {type: '', url: ''},
-                    url: '/post/delete_favorite_or_like_post',
+                    url: '/post/update_like_or_canle_like_post',
                     requestMode: 'post',
                     params: [
                         { key: 'access_token', isMust: true, type: 'string', des: '当前登录用户访问令牌' },
                         { key: 'post_id', isMust: true, type: 'string', des: '动态更新编号' },
-                        { key: 'choose_type', isMust: true, type: 'int', des: '操作类型 喜欢=1/收藏=2' }
+                        { key: 'is_like', isMust: true, type: 'bool', des: 'true 喜欢 false 取消喜欢' }
                     ]
                 },
-                delete_reply_post: {
+                delete_post_reply: {
                     name: '根据回复编号删除一条回复 *',
                     docUrl: '',
-                    url: '/post/delete_reply_post',
+                    url: '/post/delete_post_reply',
                     requestMode: 'post',
                     params: [
                         { key: 'access_token', isMust: true, type: 'string', des: '当前登录用户访问令牌' },
@@ -257,10 +256,10 @@
                         { key: 'hour', isMust: false, type: 'int', des: '置顶时长 默认为:不限时长 传多少小时' }
                     ]
                 },
-                issue_post: {
+                add_post: {
                     name: '发布一条动态更新',
                     docUrl: '',
-                    url: '/post/issue_post',
+                    url: '/post/add_post',
                     requestMode: 'post',
                     params: [
                         { key: 'access_token', isMust: true, type: 'string', des: '当前登录用户访问令牌' },
