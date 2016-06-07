@@ -1187,6 +1187,17 @@
                         { key: 'group_id', isMust: true, type: 'string', des: '群组编号' }
                     ]
                 },
+                get_mentioned_group: {
+                    name: '获取最常使用群组',
+                    docUrl: {type: '', url: '/v1group.html'},
+                    url: '/group/get_mentioned_group',
+                    requestMode: 'get',
+                    params: [
+                        { key: 'access_token', isMust: true, type: 'string', des: '当前登录用户访问令牌' },
+                        { key: 'pagesize', isMust: false, type: 'int', des: '显示数量' }
+                    ]
+                },
+
                 create_group: {
                     name: '创建一个新的群组',
                     docUrl: {type: '', url: '/v1group.html'},
