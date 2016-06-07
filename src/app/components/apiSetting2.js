@@ -287,7 +287,19 @@
                     params: [
                         { key: 'access_token', isMust: true, type: 'string', des: '当前登录用户访问令牌' }
                     ]
-                }
+                },
+                add_cast_options: {
+                    name: '投票',
+                    docUrl: '',
+                    url: '/post/add_cast_options',
+                    requestMode: 'post',
+                    params: [
+                        { key: 'access_token', isMust: true, type: 'string', des: '当前登录用户访问令牌' },
+                        { key: 'options', isMust: true, type: 'int', des: '投票选项，如：1|3,表示选择第1、3两项 ' },
+                        { key: 'post_id', isMust: true, type: 'int', des: '动态id' }
+                    ]
+                },
+
             }
         },
         task: {
@@ -1209,6 +1221,17 @@
                         { key: 'group_id', isMust: true, type: 'string', des: '群组编号' }
                     ]
                 },
+                get_mentioned_group: {
+                    name: '获取最常使用群组',
+                    docUrl: {type: '', url: '/v1group.html'},
+                    url: '/group/get_mentioned_group',
+                    requestMode: 'get',
+                    params: [
+                        { key: 'access_token', isMust: true, type: 'string', des: '当前登录用户访问令牌' },
+                        { key: 'pagesize', isMust: false, type: 'int', des: '显示数量' }
+                    ]
+                },
+
                 create_group: {
                     name: '创建一个新的群组',
                     docUrl: {type: '', url: '/v1group.html'},
@@ -2052,23 +2075,7 @@
         },
         vote: {
             v1: {
-                create_vote: {
-                    name: '创建投票',
-                    docUrl: '',
-                    url: '/vote/create_vote',
-                    requestMode: 'post',
-                    params: [
-                        { key: 'access_token', isMust: true, type: 'string', des: '当前登录用户访问令牌' },
-                        { key: 'post_message', isMust: true, type: 'string', des: '动态内容' },
-                        { key: 'vote_options', isMust: true, type: 'int', des: '投票选项，如：a[Option]b[Option]c[Option] 代表有选项1:a 2:b;3:c 以此类推' },
-                        { key: 'iImg_options', isMust: true, type: 'int', des: '要上传的图片对应的投票选项, 如 1,2 代表上传的两张图片是对应投票选项1和2' },
-                        { key: 'last_time', isMust: true, type: 'int', des: '截止时间' },
-                        { key: 'available_number', isMust: true, type: 'int', des: '允许选择多少选项 默认1项' },
-                        { key: 'vote_anonymity', isMust: true, type: 'int', des: '要上传的图片对应的投票选项, 如 1,2 代表上传的两张图片是对应投票选项1和2' },
-                        { key: 'vote_visble', isMust: true, type: 'int', des: '是否允许投票人员查看投票结果 0：不允许；1：允许 默认1允许' },
-                        { key: 'group_id', isMust: true, type: 'int', des: '动态分享群组编号(多个群组用逗号隔开)' }
-                    ]
-                },
+
                 update_vote_deadline: {
                     name: '修改投票时间',
                     docUrl: '',
