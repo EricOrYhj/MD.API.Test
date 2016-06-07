@@ -514,6 +514,26 @@
                         {"key": "project_id", "isMust": false, "type": "string", "des": "哪个网络（默认个人自由网络）"            }
                     ]
                 },
+				"duplicate_a_task": {
+                    "name": "复制任务",
+                    "docUrl": "",
+                    "url": "/task/duplicate_a_task",
+                    "requestMode": "post",
+                    "params": [
+                        {"key": "access_token", "isMust": true, "type": "string", "des": "当前登录用户访问令牌"            },
+                        {"key": "task_id", "isMust": true, "type": "string", "des": "任务id"            },
+						{"key": "task_name", "isMust": false, "type": "string", "des": "指定任务名字"            },
+						{"key": "project_id", "isMust": true, "type": "string", "des": "网络id，必须指定"            },
+                        {"key": "app_id", "isMust": false, "type": "string", "des": "如果是非第三方app，不填"            },
+                        {"key": "keep_task_description", "isMust": false, "type": "bool", "des": "是否复制任务描述"            },
+                        {"key": "keep_task_parent_folder", "isMust": false, "type": "bool", "des": "是否Keep新任务属于原来项目"            },
+						{"key": "charge_user_account_id", "isMust": false, "type": "string", "des": "指定项目负责人id"            },
+						{"key": "keep_task_members", "isMust": false, "type": "bool", "des": "是否keep项目成员"            },
+						{"key": "keep_task_tags", "isMust": false, "type": "bool", "des": "是否keep标签"            },
+						{"key": "keep_task_deadline", "isMust": false, "type": "bool", "des": "是否keep截止日期"            },
+						{"key": "keep_task_subTasks", "isMust": false, "type": "bool", "des": "是否keep子任务"            }
+                    ]
+                },
                 "duplicate_folder": {
                     "name": "复制项目",
                     "docUrl": "/doc/task/duplicate_folder.html",
@@ -735,7 +755,8 @@
                         {"key": "task_id", "isMust": true, "type": "string", "des": "任务ID"            },
                         {"key": "page_index", "isMust": true, "type": "int", "des": "指定当前的页码, 从1开始"            },
                         {"key": "page_size", "isMust": true, "type": "int", "des": "指定要返回的记录条数"            },
-                        {"key": "project_id", "isMust": false, "type": "string", "des": "哪个网络（默认个人自由网络）"            }
+                        {"key": "project_id", "isMust": false, "type": "string", "des": "哪个网络（默认个人自由网络）"            },
+						{"key": "only_file", "isMust": false, "type": "bool", "des": "是否获取只包含文件的comment，不填则不进行过滤"            }
                     ]
                 },
                 "get_tasks_count": {
@@ -950,7 +971,8 @@
                     "params": [
                         {"key": "access_token", "isMust": true, "type": "string", "des": "当前登录用户访问令牌"            },
                         {"key": "task_id", "isMust": true, "type": "string", "des": "任务ID"            },
-                        {"key": "joining_state", "isMust": true, "type": "int", "des": "0:None 无申请，1：NoneToMember 从非成员申请成为成员, 2: BeenRefusedToMember 被拒绝成为成员，拒绝填写2，同意填写0"            }
+                        {"key": "joining_state", "isMust": true, "type": "int", "des": "0:None 无申请，1：NoneToMember 从非成员申请成为成员, 2: BeenRefusedToMember 被拒绝成为成员，拒绝填写2，同意填写0"            },
+						{"key": "account_id", "isMust": true, "type": "string", "des": "指定需要修改的的account_id"            }
                     ]
                 },
                 "update_task_charger_property": {
@@ -2305,6 +2327,7 @@
     }
 })
 ();
+
 
 
 
