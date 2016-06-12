@@ -1967,6 +1967,19 @@
                         { key: 'token', isMust: true, type: 'string', des: '链接的token值' }
                     ]
                 },
+                invite_user_join_source: {
+                    name: '邀请成员加入各模块',
+                    docUrl: '/doc/invitation/invite_link.html',
+                    url: '/invitation/invite_user_join_source',
+                    requestMode: 'post',
+                    params: [
+                        { key: 'access_token', isMust: true, type: 'string', des: '当前登录用户访问令牌' },
+                        { key: 'source_id', isMust: true, type: 'string', des: '来源id(如账号id,网络id,任务id,日程id)' },
+                        { key: 'from_type', isMust: true, type: 'int', des: ' 邀请来源 0邀请好友1邀请群组2邀请任务3邀请知识4邀请网络5邀请日程6邀请项目' },
+                        { key: 'account_ids', isMust: false, type: 'string', des: '邀请加为好友的现有用户(格式[id,id]序列化)' },
+                        { key: 'accounts', isMust: false, type: 'string', des: '邀请非明道加入群组 手机/邮箱(格式[phone,email]序列化)' }
+                    ]
+                },
                 invite_user_join_group: {
                     name: '邀请群组成员',
                     docUrl: '/doc/invitation/invitation.html',
@@ -2078,6 +2091,20 @@
                         { key: 'group_id', isMust: true, type: 'string', des: '群组编号' },
                         { key: 'account_ids', isMust: false, type: 'string', des: '邀请加入群组的现有用户ID' },
                         { key: 'accounts', isMust: false, type: 'string', des: '[{key:value}]邀请手机/邮箱的人加入群组key:手机or邮箱value:邀请的备注没有传空' }
+                    ]
+                }
+            }
+        },
+        qiniu: {
+            v1: {
+                get_qiniu_token: {
+                    name: '获取7牛上传Token',
+                    docUrl: '',
+                    url: '/qiniu/get_qiniu_token',
+                    requestMode: 'get',
+                    params: [
+                        { key: 'access_token', isMust: true, type: 'string', des: '当前登录用户访问令牌' },
+                        { key: 'type', isMust: true, type: 'int', des: '1图片 2文档 3BUG反馈' }
                     ]
                 }
             }
