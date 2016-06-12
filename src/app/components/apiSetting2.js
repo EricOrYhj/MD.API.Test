@@ -2155,6 +2155,20 @@
                 }
             }
         },
+        application: {
+            v1: {
+                get_app_admins: {
+                    name: '获取应用管理员(只针对企业应用)',
+                    docUrl: '',
+                    url: '/application/get_app_admins',
+                    requestMode: 'get',
+                    params: [
+                        { key: 'access_token', isMust: true, type: 'string', des: '当前登录用户访问令牌' },
+                        { key: 'app_id', isMust: true, type: 'string', des: '应用ID' }
+                    ]
+                }
+            }
+        },
         admin: {
             v1: {
                 application: {
