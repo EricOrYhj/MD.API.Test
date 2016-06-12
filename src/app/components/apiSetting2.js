@@ -535,7 +535,7 @@
                         {"key": "access_token", "isMust": true, "type": "string", "des": "当前登录用户访问令牌"            },
                         {"key": "task_id", "isMust": true, "type": "string", "des": "任务id"            },
 						{"key": "task_name", "isMust": false, "type": "string", "des": "指定任务名字"            },
-						{"key": "project_id", "isMust": true, "type": "string", "des": "网络id，必须指定"            },
+						{"key": "project_id", "isMust": false, "type": "string", "des": "网络id，不支持all"            },
                         {"key": "app_id", "isMust": false, "type": "string", "des": "如果是非第三方app，不填"            },
                         {"key": "keep_task_description", "isMust": false, "type": "bool", "des": "是否复制任务描述"            },
                         {"key": "keep_task_parent_folder", "isMust": false, "type": "bool", "des": "是否Keep新任务属于原来项目"            },
@@ -567,6 +567,30 @@
                     "params": [
                         {"key": "access_token", "isMust": true, "type": "string", "des": "当前登录用户访问令牌"            },
                         {"key": "project_id", "isMust": false, "type": "string", "des": "哪个网络， 不支持all"            }
+                    ]
+                },
+				"get_available_folders": {
+                    "name": "修改任务的关联项目时, 根据任务Id以及关键词返回可关联的项目",
+                    "docUrl": "/doc/apiDocumentNotAvailable.html",
+                    "url": "/task/get_available_folders",
+                    "requestMode": "get",
+                    "params": [
+                        {"key": "access_token", "isMust": true, "type": "string", "des": "当前登录用户访问令牌"            },
+                        {"key": "project_id", "isMust": false, "type": "string", "des": "哪个网络，当搜索个人网络时，可以不填"            },
+						{"key": "keyword", "isMust": false, "type": "string", "des": "关键词"            },
+						{"key": "task_id", "isMust": true, "type": "string", "des": "任务id"            }
+                    ]
+                },
+				"get_available_tasks": {
+                    "name": "修改任务的母任务时, 根据任务Id返回可以关联的母任务",
+                    "docUrl": "/doc/apidocumentnotavailable.html",
+                    "url": "/task/get_available_tasks",
+                    "requestMode": "get",
+                    "params": [
+                        {"key": "access_token", "isMust": true, "type": "string", "des": "当前登录用户访问令牌"            },
+                        {"key": "project_id", "isMust": false, "type": "string", "des": "哪个网络，当搜索个人网络时，可以不填"            },
+						{"key": "keyword", "isMust": false, "type": "string", "des": "关键词"            },
+						{"key": "task_id", "isMust": true, "type": "string", "des": "任务id"            }
                     ]
                 },
                 "get_direct_children_tasks": {
