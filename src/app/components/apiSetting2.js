@@ -392,7 +392,7 @@
                         {"key": "access_token", "isMust": true, "type": "string", "des": "当前登录用户访问令牌"            },
                         {"key": "folder_id", "isMust": true, "type": "string", "des": "项目ID"            },
                         {"key": "folder_stage_name", "isMust": true, "type": "string", "des": "项目阶段名字"            },
-                        {"key": "sort", "isMust": false, "type": "int", "des": "阶段次序（默认排在第一个）"            },
+                        {"key": "folder_stage_sort", "isMust": false, "type": "int", "des": "阶段次序（默认排在第一个）"            },
                         {"key": "project_id", "isMust": false, "type": "string", "des": "哪个网络（默认个人自由网络）"           }
                     ]
                 },
