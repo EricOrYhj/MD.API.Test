@@ -413,7 +413,7 @@
                         {"key": "color", "isMust": false, "type": "int", "des": "任务颜色 默认0：无颜色；1：蓝色；2：紫色；3：红色；4：橙色；5：黄色"            },
                         {"key": "post_id", "isMust": false, "type": "string", "des": "动态ID（创建任务时，如果需要某个动态的附件添加到任务中必传）"            },
                         {"key": "folder_stage_id", "isMust": false, "type": "string", "des": "指定的隶属项目下的阶段ID"            },
-                        {"key": "is_star", "isMust": false, "type": "bool", "des": "是否给任务标星（默认：0：否，1：是）"            },
+                        {"key": "is_star", "isMust": false, "type": "bool", "des": "是否给任务标星（默认：false：否，true：是）"            },
                         {"key": "groups", "isMust": false, "type": "string", "des": "指定任务群组"            },
                         {"key": "project_id", "isMust": false, "type": "string", "des": "哪个网络（默认个人自由网络）"            }
                     ]
@@ -1644,7 +1644,7 @@
                 },
                 create_calendar: {
                     name: '创建一个新的日程',
-                    docUrl: {type: '', url: '/v1calendar_detail.html'},
+                    docUrl: '',
                     url: '/calendar/create_calendar',
                     requestMode: 'post',
                     params: [
@@ -1652,10 +1652,10 @@
                         { key: 'calendar_name', isMust: true, type: 'string', des: '日程主题' },
                         { key: 'calendar_start_time', isMust: true, type: 'string', des: '日程开始时间，精确到分。如：2013-05-05 10:25' },
                         { key: 'calendar_end_time', isMust: true, type: 'string', des: '日程结束时间，精确到分。如：2013-05-05 10:25' },
-                        { key: 'is_all_day', isMust: false, type: 'bool', des: '是否全天日程。0表示非全天，1表示全天 默认值0' },
+                        { key: 'is_all_day', isMust: false, type: 'bool', des: '是否全天日程。false表示非全天，true表示全天。' },
                         { key: 'calendar_address', isMust: false, type: 'string', des: '日程地点' },
                         { key: 'calendar_description', isMust: false, type: 'string', des: '日程描述' },
-                        { key: 'calendar_private', isMust: false, type: 'bool', des: '是否私人日程。1表示私人，0表示非私人 默认值0' },
+                        { key: 'calendar_private', isMust: false, type: 'bool', des: '是否私人日程' },
                         { key: 'group_ids', isMust: false, type: 'string', des: '私有日程分享群组 分享多群组用,隔开' },
                         { key: 'calendar_member_ids', isMust: false, type: 'string', des: '指定的日程成员 (多个成员用逗号隔开)。注：明道用户' },
                         { key: 'calendar_member_emails', isMust: false, type: 'string', des: '指定的日程成员邮件 (多个成员用逗号隔开)。注：非明道用户' },
