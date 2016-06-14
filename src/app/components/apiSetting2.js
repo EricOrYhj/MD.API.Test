@@ -1836,15 +1836,36 @@
                     ]
                 },
                 update_passport_pwd: {
-                    name: '修改当前登录用户密码',
+                    name: '修改当前登录用户密码(如果只传旧密码只验证)',
                     docUrl: '',
                     url: '/passport/update_passport_pwd',
                     requestMode: 'post',
                     params: [
                         { key: 'access_token', isMust: true, type: 'string', des: '当前登录用户访问令牌' },
                         { key: 'old_pwd', isMust: true, type: 'string', des: '旧密码' },
-                        { key: 'new_pwd', isMust: true, type: 'string', des: '新密码' },
-                        { key: 'confirm_pwd', isMust: true, type: 'string', des: '确认新密码' }
+                        { key: 'new_pwd', isMust: false, type: 'string', des: '新密码' },
+                        { key: 'confirm_pwd', isMust: false, type: 'string', des: '确认新密码' }
+                    ]
+                },
+                send_verify_code: {
+                    name: '发送修改当前登录用户绑定邮箱或者手机号时的验证码',
+                    docUrl: '',
+                    url: '/passport/send_verify_code',
+                    requestMode: 'post',
+                    params: [
+                        { key: 'access_token', isMust: true, type: 'string', des: '当前登录用户访问令牌' },
+                        { key: 'account', isMust: true, type: 'string', des: '要修改为的手机号或者邮箱' }
+                    ]
+                },
+                update_passport_account: {
+                    name: '修改当前登录用户绑定邮箱或者手机',
+                    docUrl: '',
+                    url: '/passport/send_verify_code',
+                    requestMode: 'post',
+                    params: [
+                        { key: 'access_token', isMust: true, type: 'string', des: '当前登录用户访问令牌' },
+                        { key: 'account', isMust: true, type: 'string', des: '要修改为的手机号或者邮箱' },
+                        { key: 'code', isMust: true, type: 'string', des: '验证码' }
                     ]
                 }
             }
@@ -2023,7 +2044,27 @@
                         { key: 'source_id', isMust: true, type: 'string', des: '来源id(如账号id,网络id,任务id,日程id)' },
                         { key: 'from_type', isMust: true, type: 'int', des: ' 邀请来源 0邀请好友1邀请群组2邀请任务3邀请知识4邀请网络5邀请日程6邀请项目' },
                         { key: 'account_ids', isMust: false, type: 'string', des: '邀请 现有明道用户(格式[id,id]序列化)' },
-                        { key: 'accounts', isMust: false, type: 'string', des: '邀请 非明道用户 手机/邮箱(格式[phone,email]序列化)' }
+                        { key: 'accounts', isMust: false, type: 'string', des: '邀请 非明道用户 手机/邮箱(格式["phone","email"]序列化)' }
+                    ]
+                },
+                get_qrcode_source: {
+                    name: '获取二维码链接来源',
+                    docUrl: '',
+                    url: '/invitation/get_qrcode_source',
+                    requestMode: 'post',
+                    params: [
+                        { key: 'access_token', isMust: true, type: 'string', des: '当前登录用户访问令牌' },
+                        { key: 'short_url', isMust: true, type: 'string', des: '二维码扫到的链接地址' }
+                    ]
+                },
+                agree_link_invite: {
+                    name: '同意加入链接邀请',
+                    docUrl: '',
+                    url: '/invitation/agree_link_invite',
+                    requestMode: 'post',
+                    params: [
+                        { key: 'access_token', isMust: true, type: 'string', des: '当前登录用户访问令牌' },
+                        { key: 'token', isMust: true, type: 'string', des: '获取二维码链接来源得到的链接token' }
                     ]
                 },
                 invite_user_join_group: {
@@ -2046,7 +2087,7 @@
                     params: [
                         { key: 'access_token', isMust: true, type: 'string', des: '当前登录用户访问令牌' },
                         { key: 'account_ids', isMust: false, type: 'string', des: '邀请加为好友的现有用户(格式[id,id]序列化)' },
-                        { key: 'accounts', isMust: false, type: 'string', des: '邀请非明道加入群组 手机/邮箱(格式[phone,email]序列化)' }
+                        { key: 'accounts', isMust: false, type: 'string', des: '邀请非明道加入群组 手机/邮箱(格式["phone","email"]序列化)' }
                     ]
                 },
                 invite_user_join_project: {
@@ -2058,7 +2099,7 @@
                         { key: 'access_token', isMust: true, type: 'string', des: '当前登录用户访问令牌' },
                         { key: 'project_id', isMust: true, type: 'string', des: '网络ID' },
                         { key: 'account_ids', isMust: false, type: 'string', des: '邀请加为好友的现有用户(格式[id,id]序列化)' },
-                        { key: 'accounts', isMust: false, type: 'string', des: '邀请非明道加入群组 手机/邮箱(格式[phone,email]序列化)' }
+                        { key: 'accounts', isMust: false, type: 'string', des: '邀请非明道加入群组 手机/邮箱(格式["phone","email"]序列化)' }
                     ]
                 },
                 get_invite_user_join_project_log: {
@@ -2269,7 +2310,8 @@
                         url: '/private/group/get_all_project_groups',
                         requestMode: 'get',
                         params: [
-                            { key: 'account_id', isMust: true, type: 'string', des: '账号ID' }
+                            { key: 'account_id', isMust: true, type: 'string', des: '账号ID' },
+                            { key: 'type', isMust: false, type: 'int', des: '0我创建的群组 1我加入的群组 2我是管理员的群组 默认-1所有' }
                         ]
                     }
                 },
