@@ -393,7 +393,7 @@
                         {"key": "access_token", "isMust": true, "type": "string", "des": "当前登录用户访问令牌"            },
                         {"key": "folder_id", "isMust": true, "type": "string", "des": "项目ID"            },
                         {"key": "folder_stage_name", "isMust": true, "type": "string", "des": "项目阶段名字"            },
-                        {"key": "sort", "isMust": false, "type": "int", "des": "阶段次序（默认排在第一个）"            },
+                        {"key": "folder_stage_sort", "isMust": false, "type": "int", "des": "阶段次序（默认排在第一个）"            },
                         {"key": "project_id", "isMust": false, "type": "string", "des": "哪个网络（默认个人自由网络）"           }
                     ]
                 },
@@ -414,7 +414,7 @@
                         {"key": "color", "isMust": false, "type": "int", "des": "任务颜色 默认0：无颜色；1：蓝色；2：紫色；3：红色；4：橙色；5：黄色"            },
                         {"key": "post_id", "isMust": false, "type": "string", "des": "动态ID（创建任务时，如果需要某个动态的附件添加到任务中必传）"            },
                         {"key": "folder_stage_id", "isMust": false, "type": "string", "des": "指定的隶属项目下的阶段ID"            },
-                        {"key": "is_star", "isMust": false, "type": "bool", "des": "是否给任务标星（默认：0：否，1：是）"            },
+                        {"key": "is_star", "isMust": false, "type": "bool", "des": "是否给任务标星（默认：false：否，true：是）"            },
                         {"key": "groups", "isMust": false, "type": "string", "des": "指定任务群组"            },
                         {"key": "project_id", "isMust": false, "type": "string", "des": "哪个网络（默认个人自由网络）"            }
                     ]
@@ -527,6 +527,26 @@
                         {"key": "project_id", "isMust": false, "type": "string", "des": "哪个网络（默认个人自由网络）"            }
                     ]
                 },
+				"duplicate_a_task": {
+                    "name": "复制任务",
+                    "docUrl": "",
+                    "url": "/task/duplicate_a_task",
+                    "requestMode": "post",
+                    "params": [
+                        {"key": "access_token", "isMust": true, "type": "string", "des": "当前登录用户访问令牌"            },
+                        {"key": "task_id", "isMust": true, "type": "string", "des": "任务id"            },
+						{"key": "task_name", "isMust": false, "type": "string", "des": "指定任务名字"            },
+						{"key": "project_id", "isMust": false, "type": "string", "des": "网络id，不支持all"            },
+                        {"key": "app_id", "isMust": false, "type": "string", "des": "如果是非第三方app，不填"            },
+                        {"key": "keep_task_description", "isMust": false, "type": "bool", "des": "是否复制任务描述"            },
+                        {"key": "keep_task_parent_folder", "isMust": false, "type": "bool", "des": "是否Keep新任务属于原来项目"            },
+						{"key": "charge_user_account_id", "isMust": false, "type": "string", "des": "指定项目负责人id"            },
+						{"key": "keep_task_members", "isMust": false, "type": "bool", "des": "是否keep项目成员"            },
+						{"key": "keep_task_tags", "isMust": false, "type": "bool", "des": "是否keep标签"            },
+						{"key": "keep_task_deadline", "isMust": false, "type": "bool", "des": "是否keep截止日期"            },
+						{"key": "keep_task_subTasks", "isMust": false, "type": "bool", "des": "是否keep子任务"            }
+                    ]
+                },
                 "duplicate_folder": {
                     "name": "复制项目",
                     "docUrl": "/doc/task/duplicate_folder.html",
@@ -548,6 +568,30 @@
                     "params": [
                         {"key": "access_token", "isMust": true, "type": "string", "des": "当前登录用户访问令牌"            },
                         {"key": "project_id", "isMust": false, "type": "string", "des": "哪个网络， 不支持all"            }
+                    ]
+                },
+				"get_available_folders": {
+                    "name": "修改任务的关联项目时, 根据任务Id以及关键词返回可关联的项目",
+                    "docUrl": "/doc/apiDocumentNotAvailable.html",
+                    "url": "/task/get_available_folders",
+                    "requestMode": "get",
+                    "params": [
+                        {"key": "access_token", "isMust": true, "type": "string", "des": "当前登录用户访问令牌"            },
+                        {"key": "project_id", "isMust": false, "type": "string", "des": "哪个网络，当搜索个人网络时，可以不填"            },
+						{"key": "keyword", "isMust": false, "type": "string", "des": "关键词"            },
+						{"key": "task_id", "isMust": true, "type": "string", "des": "任务id"            }
+                    ]
+                },
+				"get_available_tasks": {
+                    "name": "修改任务的母任务时, 根据任务Id返回可以关联的母任务",
+                    "docUrl": "/doc/apidocumentnotavailable.html",
+                    "url": "/task/get_available_tasks",
+                    "requestMode": "get",
+                    "params": [
+                        {"key": "access_token", "isMust": true, "type": "string", "des": "当前登录用户访问令牌"            },
+                        {"key": "project_id", "isMust": false, "type": "string", "des": "哪个网络，当搜索个人网络时，可以不填"            },
+						{"key": "keyword", "isMust": false, "type": "string", "des": "关键词"            },
+						{"key": "task_id", "isMust": true, "type": "string", "des": "任务id"            }
                     ]
                 },
                 "get_direct_children_tasks": {
@@ -748,7 +792,8 @@
                         {"key": "task_id", "isMust": true, "type": "string", "des": "任务ID"            },
                         {"key": "page_index", "isMust": true, "type": "int", "des": "指定当前的页码, 从1开始"            },
                         {"key": "page_size", "isMust": true, "type": "int", "des": "指定要返回的记录条数"            },
-                        {"key": "project_id", "isMust": false, "type": "string", "des": "哪个网络（默认个人自由网络）"            }
+                        {"key": "project_id", "isMust": false, "type": "string", "des": "哪个网络（默认个人自由网络）"            },
+						{"key": "only_file", "isMust": false, "type": "bool", "des": "是否获取只包含文件的comment，不填则不进行过滤"            }
                     ]
                 },
                 "get_tasks_count": {
@@ -963,7 +1008,8 @@
                     "params": [
                         {"key": "access_token", "isMust": true, "type": "string", "des": "当前登录用户访问令牌"            },
                         {"key": "task_id", "isMust": true, "type": "string", "des": "任务ID"            },
-                        {"key": "joining_state", "isMust": true, "type": "int", "des": "0:None 无申请，1：NoneToMember 从非成员申请成为成员, 2: BeenRefusedToMember 被拒绝成为成员，拒绝填写2，同意填写0"            }
+                        {"key": "joining_state", "isMust": true, "type": "int", "des": "0:None 无申请，1：NoneToMember 从非成员申请成为成员, 2: BeenRefusedToMember 被拒绝成为成员，拒绝填写2，同意填写0"            },
+						{"key": "account_id", "isMust": true, "type": "string", "des": "指定需要修改的的account_id"            }
                     ]
                 },
                 "update_task_charger_property": {
@@ -1599,7 +1645,7 @@
                 },
                 create_calendar: {
                     name: '创建一个新的日程',
-                    docUrl: {type: '', url: '/v1calendar_detail.html'},
+                    docUrl: '',
                     url: '/calendar/create_calendar',
                     requestMode: 'post',
                     params: [
@@ -1607,10 +1653,10 @@
                         { key: 'calendar_name', isMust: true, type: 'string', des: '日程主题' },
                         { key: 'calendar_start_time', isMust: true, type: 'string', des: '日程开始时间，精确到分。如：2013-05-05 10:25' },
                         { key: 'calendar_end_time', isMust: true, type: 'string', des: '日程结束时间，精确到分。如：2013-05-05 10:25' },
-                        { key: 'is_all_day', isMust: false, type: 'bool', des: '是否全天日程。0表示非全天，1表示全天 默认值0' },
+                        { key: 'is_all_day', isMust: false, type: 'bool', des: '是否全天日程。false表示非全天，true表示全天。' },
                         { key: 'calendar_address', isMust: false, type: 'string', des: '日程地点' },
                         { key: 'calendar_description', isMust: false, type: 'string', des: '日程描述' },
-                        { key: 'calendar_private', isMust: false, type: 'bool', des: '是否私人日程。1表示私人，0表示非私人 默认值0' },
+                        { key: 'calendar_private', isMust: false, type: 'bool', des: '是否私人日程' },
                         { key: 'group_ids', isMust: false, type: 'string', des: '私有日程分享群组 分享多群组用,隔开' },
                         { key: 'calendar_member_ids', isMust: false, type: 'string', des: '指定的日程成员 (多个成员用逗号隔开)。注：明道用户' },
                         { key: 'calendar_member_emails', isMust: false, type: 'string', des: '指定的日程成员邮件 (多个成员用逗号隔开)。注：非明道用户' },
@@ -1968,6 +2014,19 @@
                         { key: 'token', isMust: true, type: 'string', des: '链接的token值' }
                     ]
                 },
+                invite_user_join_source: {
+                    name: '邀请成员加入各模块',
+                    docUrl: '/doc/invitation/invite_link.html',
+                    url: '/invitation/invite_user_join_source',
+                    requestMode: 'post',
+                    params: [
+                        { key: 'access_token', isMust: true, type: 'string', des: '当前登录用户访问令牌' },
+                        { key: 'source_id', isMust: true, type: 'string', des: '来源id(如账号id,网络id,任务id,日程id)' },
+                        { key: 'from_type', isMust: true, type: 'int', des: ' 邀请来源 0邀请好友1邀请群组2邀请任务3邀请知识4邀请网络5邀请日程6邀请项目' },
+                        { key: 'account_ids', isMust: false, type: 'string', des: '邀请 现有明道用户(格式[id,id]序列化)' },
+                        { key: 'accounts', isMust: false, type: 'string', des: '邀请 非明道用户 手机/邮箱(格式[phone,email]序列化)' }
+                    ]
+                },
                 invite_user_join_group: {
                     name: '邀请群组成员',
                     docUrl: '/doc/invitation/invitation.html',
@@ -2079,6 +2138,34 @@
                         { key: 'group_id', isMust: true, type: 'string', des: '群组编号' },
                         { key: 'account_ids', isMust: false, type: 'string', des: '邀请加入群组的现有用户ID' },
                         { key: 'accounts', isMust: false, type: 'string', des: '[{key:value}]邀请手机/邮箱的人加入群组key:手机or邮箱value:邀请的备注没有传空' }
+                    ]
+                }
+            }
+        },
+        qiniu: {
+            v1: {
+                get_qiniu_token: {
+                    name: '获取7牛上传Token',
+                    docUrl: '',
+                    url: '/qiniu/get_qiniu_token',
+                    requestMode: 'get',
+                    params: [
+                        { key: 'access_token', isMust: true, type: 'string', des: '当前登录用户访问令牌' },
+                        { key: 'type', isMust: true, type: 'int', des: '1图片 2文档 3BUG反馈' }
+                    ]
+                }
+            }
+        },
+        application: {
+            v1: {
+                get_app_admins: {
+                    name: '获取应用管理员(只针对企业应用)',
+                    docUrl: '',
+                    url: '/application/get_app_admins',
+                    requestMode: 'get',
+                    params: [
+                        { key: 'access_token', isMust: true, type: 'string', des: '当前登录用户访问令牌' },
+                        { key: 'app_id', isMust: true, type: 'string', des: '应用ID' }
                     ]
                 }
             }
@@ -2545,6 +2632,7 @@
     }
 })
 ();
+
 
 
 
