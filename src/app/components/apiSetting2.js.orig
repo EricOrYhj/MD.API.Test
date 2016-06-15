@@ -15,8 +15,7 @@
                         { key: 'access_token', isMust: true, type: 'string', des: '当前登录用户访问令牌' },
                         { key: 'keywords', isMust: false, type: 'string', des: '关键词模糊搜索，当为空时则返回所有的动态更新' },
                         { key: 'post_type', isMust: false, type: 'int', des: '筛选动态更新类型,默认-1：表示全部动态；0：普通消息；1：链接；2：图片；3：文档；4：提问；7：投票；8：视频' },
-                        { key: 'start_time', isMust: false, type: 'Datetime', des: '开始时间' },
-                        { key: 'end_time', isMust: false, type: 'Datetime', des: '结束时间' },
+                        { key: 'since_id', isMust: false, type: 'int64', des: '若指定此参数，则只返回ID比since_id大的动态更新(即比since_id发表时间晚的动态更新)' },
                         { key: 'max_id', isMust: false, type: 'int64', des: '若指定此参数，则只返回ID比max_id小的动态更新(即比max_id发表时间早的动态更新)' },
                         { key: 'pagesize', isMust: false, type: 'int', des: '指定要返回的记录条数(int默认值20，最大值100)' },
                         { key: 'post_filter_share', isMust: true, type: 'int', des: '动态筛选范围' },
@@ -65,23 +64,23 @@
 //                        { key: 'select_type', isMust: true, type: 'int', des: '查询类型 (2：图片,3:文档，4：问答)' }
 //                    ]
 //                },
-//                get_favorite_posts: {
-//                    name: '获取当前登录用户收藏的动态更新',
-//                    docUrl: '/doc/post/post_detail.html',
-//                    url: '/post/get_favorite_posts',
-//                    requestMode: 'get',
-//                    params: [
-//                        { key: 'access_token', isMust: true, type: 'string', des: '当前登录用户访问令牌' },
-//                        { key: 'keywords', isMust: false, type: 'string', des: '关键词模糊搜索，当为空时则返回所有的动态更新' },
-//                        { key: 'post_type', isMust: false, type: 'int', des: '筛选动态更新类型,默认-1：表示全部动态；0：普通消息；1：链接；2：图片；3：文档；4：提问；7：投票' },
-//                        { key: 'max_id', isMust: false, type: 'int64', des: '若指定此参数，则只返回ID比max_id小的动态更新(即比max_id发表时间早的动态更新)' },
-//                        { key: 'pagesize', isMust: false, type: 'int', des: '指定要返回的记录条数(int默认值20，最大值100)' }
-//                    ]
-//                },
-                get_group_posts: {
+                get_favorite_posts: {
+                    name: '获取当前登录用户收藏的动态更新',
+                    docUrl: '/doc/post/post_detail.html',
+                    url: '/post/get_favorite_posts',
+                    requestMode: 'get',
+                    params: [
+                        { key: 'access_token', isMust: true, type: 'string', des: '当前登录用户访问令牌' },
+                        { key: 'keywords', isMust: false, type: 'string', des: '关键词模糊搜索，当为空时则返回所有的动态更新' },
+                        { key: 'post_type', isMust: false, type: 'int', des: '筛选动态更新类型,默认-1：表示全部动态；0：普通消息；1：链接；2：图片；3：文档；4：提问；7：投票' },
+                        { key: 'max_id', isMust: false, type: 'int64', des: '若指定此参数，则只返回ID比max_id小的动态更新(即比max_id发表时间早的动态更新)' },
+                        { key: 'pagesize', isMust: false, type: 'int', des: '指定要返回的记录条数(int默认值20，最大值100)' }
+                    ]
+                },
+                get_group_groups: {
                     name: '获取群组的动态更新',
                     docUrl: '/doc/post/post_detail.html',
-                    url: '/post/get_group_posts',
+                    url: '/post/get_group_groups',
                     requestMode: 'get',
                     params: [
                         { key: 'access_token', isMust: true, type: 'string', des: '当前登录用户访问令牌' },
@@ -140,10 +139,10 @@
                         { key: 'pagesize', isMust: false, type: 'int', des: '指定要返回的记录条数(int默认值20，最大值100)' }
                     ]
                 },
-                get_post_reply: {
+                get_reply_post: {
                     name: '根据动态更新编号获取某条动态更新的回复列表信息',
                     docUrl: '/doc/post/post_detail.html',
-                    url: '/post/get_post_reply',
+                    url: '/post/get_reply_post',
                     requestMode: 'get',
                     params: [
                         { key: 'access_token', isMust: true, type: 'string', des: '当前登录用户访问令牌' },
@@ -159,7 +158,6 @@
                         { key: 'access_token', isMust: true, type: 'string', des: '当前登录用户访问令牌' },
                         { key: 'topic', isMust: true, type: 'string', des: '话题名称' },
                         { key: 'keywords', isMust: false, type: 'string', des: '关键词模糊搜索' },
-                        { key: 'max_id', isMust: false, type: 'int64', des: '若指定此参数，则只返回ID比max_id小的动态更新(即比max_id发表时间早的动态更新)' },
                         { key: 'pagesize', isMust: false, type: 'int', des: '指定要返回的记录条数(默认值20，最大值100' }
                     ]
                 },
@@ -187,21 +185,21 @@
                         { key: 'pagesize', isMust: false, type: 'int', des: '指定要返回的记录条数(默认值20，最大值100' }
                     ]
                 },
-                update_collect_or_canle_collect_post: {
-                    name: '增加当前登录用户的一条动态更新 收藏/不收藏',
+                add_favorite_or_like_post: {
+                    name: '增加当前登录用户的一条动态更新 收藏/喜欢',
                     docUrl: {type: '', url: ''},
-                    url: '/post/update_collect_or_canle_collect_post',
+                    url: '/post/add_favorite_or_like_post',
                     requestMode: 'post',
                     params: [
                         { key: 'access_token', isMust: true, type: 'string', des: '当前登录用户访问令牌' },
                         { key: 'post_id', isMust: true, type: 'string', des: '动态更新编号' },
-                        { key: 'is_collect', isMust: false, type: 'bool', des: '操作类型 true 收藏 false 取消收藏' }
+                        { key: 'choose_type', isMust: false, type: 'int', des: '操作类型 1:喜欢 2：收藏' }
                     ]
                 },
-                add_post_reply: {
+                add_reply_post: {
                     name: '增加一条动态更新的回复',
-                    docUrl: '',
-                    url: '/post/add_post_reply',
+                    docUrl: {type: '', url: ''},
+                    url: '/post/add_reply_post',
                     requestMode: 'post',
                     params: [
                         { key: 'access_token', isMust: true, type: 'string', des: '当前登录用户访问令牌' },
@@ -209,9 +207,11 @@
                         { key: 'reply_id', isMust: false, type: 'string', des: '回复编号(可以对别人的回复进行回复)[可选]' },
                         { key: 'reply_account_id', isMust: false, type: 'string', des: '原回复创建人，不填默认动态创建者[可选]' },
                         { key: 'reply_msg', isMust: true, type: 'int', des: '回复的消息内容([aid]accountID[/aid]代表@某个人,[gid]groupID[/gid]代表@某个群组)' },
-                        { key: 'attachments', isMust: false, type: 'binary', des: '本地附件' },
+                        { key: 'file_type', isMust: false, type: 'int', des: '可为空(为空时 p_img或p_doc也必须为空)，picture：表示上传图片；document：表示上传文档' },
+                        { key: 'p_img或p_doc', isMust: true, type: 'binary', des: '要上传的图片、文档。图片仅支持JPEG,GIF,PNG,目前上传图片大小限制为<8M。文档仅支持DOC,PDF,XLS,PPT,TXT,压缩包,目前上传文件大小限制为<50M' },
                         { key: 'is_share', isMust: false, type: 'bool', des: '同时转发动态(0表示不转发动态；1表示同时转发动态)' },
-                        { key: 'group_ids', isMust: false, type: 'string', des: '可为空，动态分享群组编号(多个群组用逗号隔开)' }
+                        { key: 'group_ids', isMust: false, type: 'string', des: '可为空，动态分享群组编号(多个群组用逗号隔开)' },
+                        { key: 'share_type', isMust: false, type: 'int', des: '分享范围(0表示分享给所有同事;1表示群内分享；2表示所有关注者和群组；3表示分享给自己； 默认0表示分享给所有同事)' }
                     ]
                 },
                 delete_post: {
@@ -224,21 +224,21 @@
                         { key: 'post_id', isMust: true, type: 'binary', des: '动态更新编号' }
                     ]
                 },
-                update_like_or_canle_like_post: {
-                    name: '当前登录用户 喜欢/不喜欢 一条动态更新 ',
+                delete_favorite_or_like_post: {
+                    name: '删除当前登录用户 收藏/喜欢 的一条动态更新 ',
                     docUrl: {type: '', url: ''},
-                    url: '/post/update_like_or_canle_like_post',
+                    url: '/post/delete_favorite_or_like_post',
                     requestMode: 'post',
                     params: [
                         { key: 'access_token', isMust: true, type: 'string', des: '当前登录用户访问令牌' },
                         { key: 'post_id', isMust: true, type: 'string', des: '动态更新编号' },
-                        { key: 'is_like', isMust: true, type: 'bool', des: 'true 喜欢 false 取消喜欢' }
+                        { key: 'choose_type', isMust: true, type: 'int', des: '操作类型 喜欢=1/收藏=2' }
                     ]
                 },
-                delete_post_reply: {
+                delete_reply_post: {
                     name: '根据回复编号删除一条回复 *',
                     docUrl: '',
-                    url: '/post/delete_post_reply',
+                    url: '/post/delete_reply_post',
                     requestMode: 'post',
                     params: [
                         { key: 'access_token', isMust: true, type: 'string', des: '当前登录用户访问令牌' },
@@ -257,10 +257,10 @@
                         { key: 'hour', isMust: false, type: 'int', des: '置顶时长 默认为:不限时长 传多少小时' }
                     ]
                 },
-                add_post: {
+                issue_post: {
                     name: '发布一条动态更新',
                     docUrl: '',
-                    url: '/post/add_post',
+                    url: '/post/issue_post',
                     requestMode: 'post',
                     params: [
                         { key: 'access_token', isMust: true, type: 'string', des: '当前登录用户访问令牌' },
@@ -288,23 +288,13 @@
                     params: [
                         { key: 'access_token', isMust: true, type: 'string', des: '当前登录用户访问令牌' }
                     ]
-                },
-                add_cast_options: {
-                    name: '投票',
-                    docUrl: '',
-                    url: '/post/add_cast_options',
-                    requestMode: 'post',
-                    params: [
-                        { key: 'access_token', isMust: true, type: 'string', des: '当前登录用户访问令牌' },
-                        { key: 'options', isMust: true, type: 'string', des: '投票选项，如：1|3,表示选择第1、3两项 ' },
-                        { key: 'post_id', isMust: true, type: 'string', des: '动态id' }
-                    ]
-                },
-
+                }
             }
         },
         task: {
             v1: {
+<<<<<<< HEAD
+=======
                 "add_an_invited_member_to_a_task": {
                     "name": "向任务添加一个被邀请的用户",
                     "docUrl": "",
@@ -329,6 +319,7 @@
                         {"key": "project_id", "isMust": false, "type": "string", "des": "不填为自由网络"}
                     ]
                 },
+>>>>>>> 4487b8b17498a9ae7be33858f173d3e621ff6832
                 "add_a_comment_on_folder": {
                     "name": "创建项目",
                     "docUrl": "/doc/task/add_a_comment_on_folder.html",
@@ -393,7 +384,7 @@
                         {"key": "access_token", "isMust": true, "type": "string", "des": "当前登录用户访问令牌"            },
                         {"key": "folder_id", "isMust": true, "type": "string", "des": "项目ID"            },
                         {"key": "folder_stage_name", "isMust": true, "type": "string", "des": "项目阶段名字"            },
-                        {"key": "folder_stage_sort", "isMust": false, "type": "int", "des": "阶段次序（默认排在第一个）"            },
+                        {"key": "sort", "isMust": false, "type": "int", "des": "阶段次序（默认排在第一个）"            },
                         {"key": "project_id", "isMust": false, "type": "string", "des": "哪个网络（默认个人自由网络）"           }
                     ]
                 },
@@ -414,7 +405,7 @@
                         {"key": "color", "isMust": false, "type": "int", "des": "任务颜色 默认0：无颜色；1：蓝色；2：紫色；3：红色；4：橙色；5：黄色"            },
                         {"key": "post_id", "isMust": false, "type": "string", "des": "动态ID（创建任务时，如果需要某个动态的附件添加到任务中必传）"            },
                         {"key": "folder_stage_id", "isMust": false, "type": "string", "des": "指定的隶属项目下的阶段ID"            },
-                        {"key": "is_star", "isMust": false, "type": "bool", "des": "是否给任务标星（默认：false：否，true：是）"            },
+                        {"key": "is_star", "isMust": false, "type": "bool", "des": "是否给任务标星（默认：0：否，1：是）"            },
                         {"key": "groups", "isMust": false, "type": "string", "des": "指定任务群组"            },
                         {"key": "project_id", "isMust": false, "type": "string", "des": "哪个网络（默认个人自由网络）"            }
                     ]
@@ -527,26 +518,6 @@
                         {"key": "project_id", "isMust": false, "type": "string", "des": "哪个网络（默认个人自由网络）"            }
                     ]
                 },
-				"duplicate_a_task": {
-                    "name": "复制任务",
-                    "docUrl": "",
-                    "url": "/task/duplicate_a_task",
-                    "requestMode": "post",
-                    "params": [
-                        {"key": "access_token", "isMust": true, "type": "string", "des": "当前登录用户访问令牌"            },
-                        {"key": "task_id", "isMust": true, "type": "string", "des": "任务id"            },
-						{"key": "task_name", "isMust": false, "type": "string", "des": "指定任务名字"            },
-						{"key": "project_id", "isMust": false, "type": "string", "des": "网络id，不支持all"            },
-                        {"key": "app_id", "isMust": false, "type": "string", "des": "如果是非第三方app，不填"            },
-                        {"key": "keep_task_description", "isMust": false, "type": "bool", "des": "是否复制任务描述"            },
-                        {"key": "keep_task_parent_folder", "isMust": false, "type": "bool", "des": "是否Keep新任务属于原来项目"            },
-						{"key": "charge_user_account_id", "isMust": false, "type": "string", "des": "指定项目负责人id"            },
-						{"key": "keep_task_members", "isMust": false, "type": "bool", "des": "是否keep项目成员"            },
-						{"key": "keep_task_tags", "isMust": false, "type": "bool", "des": "是否keep标签"            },
-						{"key": "keep_task_deadline", "isMust": false, "type": "bool", "des": "是否keep截止日期"            },
-						{"key": "keep_task_subTasks", "isMust": false, "type": "bool", "des": "是否keep子任务"            }
-                    ]
-                },
                 "duplicate_folder": {
                     "name": "复制项目",
                     "docUrl": "/doc/task/duplicate_folder.html",
@@ -568,30 +539,6 @@
                     "params": [
                         {"key": "access_token", "isMust": true, "type": "string", "des": "当前登录用户访问令牌"            },
                         {"key": "project_id", "isMust": false, "type": "string", "des": "哪个网络， 不支持all"            }
-                    ]
-                },
-				"get_available_folders": {
-                    "name": "修改任务的关联项目时, 根据任务Id以及关键词返回可关联的项目",
-                    "docUrl": "/doc/apiDocumentNotAvailable.html",
-                    "url": "/task/get_available_folders",
-                    "requestMode": "get",
-                    "params": [
-                        {"key": "access_token", "isMust": true, "type": "string", "des": "当前登录用户访问令牌"            },
-                        {"key": "project_id", "isMust": false, "type": "string", "des": "哪个网络，当搜索个人网络时，可以不填"            },
-						{"key": "keyword", "isMust": false, "type": "string", "des": "关键词"            },
-						{"key": "task_id", "isMust": true, "type": "string", "des": "任务id"            }
-                    ]
-                },
-				"get_available_tasks": {
-                    "name": "修改任务的母任务时, 根据任务Id返回可以关联的母任务",
-                    "docUrl": "/doc/apidocumentnotavailable.html",
-                    "url": "/task/get_available_tasks",
-                    "requestMode": "get",
-                    "params": [
-                        {"key": "access_token", "isMust": true, "type": "string", "des": "当前登录用户访问令牌"            },
-                        {"key": "project_id", "isMust": false, "type": "string", "des": "哪个网络，当搜索个人网络时，可以不填"            },
-						{"key": "keyword", "isMust": false, "type": "string", "des": "关键词"            },
-						{"key": "task_id", "isMust": true, "type": "string", "des": "任务id"            }
                     ]
                 },
                 "get_direct_children_tasks": {
@@ -658,7 +605,7 @@
                         {"key": "classifys", "isMust": false, "type": "string", "des": "不过滤 -1 现在要做 Now = 1，将要做 Will = 2, 以后再说 After = 3"            },
                         {"key": "sort", "isMust": false, "type": "int", "des": "任务排序 1：按首字母;2:按到期日期;3:按任务创建时间；4:按项目(查询结果结构有变化);5:任务负责人；7：按颜色；8:完成时间；9:进行中;10:最近更新" },
                         {"key": "keywords", "isMust": false, "type": "string", "des": "关键词模糊搜索"            },
-                        {"key": "is_star", "isMust": false, "type": "bool", "des": "过滤是否标星，true为过滤"            }
+						{"key": "is_star", "isMust": false, "type": "bool", "des": "过滤是否标星，true为过滤"            }
                     ]
                 },
                 "get_folders_by_fileID": {
@@ -767,7 +714,7 @@
                         {"key": "sort", "isMust": false, "type": "int", "des": "任务排序 1：按首字母;2:按到期日期;3:按任务创建时间；4:按项目(查询结果结构有变化);5:任务负责人；7：按颜色；8:完成时间；9:进行中;10:最近更新"            },
                         {"key": "complete_time", "isMust": false, "type": "string", "des": "查询的时间起始点，当sort为8时(查询时间到当前的) 格式(2015-06-10)"            },
                         {"key": "keywords", "isMust": false, "type": "string", "des": "关键词模糊搜索"            },
-                        {"key": "is_star", "isMust": false, "type": "bool", "des": "过滤是否标星，true为过滤"            }
+						{"key": "is_star", "isMust": false, "type": "bool", "des": "过滤是否标星，true为过滤"            }
                     ]
                 },
                 "get_task_Log": {
@@ -792,8 +739,7 @@
                         {"key": "task_id", "isMust": true, "type": "string", "des": "任务ID"            },
                         {"key": "page_index", "isMust": true, "type": "int", "des": "指定当前的页码, 从1开始"            },
                         {"key": "page_size", "isMust": true, "type": "int", "des": "指定要返回的记录条数"            },
-                        {"key": "project_id", "isMust": false, "type": "string", "des": "哪个网络（默认个人自由网络）"            },
-						{"key": "only_file", "isMust": false, "type": "bool", "des": "是否获取只包含文件的comment，不填则不进行过滤"            }
+                        {"key": "project_id", "isMust": false, "type": "string", "des": "哪个网络（默认个人自由网络）"            }
                     ]
                 },
                 "get_tasks_count": {
@@ -860,6 +806,8 @@
                         {"key": "project_id", "isMust": false, "type": "string", "des": "哪个网络, 不支持传入all"            },
                         {"key": "folder_id", "isMust": true, "type": "string", "des": "项目id"            },
                         {"key": "comment_id", "isMust": true, "type": "string", "des": "comment id"            }
+<<<<<<< HEAD
+=======
                     ]
                 },
                 "remove_a_member_from_a_task": {
@@ -872,6 +820,7 @@
                         {"key": "project_id", "isMust": false, "type": "string", "des": "哪个网络, 不支持传入all"            },
                         {"key": "task_id", "isMust": true, "type": "string", "des": "任务id"            },
                         {"key": "account_id", "isMust": true, "type": "string", "des": "member的id"            }
+>>>>>>> 4487b8b17498a9ae7be33858f173d3e621ff6832
                     ]
                 },
                 "search_folders": {
@@ -1008,8 +957,7 @@
                     "params": [
                         {"key": "access_token", "isMust": true, "type": "string", "des": "当前登录用户访问令牌"            },
                         {"key": "task_id", "isMust": true, "type": "string", "des": "任务ID"            },
-                        {"key": "joining_state", "isMust": true, "type": "int", "des": "0:None 无申请，1：NoneToMember 从非成员申请成为成员, 2: BeenRefusedToMember 被拒绝成为成员，拒绝填写2，同意填写0"            },
-						{"key": "account_id", "isMust": true, "type": "string", "des": "指定需要修改的的account_id"            }
+                        {"key": "joining_state", "isMust": true, "type": "int", "des": "0:None 无申请，1：NoneToMember 从非成员申请成为成员, 2: BeenRefusedToMember 被拒绝成为成员，拒绝填写2，同意填写0"            }
                     ]
                 },
                 "update_task_charger_property": {
@@ -1246,17 +1194,6 @@
                         { key: 'group_id', isMust: true, type: 'string', des: '群组编号' }
                     ]
                 },
-                get_mentioned_group: {
-                    name: '获取最常使用群组',
-                    docUrl: {type: '', url: '/v1group.html'},
-                    url: '/group/get_mentioned_group',
-                    requestMode: 'get',
-                    params: [
-                        { key: 'access_token', isMust: true, type: 'string', des: '当前登录用户访问令牌' },
-                        { key: 'pagesize', isMust: false, type: 'int', des: '显示数量' }
-                    ]
-                },
-
                 create_group: {
                     name: '创建一个新的群组',
                     docUrl: {type: '', url: '/v1group.html'},
@@ -1279,7 +1216,7 @@
                     params: [
                         { key: 'access_token', isMust: true, type: 'string', des: '当前登录用户访问令牌' },
                         { key: 'group_id', isMust: true, type: 'string', des: '群组id' },
-                        { key: 'group_name', isMust: false, type: 'string', des: '要创建的群组的名称' },
+                        { key: 'group_name', isMust: true, type: 'string', des: '要创建的群组的名称' },
                         { key: 'about', isMust: false, type: 'string', des: '群组的简介' },
                         { key: 'is_approval', isMust: false, type: 'bool', des: '用户加入是否审批 0 否 1 是' },
                         { key: 'avatar', isMust: false, type: 'string', des: '群组头像' }
@@ -1398,13 +1335,14 @@
                     ]
                 },
                 get_account_byphone: {
-                    name: '根据手机号或邮箱获取是否是明道用户',
+                    name: '根据手机号获取是否是明道用户',
                     docUrl: '',
                     url: '/user/get_account_byphone',
                     requestMode: 'get',
                     params: [
                         { key: 'access_token', isMust: true, type: 'string', des: '当前登录用户访问令牌' },
-                        { key: 'identifier', isMust: true, type: 'string', des: '邮箱或手机号' }
+                        { key: 'phone', isMust: false, type: 'string', des: '手机号码' },
+                        { key: 'email', isMust: false, type: 'string', des: '邮箱(跟手机号2选1进行查询)' }
                     ]
                 },
                 get_project_users: {
@@ -1538,32 +1476,6 @@
                         { key: 'pageindex', isMust: false, type: 'int', des: '指定当前的页码(不指定页码返回所有)' },
                         { key: 'pagesize', isMust: false, type: 'int', des: '指定要返回的记录条数(默认值20，最大值100)' }
                     ]
-                },
-                get_project_byprojectcode: {
-                    name: '根据企业号获取网络信息和设置',
-                    docUrl: {type: 'string', url: ''},
-                    url: '/company/get_project_byprojectcode',
-                    requestMode: 'get',
-                    params: [
-                        { key: 'access_token', isMust: true, type: 'string', des: '当前登录用户访问令牌' },
-                        { key: 'project_code', isMust: true, type: 'string', des: '企业号' }
-                    ]
-                },
-                join_project_byprojectcode: {
-                    name: '根据企业号加入网络',
-                    docUrl: {type: 'string', url: ''},
-                    url: '/company/join_project_byprojectcode',
-                    requestMode: 'post',
-                    params: [
-                        { key: 'access_token', isMust: true, type: 'string', des: '当前登录用户访问令牌' },
-                        { key: 'project_code', isMust: true, type: 'string', des: '企业号' },
-                        { key: 'verify_code', isMust: true, type: 'string', des: '验证码' },
-                        { key: 'company_name', isMust: false, type: 'string', des: '公司名' },
-                        { key: 'work_site', isMust: false, type: 'string', des: '工作地' },
-                        { key: 'department', isMust: false, type: 'string', des: '部门(从公司部门列表中选择)' },
-                        { key: 'job', isMust: false, type: 'string', des: '职位' },
-                        { key: 'job_number', isMust: false, type: 'string', des: '工号' }
-                    ]
                 }
             }
         },
@@ -1581,8 +1493,8 @@
                         { key: 'account_ids', isMust: false, type: 'string', des: '用户编号 查看其他同事的日程，多个以逗号相隔' },
                         { key: 'is_work_calendar', isMust: false, type: 'bool', des: '是否查看工作日程' },
                         { key: 'is_task_calendar', isMust: false, type: 'bool', des: '是否查看任务日程' },
-                        { key: 'is_private_event', isMust: false, type: 'bool', des: '是否查看私密日程' },
-                        { key: 'category_ids', isMust: false, type: 'string', des: '用户日程分类，多个以逗号相隔' }
+                        { key: 'is_private_calendar', isMust: false, type: 'bool', des: '是否查看私密日程' },
+                        { key: 'categorys', isMust: false, type: 'string', des: '用户日程分类，多个以逗号相隔' }
                     ]
                 },
                 get_calendar_day_week_month: {
@@ -1598,8 +1510,8 @@
                         { key: 'year', isMust: false, type: 'string', des: '日期年数字。默认值为当前年。如：2013。' },
                         { key: 'is_work_calendar', isMust: false, type: 'bool', des: '是否查看工作日程' },
                         { key: 'is_task_calendar', isMust: false, type: 'bool', des: '是否查看任务日程' },
-                        { key: 'is_private_event', isMust: false, type: 'bool', des: '是否查看私密日程' },
-                        { key: 'category_ids', isMust: false, type: 'string', des: '用户日程分类，多个以逗号相隔' }
+                        { key: 'is_private_calendar', isMust: false, type: 'bool', des: '是否查看私密日程' },
+                        { key: 'categorys', isMust: false, type: 'string', des: '用户日程分类，多个以逗号相隔' }
                     ]
                 },
                 get_calendar_detail: {
@@ -1639,37 +1551,36 @@
                     requestMode: 'get',
                     params: [
                         { key: 'access_token', isMust: true, type: 'string', des: '当前登录用户访问令牌' },
-                        { key: 'start_time', isMust: false, type: 'string', des: '日程开始时间' },
-                        { key: 'end_time', isMust: false, type: 'string', des: '日程结束时间' }
+                        { key: 'calendar_start_time', isMust: false, type: 'string', des: '日程开始时间' },
+                        { key: 'calendar_end_time', isMust: false, type: 'string', des: '日程结束时间' }
                     ]
                 },
-                create_event: {
+                create_calendar: {
                     name: '创建一个新的日程',
-                    docUrl: '',
-                    url: '/calendar/create_event',
+                    docUrl: {type: '', url: '/v1calendar_detail.html'},
+                    url: '/calendar/create_calendar',
                     requestMode: 'post',
                     params: [
                         { key: 'access_token', isMust: true, type: 'string', des: '当前登录用户访问令牌' },
-						{ key: 'attachments', isMust: false, type: 'string', des: '附件' },
-                        { key: 'name', isMust: true, type: 'string', des: '日程名字' },
-                        { key: 'start_time', isMust: true, type: 'DateTime', des: '日程开始时间，精确到分。如：2013-05-05 10:25' },
-                        { key: 'end_time', isMust: true, type: 'string', des: '日程结束时间，精确到分。如：2013-05-05 10:25' },
-                        { key: 'is_all_day_event', isMust: false, type: 'bool', des: '是否为全天日程。false表示非全天，true表示全天。' },
-                        { key: 'location', isMust: false, type: 'string', des: '日程地点' },
-                        { key: 'event_description', isMust: false, type: 'string', des: '日程描述' },
-                        { key: 'is_private_event', isMust: false, type: 'bool', des: '是否私人日程' },
+                        { key: 'calendar_name', isMust: true, type: 'string', des: '日程主题' },
+                        { key: 'calendar_start_time', isMust: true, type: 'string', des: '日程开始时间，精确到分。如：2013-05-05 10:25' },
+                        { key: 'calendar_end_time', isMust: true, type: 'string', des: '日程结束时间，精确到分。如：2013-05-05 10:25' },
+                        { key: 'is_all_day', isMust: false, type: 'bool', des: '是否全天日程。0表示非全天，1表示全天 默认值0' },
+                        { key: 'calendar_address', isMust: false, type: 'string', des: '日程地点' },
+                        { key: 'calendar_description', isMust: false, type: 'string', des: '日程描述' },
+                        { key: 'calendar_private', isMust: false, type: 'bool', des: '是否私人日程。1表示私人，0表示非私人 默认值0' },
                         { key: 'group_ids', isMust: false, type: 'string', des: '私有日程分享群组 分享多群组用,隔开' },
                         { key: 'calendar_member_ids', isMust: false, type: 'string', des: '指定的日程成员 (多个成员用逗号隔开)。注：明道用户' },
-                        { key: 'member_emails', isMust: false, type: 'string', des: '指定的日程成员邮件 (多个成员用逗号隔开)。注：非明道用户' },
+                        { key: 'calendar_member_emails', isMust: false, type: 'string', des: '指定的日程成员邮件 (多个成员用逗号隔开)。注：非明道用户' },
                         { key: 'is_recur', isMust: false, type: 'bool', des: '是否为重复日程. 1:是 0:不是 默认值0' },
                         { key: 'repeat_frequency', isMust: false, type: 'int', des: '当is_recur为1 即为重复日程时该值必填，频率 1 表示Daily; 2 表示Weekly; 3 表示Monthly; 4 表示Yearly' },
                         { key: 'repeat_interval', isMust: false, type: 'int', des: '当is_recur为1 即为重复日程时该值选填，重复间隔 默认值 1。' },
                         { key: 'repeat_week_day', isMust: false, type: 'string', des: '当 frequency=2 该值必填，周几重复 1:周一 2:周二 3:周三 4:周四 5:周五 6 周六 7:周日。多选用,隔开' },
-                        { key: 'repeat_recur_count', isMust: false, type: 'int', des: '当 is_recur为1即为重复日程时该值选填，重复次数  与UntilDate只能存在一个' },
-                        { key: 'repeat_end_date', isMust: false, type: 'string', des: '当 is_recur为1 该值选填，结束日期 如果recur_count为0且repeat_end_date为null,则为永久重复' },
+                        { key: 'repeat_recur_count', isMust: false, type: 'int', des: '当 is_recur为1即为重复日程时该值选填，周几重复 1:周一 2:周二 3:周三 4:周四 5:周五 6 周六 7:周日。多选用|隔开' },
+                        { key: 'until_date', isMust: false, type: 'string', des: '当 is_recur为1 该值选填，结束日期 如果recur_count为0且until_date为null,则为永久重复' },
                         { key: 'calendar_remind_type', isMust: false, type: 'int', des: '提醒类型' },
-                        { key: 'time_to_remind', isMust: true, type: 'int', des: '提醒时间' },
-                        { key: 'category_id', isMust: false, type: 'string', des: '日程分类id' }
+                        { key: 'calendar_remind_time', isMust: false, type: 'int', des: '提醒时间' },
+                        { key: 'calendar_category_id', isMust: false, type: 'string', des: '日程分类id' }
                     ]
                 },
                 edit_calendar: {
@@ -1680,25 +1591,25 @@
                     params: [
                         { key: 'access_token', isMust: true, type: 'string', des: '当前登录用户访问令牌' },
                         { key: 'calendar_id', isMust: true, type: 'string', des: '日程编号' },
-                        { key: 'name', isMust: false, type: 'string', des: '日程名字' },
-                        { key: 'start_time', isMust: true, type: 'datetime', des: '日程开始时间，精确到分。如：2013-05-05 10:25' },
-                        { key: 'end_time', isMust: true, type: 'datetime', des: '日程结束时间，精确到分。如：2013-05-05 10:25' },
-                        { key: 'is_all_day_event', isMust: false, type: 'bool', des: '是否全天日程, 默认值false' },
-                        { key: 'address', isMust: false, type: 'string', des: '日程地点' },
-                        { key: 'event_description', isMust: false, type: 'string', des: '日程描述' },
-                        { key: 'is_private_event', isMust: false, type: 'bool', des: '是否私人日程。1表示私人，0表示非私人 默认值0' },
+                        { key: 'calendar_name', isMust: false, type: 'string', des: '日程主题' },
+                        { key: 'calendar_start_time', isMust: false, type: 'string', des: '日程开始时间，精确到分。如：2013-05-05 10:25' },
+                        { key: 'calendar_end_time', isMust: false, type: 'string', des: '日程结束时间，精确到分。如：2013-05-05 10:25' },
+                        { key: 'is_all_day', isMust: false, type: 'bool', des: '是否全天日程。0表示非全天，1表示全天 默认值0' },
+                        { key: 'calendar_address', isMust: false, type: 'string', des: '日程地点' },
+                        { key: 'calendar_description', isMust: false, type: 'string', des: '日程描述' },
+                        { key: 'calendar_private', isMust: false, type: 'bool', des: '是否私人日程。1表示私人，0表示非私人 默认值0' },
                         { key: 'group_ids', isMust: false, type: 'string', des: '私有日程分享群组 分享多群组用,隔开' },
-                        { key: 'member_ids', isMust: false, type: 'string', des: '指定的日程成员 (多个成员用逗号隔开)。注：明道用户' },
-                        { key: 'member_emails', isMust: false, type: 'string', des: '指定的日程成员邮件 (多个成员用逗号隔开)。注：非明道用户' },
+                        { key: 'calendar_member_ids', isMust: false, type: 'string', des: '指定的日程成员 (多个成员用逗号隔开)。注：明道用户' },
+                        { key: 'calendar_member_emails', isMust: false, type: 'string', des: '指定的日程成员邮件 (多个成员用逗号隔开)。注：非明道用户' },
                         { key: 'is_recur', isMust: false, type: 'bool', des: '是否为重复日程. 1:是 0:不是 默认值0' },
                         { key: 'repeat_frequency', isMust: false, type: 'int', des: '当is_recur为1 即为重复日程时该值必填，频率 1 表示Daily; 2 表示Weekly; 3 表示Monthly; 4 表示Yearly' },
                         { key: 'repeat_interval', isMust: false, type: 'int', des: '当is_recur为1 即为重复日程时该值选填，重复间隔 默认值 1。' },
                         { key: 'repeat_week_day', isMust: false, type: 'string', des: '当 frequency=2 该值必填，周几重复 1:周一 2:周二 3:周三 4:周四 5:周五 6 周六 7:周日。多选用,隔开' },
                         { key: 'repeat_recur_count', isMust: false, type: 'int', des: '当 is_recur为1即为重复日程时该值选填，周几重复 1:周一 2:周二 3:周三 4:周四 5:周五 6 周六 7:周日。多选用|隔开' },
-                        { key: 'repeat_end_date', isMust: false, type: 'string', des: '当 is_recur为1 该值选填，结束日期 如果recur_count为0且repeat_end_date为null,则为永久重复' },
+                        { key: 'until_date', isMust: false, type: 'string', des: '当 is_recur为1 该值选填，结束日期 如果recur_count为0且until_date为null,则为永久重复' },
                         { key: 'calendar_remind_type', isMust: false, type: 'int', des: '提醒类型' },
-                        { key: 'time_to_remind', isMust: true, type: 'int', des: '提醒时间' },
-                        { key: 'category_id', isMust: false, type: 'int', des: '日程分类id' }
+                        { key: 'calendar_remind_time', isMust: false, type: 'int', des: '提醒时间' },
+                        { key: 'calendar_category_id', isMust: false, type: 'int', des: '日程分类id' }
                     ]
                 },
                 join_or_deny_calendar: {
@@ -1766,7 +1677,7 @@
                     params: [
                         { key: 'access_token', isMust: true, type: 'string', des: '当前登录用户访问令牌' },
                         { key: 'calendar_id', isMust: true, type: 'string', des: '日程id' },
-                        { key: 'time_to_remind', isMust: true, type: 'int', des: '提醒时间' },
+                        { key: 'calendar_remind_time', isMust: false, type: 'int', des: '提醒时间' },
                         { key: 'calendar_remind_type', isMust: false, type: 'int', des: '提醒类型' }
                     ]
                 }
@@ -1838,36 +1749,15 @@
                     ]
                 },
                 update_passport_pwd: {
-                    name: '修改当前登录用户密码(如果只传旧密码只验证)',
+                    name: '修改当前登录用户密码',
                     docUrl: '',
                     url: '/passport/update_passport_pwd',
                     requestMode: 'post',
                     params: [
                         { key: 'access_token', isMust: true, type: 'string', des: '当前登录用户访问令牌' },
                         { key: 'old_pwd', isMust: true, type: 'string', des: '旧密码' },
-                        { key: 'new_pwd', isMust: false, type: 'string', des: '新密码' },
-                        { key: 'confirm_pwd', isMust: false, type: 'string', des: '确认新密码' }
-                    ]
-                },
-                send_verify_code: {
-                    name: '发送修改当前登录用户绑定邮箱或者手机号时的验证码',
-                    docUrl: '',
-                    url: '/passport/send_verify_code',
-                    requestMode: 'post',
-                    params: [
-                        { key: 'access_token', isMust: true, type: 'string', des: '当前登录用户访问令牌' },
-                        { key: 'account', isMust: true, type: 'string', des: '要修改为的手机号或者邮箱' }
-                    ]
-                },
-                update_passport_account: {
-                    name: '修改当前登录用户绑定邮箱或者手机',
-                    docUrl: '',
-                    url: '/passport/send_verify_code',
-                    requestMode: 'post',
-                    params: [
-                        { key: 'access_token', isMust: true, type: 'string', des: '当前登录用户访问令牌' },
-                        { key: 'account', isMust: true, type: 'string', des: '要修改为的手机号或者邮箱' },
-                        { key: 'code', isMust: true, type: 'string', des: '验证码' }
+                        { key: 'new_pwd', isMust: true, type: 'string', des: '新密码' },
+                        { key: 'confirm_pwd', isMust: true, type: 'string', des: '确认新密码' }
                     ]
                 }
             }
@@ -1898,10 +1788,10 @@
             }
         },
         webchat: {
-            v1: {
+            V1: {
                 get_chat_list: {
                     name: '获取个人和群聊最近联系人',
-                    docUrl: '/doc/webchat/chat_list.html',
+                    docUrl: {type: 'string', url: ''},
                     url: '/webchat/get_chat_list',
                     requestMode: 'get',
                     params: [
@@ -1910,7 +1800,7 @@
                 },
                 get_chat_un_read_count: {
                     name: '获取未读计数',
-                    docUrl: '/doc/webchat/un_read.html',
+                    docUrl: {type: 'string', url: ''},
                     url: '/webchat/get_chat_un_read_count',
                     requestMode: 'get',
                     params: [
@@ -1919,19 +1809,19 @@
                 },
                 get_user_or_group_message: {
                     name: '获取与某个用户或某个群组的消息列表',
-                    docUrl: '/doc/webchat/message_list.html',
+                    docUrl: {type: 'string', url: ''},
                     url: '/webchat/get_user_or_group_message',
                     requestMode: 'get',
                     params: [
                         { key: 'access_token', isMust: true, type: 'string', des: '当前登录用户访问令牌' },
-                        { key: 'type', isMust: true, type: 'int', des: '1用户 2群组' },
                         { key: 'account_id', isMust: false, type: 'string', des: '用户编号' },
                         { key: 'group_id', isMust: false, type: 'string', des: '群组编号' },
-                        { key: 'since_time', isMust: false, type: 'string', des: '起始时间如 2016-06-03 13:12:58.342' },
+                        { key: 'since_time', isMust: false, type: 'string', des: '' },
                         { key: 'direction', isMust: false, type: 'bool', des: '向前 true/向后 false' },
                         { key: 'keyword', isMust: false, type: 'string', des: '搜索关键字' },
                         { key: 'pageindex', isMust: false, type: 'int', des: '当前页码(以1开始，1代表第一页)' },
-                        { key: 'pagesize', isMust: false, type: 'int', des: '指定要返回的记录条数' }
+                        { key: 'pagesize', isMust: false, type: 'int', des: '指定要返回的记录条数' },
+                        { key: 'choose_type', isMust: true, type: 'bool', des: '用户true/群组false 消息列表' }
                     ]
                 },
                 get_user_or_group_message_count: {
@@ -1941,9 +1831,9 @@
                     requestMode: 'get',
                     params: [
                         { key: 'access_token', isMust: true, type: 'string', des: '当前登录用户访问令牌' },
-                        { key: 'type', isMust: true, type: 'int', des: '1用户 2群组' },
                         { key: 'account_id', isMust: false, type: 'string', des: '用户编号' },
                         { key: 'group_id', isMust: false, type: 'string', des: '群组编号' },
+                        { key: 'choose_type', isMust: true, type: 'bool', des: '用户true/群组false 消息列表' }
                     ]
                 },
                 get_user_or_group_message_by_id: {
@@ -1953,11 +1843,11 @@
                     requestMode: 'get',
                     params: [
                         { key: 'access_token', isMust: true, type: 'string', des: '当前登录用户访问令牌' },
-                        { key: 'type', isMust: true, type: 'int', des: '1用户 2群组' },
                         { key: 'account_id', isMust: false, type: 'string', des: '用户编号' },
                         { key: 'group_id', isMust: false, type: 'string', des: '群组编号' },
                         { key: 'message_id', isMust: true, type: 'string', des: '消息id' },
-                        { key: 'size', isMust: false, type: 'int', des: '群组编号' }
+                        { key: 'size', isMust: false, type: 'int', des: '群组编号' },
+                        { key: 'choose_type', isMust: true, type: 'bool', des: '用户true/群组false 消息列表' }
                     ]
                 },
                 delete_chat_history_item: {
@@ -2036,39 +1926,6 @@
                         { key: 'token', isMust: true, type: 'string', des: '链接的token值' }
                     ]
                 },
-                invite_user_join_source: {
-                    name: '邀请成员加入各模块',
-                    docUrl: '/doc/invitation/invite_link.html',
-                    url: '/invitation/invite_user_join_source',
-                    requestMode: 'post',
-                    params: [
-                        { key: 'access_token', isMust: true, type: 'string', des: '当前登录用户访问令牌' },
-                        { key: 'source_id', isMust: true, type: 'string', des: '来源id(如账号id,网络id,任务id,日程id)' },
-                        { key: 'from_type', isMust: true, type: 'int', des: ' 邀请来源 0邀请好友1邀请群组2邀请任务3邀请知识4邀请网络5邀请日程6邀请项目' },
-                        { key: 'account_ids', isMust: false, type: 'string', des: '邀请 现有明道用户(格式[id,id]序列化)' },
-                        { key: 'accounts', isMust: false, type: 'string', des: '邀请 非明道用户 手机/邮箱(格式["phone","email"]序列化)' }
-                    ]
-                },
-                get_qrcode_source: {
-                    name: '获取二维码链接来源',
-                    docUrl: '',
-                    url: '/invitation/get_qrcode_source',
-                    requestMode: 'post',
-                    params: [
-                        { key: 'access_token', isMust: true, type: 'string', des: '当前登录用户访问令牌' },
-                        { key: 'short_url', isMust: true, type: 'string', des: '二维码扫到的链接地址' }
-                    ]
-                },
-                agree_link_invite: {
-                    name: '同意加入链接邀请',
-                    docUrl: '',
-                    url: '/invitation/agree_link_invite',
-                    requestMode: 'post',
-                    params: [
-                        { key: 'access_token', isMust: true, type: 'string', des: '当前登录用户访问令牌' },
-                        { key: 'token', isMust: true, type: 'string', des: '获取二维码链接来源得到的链接token' }
-                    ]
-                },
                 invite_user_join_group: {
                     name: '邀请群组成员',
                     docUrl: '/doc/invitation/invitation.html',
@@ -2079,6 +1936,8 @@
                         { key: 'group_id', isMust: true, type: 'string', des: '群组编号' },
                         { key: 'account_ids', isMust: false, type: 'string', des: '邀请加入群组的现有用户ID' },
                         { key: 'accounts', isMust: false, type: 'string', des: '邀请非明道加入群组 手机/邮箱' }
+<<<<<<< HEAD
+=======
                     ]
                 },
                 invite_user_join_friend: {
@@ -2089,7 +1948,7 @@
                     params: [
                         { key: 'access_token', isMust: true, type: 'string', des: '当前登录用户访问令牌' },
                         { key: 'account_ids', isMust: false, type: 'string', des: '邀请加为好友的现有用户(格式[id,id]序列化)' },
-                        { key: 'accounts', isMust: false, type: 'string', des: '邀请非明道加入群组 手机/邮箱(格式["phone","email"]序列化)' }
+                        { key: 'accounts', isMust: false, type: 'string', des: '邀请非明道加入群组 手机/邮箱(格式[phone,email]序列化)' }
                     ]
                 },
                 invite_user_join_project: {
@@ -2101,7 +1960,7 @@
                         { key: 'access_token', isMust: true, type: 'string', des: '当前登录用户访问令牌' },
                         { key: 'project_id', isMust: true, type: 'string', des: '网络ID' },
                         { key: 'account_ids', isMust: false, type: 'string', des: '邀请加为好友的现有用户(格式[id,id]序列化)' },
-                        { key: 'accounts', isMust: false, type: 'string', des: '邀请非明道加入群组 手机/邮箱(格式["phone","email"]序列化)' }
+                        { key: 'accounts', isMust: false, type: 'string', des: '邀请非明道加入群组 手机/邮箱(格式[phone,email]序列化)' }
                     ]
                 },
                 get_invite_user_join_project_log: {
@@ -2149,13 +2008,30 @@
                         { key: 'code', isMust: true, type: 'string', des: '验证码' },
                         { key: 'full_name', isMust: false, type: 'string', des: '用户名' },
                         { key: 'password', isMust: false, type: 'string', des: '账号密码(如果没有添密码只验证验证码的正确不注册)' }
+>>>>>>> 4487b8b17498a9ae7be33858f173d3e621ff6832
                     ]
                 }
             }
         },
         vote: {
             v1: {
-
+                create_vote: {
+                    name: '创建投票',
+                    docUrl: '',
+                    url: '/vote/create_vote',
+                    requestMode: 'post',
+                    params: [
+                        { key: 'access_token', isMust: true, type: 'string', des: '当前登录用户访问令牌' },
+                        { key: 'post_message', isMust: true, type: 'string', des: '动态内容' },
+                        { key: 'vote_options', isMust: true, type: 'int', des: '投票选项，如：a[Option]b[Option]c[Option] 代表有选项1:a 2:b;3:c 以此类推' },
+                        { key: 'iImg_options', isMust: true, type: 'int', des: '要上传的图片对应的投票选项, 如 1,2 代表上传的两张图片是对应投票选项1和2' },
+                        { key: 'last_time', isMust: true, type: 'int', des: '截止时间' },
+                        { key: 'available_number', isMust: true, type: 'int', des: '允许选择多少选项 默认1项' },
+                        { key: 'vote_anonymity', isMust: true, type: 'int', des: '要上传的图片对应的投票选项, 如 1,2 代表上传的两张图片是对应投票选项1和2' },
+                        { key: 'vote_visble', isMust: true, type: 'int', des: '是否允许投票人员查看投票结果 0：不允许；1：允许 默认1允许' },
+                        { key: 'group_id', isMust: true, type: 'int', des: '动态分享群组编号(多个群组用逗号隔开)' }
+                    ]
+                },
                 update_vote_deadline: {
                     name: '修改投票时间',
                     docUrl: '',
@@ -2180,34 +2056,10 @@
                         { key: 'group_id', isMust: true, type: 'string', des: '群组编号' },
                         { key: 'account_ids', isMust: false, type: 'string', des: '邀请加入群组的现有用户ID' },
                         { key: 'accounts', isMust: false, type: 'string', des: '[{key:value}]邀请手机/邮箱的人加入群组key:手机or邮箱value:邀请的备注没有传空' }
-                    ]
-                }
-            }
-        },
-        qiniu: {
-            v1: {
-                get_qiniu_token: {
-                    name: '获取7牛上传Token',
-                    docUrl: '',
-                    url: '/qiniu/get_qiniu_token',
-                    requestMode: 'get',
-                    params: [
-                        { key: 'access_token', isMust: true, type: 'string', des: '当前登录用户访问令牌' },
-                        { key: 'type', isMust: true, type: 'int', des: '1图片 2文档 3BUG反馈' }
-                    ]
-                }
-            }
-        },
-        application: {
-            v1: {
-                get_app_admins: {
-                    name: '获取应用管理员(只针对企业应用)',
-                    docUrl: '',
-                    url: '/application/get_app_admins',
-                    requestMode: 'get',
-                    params: [
-                        { key: 'access_token', isMust: true, type: 'string', des: '当前登录用户访问令牌' },
-                        { key: 'app_id', isMust: true, type: 'string', des: '应用ID' }
+<<<<<<< HEAD
+
+=======
+>>>>>>> 4487b8b17498a9ae7be33858f173d3e621ff6832
                     ]
                 }
             }
@@ -2312,289 +2164,10 @@
                         url: '/private/group/get_all_project_groups',
                         requestMode: 'get',
                         params: [
-                            { key: 'account_id', isMust: true, type: 'string', des: '账号ID' },
-                            { key: 'type', isMust: false, type: 'int', des: '0我创建的群组 1我加入的群组 2我是管理员的群组 默认-1所有' }
-                        ]
-                    }
-                },
-                company: {
-                    delete_project_cache: {
-                        name: '根据订单消费类型清除网络缓存',
-                        docUrl: {type: '', url: ''},
-                        url: '/private/company/delete_project_cache',
-                        requestMode: 'post',
-                        params: [
-                            { key: 'project_id', isMust: true, type: 'string', des: '网络ID' },
-                            { key: 'record_type', isMust: true, type: 'int', des: '订单消费类型（1短信2充值3升级高级模式4购买用户包5应用手动账单6应用自动账单7应用归还扣款8天数包'}
-                        ]
-                    }
-                },
-                billing: {
-                    add_transaction_record: {
-                        name: '添加订单消费记录',
-                        docUrl: {type: '', url: ''},
-                        url: '/private/billing/add_transaction_record',
-                        requestMode: 'post',
-                        params: [
-                            { key: 'project_id', isMust: true, type: 'string', des: '网络ID'},
-                            { key: 'order_id', isMust: true, type: 'string', des: '订单ID' },
-                            { key: 'record_type', isMust: true, type: 'string', des: '订单消费类型（1短信2充值3升级高级模式4购买用户包5应用手动账单6应用自动账单7应用归还扣款8天数包'},
-                            { key: 'record_status', isMust: true, type: 'string', des: '订单状态（1等待支付2交易成功3交易失败4取消订单5订单过期6质疑中）'},
-                            { key: 'create_account_id', isMust: true, type: 'string', des: '创建人ID'},
-                            { key: 'pay_account_id', isMust: false, type: 'string', des: '付款人ID'},
-                            { key: 'app_id', isMust: true, type: 'string', des: '应用号'},
-                            { key: 'price', isMust: true, type: 'string', des: '订单价格'},
-                            { key: 'remark', isMust: true, type: 'string', des: '订单描述'}
-                        ]
-                    },
-                    update_transaction_record: {
-                        name: '修改订单消费记录',
-                        docUrl: {type: '', url: ''},
-                        url: '/private/billing/update_transaction_record',
-                        requestMode: 'post',
-                        params: [
-                            { key: 'project_id', isMust: true, type: 'string', des: '网络ID'},
-                            { key: 'order_id', isMust: true, type: 'string', des: '订单ID' },
-                            { key: 'record_status', isMust: true, type: 'string', des: '订单状态（1等待支付2交易成功3交易失败4取消订单5订单过期6质疑中）'},
-                            { key: 'pay_account_id', isMust: true, type: 'string', des: '付款人ID'},
-                            { key: 'app_id', isMust: false, type: 'string', des: '应用号'},
-                            { key: 'price', isMust: false, type: 'string', des: '订单价格'},
-                            { key: 'remark', isMust: true, type: 'string', des: '修改描述'}
+                            { key: 'account_id', isMust: true, type: 'string', des: '账号ID' }
                         ]
                     }
                 }
-            }
-        },
-        kc: {
-            v1: {
-                add_root: {
-                    name: '添加根目录(共享文件夹)',
-                    docUrl: '',
-                    url: '/kc/add_root',
-                    requestMode: 'post',
-                    params: [
-                        { key: 'access_token', isMust: true, type: 'string', des: '当前登录用户访问令牌' },
-                        { key: 'name', isMust: true, type: 'string', des: '文件夹名' },
-                        { key: 'members', isMust: false, type: 'string', des: '共享成员 多个,隔开' },
-                        { key: 'project_id', isMust: false, type: 'string', des: '文件夹归属于哪个网络 为空代表个人' }
-                    ]
-                },
-                add_node: {
-                    name: '添加节点',
-                    docUrl: '',
-                    url: '/kc/add_node',
-                    requestMode: 'post',
-                    params: [
-                        { key: 'access_token', isMust: true, type: 'string', des: '当前登录用户访问令牌' },
-                        { key: 'name', isMust: true, type: 'string', des: '节点名' },
-                        { key: 'file_path', isMust: false, type: 'string', des: '文件路径' },
-                        { key: 'size', isMust: false, type: 'string', des: '文件大小' },
-                        { key: 'node_type', isMust: false, type: 'Enum(具体看KC任务下的枚举说明)', des: '节点类型' },
-                        { key: 'parent_id', isMust: false, type: 'string', des: '父节点id' },
-                        { key: 'root_id', isMust: false, type: 'string', des: '根节点id' }
-                    ]
-                },
-                add_star_node: {
-                    name: '节点标星',
-                    docUrl: '',
-                    url: '/kc/add_star_node',
-                    requestMode: 'post',
-                    params: [
-                        { key: 'access_token', isMust: true, type: 'string', des: '当前登录用户访问令牌' },
-                        { key: 'node_id', isMust: true, type: 'string', des: '节点id' },
-                        { key: 'is_star', isMust: true, type: 'bool', des: '是否标星 true 标星 false 取消' }
-                    ]
-                },
-                add_star_root: {
-                    name: '根节点标星',
-                    docUrl: '',
-                    url: '/kc/add_star_root',
-                    requestMode: 'post',
-                    params: [
-                        { key: 'access_token', isMust: true, type: 'string', des: '当前登录用户访问令牌' },
-                        { key: 'node_id', isMust: true, type: 'string', des: '节点id' },
-                        { key: 'is_star', isMust: true, type: 'bool', des: '是否标星 true 标星 false 取消' }
-                    ]
-                },
-                delete_node: {
-                    name: '删除节点',
-                    docUrl: '',
-                    url: '/kc/delete_node',
-                    requestMode: 'post',
-                    params: [
-                        { key: 'access_token', isMust: true, type: 'string', des: '当前登录用户访问令牌' },
-                        { key: 'node_id', isMust: true, type: 'string', des: '节点id' }
-                    ]
-                },
-                delete_root: {
-                    name: '删除根节点',
-                    docUrl: '',
-                    url: '/kc/delete_root',
-                    requestMode: 'post',
-                    params: [
-                        { key: 'access_token', isMust: true, type: 'string', des: '当前登录用户访问令牌' },
-                        { key: 'node_id', isMust: true, type: 'string', des: '节点id' }
-                    ]
-                },
-                move_node: {
-                    name: '移动节点',
-                    docUrl: '',
-                    url: '/kc/move_node',
-                    requestMode: 'post',
-                    params: [
-                        { key: 'access_token', isMust: true, type: 'string', des: '当前登录用户访问令牌' },
-                        { key: 'node_id', isMust: true, type: 'string', des: '节点id' },
-                        { key: 'moveto_id', isMust: true, type: 'string', des: '移到哪一个节点的id' },
-                        { key: 'location_type', isMust: true, type: 'Enum(具体看KC任务下的枚举说明)', des: '节点id' }
-                    ]
-                },
-                remove_root_member: {
-                    name: '移除节点成员',
-                    docUrl: '',
-                    url: '/kc/remove_root_member',
-                    requestMode: 'post',
-                    params: [
-                        { key: 'access_token', isMust: true, type: 'string', des: '当前登录用户访问令牌' },
-                        { key: 'node_id', isMust: true, type: 'string', des: '节点id' },
-                        { key: 'member_id', isMust: true, type: 'string', des: '成员id' }
-                    ]
-                },
-                update_node_name: {
-                    name: '更新节点名字',
-                    docUrl: '',
-                    url: '/kc/update_node_name',
-                    requestMode: 'post',
-                    params: [
-                        { key: 'access_token', isMust: true, type: 'string', des: '当前登录用户访问令牌' },
-                        { key: 'node_id', isMust: true, type: 'string', des: '节点id' },
-                        { key: 'name', isMust: true, type: 'string', des: '节点名字' }
-                    ]
-                },
-                update_root_name: {
-                    name: '更新根节点名字',
-                    docUrl: '',
-                    url: '/kc/update_root_name',
-                    requestMode: 'post',
-                    params: [
-                        { key: 'access_token', isMust: true, type: 'string', des: '当前登录用户访问令牌' },
-                        { key: 'node_id', isMust: true, type: 'string', des: '节点id' },
-                        { key: 'name', isMust: true, type: 'string', des: '根节点名字' }
-                    ]
-                },
-                update_node_share: {
-                    name: '更新节点分享',
-                    docUrl: '',
-                    url: '/kc/update_node_share',
-                    requestMode: 'post',
-                    params: [
-                        { key: 'access_token', isMust: true, type: 'string', des: '当前登录用户访问令牌' },
-                        { key: 'node_id', isMust: true, type: 'string', des: '节点id' },
-                        { key: 'is_downloadable', isMust: true, type: 'bool 没修改可不传', des: '是否允许下载' },
-                        { key: 'is_editable', isMust: true, type: 'bool 没修改可不传', des: '是否允许编辑' },
-                        { key: 'visible_type', isMust: true, type: 'Enum(具体看KC任务下的枚举说明)', des: '分享类型' }
-                    ]
-                },
-                get_account_usage: {
-                    name: '获取用户流量使用情况',
-                    docUrl: '',
-                    url: '/kc/get_account_usage',
-                    requestMode: 'get',
-                    params: [
-                        { key: 'access_token', isMust: true, type: 'string', des: '当前登录用户访问令牌' }
-                    ]
-                },
-                get_all_nodes: {
-                    name: '获取可见根节点下所有节点列表',
-                    docUrl: '',
-                    url: '/kc/get_all_nodes',
-                    requestMode: 'get',
-                    params: [
-                        { key: 'access_token', isMust: true, type: 'string', des: '当前登录用户访问令牌' },
-                        { key: 'position', isMust: true, type: 'string', des: '用户可见的 position 开头的所有节点' }
-                    ]
-                },
-                get_my_nodes: {
-                    name: '获取我的节点',
-                    docUrl: '',
-                    url: '/kc/get_my_nodes',
-                    requestMode: 'get',
-                    params: [
-                        { key: 'access_token', isMust: true, type: 'string', des: '当前登录用户访问令牌' },
-                        { key: 'parent_id', isMust: false, type: 'string', des: '母节点id' },
-                        { key: 'keywords', isMust: false, type: 'string', des: '关键字' },
-                        { key: 'pageindex', isMust: false, type: 'int', des: '页码' },
-                        { key: 'pagesize', isMust: false, type: 'int', des: '数量' }
-                    ]
-                },
-                get_node_detail: {
-                    name: '获取节点详情',
-                    docUrl: '',
-                    url: '/kc/get_node_detail',
-                    requestMode: 'get',
-                    params: [
-                        { key: 'access_token', isMust: true, type: 'string', des: '当前登录用户访问令牌' },
-                        { key: 'id', isMust: true, type: 'string', des: '节点id' }
-                    ]
-                },
-                get_root_detail: {
-                    name: '获取根节点详情',
-                    docUrl: '',
-                    url: '/kc/get_root_detail',
-                    requestMode: 'get',
-                    params: [
-                        { key: 'access_token', isMust: true, type: 'string', des: '当前登录用户访问令牌' },
-                        { key: 'id', isMust: true, type: 'string', des: '节点id' }
-                    ]
-                },
-                get_nodes: {
-                    name: '获取根节点下节点列表',
-                    docUrl: '',
-                    url: '/kc/get_nodes',
-                    requestMode: 'get',
-                    params: [
-                        { key: 'access_token', isMust: true, type: 'string', des: '当前登录用户访问令牌' },
-                        { key: 'id', isMust: true, type: 'string', des: '节点id' },
-                        { key: 'parent_id', isMust: false, type: 'string', des: '母节点id' },
-                        { key: 'keywords', isMust: false, type: 'string', des: '关键字' },
-                        { key: 'pageindex', isMust: false, type: 'int', des: '页码' },
-                        { key: 'pagesize', isMust: false, type: 'int', des: '数量' }
-                    ]
-                },
-                get_recentlyuserd_nodes: {
-                    name: '获取最近使用的节点列表',
-                    docUrl: '',
-                    url: '/kc/get_recentlyuserd_nodes',
-                    requestMode: 'get',
-                    params: [
-                        { key: 'access_token', isMust: true, type: 'string', des: '当前登录用户访问令牌' },
-                        { key: 'keywords', isMust: false, type: 'string', des: '关键字' }
-
-                    ]
-                },
-                get_roots: {
-                    name: '获取根节点列表',
-                    docUrl: '',
-                    url: '/kc/get_roots',
-                    requestMode: 'get',
-                    params: [
-                        { key: 'access_token', isMust: true, type: 'string', des: '当前登录用户访问令牌' },
-                        { key: 'keywords', isMust: false, type: 'string', des: '关键字' },
-                        { key: 'filter_type', isMust: false, type: 'Enum(具体看KC任务下的枚举说明)', des: '根节点过滤类型' }
-                    ]
-                },
-                get_stared_nodes: {
-                    name: '获取标星节点列表',
-                    docUrl: '',
-                    url: '/kc/get_stared_nodes',
-                    requestMode: 'get',
-                    params: [
-                        { key: 'access_token', isMust: true, type: 'string', des: '当前登录用户访问令牌' },
-                        { key: 'keywords', isMust: false, type: 'string', des: '关键字' },
-                        { key: 'pageindex', isMust: false, type: 'int', des: '页码' },
-                        { key: 'pagesize', isMust: false, type: 'int', des: '数量' }
-                    ]
-                },
-
             }
         }
     };
@@ -2675,7 +2248,6 @@
     }
 })
 ();
-
 
 
 
