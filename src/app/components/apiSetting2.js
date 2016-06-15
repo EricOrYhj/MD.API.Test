@@ -1893,6 +1893,49 @@
                     params: [
                         { key: 'access_token', isMust: true, type: 'string', des: '当前登录用户访问令牌' }
                     ]
+                },
+                get_inbox_post_mectionedme_message: {
+                    name: '获取动态提到我的消息',
+                    docUrl: {type: 'string', url: ''},
+                    url: '/message/get_inbox_post_mectionedme_message',
+                    requestMode: 'get',
+                    params: [
+                        { key: 'access_token', isMust: true, type: 'string', des: '当前登录用户访问令牌' },
+                        { key: 'is_unread', isMust: false, type: 'bool', des: '是否获取未读消息' },
+                        { key: 'is_favorite', isMust: false, type: 'bool', des: '是否获取收藏' },
+                        { key: 'keywords', isMust: false, type: 'string', des: '关键字查找' },
+                        { key: 'pageindex', isMust: false, type: 'int', des: '当前页码(以1开始，1代表第一页)' },
+                        { key: 'pagesize', isMust: false, type: 'int', des: '指定要返回的记录条数' }
+                    ]
+                },
+                get_inbox_post_replyme_message: {
+                    name: '获取动态回复我的消息',
+                    docUrl: {type: 'string', url: ''},
+                    url: '/message/get_inbox_post_replyme_message',
+                    requestMode: 'get',
+                    params: [
+                        { key: 'access_token', isMust: true, type: 'string', des: '当前登录用户访问令牌' },
+                        { key: 'is_unread', isMust: false, type: 'bool', des: '是否获取未读消息' },
+                        { key: 'is_favorite', isMust: false, type: 'bool', des: '是否获取收藏' },
+                        { key: 'keywords', isMust: false, type: 'string', des: '关键字查找' },
+                        { key: 'pageindex', isMust: false, type: 'int', des: '当前页码(以1开始，1代表第一页)' },
+                        { key: 'pagesize', isMust: false, type: 'int', des: '指定要返回的记录条数' }
+                    ]
+                },
+                get_inbox_task_message: {
+                    name: '获取任务消息',
+                    docUrl: {type: 'string', url: ''},
+                    url: '/message/get_inbox_task_message',
+                    requestMode: 'get',
+                    params: [
+                        { key: 'access_token', isMust: true, type: 'string', des: '当前登录用户访问令牌' },
+                        { key: 'is_unread', isMust: false, type: 'bool', des: '是否获取未读消息' },
+                        { key: 'is_favorite', isMust: false, type: 'bool', des: '是否获取收藏' },
+                        { key: 'keywords', isMust: false, type: 'string', des: '关键字查找' },
+                        { key: 'msg_type', isMust: false, type: 'int', des: '1任务系统消息2任务回复我的3任务提到我的' },
+                        { key: 'pageindex', isMust: false, type: 'int', des: '当前页码(以1开始，1代表第一页)' },
+                        { key: 'pagesize', isMust: false, type: 'int', des: '指定要返回的记录条数' }
+                    ]
                 }
             }
         },
