@@ -157,7 +157,7 @@
                     requestMode: 'get',
                     params: [
                         { key: 'access_token', isMust: true, type: 'string', des: '当前登录用户访问令牌' },
-                        { key: 'topic', isMust: true, type: 'string', des: '话题名称' },
+                        { key: 'category_id', isMust: true, type: 'string', des: '话题ID' },
                         { key: 'keywords', isMust: false, type: 'string', des: '关键词模糊搜索' },
                         { key: 'max_id', isMust: false, type: 'int64', des: '若指定此参数，则只返回ID比max_id小的动态更新(即比max_id发表时间早的动态更新)' },
                         { key: 'pagesize', isMust: false, type: 'int', des: '指定要返回的记录条数(默认值20，最大值100' }
@@ -175,16 +175,14 @@
                         { key: 'pagesize', isMust: false, type: 'int', des: '指定要返回的记录条数(int默认值20，最大值100)' }
                     ]
                 },
-                get_company_tag: {
+                get_all_categories: {
                     name: '获取当前企业动态更新标签信息',
                     docUrl: {type: '', url: ''},
-                    url: '/post/get_company_tag',
+                    url: '/post/get_all_categories',
                     requestMode: 'get',
                     params: [
                         { key: 'access_token', isMust: true, type: 'string', des: '当前登录用户访问令牌' },
-                        { key: 'keywords', isMust: false, type: 'string', des: '关键词模糊搜索' },
-                        { key: 'pageindex', isMust: false, type: 'int64', des: '指定当前的页码' },
-                        { key: 'pagesize', isMust: false, type: 'int', des: '指定要返回的记录条数(默认值20，最大值100' }
+                        { key: 'keywords', isMust: false, type: 'string', des: '关键词模糊搜索' }
                     ]
                 },
                 update_collect_or_canle_collect_post: {
