@@ -1580,8 +1580,8 @@
                         { key: 'account_ids', isMust: false, type: 'string', des: '用户编号 查看其他同事的日程，多个以逗号相隔' },
                         { key: 'is_work_calendar', isMust: false, type: 'bool', des: '是否查看工作日程' },
                         { key: 'is_task_calendar', isMust: false, type: 'bool', des: '是否查看任务日程' },
-                        { key: 'is_private_calendar', isMust: false, type: 'bool', des: '是否查看私密日程' },
-                        { key: 'categorys', isMust: false, type: 'string', des: '用户日程分类，多个以逗号相隔' }
+                        { key: 'is_private_event', isMust: false, type: 'bool', des: '是否查看私密日程' },
+                        { key: 'category_ids', isMust: false, type: 'string', des: '用户日程分类，多个以逗号相隔' }
                     ]
                 },
                 get_calendar_day_week_month: {
@@ -1597,8 +1597,8 @@
                         { key: 'year', isMust: false, type: 'string', des: '日期年数字。默认值为当前年。如：2013。' },
                         { key: 'is_work_calendar', isMust: false, type: 'bool', des: '是否查看工作日程' },
                         { key: 'is_task_calendar', isMust: false, type: 'bool', des: '是否查看任务日程' },
-                        { key: 'is_private_calendar', isMust: false, type: 'bool', des: '是否查看私密日程' },
-                        { key: 'categorys', isMust: false, type: 'string', des: '用户日程分类，多个以逗号相隔' }
+                        { key: 'is_private_event', isMust: false, type: 'bool', des: '是否查看私密日程' },
+                        { key: 'category_ids', isMust: false, type: 'string', des: '用户日程分类，多个以逗号相隔' }
                     ]
                 },
                 get_calendar_detail: {
@@ -1638,36 +1638,37 @@
                     requestMode: 'get',
                     params: [
                         { key: 'access_token', isMust: true, type: 'string', des: '当前登录用户访问令牌' },
-                        { key: 'calendar_start_time', isMust: false, type: 'string', des: '日程开始时间' },
-                        { key: 'calendar_end_time', isMust: false, type: 'string', des: '日程结束时间' }
+                        { key: 'start_time', isMust: false, type: 'string', des: '日程开始时间' },
+                        { key: 'end_time', isMust: false, type: 'string', des: '日程结束时间' }
                     ]
                 },
-                create_calendar: {
+                create_event: {
                     name: '创建一个新的日程',
                     docUrl: '',
-                    url: '/calendar/create_calendar',
+                    url: '/calendar/create_event',
                     requestMode: 'post',
                     params: [
                         { key: 'access_token', isMust: true, type: 'string', des: '当前登录用户访问令牌' },
-                        { key: 'calendar_name', isMust: true, type: 'string', des: '日程主题' },
-                        { key: 'calendar_start_time', isMust: true, type: 'string', des: '日程开始时间，精确到分。如：2013-05-05 10:25' },
-                        { key: 'calendar_end_time', isMust: true, type: 'string', des: '日程结束时间，精确到分。如：2013-05-05 10:25' },
-                        { key: 'is_all_day', isMust: false, type: 'bool', des: '是否全天日程。false表示非全天，true表示全天。' },
-                        { key: 'calendar_address', isMust: false, type: 'string', des: '日程地点' },
-                        { key: 'calendar_description', isMust: false, type: 'string', des: '日程描述' },
-                        { key: 'calendar_private', isMust: false, type: 'bool', des: '是否私人日程' },
+						{ key: 'attachments', isMust: false, type: 'string', des: '附件' },
+                        { key: 'name', isMust: true, type: 'string', des: '日程名字' },
+                        { key: 'start_time', isMust: true, type: 'DateTime', des: '日程开始时间，精确到分。如：2013-05-05 10:25' },
+                        { key: 'end_time', isMust: true, type: 'string', des: '日程结束时间，精确到分。如：2013-05-05 10:25' },
+                        { key: 'is_all_day_event', isMust: false, type: 'bool', des: '是否为全天日程。false表示非全天，true表示全天。' },
+                        { key: 'location', isMust: false, type: 'string', des: '日程地点' },
+                        { key: 'event_description', isMust: false, type: 'string', des: '日程描述' },
+                        { key: 'is_private_event', isMust: false, type: 'bool', des: '是否私人日程' },
                         { key: 'group_ids', isMust: false, type: 'string', des: '私有日程分享群组 分享多群组用,隔开' },
                         { key: 'calendar_member_ids', isMust: false, type: 'string', des: '指定的日程成员 (多个成员用逗号隔开)。注：明道用户' },
-                        { key: 'calendar_member_emails', isMust: false, type: 'string', des: '指定的日程成员邮件 (多个成员用逗号隔开)。注：非明道用户' },
+                        { key: 'member_emails', isMust: false, type: 'string', des: '指定的日程成员邮件 (多个成员用逗号隔开)。注：非明道用户' },
                         { key: 'is_recur', isMust: false, type: 'bool', des: '是否为重复日程. 1:是 0:不是 默认值0' },
                         { key: 'repeat_frequency', isMust: false, type: 'int', des: '当is_recur为1 即为重复日程时该值必填，频率 1 表示Daily; 2 表示Weekly; 3 表示Monthly; 4 表示Yearly' },
                         { key: 'repeat_interval', isMust: false, type: 'int', des: '当is_recur为1 即为重复日程时该值选填，重复间隔 默认值 1。' },
                         { key: 'repeat_week_day', isMust: false, type: 'string', des: '当 frequency=2 该值必填，周几重复 1:周一 2:周二 3:周三 4:周四 5:周五 6 周六 7:周日。多选用,隔开' },
-                        { key: 'repeat_recur_count', isMust: false, type: 'int', des: '当 is_recur为1即为重复日程时该值选填，周几重复 1:周一 2:周二 3:周三 4:周四 5:周五 6 周六 7:周日。多选用|隔开' },
-                        { key: 'until_date', isMust: false, type: 'string', des: '当 is_recur为1 该值选填，结束日期 如果recur_count为0且until_date为null,则为永久重复' },
+                        { key: 'repeat_recur_count', isMust: false, type: 'int', des: '当 is_recur为1即为重复日程时该值选填，重复次数  与UntilDate只能存在一个' },
+                        { key: 'repeat_end_date', isMust: false, type: 'string', des: '当 is_recur为1 该值选填，结束日期 如果recur_count为0且repeat_end_date为null,则为永久重复' },
                         { key: 'calendar_remind_type', isMust: false, type: 'int', des: '提醒类型' },
-                        { key: 'calendar_remind_time', isMust: false, type: 'int', des: '提醒时间' },
-                        { key: 'calendar_category_id', isMust: false, type: 'string', des: '日程分类id' }
+                        { key: 'time_to_remind', isMust: true, type: 'int', des: '提醒时间' },
+                        { key: 'category_id', isMust: false, type: 'string', des: '日程分类id' }
                     ]
                 },
                 edit_calendar: {
@@ -1678,25 +1679,25 @@
                     params: [
                         { key: 'access_token', isMust: true, type: 'string', des: '当前登录用户访问令牌' },
                         { key: 'calendar_id', isMust: true, type: 'string', des: '日程编号' },
-                        { key: 'calendar_name', isMust: false, type: 'string', des: '日程主题' },
-                        { key: 'calendar_start_time', isMust: false, type: 'string', des: '日程开始时间，精确到分。如：2013-05-05 10:25' },
-                        { key: 'calendar_end_time', isMust: false, type: 'string', des: '日程结束时间，精确到分。如：2013-05-05 10:25' },
-                        { key: 'is_all_day', isMust: false, type: 'bool', des: '是否全天日程。0表示非全天，1表示全天 默认值0' },
-                        { key: 'calendar_address', isMust: false, type: 'string', des: '日程地点' },
-                        { key: 'calendar_description', isMust: false, type: 'string', des: '日程描述' },
-                        { key: 'calendar_private', isMust: false, type: 'bool', des: '是否私人日程。1表示私人，0表示非私人 默认值0' },
+                        { key: 'name', isMust: false, type: 'string', des: '日程名字' },
+                        { key: 'start_time', isMust: true, type: 'datetime', des: '日程开始时间，精确到分。如：2013-05-05 10:25' },
+                        { key: 'end_time', isMust: true, type: 'datetime', des: '日程结束时间，精确到分。如：2013-05-05 10:25' },
+                        { key: 'is_all_day_event', isMust: false, type: 'bool', des: '是否全天日程, 默认值false' },
+                        { key: 'address', isMust: false, type: 'string', des: '日程地点' },
+                        { key: 'event_description', isMust: false, type: 'string', des: '日程描述' },
+                        { key: 'is_private_event', isMust: false, type: 'bool', des: '是否私人日程。1表示私人，0表示非私人 默认值0' },
                         { key: 'group_ids', isMust: false, type: 'string', des: '私有日程分享群组 分享多群组用,隔开' },
-                        { key: 'calendar_member_ids', isMust: false, type: 'string', des: '指定的日程成员 (多个成员用逗号隔开)。注：明道用户' },
-                        { key: 'calendar_member_emails', isMust: false, type: 'string', des: '指定的日程成员邮件 (多个成员用逗号隔开)。注：非明道用户' },
+                        { key: 'member_ids', isMust: false, type: 'string', des: '指定的日程成员 (多个成员用逗号隔开)。注：明道用户' },
+                        { key: 'member_emails', isMust: false, type: 'string', des: '指定的日程成员邮件 (多个成员用逗号隔开)。注：非明道用户' },
                         { key: 'is_recur', isMust: false, type: 'bool', des: '是否为重复日程. 1:是 0:不是 默认值0' },
                         { key: 'repeat_frequency', isMust: false, type: 'int', des: '当is_recur为1 即为重复日程时该值必填，频率 1 表示Daily; 2 表示Weekly; 3 表示Monthly; 4 表示Yearly' },
                         { key: 'repeat_interval', isMust: false, type: 'int', des: '当is_recur为1 即为重复日程时该值选填，重复间隔 默认值 1。' },
                         { key: 'repeat_week_day', isMust: false, type: 'string', des: '当 frequency=2 该值必填，周几重复 1:周一 2:周二 3:周三 4:周四 5:周五 6 周六 7:周日。多选用,隔开' },
                         { key: 'repeat_recur_count', isMust: false, type: 'int', des: '当 is_recur为1即为重复日程时该值选填，周几重复 1:周一 2:周二 3:周三 4:周四 5:周五 6 周六 7:周日。多选用|隔开' },
-                        { key: 'until_date', isMust: false, type: 'string', des: '当 is_recur为1 该值选填，结束日期 如果recur_count为0且until_date为null,则为永久重复' },
+                        { key: 'repeat_end_date', isMust: false, type: 'string', des: '当 is_recur为1 该值选填，结束日期 如果recur_count为0且repeat_end_date为null,则为永久重复' },
                         { key: 'calendar_remind_type', isMust: false, type: 'int', des: '提醒类型' },
-                        { key: 'calendar_remind_time', isMust: false, type: 'int', des: '提醒时间' },
-                        { key: 'calendar_category_id', isMust: false, type: 'int', des: '日程分类id' }
+                        { key: 'time_to_remind', isMust: true, type: 'int', des: '提醒时间' },
+                        { key: 'category_id', isMust: false, type: 'int', des: '日程分类id' }
                     ]
                 },
                 join_or_deny_calendar: {
@@ -1764,7 +1765,7 @@
                     params: [
                         { key: 'access_token', isMust: true, type: 'string', des: '当前登录用户访问令牌' },
                         { key: 'calendar_id', isMust: true, type: 'string', des: '日程id' },
-                        { key: 'calendar_remind_time', isMust: false, type: 'int', des: '提醒时间' },
+                        { key: 'time_to_remind', isMust: true, type: 'int', des: '提醒时间' },
                         { key: 'calendar_remind_type', isMust: false, type: 'int', des: '提醒类型' }
                     ]
                 }
