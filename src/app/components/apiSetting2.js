@@ -1874,18 +1874,6 @@
         },
         message: {
             v1: {
-                get_message_list: {
-                    name: '获取当前登录用户与其它单个用户的私人消息列表',
-                    docUrl: {type: 'string', url: ''},
-                    url: '/message/get_message_list',
-                    requestMode: 'get',
-                    params: [
-                        { key: 'access_token', isMust: true, type: 'string', des: '当前登录用户访问令牌' },
-                        { key: 'account_id', isMust: true, type: 'string', des: '发送消息对象的用户编号' },
-                        { key: 'pageindex', isMust: false, type: 'int', des: '当前页码(以1开始，1代表第一页)' },
-                        { key: 'pagesize', isMust: false, type: 'int', des: '指定要返回的记录条数' }
-                    ]
-                },
                 get_inbox_first_message: {
                     name: '获取消息的第一条信息',
                     docUrl: {type: 'string', url: ''},
@@ -1893,6 +1881,20 @@
                     requestMode: 'get',
                     params: [
                         { key: 'access_token', isMust: true, type: 'string', des: '当前登录用户访问令牌' }
+                    ]
+                },
+                get_inbox_system_message: {
+                    name: '获取系统消息和日程消息',
+                    docUrl: {type: 'string', url: ''},
+                    url: '/message/get_inbox_system_message',
+                    requestMode: 'get',
+                    params: [
+                        { key: 'access_token', isMust: true, type: 'string', des: '当前登录用户访问令牌' },
+                        { key: 'is_unread', isMust: false, type: 'bool', des: '是否获取未读消息' },
+                        { key: 'is_favorite', isMust: false, type: 'bool', des: '是否获取收藏' },
+                        { key: 'keywords', isMust: false, type: 'string', des: '关键字查找' },
+                        { key: 'pageindex', isMust: false, type: 'int', des: '当前页码(以1开始，1代表第一页)' },
+                        { key: 'pagesize', isMust: false, type: 'int', des: '指定要返回的记录条数' }
                     ]
                 },
                 get_inbox_post_mectionedme_message: {
