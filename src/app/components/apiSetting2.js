@@ -21,7 +21,7 @@
                         { key: 'pagesize', isMust: false, type: 'int', des: '指定要返回的记录条数(int默认值20，最大值100)' },
                         { key: 'post_filter_share', isMust: true, type: 'int', des: '动态筛选范围' },
                         { key: 'project_id', isMust: false, type: 'string', des: '网络id' },
-                        { key: 'group_id', isMust: false, type: 'string', des: '群组id' },
+                        { key: 'group_id', isMust: false, type: 'string', des: '群组id' }
 
                     ]
                 },
@@ -297,8 +297,7 @@
                         { key: 'options', isMust: true, type: 'string', des: '投票选项，如：1|3,表示选择第1、3两项 ' },
                         { key: 'post_id', isMust: true, type: 'string', des: '动态id' }
                     ]
-                },
-
+                }
             }
         },
         task: {
@@ -1986,7 +1985,7 @@
                         { key: 'access_token', isMust: true, type: 'string', des: '当前登录用户访问令牌' },
                         { key: 'type', isMust: true, type: 'int', des: '1用户 2群组' },
                         { key: 'account_id', isMust: false, type: 'string', des: '用户编号' },
-                        { key: 'group_id', isMust: false, type: 'string', des: '群组编号' },
+                        { key: 'group_id', isMust: false, type: 'string', des: '群组编号' }
                     ]
                 },
                 get_user_or_group_message_by_id: {
@@ -2636,7 +2635,7 @@
                         { key: 'pageindex', isMust: false, type: 'int', des: '页码' },
                         { key: 'pagesize', isMust: false, type: 'int', des: '数量' }
                     ]
-                },
+                }
 
             }
         }
