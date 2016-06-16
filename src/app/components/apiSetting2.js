@@ -1499,7 +1499,8 @@
                     url: '/user/get_user_subordinate',
                     requestMode: 'get',
                     params: [
-                        { key: 'access_token', isMust: true, type: 'string', des: '当前登录用户访问令牌' }
+                        { key: 'access_token', isMust: true, type: 'string', des: '当前登录用户访问令牌' },
+                        { key: 'project_id', isMust: true, type: 'string', des: '网络ID(只有安装了组织结构应用的才有这数据)' }
                     ]
                 },
                 get_users_bykeywords: {
@@ -1862,7 +1863,7 @@
                 update_passport_account: {
                     name: '修改当前登录用户绑定邮箱或者手机',
                     docUrl: '',
-                    url: '/passport/send_verify_code',
+                    url: '/passport/update_passport_account',
                     requestMode: 'post',
                     params: [
                         { key: 'access_token', isMust: true, type: 'string', des: '当前登录用户访问令牌' },
@@ -1876,7 +1877,7 @@
             v1: {
                 get_inbox_first_message: {
                     name: '获取消息的第一条信息',
-                    docUrl: {type: 'string', url: ''},
+                    docUrl: '/doc/message/first_message.html',
                     url: '/message/get_inbox_first_message',
                     requestMode: 'get',
                     params: [
@@ -1885,7 +1886,7 @@
                 },
                 get_inbox_system_message: {
                     name: '获取系统消息和日程消息',
-                    docUrl: {type: 'string', url: ''},
+                    docUrl: '/doc/message/system_message.html',
                     url: '/message/get_inbox_system_message',
                     requestMode: 'get',
                     params: [
@@ -1899,7 +1900,7 @@
                 },
                 get_inbox_post_mectionedme_message: {
                     name: '获取动态提到我的消息',
-                    docUrl: {type: 'string', url: ''},
+                    docUrl: '/doc/message/post_mectioned_me.html',
                     url: '/message/get_inbox_post_mectionedme_message',
                     requestMode: 'get',
                     params: [
@@ -1913,7 +1914,7 @@
                 },
                 get_inbox_post_replyme_message: {
                     name: '获取动态回复我的消息',
-                    docUrl: {type: 'string', url: ''},
+                    docUrl: '/doc/message/post_reply.html',
                     url: '/message/get_inbox_post_replyme_message',
                     requestMode: 'get',
                     params: [
@@ -1927,7 +1928,7 @@
                 },
                 get_inbox_task_message: {
                     name: '获取任务消息',
-                    docUrl: {type: 'string', url: ''},
+                    docUrl: '/doc/message/task_message.html',
                     url: '/message/get_inbox_task_message',
                     requestMode: 'get',
                     params: [
@@ -1935,7 +1936,7 @@
                         { key: 'is_unread', isMust: false, type: 'bool', des: '是否获取未读消息' },
                         { key: 'is_favorite', isMust: false, type: 'bool', des: '是否获取收藏' },
                         { key: 'keywords', isMust: false, type: 'string', des: '关键字查找' },
-                        { key: 'msg_type', isMust: false, type: 'int', des: '1任务系统消息2任务回复我的3任务提到我的' },
+                        { key: 'msg_type', isMust: false, type: 'int', des: '1系统消息2任务回复我的3任务提到我的4项目回复我的5项目提到我的' },
                         { key: 'pageindex', isMust: false, type: 'int', des: '当前页码(以1开始，1代表第一页)' },
                         { key: 'pagesize', isMust: false, type: 'int', des: '指定要返回的记录条数' }
                     ]
