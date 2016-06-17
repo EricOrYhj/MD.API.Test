@@ -21,7 +21,7 @@
                         { key: 'pagesize', isMust: false, type: 'int', des: '指定要返回的记录条数(int默认值20，最大值100)' },
                         { key: 'post_filter_share', isMust: true, type: 'int', des: '动态筛选范围' },
                         { key: 'project_id', isMust: false, type: 'string', des: '网络id' },
-                        { key: 'group_id', isMust: false, type: 'string', des: '群组id' },
+                        { key: 'group_id', isMust: false, type: 'string', des: '群组id' }
 
                     ]
                 },
@@ -157,7 +157,7 @@
                     requestMode: 'get',
                     params: [
                         { key: 'access_token', isMust: true, type: 'string', des: '当前登录用户访问令牌' },
-                        { key: 'topic', isMust: true, type: 'string', des: '话题名称' },
+                        { key: 'category_id', isMust: true, type: 'string', des: '话题ID' },
                         { key: 'keywords', isMust: false, type: 'string', des: '关键词模糊搜索' },
                         { key: 'max_id', isMust: false, type: 'int64', des: '若指定此参数，则只返回ID比max_id小的动态更新(即比max_id发表时间早的动态更新)' },
                         { key: 'pagesize', isMust: false, type: 'int', des: '指定要返回的记录条数(默认值20，最大值100' }
@@ -175,16 +175,14 @@
                         { key: 'pagesize', isMust: false, type: 'int', des: '指定要返回的记录条数(int默认值20，最大值100)' }
                     ]
                 },
-                get_company_tag: {
+                get_all_categories: {
                     name: '获取当前企业动态更新标签信息',
                     docUrl: {type: '', url: ''},
-                    url: '/post/get_company_tag',
+                    url: '/post/get_all_categories',
                     requestMode: 'get',
                     params: [
                         { key: 'access_token', isMust: true, type: 'string', des: '当前登录用户访问令牌' },
-                        { key: 'keywords', isMust: false, type: 'string', des: '关键词模糊搜索' },
-                        { key: 'pageindex', isMust: false, type: 'int64', des: '指定当前的页码' },
-                        { key: 'pagesize', isMust: false, type: 'int', des: '指定要返回的记录条数(默认值20，最大值100' }
+                        { key: 'keywords', isMust: false, type: 'string', des: '关键词模糊搜索' }
                     ]
                 },
                 update_collect_or_canle_collect_post: {
@@ -299,8 +297,7 @@
                         { key: 'options', isMust: true, type: 'string', des: '投票选项，如：1|3,表示选择第1、3两项 ' },
                         { key: 'post_id', isMust: true, type: 'string', des: '动态id' }
                     ]
-                },
-
+                }
             }
         },
         task: {
@@ -1500,7 +1497,8 @@
                     url: '/user/get_user_subordinate',
                     requestMode: 'get',
                     params: [
-                        { key: 'access_token', isMust: true, type: 'string', des: '当前登录用户访问令牌' }
+                        { key: 'access_token', isMust: true, type: 'string', des: '当前登录用户访问令牌' },
+                        { key: 'project_id', isMust: true, type: 'string', des: '网络ID(只有安装了组织结构应用的才有这数据)' }
                     ]
                 },
                 get_users_bykeywords: {
@@ -1863,7 +1861,7 @@
                 update_passport_account: {
                     name: '修改当前登录用户绑定邮箱或者手机',
                     docUrl: '',
-                    url: '/passport/send_verify_code',
+                    url: '/passport/update_passport_account',
                     requestMode: 'post',
                     params: [
                         { key: 'access_token', isMust: true, type: 'string', des: '当前登录用户访问令牌' },
@@ -1875,25 +1873,70 @@
         },
         message: {
             v1: {
-                get_message_list: {
-                    name: '获取当前登录用户与其它单个用户的私人消息列表',
-                    docUrl: {type: 'string', url: ''},
-                    url: '/message/get_message_list',
-                    requestMode: 'get',
-                    params: [
-                        { key: 'access_token', isMust: true, type: 'string', des: '当前登录用户访问令牌' },
-                        { key: 'account_id', isMust: true, type: 'string', des: '发送消息对象的用户编号' },
-                        { key: 'pageindex', isMust: false, type: 'int', des: '当前页码(以1开始，1代表第一页)' },
-                        { key: 'pagesize', isMust: false, type: 'int', des: '指定要返回的记录条数' }
-                    ]
-                },
                 get_inbox_first_message: {
                     name: '获取消息的第一条信息',
-                    docUrl: {type: 'string', url: ''},
+                    docUrl: '/doc/message/first_message.html',
                     url: '/message/get_inbox_first_message',
                     requestMode: 'get',
                     params: [
                         { key: 'access_token', isMust: true, type: 'string', des: '当前登录用户访问令牌' }
+                    ]
+                },
+                get_inbox_system_message: {
+                    name: '获取系统消息和日程消息',
+                    docUrl: '/doc/message/system_message.html',
+                    url: '/message/get_inbox_system_message',
+                    requestMode: 'get',
+                    params: [
+                        { key: 'access_token', isMust: true, type: 'string', des: '当前登录用户访问令牌' },
+                        { key: 'is_unread', isMust: false, type: 'bool', des: '是否获取未读消息' },
+                        { key: 'is_favorite', isMust: false, type: 'bool', des: '是否获取标记' },
+                        { key: 'keywords', isMust: false, type: 'string', des: '关键字查找' },
+                        { key: 'pageindex', isMust: false, type: 'int', des: '当前页码(以1开始，1代表第一页)' },
+                        { key: 'pagesize', isMust: false, type: 'int', des: '指定要返回的记录条数' }
+                    ]
+                },
+                get_inbox_post_mectionedme_message: {
+                    name: '获取动态提到我的消息',
+                    docUrl: '/doc/message/post_metioned_me.html',
+                    url: '/message/get_inbox_post_mectionedme_message',
+                    requestMode: 'get',
+                    params: [
+                        { key: 'access_token', isMust: true, type: 'string', des: '当前登录用户访问令牌' },
+                        { key: 'is_unread', isMust: false, type: 'bool', des: '是否获取未读消息' },
+                        { key: 'is_favorite', isMust: false, type: 'bool', des: '是否获取标记' },
+                        { key: 'keywords', isMust: false, type: 'string', des: '关键字查找' },
+                        { key: 'pageindex', isMust: false, type: 'int', des: '当前页码(以1开始，1代表第一页)' },
+                        { key: 'pagesize', isMust: false, type: 'int', des: '指定要返回的记录条数' }
+                    ]
+                },
+                get_inbox_post_replyme_message: {
+                    name: '获取动态回复我的消息',
+                    docUrl: '/doc/message/post_reply.html',
+                    url: '/message/get_inbox_post_replyme_message',
+                    requestMode: 'get',
+                    params: [
+                        { key: 'access_token', isMust: true, type: 'string', des: '当前登录用户访问令牌' },
+                        { key: 'is_unread', isMust: false, type: 'bool', des: '是否获取未读消息' },
+                        { key: 'is_favorite', isMust: false, type: 'bool', des: '是否获取标记' },
+                        { key: 'keywords', isMust: false, type: 'string', des: '关键字查找' },
+                        { key: 'pageindex', isMust: false, type: 'int', des: '当前页码(以1开始，1代表第一页)' },
+                        { key: 'pagesize', isMust: false, type: 'int', des: '指定要返回的记录条数' }
+                    ]
+                },
+                get_inbox_task_message: {
+                    name: '获取任务消息',
+                    docUrl: '/doc/message/task_message.html',
+                    url: '/message/get_inbox_task_message',
+                    requestMode: 'get',
+                    params: [
+                        { key: 'access_token', isMust: true, type: 'string', des: '当前登录用户访问令牌' },
+                        { key: 'is_unread', isMust: false, type: 'bool', des: '是否获取未读消息' },
+                        { key: 'is_favorite', isMust: false, type: 'bool', des: '是否获取标记' },
+                        { key: 'keywords', isMust: false, type: 'string', des: '关键字查找' },
+                        { key: 'msg_type', isMust: false, type: 'int', des: '1系统消息2任务回复我的3任务提到我的4项目回复我的5项目提到我的' },
+                        { key: 'pageindex', isMust: false, type: 'int', des: '当前页码(以1开始，1代表第一页)' },
+                        { key: 'pagesize', isMust: false, type: 'int', des: '指定要返回的记录条数' }
                     ]
                 }
             }
@@ -1944,7 +1987,7 @@
                         { key: 'access_token', isMust: true, type: 'string', des: '当前登录用户访问令牌' },
                         { key: 'type', isMust: true, type: 'int', des: '1用户 2群组' },
                         { key: 'account_id', isMust: false, type: 'string', des: '用户编号' },
-                        { key: 'group_id', isMust: false, type: 'string', des: '群组编号' },
+                        { key: 'group_id', isMust: false, type: 'string', des: '群组编号' }
                     ]
                 },
                 get_user_or_group_message_by_id: {
@@ -2594,7 +2637,7 @@
                         { key: 'pageindex', isMust: false, type: 'int', des: '页码' },
                         { key: 'pagesize', isMust: false, type: 'int', des: '数量' }
                     ]
-                },
+                }
 
             }
         }
