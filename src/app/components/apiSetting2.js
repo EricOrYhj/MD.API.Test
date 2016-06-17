@@ -579,7 +579,8 @@
                         {"key": "access_token", "isMust": true, "type": "string", "des": "当前登录用户访问令牌"            },
                         {"key": "project_id", "isMust": false, "type": "string", "des": "哪个网络，当搜索个人网络时，可以不填"            },
 						{"key": "keyword", "isMust": false, "type": "string", "des": "关键词"            },
-						{"key": "task_id", "isMust": true, "type": "string", "des": "任务id"            }
+						{"key": "page_index", "isMust": true, "type": "int", "des": "分页获取的页码, 从1开始, 无默认值"            },
+                        {"key": "page_size", "isMust": true, "type": "int", "des": "该页面有多少项, 有默认值20"            }
                     ]
                 },
 				"get_available_tasks": {
