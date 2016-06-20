@@ -2230,13 +2230,13 @@
         qiniu: {
             v1: {
                 get_qiniu_token: {
-                    name: '获取7牛上传Token',
+                    name: '获取7牛上传Token(返回值的 type枚举为:1 图片 2 附件 3 语音 4 bug提交)',
                     docUrl: '',
                     url: '/qiniu/get_qiniu_token',
                     requestMode: 'get',
                     params: [
                         { key: 'access_token', isMust: true, type: 'string', des: '当前登录用户访问令牌' },
-                        { key: 'type', isMust: true, type: 'int', des: '1图片 2文档 3BUG反馈' }
+                        { key: 'type', isMust: true, type: 'int', des: '1主站 2chat' }
                     ]
                 }
             }
