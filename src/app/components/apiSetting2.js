@@ -1568,6 +1568,49 @@
         },
         calendar: {
             v1: {
+				create_event_obselete: {
+                    name: '创建一个新的日程(先不要使用)',
+                    docUrl: '',
+                    url: '/calendar/create_event',
+                    requestMode: 'post',
+                    params: [
+                        { key: 'access_token', isMust: true, type: 'string', des: '当前登录用户访问令牌' },
+						{ key: 'attachments', isMust: false, type: 'string', des: '附件' },
+                        { key: 'name', isMust: true, type: 'string', des: '日程主题' },
+                        { key: 'begin_date', isMust: true, type: 'string', des: '日程开始时间。如：2013-05-05 10:25' },
+                        { key: 'end_date', isMust: true, type: 'string', des: '日程结束时间。如：2013-05-05 10:25' },
+                        { key: 'is_all_day_event', isMust: false, type: 'bool', des: '是否为全天日程。false表示非全天，true表示全天。' },
+                        { key: 'location', isMust: false, type: 'string', des: '日程地点' },
+                        { key: 'event_description', isMust: false, type: 'string', des: '日程描述' },
+                        { key: 'is_private_event', isMust: false, type: 'bool', des: '是否私人日程' },
+                        { key: 'member_ids', isMust: false, type: 'string', des: '指定的日程成员 (多个成员用逗号隔开)。注：明道用户' },
+                        { key: 'invited_accounts', isMust: false, type: 'string', des: '指定的邀请成员,邮件，电话 (多个成员用逗号隔开)。注：非明道用户' },
+                        { key: 'is_recurring_event', isMust: false, type: 'bool', des: '是否为重复日程.' },
+                        { key: 'repeat_frequency', isMust: false, type: 'int', des: '当is_recur为1 即为重复日程时该值必填，频率 1 表示Daily; 2 表示Weekly; 3 表示Monthly; 4 表示Yearly' },
+                        { key: 'repeat_interval', isMust: false, type: 'int', des: '当is_recur为1 即为重复日程时该值选填，重复间隔 默认值 1。' },
+                        { key: 'repeat_weekday', isMust: false, type: 'string', des: '当 frequency=2 该值必填，周几重复 1:周一, 64:周日。周几即为2的几次方，选择每周多天，即为按位或的形式' },
+                        { key: 'repeat_times', isMust: false, type: 'int', des: '当 is_recurring_event为1即为重复日程时该值选填，重复次数  与UntilDate只能存在一个' },
+                        { key: 'reminder_type', isMust: false, type: 'int', des: '当 is_recurring_event为1 该值选填，结束日期 如果repeat_times为0且repeat_end_date为null,则为永久重复' },
+						{ key: 'repeat_end_date', isMust: false, type: 'string', des: '当 repeat_end_date 该值选填，结束日期 如果repeat_times为0且repeat_end_date为null,则为永久重复' },
+                        { key: 'calendar_remind_type', isMust: false, type: 'int', des: '提醒类型' },
+                        { key: 'reminding_time_unit', isMust: true, type: 'int', des: '提醒时间' },
+                        { key: 'category_id', isMust: false, type: 'string', des: '日程分类id' }
+                    ]
+                },
+				 get_events_by_conditions: {
+                    name: '获取多用户待办日程列表，结果按日期分组。',
+                    docUrl: {type: '', url: ''},
+                    url: '/calendar/get_events_by_conditions',
+                    requestMode: 'get',
+                    params: [
+                        { key: 'access_token', isMust: true, type: 'string', des: '当前登录用户访问令牌' },
+                        { key: 'account_ids', isMust: true, type: 'string', des: '用户编号，多个以逗号相隔' },
+                        { key: 'event_category_types', isMust: true, type: 'int', des: '如果只有他人则1, 4, 5有效,工作日程 WorkEvent = 1， 任务日程 Participate = 4， 包含自定义分类日程 Customed = 16， 所有类型 All = 21 = WorkEvent + Participate + Customed， 如果需要托付类型或者负责类型请联系我' },
+                        { key: 'category_ids', isMust: false, type: 'string', des: '如果有自定义分类则填写，以逗号分隔, 传入All(不可忽略大小写)时，为全部分类' },
+						{ key: 'begin_date', isMust: true, type: 'string', des: '开始日期 yyyy-mm-dd' },
+						{ key: 'end_date', isMust: true, type: 'string', des: '结束日期, 最大值为这个日期的前一天。' }
+                    ]
+                },
                 get_calendar_to_do: {
                     name: '获取当前登录用户待办日程列表',
                     docUrl: {type: '', url: ''},
