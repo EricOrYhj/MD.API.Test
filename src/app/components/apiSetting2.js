@@ -575,10 +575,11 @@
                         {"key": "access_token", "isMust": true, "type": "string", "des": "当前登录用户访问令牌"            },
                         {"key": "project_id", "isMust": false, "type": "string", "des": "哪个网络，当搜索个人网络时，可以不填"            },
                         {"key": "keyword", "isMust": false, "type": "string", "des": "关键词"            },
-                        {"key": "task_id", "isMust": true, "type": "string", "des": "任务id"            }
+						{"key": "page_index", "isMust": true, "type": "int", "des": "分页获取的页码, 从1开始, 无默认值"            },
+                        {"key": "page_size", "isMust": true, "type": "int", "des": "该页面有多少项, 有默认值20"            }
                     ]
                 },
-                "get_available_tasks": {
+				"get_available_tasks": {
                     "name": "修改任务的母任务时, 根据任务Id返回可以关联的母任务",
                     "docUrl": "/doc/apidocumentnotavailable.html",
                     "url": "/task/get_available_tasks",
@@ -586,8 +587,8 @@
                     "params": [
                         {"key": "access_token", "isMust": true, "type": "string", "des": "当前登录用户访问令牌"            },
                         {"key": "project_id", "isMust": false, "type": "string", "des": "哪个网络，当搜索个人网络时，可以不填"            },
-                        {"key": "keyword", "isMust": false, "type": "string", "des": "关键词"            },
-                        {"key": "task_id", "isMust": true, "type": "string", "des": "任务id"            }
+						{"key": "keyword", "isMust": false, "type": "string", "des": "关键词"            },
+						{"key": "task_id", "isMust": true, "type": "string", "des": "任务id"            }
                     ]
                 },
                 "get_direct_children_tasks": {
@@ -789,7 +790,7 @@
                         {"key": "page_index", "isMust": true, "type": "int", "des": "指定当前的页码, 从1开始"            },
                         {"key": "page_size", "isMust": true, "type": "int", "des": "指定要返回的记录条数"            },
                         {"key": "project_id", "isMust": false, "type": "string", "des": "哪个网络（默认个人自由网络）"            },
-                        {"key": "only_file", "isMust": false, "type": "bool", "des": "是否获取只包含文件的comment，不填则不进行过滤"            }
+						{"key": "only_file", "isMust": false, "type": "bool", "des": "是否获取只包含文件的comment，不填则不进行过滤"            }
                     ]
                 },
                 "get_tasks_count": {
@@ -1005,7 +1006,7 @@
                         {"key": "access_token", "isMust": true, "type": "string", "des": "当前登录用户访问令牌"            },
                         {"key": "task_id", "isMust": true, "type": "string", "des": "任务ID"            },
                         {"key": "joining_state", "isMust": true, "type": "int", "des": "0:None 无申请，1：NoneToMember 从非成员申请成为成员, 2: BeenRefusedToMember 被拒绝成为成员，拒绝填写2，同意填写0"            },
-                        {"key": "account_id", "isMust": true, "type": "string", "des": "指定需要修改的的account_id"            }
+						{"key": "account_id", "isMust": true, "type": "string", "des": "指定需要修改的的account_id"            }
                     ]
                 },
                 "update_task_charger_property": {
@@ -1495,7 +1496,7 @@
                     url: '/user/get_user_subordinate',
                     requestMode: 'get',
                     params: [
-                        { key: 'access_token', isMust: true, type: 'string', des: '当前登录用户访问令牌' }
+                        { key: 'access_token', isMust: true, type: 'string', des: '当前登录用户访问令牌' },
 
                     ]
                 },
@@ -1647,7 +1648,7 @@
                     requestMode: 'post',
                     params: [
                         { key: 'access_token', isMust: true, type: 'string', des: '当前登录用户访问令牌' },
-                        { key: 'attachments', isMust: false, type: 'string', des: '附件' },
+						{ key: 'attachments', isMust: false, type: 'string', des: '附件' },
                         { key: 'name', isMust: true, type: 'string', des: '日程名字' },
                         { key: 'start_time', isMust: true, type: 'DateTime', des: '日程开始时间，精确到分。如：2013-05-05 10:25' },
                         { key: 'end_time', isMust: true, type: 'string', des: '日程结束时间，精确到分。如：2013-05-05 10:25' },
@@ -1859,7 +1860,7 @@
                 update_passport_account: {
                     name: '修改当前登录用户绑定邮箱或者手机',
                     docUrl: '',
-                    url: '/passport/send_verify_code',
+                    url: '/passport/update_passport_account',
                     requestMode: 'post',
                     params: [
                         { key: 'access_token', isMust: true, type: 'string', des: '当前登录用户访问令牌' },
@@ -1873,7 +1874,7 @@
             v1: {
                 get_inbox_first_message: {
                     name: '获取消息的第一条信息',
-                    docUrl: {type: 'string', url: ''},
+                    docUrl: '/doc/message/first_message.html',
                     url: '/message/get_inbox_first_message',
                     requestMode: 'get',
                     params: [
@@ -1882,13 +1883,13 @@
                 },
                 get_inbox_system_message: {
                     name: '获取系统消息和日程消息',
-                    docUrl: {type: 'string', url: ''},
+                    docUrl: '/doc/message/system_message.html',
                     url: '/message/get_inbox_system_message',
                     requestMode: 'get',
                     params: [
                         { key: 'access_token', isMust: true, type: 'string', des: '当前登录用户访问令牌' },
                         { key: 'is_unread', isMust: false, type: 'bool', des: '是否获取未读消息' },
-                        { key: 'is_favorite', isMust: false, type: 'bool', des: '是否获取收藏' },
+                        { key: 'is_favorite', isMust: false, type: 'bool', des: '是否获取标记' },
                         { key: 'keywords', isMust: false, type: 'string', des: '关键字查找' },
                         { key: 'pageindex', isMust: false, type: 'int', des: '当前页码(以1开始，1代表第一页)' },
                         { key: 'pagesize', isMust: false, type: 'int', des: '指定要返回的记录条数' }
@@ -1896,13 +1897,13 @@
                 },
                 get_inbox_post_mectionedme_message: {
                     name: '获取动态提到我的消息',
-                    docUrl: {type: 'string', url: ''},
+                    docUrl: '/doc/message/post_metioned_me.html',
                     url: '/message/get_inbox_post_mectionedme_message',
                     requestMode: 'get',
                     params: [
                         { key: 'access_token', isMust: true, type: 'string', des: '当前登录用户访问令牌' },
                         { key: 'is_unread', isMust: false, type: 'bool', des: '是否获取未读消息' },
-                        { key: 'is_favorite', isMust: false, type: 'bool', des: '是否获取收藏' },
+                        { key: 'is_favorite', isMust: false, type: 'bool', des: '是否获取标记' },
                         { key: 'keywords', isMust: false, type: 'string', des: '关键字查找' },
                         { key: 'pageindex', isMust: false, type: 'int', des: '当前页码(以1开始，1代表第一页)' },
                         { key: 'pagesize', isMust: false, type: 'int', des: '指定要返回的记录条数' }
@@ -1910,13 +1911,13 @@
                 },
                 get_inbox_post_replyme_message: {
                     name: '获取动态回复我的消息',
-                    docUrl: {type: 'string', url: ''},
+                    docUrl: '/doc/message/post_reply.html',
                     url: '/message/get_inbox_post_replyme_message',
                     requestMode: 'get',
                     params: [
                         { key: 'access_token', isMust: true, type: 'string', des: '当前登录用户访问令牌' },
                         { key: 'is_unread', isMust: false, type: 'bool', des: '是否获取未读消息' },
-                        { key: 'is_favorite', isMust: false, type: 'bool', des: '是否获取收藏' },
+                        { key: 'is_favorite', isMust: false, type: 'bool', des: '是否获取标记' },
                         { key: 'keywords', isMust: false, type: 'string', des: '关键字查找' },
                         { key: 'pageindex', isMust: false, type: 'int', des: '当前页码(以1开始，1代表第一页)' },
                         { key: 'pagesize', isMust: false, type: 'int', des: '指定要返回的记录条数' }
@@ -1924,15 +1925,15 @@
                 },
                 get_inbox_task_message: {
                     name: '获取任务消息',
-                    docUrl: {type: 'string', url: ''},
+                    docUrl: '/doc/message/task_message.html',
                     url: '/message/get_inbox_task_message',
                     requestMode: 'get',
                     params: [
                         { key: 'access_token', isMust: true, type: 'string', des: '当前登录用户访问令牌' },
                         { key: 'is_unread', isMust: false, type: 'bool', des: '是否获取未读消息' },
-                        { key: 'is_favorite', isMust: false, type: 'bool', des: '是否获取收藏' },
+                        { key: 'is_favorite', isMust: false, type: 'bool', des: '是否获取标记' },
                         { key: 'keywords', isMust: false, type: 'string', des: '关键字查找' },
-                        { key: 'msg_type', isMust: false, type: 'int', des: '1任务系统消息2任务回复我的3任务提到我的' },
+                        { key: 'msg_type', isMust: false, type: 'int', des: '1系统消息2任务回复我的3任务提到我的4项目回复我的5项目提到我的' },
                         { key: 'pageindex', isMust: false, type: 'int', des: '当前页码(以1开始，1代表第一页)' },
                         { key: 'pagesize', isMust: false, type: 'int', des: '指定要返回的记录条数' }
                     ]
