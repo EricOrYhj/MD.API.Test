@@ -19,7 +19,7 @@
                         { key: 'end_time', isMust: false, type: 'Datetime', des: '结束时间' },
                         { key: 'max_id', isMust: false, type: 'int64', des: '若指定此参数，则只返回ID比max_id小的动态更新(即比max_id发表时间早的动态更新)' },
                         { key: 'pagesize', isMust: false, type: 'int', des: '指定要返回的记录条数(int默认值20，最大值100)' },
-                        { key: 'post_filter_share', isMust: true, type: 'int', des: '动态筛选范围' },
+                        { key: 'post_filter_share', isMust: false, type: 'int', des: '动态筛选范围' },
                         { key: 'project_id', isMust: false, type: 'string', des: '网络id' },
                         { key: 'group_id', isMust: false, type: 'string', des: '群组id' }
 
@@ -274,8 +274,7 @@
                         { key: 'vote_anonymous', isMust: false, type: 'string', des: '是否匿名投票' },
                         { key: 'last_time', isMust: false, type: 'string', des: '投票截止时间' },
                         { key: 'available_number', isMust: false, type: 'int', des: '允许投票次数' },
-                        { key: 'vote_option_files', isMust: false, type: 'string', des: '投票图片：https://dn-mdpic.qbox.me/VoteDoc/pic/201606/03/mdMImCeKkCWLkvT_2027623769.png[Option]' },
-                        { key: 'vote_option_thumbnail_files', isMust: false, type: 'string', des: '投票缩略图：https://dn-mdpic.qbox.me/VoteDoc/pic/201606/03/mdMImCeKkCWLkvT_2027623769.png[Option]' }
+                        { key: 'vote_option_files', isMust: false, type: 'string', des: '投票图片：如果某选项无图只给[Option]，有图就是 https://dn-mdpic.qbox.me/VoteDoc/pic/201606/03/mdMImCeKkCWLkvT_2027623769.png[Option]' }
                     ]
                 },
                 get_post_select_groups: {
@@ -524,7 +523,7 @@
                         {"key": "project_id", "isMust": false, "type": "string", "des": "哪个网络（默认个人自由网络）"            }
                     ]
                 },
-				"duplicate_a_task": {
+                "duplicate_a_task": {
                     "name": "复制任务",
                     "docUrl": "",
                     "url": "/task/duplicate_a_task",
@@ -532,16 +531,16 @@
                     "params": [
                         {"key": "access_token", "isMust": true, "type": "string", "des": "当前登录用户访问令牌"            },
                         {"key": "task_id", "isMust": true, "type": "string", "des": "任务id"            },
-						{"key": "task_name", "isMust": false, "type": "string", "des": "指定任务名字"            },
-						{"key": "project_id", "isMust": false, "type": "string", "des": "网络id，不支持all"            },
+                        {"key": "task_name", "isMust": false, "type": "string", "des": "指定任务名字"            },
+                        {"key": "project_id", "isMust": false, "type": "string", "des": "网络id，不支持all"            },
                         {"key": "app_id", "isMust": false, "type": "string", "des": "如果是非第三方app，不填"            },
                         {"key": "keep_task_description", "isMust": false, "type": "bool", "des": "是否复制任务描述"            },
                         {"key": "keep_task_parent_folder", "isMust": false, "type": "bool", "des": "是否Keep新任务属于原来项目"            },
-						{"key": "charge_user_account_id", "isMust": false, "type": "string", "des": "指定项目负责人id"            },
-						{"key": "keep_task_members", "isMust": false, "type": "bool", "des": "是否keep项目成员"            },
-						{"key": "keep_task_tags", "isMust": false, "type": "bool", "des": "是否keep标签"            },
-						{"key": "keep_task_deadline", "isMust": false, "type": "bool", "des": "是否keep截止日期"            },
-						{"key": "keep_task_subTasks", "isMust": false, "type": "bool", "des": "是否keep子任务"            }
+                        {"key": "charge_user_account_id", "isMust": false, "type": "string", "des": "指定项目负责人id"            },
+                        {"key": "keep_task_members", "isMust": false, "type": "bool", "des": "是否keep项目成员"            },
+                        {"key": "keep_task_tags", "isMust": false, "type": "bool", "des": "是否keep标签"            },
+                        {"key": "keep_task_deadline", "isMust": false, "type": "bool", "des": "是否keep截止日期"            },
+                        {"key": "keep_task_subTasks", "isMust": false, "type": "bool", "des": "是否keep子任务"            }
                     ]
                 },
                 "duplicate_folder": {
@@ -567,7 +566,7 @@
                         {"key": "project_id", "isMust": false, "type": "string", "des": "哪个网络， 不支持all"            }
                     ]
                 },
-				"get_available_folders": {
+                "get_available_folders": {
                     "name": "修改任务的关联项目时, 根据任务Id以及关键词返回可关联的项目",
                     "docUrl": "/doc/apiDocumentNotAvailable.html",
                     "url": "/task/get_available_folders",
@@ -575,7 +574,7 @@
                     "params": [
                         {"key": "access_token", "isMust": true, "type": "string", "des": "当前登录用户访问令牌"            },
                         {"key": "project_id", "isMust": false, "type": "string", "des": "哪个网络，当搜索个人网络时，可以不填"            },
-						{"key": "keyword", "isMust": false, "type": "string", "des": "关键词"            },
+                        {"key": "keyword", "isMust": false, "type": "string", "des": "关键词"            },
 						{"key": "page_index", "isMust": true, "type": "int", "des": "分页获取的页码, 从1开始, 无默认值"            },
                         {"key": "page_size", "isMust": true, "type": "int", "des": "该页面有多少项, 有默认值20"            }
                     ]
@@ -1498,7 +1497,7 @@
                     requestMode: 'get',
                     params: [
                         { key: 'access_token', isMust: true, type: 'string', des: '当前登录用户访问令牌' },
-                        { key: 'project_id', isMust: true, type: 'string', des: '网络ID(只有安装了组织结构应用的才有这数据)' }
+
                     ]
                 },
                 get_users_bykeywords: {
@@ -2240,37 +2239,6 @@
                 }
             }
         },
-        vote: {
-            v1: {
-
-                update_vote_deadline: {
-                    name: '修改投票时间',
-                    docUrl: '',
-                    url: '/vote/update_vote_deadline',
-                    requestMode: 'post',
-                    params: [
-                        { key: 'access_token', isMust: true, type: 'string', des: '当前登录用户访问令牌' },
-                        { key: 'source_id', isMust: true, type: 'string', des: '来源id(如账号id,网络id,任务id,日程id)' },
-                        { key: 'from_type', isMust: true, type: 'int', des: ' 邀请来源 0邀请好友1邀请群组2邀请任务3邀请知识4邀请网络5邀请日程6邀请项目' },
-                        { key: 'link_type', isMust: true, type: 'int', des: '邀请去向 1微信2QQ3链接4二维码' },
-                        { key: 'width', isMust: false, type: 'string', des: '二维码宽默认200px' },
-                        { key: 'height', isMust: false, type: 'string', des: '二维码高默认200px' }
-                    ]
-                },
-                get_cast_options: {
-                    name: '邀请成员',
-                    docUrl: {type: '', url: ''},
-                    url: '/vote/get_cast_options',
-                    requestMode: 'post',
-                    params: [
-                        { key: 'access_token', isMust: true, type: 'string', des: '当前登录用户访问令牌' },
-                        { key: 'group_id', isMust: true, type: 'string', des: '群组编号' },
-                        { key: 'account_ids', isMust: false, type: 'string', des: '邀请加入群组的现有用户ID' },
-                        { key: 'accounts', isMust: false, type: 'string', des: '[{key:value}]邀请手机/邮箱的人加入群组key:手机or邮箱value:邀请的备注没有传空' }
-                    ]
-                }
-            }
-        },
         qiniu: {
             v1: {
                 get_qiniu_token: {
@@ -2461,7 +2429,7 @@
                     requestMode: 'post',
                     params: [
                         { key: 'access_token', isMust: true, type: 'string', des: '当前登录用户访问令牌' },
-                        { key: 'name', isMust: true, type: 'string', des: '文件夹名' },
+                        { key: 'root_name', isMust: true, type: 'string', des: '文件夹名' },
                         { key: 'members', isMust: false, type: 'string', des: '共享成员 多个,隔开' },
                         { key: 'project_id', isMust: false, type: 'string', des: '文件夹归属于哪个网络 为空代表个人' }
                     ]
@@ -2473,7 +2441,7 @@
                     requestMode: 'post',
                     params: [
                         { key: 'access_token', isMust: true, type: 'string', des: '当前登录用户访问令牌' },
-                        { key: 'name', isMust: true, type: 'string', des: '节点名' },
+                        { key: 'node_name', isMust: true, type: 'string', des: '节点名' },
                         { key: 'file_path', isMust: false, type: 'string', des: '文件路径' },
                         { key: 'size', isMust: false, type: 'string', des: '文件大小' },
                         { key: 'node_type', isMust: false, type: 'Enum(具体看KC任务下的枚举说明)', des: '节点类型' },
@@ -2499,7 +2467,7 @@
                     requestMode: 'post',
                     params: [
                         { key: 'access_token', isMust: true, type: 'string', des: '当前登录用户访问令牌' },
-                        { key: 'node_id', isMust: true, type: 'string', des: '节点id' },
+                        { key: 'root_id', isMust: true, type: 'string', des: '节点id' },
                         { key: 'is_star', isMust: true, type: 'bool', des: '是否标星 true 标星 false 取消' }
                     ]
                 },
@@ -2520,7 +2488,7 @@
                     requestMode: 'post',
                     params: [
                         { key: 'access_token', isMust: true, type: 'string', des: '当前登录用户访问令牌' },
-                        { key: 'node_id', isMust: true, type: 'string', des: '节点id' }
+                        { key: 'root_id', isMust: true, type: 'string', des: '节点id' }
                     ]
                 },
                 move_node: {
@@ -2536,14 +2504,38 @@
                     ]
                 },
                 remove_root_member: {
-                    name: '移除节点成员',
+                    name: '移除根节点成员',
                     docUrl: '',
                     url: '/kc/remove_root_member',
                     requestMode: 'post',
                     params: [
                         { key: 'access_token', isMust: true, type: 'string', des: '当前登录用户访问令牌' },
-                        { key: 'node_id', isMust: true, type: 'string', des: '节点id' },
+                        { key: 'root_id', isMust: true, type: 'string', des: '节点id' },
                         { key: 'member_id', isMust: true, type: 'string', des: '成员id' }
+                    ]
+                },
+                add_root_member: {
+                    name: '添加根节点成员',
+                    docUrl: '',
+                    url: '/kc/add_root_member',
+                    requestMode: 'post',
+                    params: [
+                        { key: 'access_token', isMust: true, type: 'string', des: '当前登录用户访问令牌' },
+                        { key: 'root_id', isMust: true, type: 'string', des: '节点id' },
+                        { key: 'member_id', isMust: true, type: 'string', des: '成员id' }
+                    ]
+                },
+                update_root_member_auth: {
+                    name: '修改根节点成员权限',
+                    docUrl: '',
+                    url: '/kc/update_root_member_auth',
+                    requestMode: 'post',
+                    params: [
+                        { key: 'access_token', isMust: true, type: 'string', des: '当前登录用户访问令牌' },
+                        { key: 'root_id', isMust: true, type: 'string', des: '节点id' },
+                        { key: 'member_id', isMust: true, type: 'string', des: '成员id' },
+                        { key: 'permission', isMust: true, type: 'string', des: '根节点权限' },
+
                     ]
                 },
                 update_node_name: {
@@ -2554,7 +2546,7 @@
                     params: [
                         { key: 'access_token', isMust: true, type: 'string', des: '当前登录用户访问令牌' },
                         { key: 'node_id', isMust: true, type: 'string', des: '节点id' },
-                        { key: 'name', isMust: true, type: 'string', des: '节点名字' }
+                        { key: 'node_name', isMust: true, type: 'string', des: '节点名字' }
                     ]
                 },
                 update_root_name: {
@@ -2564,8 +2556,8 @@
                     requestMode: 'post',
                     params: [
                         { key: 'access_token', isMust: true, type: 'string', des: '当前登录用户访问令牌' },
-                        { key: 'node_id', isMust: true, type: 'string', des: '节点id' },
-                        { key: 'name', isMust: true, type: 'string', des: '根节点名字' }
+                        { key: 'root_id', isMust: true, type: 'string', des: '节点id' },
+                        { key: 'root_name', isMust: true, type: 'string', des: '根节点名字' }
                     ]
                 },
                 update_node_share: {
@@ -2576,8 +2568,8 @@
                     params: [
                         { key: 'access_token', isMust: true, type: 'string', des: '当前登录用户访问令牌' },
                         { key: 'node_id', isMust: true, type: 'string', des: '节点id' },
-                        { key: 'is_downloadable', isMust: true, type: 'bool 没修改可不传', des: '是否允许下载' },
-                        { key: 'is_editable', isMust: true, type: 'bool 没修改可不传', des: '是否允许编辑' },
+                        { key: 'is_downloadable', isMust: false, type: 'bool 没修改可不传', des: '是否允许下载' },
+                        { key: 'is_editable', isMust: false, type: 'bool 没修改可不传', des: '是否允许编辑' },
                         { key: 'visible_type', isMust: true, type: 'Enum(具体看KC任务下的枚举说明)', des: '分享类型' }
                     ]
                 },
@@ -2615,22 +2607,35 @@
                 },
                 get_node_detail: {
                     name: '获取节点详情',
-                    docUrl: '',
+                    docUrl: '/doc/kc/kc_node_detail.html',
                     url: '/kc/get_node_detail',
                     requestMode: 'get',
                     params: [
                         { key: 'access_token', isMust: true, type: 'string', des: '当前登录用户访问令牌' },
-                        { key: 'id', isMust: true, type: 'string', des: '节点id' }
+                        { key: 'node_id', isMust: true, type: 'string', des: '节点id' }
                     ]
                 },
                 get_root_detail: {
                     name: '获取根节点详情',
-                    docUrl: '',
+                    docUrl: '/doc/kc/kc_root_detail.html',
                     url: '/kc/get_root_detail',
                     requestMode: 'get',
                     params: [
                         { key: 'access_token', isMust: true, type: 'string', des: '当前登录用户访问令牌' },
-                        { key: 'id', isMust: true, type: 'string', des: '节点id' }
+                        { key: 'root_id', isMust: true, type: 'string', des: '节点id' }
+                    ]
+                },
+                get_roots: {
+                    name: '获取根节点列表',
+                    docUrl: '',
+                    url: '/kc/get_roots',
+                    requestMode: 'get',
+                    params: [
+                        { key: 'access_token', isMust: true, type: 'string', des: '当前登录用户访问令牌' },
+                        { key: 'project_id', isMust: false, type: 'string', des: '获取根节点列表，个人不传，网络传网络id' }
+
+//                        { key: 'keywords', isMust: false, type: 'string', des: '关键字' },
+//                        { key: 'filter_type', isMust: false, type: 'Enum(具体看KC任务下的枚举说明)', des: '根节点过滤类型' }
                     ]
                 },
                 get_nodes: {
@@ -2640,8 +2645,7 @@
                     requestMode: 'get',
                     params: [
                         { key: 'access_token', isMust: true, type: 'string', des: '当前登录用户访问令牌' },
-                        { key: 'id', isMust: true, type: 'string', des: '节点id' },
-                        { key: 'parent_id', isMust: false, type: 'string', des: '母节点id' },
+                        { key: 'root_id', isMust: false, type: 'string', des: '根节点id' },
                         { key: 'keywords', isMust: false, type: 'string', des: '关键字' },
                         { key: 'pageindex', isMust: false, type: 'int', des: '页码' },
                         { key: 'pagesize', isMust: false, type: 'int', des: '数量' }
@@ -2656,17 +2660,6 @@
                         { key: 'access_token', isMust: true, type: 'string', des: '当前登录用户访问令牌' },
                         { key: 'keywords', isMust: false, type: 'string', des: '关键字' }
 
-                    ]
-                },
-                get_roots: {
-                    name: '获取根节点列表',
-                    docUrl: '',
-                    url: '/kc/get_roots',
-                    requestMode: 'get',
-                    params: [
-                        { key: 'access_token', isMust: true, type: 'string', des: '当前登录用户访问令牌' },
-                        { key: 'keywords', isMust: false, type: 'string', des: '关键字' },
-                        { key: 'filter_type', isMust: false, type: 'Enum(具体看KC任务下的枚举说明)', des: '根节点过滤类型' }
                     ]
                 },
                 get_stared_nodes: {
