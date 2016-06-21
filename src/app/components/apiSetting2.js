@@ -1938,27 +1938,14 @@
                         { key: 'pagesize', isMust: false, type: 'int', des: '指定要返回的记录条数' }
                     ]
                 },
-                get_inbox_post_mectionedme_message: {
-                    name: '获取动态提到我的消息',
+                get_inbox_post_message: {
+                    name: '获取动态消息',
                     docUrl: '/doc/message/post_metioned_me.html',
-                    url: '/message/get_inbox_post_mectionedme_message',
+                    url: '/message/get_inbox_post_message',
                     requestMode: 'get',
                     params: [
                         { key: 'access_token', isMust: true, type: 'string', des: '当前登录用户访问令牌' },
-                        { key: 'is_unread', isMust: false, type: 'bool', des: '是否获取未读消息' },
-                        { key: 'is_favorite', isMust: false, type: 'bool', des: '是否获取标记' },
-                        { key: 'keywords', isMust: false, type: 'string', des: '关键字查找' },
-                        { key: 'pageindex', isMust: false, type: 'int', des: '当前页码(以1开始，1代表第一页)' },
-                        { key: 'pagesize', isMust: false, type: 'int', des: '指定要返回的记录条数' }
-                    ]
-                },
-                get_inbox_post_replyme_message: {
-                    name: '获取动态回复我的消息',
-                    docUrl: '/doc/message/post_reply.html',
-                    url: '/message/get_inbox_post_replyme_message',
-                    requestMode: 'get',
-                    params: [
-                        { key: 'access_token', isMust: true, type: 'string', des: '当前登录用户访问令牌' },
+                        { key: 'inbox_load_type', isMust: false, type: 'int', des: '动态消息加载类型(2动态全部3动态提到我的4动态提到群组5动态回复我的)默认动态全部' },
                         { key: 'is_unread', isMust: false, type: 'bool', des: '是否获取未读消息' },
                         { key: 'is_favorite', isMust: false, type: 'bool', des: '是否获取标记' },
                         { key: 'keywords', isMust: false, type: 'string', des: '关键字查找' },
@@ -1973,6 +1960,7 @@
                     requestMode: 'get',
                     params: [
                         { key: 'access_token', isMust: true, type: 'string', des: '当前登录用户访问令牌' },
+                        { key: 'inbox_load_type', isMust: false, type: 'int', des: '任务消息加载类型(6任务全部7任务项目提到我的8任务回复提到我的9任务系统消息)默认任务全部' },
                         { key: 'is_unread', isMust: false, type: 'bool', des: '是否获取未读消息' },
                         { key: 'is_favorite', isMust: false, type: 'bool', des: '是否获取标记' },
                         { key: 'keywords', isMust: false, type: 'string', des: '关键字查找' },
@@ -2675,6 +2663,21 @@
                     ]
                 }
 
+            }
+        },
+        search:{
+            v1:{
+                smart_search: {
+                    name: '智能搜索(全局搜索)',
+                    docUrl: '',
+                    url: '/search/smart_search',
+                    requestMode: 'get',
+                    params: [
+                        { key: 'access_token', isMust: true, type: 'string', des: '当前登录用户访问令牌' },
+                        { key: 'keywords', isMust: true, type: 'string', des: '搜索关键至少2个字符' },
+                        { key: 'search_type', isMust: false, type: 'int', des: '搜索类型（1用户账号2群组3动态4任务5知识）默认全部' }
+                    ]
+                }
             }
         }
     };
