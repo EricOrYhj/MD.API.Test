@@ -25,20 +25,7 @@
 
                     ]
                 },
-                get_at_me_posts: {
-                    name: '获取提及@我的动态更新(适用inbox中的提到我的)',
-                    docUrl: '/doc/post/post_detail.html',
-                    url: '/post/get_at_me_posts',
-                    requestMode: 'get',
-                    params: [
-                        { key: 'access_token', isMust: true, type: 'string', des: '当前登录用户访问令牌' },
-                        { key: 'is_unreading', isMust: false, type: 'bool', des: '是否获取未读提及我的动态 默认0：否' },
-                        { key: 'keywords', isMust: false, type: 'string', des: '关键词模糊搜索，当为空时则返回所有的动态更新' },
-                        { key: 'post_type', isMust: false, type: 'int', des: '筛选动态更新类型,默认-1：表示全部动态；0：普通消息；1：链接；2：图片；3：文档；4：提问；7：投票' },
-                        { key: 'pageindex', isMust: false, type: 'int64', des: '指定当前的页码' },
-                        { key: 'pagesize', isMust: false, type: 'int', des: '指定要返回的记录条数(int默认值20，最大值100)' }
-                    ]
-                },
+
                 get_post_detail: {
                     name: '根据动态更新编号获取单条动态更新内容',
                     docUrl: '/doc/post/post_detail.html',
@@ -49,35 +36,7 @@
                         { key: 'post_id', isMust: true, type: 'string', des: '动态更新编号' }
                     ]
                 },
-//                get_doc_faq_img_posts: {
-//                    name: '获取 文档/图片/问答 列表信息 ',
-//                    docUrl: '/doc/post/post_detail.html',
-//                    url: '/post/get_doc_faq_img_posts',
-//                    requestMode: 'get',
-//                    params: [
-//                        { key: 'access_token', isMust: true, type: 'string', des: '当前登录用户访问令牌' },
-//                        { key: 'group_id', isMust: false, type: 'string', des: '群组编号' },
-//                        { key: 'keywords', isMust: false, type: 'string', des: '关键词模糊搜索，当为空时则返回所有的动态更新' },
-//                        { key: 'filter_type', isMust: false, type: 'int', des: '过滤类型。默认值0，0表示所有；1表示我上传的；2表示我收藏的' },
-//                        { key: 'since_id', isMust: false, type: 'int64', des: '若指定此参数，则只返回ID比since_id大的动态更新(即比since_id发表时间晚的动态更新)' },
-//                        { key: 'max_id', isMust: false, type: 'int64', des: '若指定此参数，则只返回ID比max_id小的动态更新(即比max_id发表时间早的动态更新)' },
-//                        { key: 'pagesize', isMust: false, type: 'int', des: '指定要返回的记录条数(int默认值20，最大值100)' },
-//                        { key: 'select_type', isMust: true, type: 'int', des: '查询类型 (2：图片,3:文档，4：问答)' }
-//                    ]
-//                },
-//                get_favorite_posts: {
-//                    name: '获取当前登录用户收藏的动态更新',
-//                    docUrl: '/doc/post/post_detail.html',
-//                    url: '/post/get_favorite_posts',
-//                    requestMode: 'get',
-//                    params: [
-//                        { key: 'access_token', isMust: true, type: 'string', des: '当前登录用户访问令牌' },
-//                        { key: 'keywords', isMust: false, type: 'string', des: '关键词模糊搜索，当为空时则返回所有的动态更新' },
-//                        { key: 'post_type', isMust: false, type: 'int', des: '筛选动态更新类型,默认-1：表示全部动态；0：普通消息；1：链接；2：图片；3：文档；4：提问；7：投票' },
-//                        { key: 'max_id', isMust: false, type: 'int64', des: '若指定此参数，则只返回ID比max_id小的动态更新(即比max_id发表时间早的动态更新)' },
-//                        { key: 'pagesize', isMust: false, type: 'int', des: '指定要返回的记录条数(int默认值20，最大值100)' }
-//                    ]
-//                },
+
                 get_group_posts: {
                     name: '获取群组的动态更新',
                     docUrl: '/doc/post/post_detail.html',
@@ -124,19 +83,6 @@
                         { key: 'access_token', isMust: true, type: 'string', des: '当前登录用户访问令牌' },
                         { key: 'keywords', isMust: false, type: 'string', des: '关键词模糊搜索，当为空时则返回所有的动态更新' },
                         { key: 'max_id', isMust: false, type: 'int64', des: '若指定此参数，则只返回ID比max_id小的动态更新(即比max_id发表时间早的动态更新)' },
-                        { key: 'pagesize', isMust: false, type: 'int', des: '指定要返回的记录条数(int默认值20，最大值100)' }
-                    ]
-                },
-                get_reply_me_posts: {
-                    name: '获取回复我的最新回复信息',
-                    docUrl: '/doc/post/post_detail.html',
-                    url: '/post/get_reply_me_posts',
-                    requestMode: 'get',
-                    params: [
-                        { key: 'access_token', isMust: true, type: 'string', des: '当前登录用户访问令牌' },
-                        { key: 'keywords', isMust: false, type: 'string', des: '关键词模糊搜索，当为空时则返回所有的动态更新' },
-                        { key: 'is_unreading', isMust: false, type: 'bool', des: '是否获取未读提及我的动态 默认0：否' },
-                        { key: 'max_id', isMust: false, type: 'string', des: '若指定此参数，则只返回ID比max_id小的动态更新(即比max_id发表时间早的动态更新)(特殊，数据库内部处理)' },
                         { key: 'pagesize', isMust: false, type: 'int', des: '指定要返回的记录条数(int默认值20，最大值100)' }
                     ]
                 },
@@ -2596,13 +2542,14 @@
                     ]
                 },
                 get_nodes: {
-                    name: '获取根节点下节点列表',
+                    name: '获取根节点/父节点下节点列表',
                     docUrl: '',
                     url: '/kc/get_nodes',
                     requestMode: 'get',
                     params: [
                         { key: 'access_token', isMust: true, type: 'string', des: '当前登录用户访问令牌' },
-                        { key: 'root_id', isMust: false, type: 'string', des: '根节点id' },
+                        { key: 'root_id', isMust: true, type: 'string', des: '根节点id' },
+                        { key: 'parent_id', isMust: false, type: 'string', des: '父节点id' },
                         { key: 'keywords', isMust: false, type: 'string', des: '关键字' },
                         { key: 'pageindex', isMust: false, type: 'int', des: '页码' },
                         { key: 'pagesize', isMust: false, type: 'int', des: '数量' }
