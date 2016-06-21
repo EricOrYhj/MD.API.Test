@@ -1940,7 +1940,7 @@
                 },
                 get_inbox_post_message: {
                     name: '获取动态消息',
-                    docUrl: '/doc/message/post_metioned_me.html',
+                    docUrl: '/doc/message/post_message.html',
                     url: '/message/get_inbox_post_message',
                     requestMode: 'get',
                     params: [
