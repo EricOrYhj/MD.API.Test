@@ -2546,8 +2546,8 @@
                     requestMode: 'get',
                     params: [
                         { key: 'access_token', isMust: true, type: 'string', des: '当前登录用户访问令牌' },
-                        { key: 'root_id', isMust: true, type: 'string', des: '根节点id' },
-                        { key: 'parent_id', isMust: false, type: 'string', des: '父节点id' },
+                        { key: 'parent_id', isMust: true, type: 'string', des: '父节点id' },
+                        { key: 'type', isMust: true, type: 'int', des: '区分根节点是什么类型 1：我的文件，2：根节点' },
                         { key: 'keywords', isMust: false, type: 'string', des: '关键字' },
                         { key: 'pageindex', isMust: false, type: 'int', des: '页码' },
                         { key: 'pagesize', isMust: false, type: 'int', des: '数量' }
