@@ -1581,6 +1581,18 @@
                         { key: 'reminder_type', isMust: true, type: 'int', des: '提醒类型 设定无提醒 - 0; 设定提醒单位: 分钟 - 1，小时 - 2，日 - 3' }
                     ]
                 },
+				edit_share_property_on_event: {
+                    name: '更新日程分享功能',
+                    docUrl: '/doc/apidocumentnotavailable.html',
+                    url: '/calendar/edit_share_property_on_event',
+                    requestMode: 'post',
+                    params: [
+                        { key: 'access_token', isMust: true, type: 'string', des: '当前登录用户访问令牌' },
+                        { key: 'event_id', isMust: true, type: 'string', des: '日程id' },
+                        { key: 'event_recurring_time', isMust: true, type: 'string', des: '选取子日程' },
+                        { key: 'is_shareable', isMust: true, type: 'bool', des: '是否开启分享功能' }
+                    ]
+                },
 				 get_events_by_conditions: {
                     name: '获取多用户待办日程列表，结果按日期分组。',
                     docUrl: '/doc/calendar/get_events_by_conditions.html',
@@ -1606,15 +1618,15 @@
 						{ key: 'event_recurring_time', isMust: false, type: 'string', des: '日期类型，在选择某个循环日程的子日程时使用' }
                     ]
                 },
-                get_invite_calendars: {
-                    name: '获取登录用户未确认日程列表',
-                    docUrl: {type: '', url: ''},
-                    url: '/calendar/get_invite_calendars',
+				 get_unconfirmed_events: {
+                    name: '获取未确认的日程',
+                    docUrl: '/doc/calendar/get_events_by_conditions.html',
+                    url: '/calendar/get_unconfirmed_events',
                     requestMode: 'get',
                     params: [
                         { key: 'access_token', isMust: true, type: 'string', des: '当前登录用户访问令牌' },
-                        { key: 'pageindex', isMust: false, type: 'string', des: '指定要返回的页数' },
-                        { key: 'pagesize', isMust: false, type: 'string', des: '指定要返回的记录条数' }
+                        {"key": "page_index", "isMust": true, "type": "int", "des": "要获取的页码"            },
+                        {"key": "page_size", "isMust": true, "type": "int", "des": "页面容量"            }
                     ]
                 },
                 get_user_all_cal_categories: {
