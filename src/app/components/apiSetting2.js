@@ -229,7 +229,9 @@
                     url: '/post/get_post_select_groups',
                     requestMode: 'get',
                     params: [
-                        { key: 'access_token', isMust: true, type: 'string', des: '当前登录用户访问令牌' }
+                        { key: 'access_token', isMust: true, type: 'string', des: '当前登录用户访问令牌' },
+                        { key: 'is_publish', isMust: true, type: 'bool', des: '发布范围还是筛选范围' }
+
                     ]
                 },
                 add_cast_options: {
