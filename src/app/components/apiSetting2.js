@@ -1442,7 +1442,7 @@
                     url: '/user/get_user_subordinate',
                     requestMode: 'get',
                     params: [
-                        { key: 'access_token', isMust: true, type: 'string', des: '当前登录用户访问令牌' },
+                        { key: 'access_token', isMust: true, type: 'string', des: '当前登录用户访问令牌' }
 
                     ]
                 },
@@ -2432,8 +2432,7 @@
                         { key: 'access_token', isMust: true, type: 'string', des: '当前登录用户访问令牌' },
                         { key: 'root_id', isMust: true, type: 'string', des: '节点id' },
                         { key: 'member_id', isMust: true, type: 'string', des: '成员id' },
-                        { key: 'permission', isMust: true, type: 'string', des: '根节点权限' },
-
+                        { key: 'permission', isMust: true, type: 'string', des: '根节点权限' }
                     ]
                 },
                 update_node_name: {
