@@ -225,7 +225,7 @@
                 },
                 get_post_select_groups: {
                     name: '动态发布可选群组的范围',
-                    docUrl: "",
+                    docUrl: '/doc/post/get_post_select_groups.html',
                     url: '/post/get_post_select_groups',
                     requestMode: 'get',
                     params: [
