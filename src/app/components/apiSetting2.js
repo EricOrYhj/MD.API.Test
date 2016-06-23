@@ -154,6 +154,7 @@
                         { key: 'reply_account_id', isMust: false, type: 'string', des: '原回复创建人，不填默认动态创建者[可选]' },
                         { key: 'reply_msg', isMust: true, type: 'int', des: '回复的消息内容([aid]accountID[/aid]代表@某个人,[gid]groupID[/gid]代表@某个群组)' },
                         { key: 'attachments', isMust: false, type: 'binary', des: '本地附件' },
+                        { key: 'comment_type', isMust: false, type: 'int', des: '回复类型' },
                         { key: 'is_share', isMust: false, type: 'bool', des: '同时转发动态(0表示不转发动态；1表示同时转发动态)' },
                         { key: 'group_ids', isMust: false, type: 'string', des: '可为空，动态分享群组编号(多个群组用逗号隔开)' }
                     ]
@@ -230,7 +231,7 @@
                     requestMode: 'get',
                     params: [
                         { key: 'access_token', isMust: true, type: 'string', des: '当前登录用户访问令牌' },
-                        { key: 'is_publish', isMust: true, type: 'bool', des: '发布范围还是筛选范围' }
+                        { key: 'is_publish', isMust: true, type: 'bool', des: '发布范围 true 筛选范围 false ' }
 
                     ]
                 },
