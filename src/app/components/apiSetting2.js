@@ -1515,6 +1515,17 @@
         },
         calendar: {
             v1: {
+                create_user_defined_category: {
+                    name: '创建用户自定义的分类',
+                    docUrl: '/doc/apidocumentnotavailable.html',
+                    url: '/calendar/create_user_defined_category',
+                    requestMode: 'post',
+                    params: [
+                        { key: 'access_token', isMust: true, type: 'string', des: '当前登录用户访问令牌' },
+                        { key: 'color', isMust: true, type: 'int', des: '分类颜色, 日程颜色  Red = 0, Purple = 1, Cyan = 2, Orange = 3, Blue = 4, Green = 5, Yellow = 6' },
+                        { key: 'category_name', isMust: true, type: 'string', des: '分类的名字' }
+                    ]
+                },
 				create_event_obselete: {
                     name: '创建一个新的日程(先不要使用)',
                     docUrl: '/doc/calendar/create_event_obselete.html',
@@ -1581,19 +1592,28 @@
                         { key: 'reminder_type', isMust: true, type: 'int', des: '提醒类型 设定无提醒 - 0; 设定提醒单位: 分钟 - 1，小时 - 2，日 - 3' }
                     ]
                 },
-				edit_share_property_on_event: {
-                    name: '更新日程分享功能',
+                edit_properites_on_category: {
+                    name: '编辑分类的属性',
                     docUrl: '/doc/apidocumentnotavailable.html',
-                    url: '/calendar/edit_share_property_on_event',
+                    url: '/calendar/edit_properites_on_category',
                     requestMode: 'post',
                     params: [
                         { key: 'access_token', isMust: true, type: 'string', des: '当前登录用户访问令牌' },
-                        { key: 'event_id', isMust: true, type: 'string', des: '日程id' },
-                        { key: 'event_recurring_time', isMust: true, type: 'string', des: '选取子日程' },
-                        { key: 'is_shareable', isMust: true, type: 'bool', des: '是否开启分享功能' }
+                        { key: 'color', isMust: true, type: 'int', des: '分类颜色, 日程颜色  Red = 0, Purple = 1, Cyan = 2, Orange = 3, Blue = 4, Green = 5, Yellow = 6' },
+                        { key: 'category_id', isMust: true, type: 'string', des: '要更新的分类id' },
+                        { key: 'category_name', isMust: true, type: 'string', des: '分类的名字' }
                     ]
                 },
-				 get_events_by_conditions: {
+                get_all_user_defined_categories: {
+                    name: '获取自定义分类',
+                    docUrl: '/doc/calendar/get_all_user_defined_categories.html',
+                    url: '/calendar/get_all_user_defined_categories',
+                    requestMode: 'get',
+                    params: [
+                        { key: 'access_token', isMust: true, type: 'string', des: '当前登录用户访问令牌' }
+                    ]
+                },
+                get_events_by_conditions: {
                     name: '获取多用户待办日程列表，结果按日期分组。',
                     docUrl: '/doc/calendar/get_events_by_conditions.html',
                     url: '/calendar/get_events_by_conditions',
@@ -1603,13 +1623,13 @@
                         { key: 'account_ids', isMust: true, type: 'string', des: '用户编号，多个以逗号相隔' },
                         { key: 'event_category_types', isMust: true, type: 'int', des: '如果只有他人则1, 4, 5有效,工作日程 WorkEvent = 1， 任务日程 Participate = 4， 包含自定义分类日程 Customed = 16， 所有类型 All = 21 = WorkEvent + Participate + Customed， 如果需要托付类型或者负责类型请联系我' },
                         { key: 'category_ids', isMust: false, type: 'string', des: '如果有自定义分类则填写，以逗号分隔, 传入All(不可忽略大小写)时，为全部分类' },
-						{ key: 'begin_date', isMust: true, type: 'string', des: '开始日期 yyyy-mm-dd' },
-						{ key: 'end_date', isMust: true, type: 'string', des: '结束日期, 最大值为这个日期的前一天。' }
+                        { key: 'begin_date', isMust: true, type: 'string', des: '开始日期 yyyy-mm-dd' },
+                        { key: 'end_date', isMust: true, type: 'string', des: '结束日期, 最大值为这个日期的前一天。' }
                     ]
                 },
                 get_event_details: {
                     name: '日程详情',
-                    docUrl: "/doc/calendar/get_event_details",
+                    docUrl: "/doc/calendar/get_event_details.html",
                     url: '/calendar/get_event_details',
                     requestMode: 'get',
                     params: [
@@ -1629,15 +1649,7 @@
                         {"key": "page_size", "isMust": true, "type": "int", "des": "页面容量"            }
                     ]
                 },
-                get_user_all_cal_categories: {
-                    name: '获取用户所有分类',
-                    docUrl: {type: '', url: ''},
-                    url: '/calendar/get_user_all_cal_categories',
-                    requestMode: 'get',
-                    params: [
-                        { key: 'access_token', isMust: true, type: 'string', des: '当前登录用户访问令牌' }
-                    ]
-                },
+
                 get_user_busy_calendar: {
                     name: '获取冲突日程',
                     docUrl: {type: '', url: ''},
@@ -1647,6 +1659,17 @@
                         { key: 'access_token', isMust: true, type: 'string', des: '当前登录用户访问令牌' },
                         { key: 'start_time', isMust: false, type: 'string', des: '日程开始时间' },
                         { key: 'end_time', isMust: false, type: 'string', des: '日程结束时间' }
+                    ]
+                },
+                remove_user_defined_category: {
+                    name: '日程详情',
+                    docUrl: "/doc/apidocumentnotavailable.html",
+                    url: '/calendar/remove_user_defined_category',
+                    requestMode: 'get',
+                    params: [
+                        { key: 'access_token', isMust: true, type: 'string', des: '当前登录用户访问令牌' },
+                        { key: 'event_id', isMust: true, type: 'string', des: '日程id' },
+                        { key: 'event_recurring_time', isMust: false, type: 'string', des: '日期类型，在选择某个循环日程的子日程时使用' }
                     ]
                 },
                 create_event: {
