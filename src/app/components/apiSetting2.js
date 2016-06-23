@@ -1439,13 +1439,13 @@
                     ]
                 },
                 get_user_subordinate: {
-                    name: '获取下属用户列表',
+                    name: '获取下属用户列表(只有安装了组织结构的网络才有)',
                     docUrl: '/doc/user/account_base.html',
                     url: '/user/get_user_subordinate',
                     requestMode: 'get',
                     params: [
-                        { key: 'access_token', isMust: true, type: 'string', des: '当前登录用户访问令牌' }
-
+                        { key: 'access_token', isMust: true, type: 'string', des: '当前登录用户访问令牌' },
+                        { key: 'project_id', isMust: true, type: 'string', des: '要获取的网络ID' }
                     ]
                 },
                 get_users_bykeywords: {
@@ -1487,7 +1487,7 @@
                 },
                 get_project_byprojectcode: {
                     name: '根据企业号获取网络信息和设置',
-                    docUrl: {type: 'string', url: ''},
+                    docUrl: '/doc/project/project_setting.html',
                     url: '/company/get_project_byprojectcode',
                     requestMode: 'get',
                     params: [
@@ -1504,6 +1504,7 @@
                         { key: 'access_token', isMust: true, type: 'string', des: '当前登录用户访问令牌' },
                         { key: 'project_code', isMust: true, type: 'string', des: '企业号' },
                         { key: 'verify_code', isMust: true, type: 'string', des: '验证码' },
+                        { key: 'is_verify_code', isMust: true, type: 'bool', des: '是否只验证验证码(默认false)' },
                         { key: 'company_name', isMust: false, type: 'string', des: '公司名' },
                         { key: 'work_site', isMust: false, type: 'string', des: '工作地' },
                         { key: 'department', isMust: false, type: 'string', des: '部门(从公司部门列表中选择)' },
