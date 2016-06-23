@@ -154,6 +154,7 @@
                         { key: 'reply_account_id', isMust: false, type: 'string', des: '原回复创建人，不填默认动态创建者[可选]' },
                         { key: 'reply_msg', isMust: true, type: 'int', des: '回复的消息内容([aid]accountID[/aid]代表@某个人,[gid]groupID[/gid]代表@某个群组)' },
                         { key: 'attachments', isMust: false, type: 'binary', des: '本地附件' },
+                        { key: 'comment_type', isMust: false, type: 'int', des: '回复类型' },
                         { key: 'is_share', isMust: false, type: 'bool', des: '同时转发动态(0表示不转发动态；1表示同时转发动态)' },
                         { key: 'group_ids', isMust: false, type: 'string', des: '可为空，动态分享群组编号(多个群组用逗号隔开)' }
                     ]
@@ -230,7 +231,7 @@
                     requestMode: 'get',
                     params: [
                         { key: 'access_token', isMust: true, type: 'string', des: '当前登录用户访问令牌' },
-                        { key: 'is_publish', isMust: true, type: 'bool', des: '发布范围还是筛选范围' }
+                        { key: 'is_publish', isMust: true, type: 'bool', des: '发布范围 true 筛选范围 false ' }
 
                     ]
                 },
@@ -1439,13 +1440,13 @@
                     ]
                 },
                 get_user_subordinate: {
-                    name: '获取下属用户列表',
+                    name: '获取下属用户列表(只有安装了组织结构的网络才有)',
                     docUrl: '/doc/user/account_base.html',
                     url: '/user/get_user_subordinate',
                     requestMode: 'get',
                     params: [
-                        { key: 'access_token', isMust: true, type: 'string', des: '当前登录用户访问令牌' }
-
+                        { key: 'access_token', isMust: true, type: 'string', des: '当前登录用户访问令牌' },
+                        { key: 'project_id', isMust: true, type: 'string', des: '要获取的网络ID' }
                     ]
                 },
                 get_users_bykeywords: {
@@ -1487,7 +1488,7 @@
                 },
                 get_project_byprojectcode: {
                     name: '根据企业号获取网络信息和设置',
-                    docUrl: {type: 'string', url: ''},
+                    docUrl: '/doc/project/project_setting.html',
                     url: '/company/get_project_byprojectcode',
                     requestMode: 'get',
                     params: [
@@ -1504,6 +1505,7 @@
                         { key: 'access_token', isMust: true, type: 'string', des: '当前登录用户访问令牌' },
                         { key: 'project_code', isMust: true, type: 'string', des: '企业号' },
                         { key: 'verify_code', isMust: true, type: 'string', des: '验证码' },
+                        { key: 'is_verify_code', isMust: true, type: 'bool', des: '是否只验证验证码(默认false)' },
                         { key: 'company_name', isMust: false, type: 'string', des: '公司名' },
                         { key: 'work_site', isMust: false, type: 'string', des: '工作地' },
                         { key: 'department', isMust: false, type: 'string', des: '部门(从公司部门列表中选择)' },
@@ -1881,7 +1883,6 @@
                     requestMode: 'get',
                     params: [
                         { key: 'access_token', isMust: true, type: 'string', des: '当前登录用户访问令牌' },
-                        { key: 'type', isMust: true, type: 'int', des: '1用户 2群组' },
                         { key: 'account_id', isMust: false, type: 'string', des: '用户编号' },
                         { key: 'group_id', isMust: false, type: 'string', des: '群组编号' },
                         { key: 'since_time', isMust: false, type: 'string', des: '起始时间如 2016-06-03 13:12:58.342' },
@@ -1898,7 +1899,6 @@
                     requestMode: 'get',
                     params: [
                         { key: 'access_token', isMust: true, type: 'string', des: '当前登录用户访问令牌' },
-                        { key: 'type', isMust: true, type: 'int', des: '1用户 2群组' },
                         { key: 'account_id', isMust: false, type: 'string', des: '用户编号' },
                         { key: 'group_id', isMust: false, type: 'string', des: '群组编号' }
                     ]
@@ -1910,11 +1910,10 @@
                     requestMode: 'get',
                     params: [
                         { key: 'access_token', isMust: true, type: 'string', des: '当前登录用户访问令牌' },
-                        { key: 'type', isMust: true, type: 'int', des: '1用户 2群组' },
                         { key: 'account_id', isMust: false, type: 'string', des: '用户编号' },
                         { key: 'group_id', isMust: false, type: 'string', des: '群组编号' },
                         { key: 'message_id', isMust: true, type: 'string', des: '消息id' },
-                        { key: 'size', isMust: false, type: 'int', des: '群组编号' }
+                        { key: 'size', isMust: false, type: 'int', des: '前后消息数量' }
                     ]
                 },
                 delete_chat_history_item: {
