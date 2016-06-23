@@ -523,11 +523,11 @@
                         {"key": "access_token", "isMust": true, "type": "string", "des": "当前登录用户访问令牌"            },
                         {"key": "project_id", "isMust": false, "type": "string", "des": "哪个网络，当搜索个人网络时，可以不填"            },
                         {"key": "keyword", "isMust": false, "type": "string", "des": "关键词"            },
-						{"key": "page_index", "isMust": true, "type": "int", "des": "分页获取的页码, 从1开始, 无默认值"            },
+                        {"key": "page_index", "isMust": true, "type": "int", "des": "分页获取的页码, 从1开始, 无默认值"            },
                         {"key": "page_size", "isMust": true, "type": "int", "des": "该页面有多少项, 有默认值20"            }
                     ]
                 },
-				"get_available_tasks": {
+                "get_available_tasks": {
                     "name": "修改任务的母任务时, 根据任务Id返回可以关联的母任务",
                     "docUrl": "/doc/apidocumentnotavailable.html",
                     "url": "/task/get_available_tasks",
@@ -535,8 +535,8 @@
                     "params": [
                         {"key": "access_token", "isMust": true, "type": "string", "des": "当前登录用户访问令牌"            },
                         {"key": "project_id", "isMust": false, "type": "string", "des": "哪个网络，当搜索个人网络时，可以不填"            },
-						{"key": "keyword", "isMust": false, "type": "string", "des": "关键词"            },
-						{"key": "task_id", "isMust": true, "type": "string", "des": "任务id"            }
+                        {"key": "keyword", "isMust": false, "type": "string", "des": "关键词"            },
+                        {"key": "task_id", "isMust": true, "type": "string", "des": "任务id"            }
                     ]
                 },
                 "get_direct_children_tasks": {
@@ -738,7 +738,7 @@
                         {"key": "page_index", "isMust": true, "type": "int", "des": "指定当前的页码, 从1开始"            },
                         {"key": "page_size", "isMust": true, "type": "int", "des": "指定要返回的记录条数"            },
                         {"key": "project_id", "isMust": false, "type": "string", "des": "哪个网络（默认个人自由网络）"            },
-						{"key": "only_file", "isMust": false, "type": "bool", "des": "是否获取只包含文件的comment，不填则不进行过滤"            }
+                        {"key": "only_file", "isMust": false, "type": "bool", "des": "是否获取只包含文件的comment，不填则不进行过滤"            }
                     ]
                 },
                 "get_tasks_count": {
@@ -954,7 +954,7 @@
                         {"key": "access_token", "isMust": true, "type": "string", "des": "当前登录用户访问令牌"            },
                         {"key": "task_id", "isMust": true, "type": "string", "des": "任务ID"            },
                         {"key": "joining_state", "isMust": true, "type": "int", "des": "0:None 无申请，1：NoneToMember 从非成员申请成为成员, 2: BeenRefusedToMember 被拒绝成为成员，拒绝填写2，同意填写0"            },
-						{"key": "account_id", "isMust": true, "type": "string", "des": "指定需要修改的的account_id"            }
+                        {"key": "account_id", "isMust": true, "type": "string", "des": "指定需要修改的的account_id"            }
                     ]
                 },
                 "update_task_charger_property": {
@@ -1526,14 +1526,14 @@
                         { key: 'category_name', isMust: true, type: 'string', des: '分类的名字' }
                     ]
                 },
-				create_event_obselete: {
+                create_event_obselete: {
                     name: '创建一个新的日程(先不要使用)',
                     docUrl: '/doc/calendar/create_event_obselete.html',
                     url: '/calendar/create_event',
                     requestMode: 'post',
                     params: [
                         { key: 'access_token', isMust: true, type: 'string', des: '当前登录用户访问令牌' },
-						{ key: 'attachments', isMust: false, type: 'string', des: '附件' },
+                        { key: 'attachments', isMust: false, type: 'string', des: '附件' },
                         { key: 'name', isMust: true, type: 'string', des: '日程主题' },
                         { key: 'begin_date', isMust: true, type: 'string', des: '日程开始时间。如：2013-05-05 10:25' },
                         { key: 'end_date', isMust: true, type: 'string', des: '日程结束时间。如：2013-05-05 10:25' },
@@ -1549,12 +1549,12 @@
                         { key: 'repeat_weekday', isMust: false, type: 'string', des: '当 frequency=2 该值必填，周几重复 1:周一, 64:周日。周几即为2的几次方，选择每周多天，即为按位或的形式' },
                         { key: 'repeat_times', isMust: false, type: 'int', des: '当 is_recurring_event为1即为重复日程时该值选填，重复次数  与repeat_end_date只能存在一个' },
                         { key: 'reminder_type', isMust: false, type: 'int', des: '当 is_recurring_event为1 该值选填，结束日期 如果repeat_times为0且repeat_end_date为null,则为永久重复' },
-						{ key: 'repeat_end_date', isMust: false, type: 'string', des: '当 repeat_end_date 该值选填，结束日期 如果repeat_times为0且repeat_end_date为null,则为永久重复' },
+                        { key: 'repeat_end_date', isMust: false, type: 'string', des: '当 repeat_end_date 该值选填，结束日期 如果repeat_times为0且repeat_end_date为null,则为永久重复' },
                         { key: 'reminding_time_unit', isMust: true, type: 'int', des: '提醒时间' },
                         { key: 'category_id', isMust: false, type: 'string', des: '日程分类id' }
                     ]
                 },
-				edit_common_properties_on_event: {
+                edit_common_properties_on_event: {
                     name: '修改日程中需要重复确认的属性',
                     docUrl: 'doc/apiDocumentNotAvailable.html',
                     url: '/calendar/edit_common_properties_on_event',
@@ -1575,12 +1575,12 @@
                         { key: 'repeat_times', isMust: false, type: 'int', des: '重复次数  与repeat_end_date只能存在一个' },
                         { key: 'repeat_end_date', isMust: false, type: 'string', des: '结束日期 如果repeat_times为0且repeat_end_date为null,则为永久重复' },
                         { key: 'modifying_all_recurring_events', isMust: false, type: 'bool', des: '是否修改全部子日程' },
-						{ key: 'attachments', isMust: false, type: 'string', des: '日程附件, 请参考[{"fileID":"o_1alp1tvj51ogmitb5a8fkj1gbim","fileSize":9106,"serverName":"https://dn-mdpic.qbox.me/","filePath":"pic/201606/21/","fileName":"MGpKracyNablItC_1667129483","fileExt":".jpg","originalFileName":"u=576234392,3515399049&fm=80","key":"pic/201606/21/MGpKracyNablItC_1667129483.jpg","fileNameParam":"?imageView2/1/w/119/h/83"}]' },
-						{ key: 'need_members_to_confirm', isMust: false, type: 'string', des: '是否需要参与人员重新确认信息' },
-						{ key: 'event_recurring_time', isMust: false, type: 'string', des: '日期类型，在选择某个循环日程的子日程时使用' }
+                        { key: 'attachments', isMust: false, type: 'string', des: '日程附件, 请参考[{"fileID":"o_1alp1tvj51ogmitb5a8fkj1gbim","fileSize":9106,"serverName":"https://dn-mdpic.qbox.me/","filePath":"pic/201606/21/","fileName":"MGpKracyNablItC_1667129483","fileExt":".jpg","originalFileName":"u=576234392,3515399049&fm=80","key":"pic/201606/21/MGpKracyNablItC_1667129483.jpg","fileNameParam":"?imageView2/1/w/119/h/83"}]' },
+                        { key: 'need_members_to_confirm', isMust: false, type: 'string', des: '是否需要参与人员重新确认信息' },
+                        { key: 'event_recurring_time', isMust: false, type: 'string', des: '日期类型，在选择某个循环日程的子日程时使用' }
                     ]
                 },
-				edit_reminder_on_event: {
+                edit_reminder_on_event: {
                     name: '更新日程提醒',
                     docUrl: '/doc/apidocumentnotavailable.html',
                     url: '/calendar/edit_reminder_on_event',
@@ -1635,10 +1635,10 @@
                     params: [
                         { key: 'access_token', isMust: true, type: 'string', des: '当前登录用户访问令牌' },
                         { key: 'event_id', isMust: true, type: 'string', des: '日程id' },
-						{ key: 'event_recurring_time', isMust: false, type: 'string', des: '日期类型，在选择某个循环日程的子日程时使用' }
+                        { key: 'event_recurring_time', isMust: false, type: 'string', des: '日期类型，在选择某个循环日程的子日程时使用' }
                     ]
                 },
-				 get_unconfirmed_events: {
+                get_unconfirmed_events: {
                     name: '获取未确认的日程',
                     docUrl: '/doc/calendar/get_events_by_conditions.html',
                     url: '/calendar/get_unconfirmed_events',
@@ -1665,11 +1665,10 @@
                     name: '日程详情',
                     docUrl: "/doc/apidocumentnotavailable.html",
                     url: '/calendar/remove_user_defined_category',
-                    requestMode: 'get',
+                    requestMode: 'post',
                     params: [
                         { key: 'access_token', isMust: true, type: 'string', des: '当前登录用户访问令牌' },
-                        { key: 'event_id', isMust: true, type: 'string', des: '日程id' },
-                        { key: 'event_recurring_time', isMust: false, type: 'string', des: '日期类型，在选择某个循环日程的子日程时使用' }
+                        { key: 'category_id', isMust: true, type: 'string', des: '分类id' }
                     ]
                 },
                 create_event: {
@@ -1679,7 +1678,7 @@
                     requestMode: 'post',
                     params: [
                         { key: 'access_token', isMust: true, type: 'string', des: '当前登录用户访问令牌' },
-						{ key: 'attachments', isMust: false, type: 'string', des: '附件' },
+                        { key: 'attachments', isMust: false, type: 'string', des: '附件' },
                         { key: 'name', isMust: true, type: 'string', des: '日程名字' },
                         { key: 'start_time', isMust: true, type: 'DateTime', des: '日程开始时间，精确到分。如：2013-05-05 10:25' },
                         { key: 'end_time', isMust: true, type: 'string', des: '日程结束时间，精确到分。如：2013-05-05 10:25' },
@@ -1701,7 +1700,7 @@
                         { key: 'category_id', isMust: false, type: 'string', des: '日程分类id' }
                     ]
                 },
-               
+
                 join_or_deny_calendar: {
                     name: '确认/拒绝一个日程',
                     docUrl: {type: '', url: ''},
@@ -2577,8 +2576,8 @@
 
             }
         },
-        search:{
-            v1:{
+        search: {
+            v1: {
                 smart_search: {
                     name: '智能搜索(全局搜索)',
                     docUrl: '',
