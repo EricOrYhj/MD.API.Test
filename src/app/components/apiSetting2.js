@@ -1946,7 +1946,6 @@
                     requestMode: 'get',
                     params: [
                         { key: 'access_token', isMust: true, type: 'string', des: '当前登录用户访问令牌' },
-                        { key: 'type', isMust: true, type: 'int', des: '1用户 2群组' },
                         { key: 'account_id', isMust: false, type: 'string', des: '用户编号' },
                         { key: 'group_id', isMust: false, type: 'string', des: '群组编号' },
                         { key: 'since_time', isMust: false, type: 'string', des: '起始时间如 2016-06-03 13:12:58.342' },
@@ -1963,7 +1962,6 @@
                     requestMode: 'get',
                     params: [
                         { key: 'access_token', isMust: true, type: 'string', des: '当前登录用户访问令牌' },
-                        { key: 'type', isMust: true, type: 'int', des: '1用户 2群组' },
                         { key: 'account_id', isMust: false, type: 'string', des: '用户编号' },
                         { key: 'group_id', isMust: false, type: 'string', des: '群组编号' }
                     ]
@@ -1975,11 +1973,10 @@
                     requestMode: 'get',
                     params: [
                         { key: 'access_token', isMust: true, type: 'string', des: '当前登录用户访问令牌' },
-                        { key: 'type', isMust: true, type: 'int', des: '1用户 2群组' },
                         { key: 'account_id', isMust: false, type: 'string', des: '用户编号' },
                         { key: 'group_id', isMust: false, type: 'string', des: '群组编号' },
                         { key: 'message_id', isMust: true, type: 'string', des: '消息id' },
-                        { key: 'size', isMust: false, type: 'int', des: '群组编号' }
+                        { key: 'size', isMust: false, type: 'int', des: '前后消息数量' }
                     ]
                 },
                 delete_chat_history_item: {
