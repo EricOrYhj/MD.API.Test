@@ -1529,6 +1529,17 @@
         },
         calendar: {
             v1: {
+                confirm_event_invitation: {
+                    name: '确认日程' ,
+                    docUrl: "/doc/apidocumentnotavailable.html",
+                    url: '/calendar/confirm_event_invitation',
+                    requestMode: 'post',
+                    params: [
+                        { key: 'access_token', isMust: true, type: 'string', des: '当前登录用户访问令牌' },
+                        { key: 'event_id', isMust: true, type: 'string', des: '日程id' },
+                        { key: 'event_recurring_time', isMust: false, type: 'string', des: '子日程的发生时间，用于选择子日程' }
+                    ]
+                },
                 create_event: {
                     name: '创建一个新的日程',
                     docUrl: '/doc/apidocumentnotavailable.html',
@@ -1605,18 +1616,6 @@
                         { key: 'is_private_event', isMust: false, type: 'bool', des: '是否为私有属性' }
                     ]
                 },
-                edit_reminder_on_event: {
-                    name: '更新日程提醒',
-                    docUrl: '/doc/apidocumentnotavailable.html',
-                    url: '/calendar/edit_reminder_on_event',
-                    requestMode: 'post',
-                    params: [
-                        { key: 'access_token', isMust: true, type: 'string', des: '当前登录用户访问令牌' },
-                        { key: 'event_id', isMust: true, type: 'string', des: '日程id' },
-                        { key: 'remind_time', isMust: true, type: 'int', des: '提醒时间, 后台会结合时间单位设定提醒时间' },
-                        { key: 'reminder_type', isMust: true, type: 'int', des: '提醒类型 设定无提醒 - 0; 设定提醒单位: 分钟 - 1，小时 - 2，日 - 3' }
-                    ]
-                },
                 edit_properites_on_category: {
                     name: '编辑分类的属性',
                     docUrl: '/doc/apidocumentnotavailable.html',
@@ -1629,10 +1628,31 @@
                         { key: 'category_name', isMust: true, type: 'string', des: '分类的名字' }
                     ]
                 },
+                edit_reminder_on_event: {
+                    name: '更新日程提醒',
+                    docUrl: '/doc/apidocumentnotavailable.html',
+                    url: '/calendar/edit_reminder_on_event',
+                    requestMode: 'post',
+                    params: [
+                        { key: 'access_token', isMust: true, type: 'string', des: '当前登录用户访问令牌' },
+                        { key: 'event_id', isMust: true, type: 'string', des: '日程id' },
+                        { key: 'remind_time', isMust: true, type: 'int', des: '提醒时间, 后台会结合时间单位设定提醒时间' },
+                        { key: 'reminder_type', isMust: true, type: 'int', des: '提醒类型 设定无提醒 - 0; 设定提醒单位: 分钟 - 1，小时 - 2，日 - 3' }
+                    ]
+                },
                 get_all_user_defined_categories: {
                     name: '获取自定义分类',
                     docUrl: '/doc/calendar/get_all_user_defined_categories.html',
                     url: '/calendar/get_all_user_defined_categories',
+                    requestMode: 'get',
+                    params: [
+                        { key: 'access_token', isMust: true, type: 'string', des: '当前登录用户访问令牌' }
+                    ]
+                },
+                get_calendar_subscription_url: {
+                    name: '获取订阅日历的url',
+                    docUrl: '/doc/apidocumentnotavailable.html',
+                    url: '/calendar/get_calendar_subscription_url',
                     requestMode: 'get',
                     params: [
                         { key: 'access_token', isMust: true, type: 'string', des: '当前登录用户访问令牌' }
@@ -1674,14 +1694,29 @@
                         {"key": "page_size", "isMust": true, "type": "int", "des": "页面容量"            }
                     ]
                 },
-                remove_user_defined_category: {
-                    name: '日程详情',
+                reject_event_invitation: {
+                    name: '拒绝日程' ,
                     docUrl: "/doc/apidocumentnotavailable.html",
-                    url: '/calendar/remove_user_defined_category',
+                    url: '/calendar/reject_event_invitation',
                     requestMode: 'post',
                     params: [
                         { key: 'access_token', isMust: true, type: 'string', des: '当前登录用户访问令牌' },
-                        { key: 'category_id', isMust: true, type: 'string', des: '分类id' }
+                        { key: 'event_id', isMust: true, type: 'string', des: '日程id' },
+                        { key: 'event_recurring_time', isMust: false, type: 'string', des: '子日程的发生时间，用于选择子日程' },
+                        { key: 'reason_for_rejecting', isMust: true, type: 'string', des: '修改用户状态为拒绝时，填写该值' }
+                    ]
+                },
+                remove_a_member_on_event: {
+                    name: '删除一个成员',
+                    docUrl: "/doc/apidocumentnotavailable.html",
+                    url: '/calendar/remove_a_member_on_event',
+                    requestMode: 'post',
+                    params: [
+                        { key: 'access_token', isMust: true, type: 'string', des: '当前登录用户访问令牌' },
+                        { key: 'event_id', isMust: true, type: 'string', des: '日程id' },
+                        { key: 'event_recurring_time', isMust: false, type: 'string', des: '子日程的发生时间' },
+                        { key: 'modifying_all_recurring_events', isMust: false, type: 'string', des: '修改所有循环日程' },
+                        { key: 'member_id', isMust: true, type: 'string', des: '成员id' }
                     ]
                 },
                 remove_event: {
@@ -1696,17 +1731,14 @@
                         { key: 'removing_all_recurring_events', isMust: true, type: 'string', des: '删除所有循环日程' }
                     ]
                 },
-                remove_a_member_on_event: {
-                    name: '删除一个成员',
+                remove_user_defined_category: {
+                    name: '删除用户自定义类别',
                     docUrl: "/doc/apidocumentnotavailable.html",
-                    url: '/calendar/remove_a_member_on_event',
+                    url: '/calendar/remove_user_defined_category',
                     requestMode: 'post',
                     params: [
                         { key: 'access_token', isMust: true, type: 'string', des: '当前登录用户访问令牌' },
-                        { key: 'event_id', isMust: true, type: 'string', des: '日程id' },
-                        { key: 'event_recurring_time', isMust: false, type: 'string', des: '子日程的发生时间' },
-                        { key: 'modifying_all_recurring_events', isMust: false, type: 'string', des: '修改所有循环日程' },
-                        { key: 'member_id', isMust: true, type: 'string', des: '成员id' }
+                        { key: 'category_id', isMust: true, type: 'string', des: '分类id' }
                     ]
                 }
             }
