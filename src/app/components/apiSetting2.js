@@ -1712,7 +1712,7 @@
                 },
                 get_passport_setting: {
                     name: '当前登录用户的设置信息',
-                    docUrl: '/doc/passport/passport_detail.html',
+                    docUrl: '/doc/passport/passport_setting.html',
                     url: '/passport/get_passport_setting',
                     requestMode: 'get',
                     params: [
@@ -2277,11 +2277,11 @@
                     params: [
                         { key: 'access_token', isMust: true, type: 'string', des: '当前登录用户访问令牌' },
                         { key: 'node_name', isMust: true, type: 'string', des: '节点名' },
+                        { key: 'parent_id', isMust: true, type: 'string', des: '父节点id' },
+                        { key: 'root_id', isMust: true, type: 'string', des: '根节点id' },
                         { key: 'file_path', isMust: false, type: 'string', des: '文件路径' },
-                        { key: 'size', isMust: false, type: 'string', des: '文件大小' },
-                        { key: 'node_type', isMust: false, type: 'Enum(具体看KC任务下的枚举说明)', des: '节点类型' },
-                        { key: 'parent_id', isMust: false, type: 'string', des: '父节点id' },
-                        { key: 'root_id', isMust: false, type: 'string', des: '根节点id' }
+                        { key: 'size', isMust: false, type: 'int', des: '文件大小' },
+                        { key: 'node_type', isMust: false, type: 'int', des: '节点类型(文件夹=1,文件=2)' }
                     ]
                 },
                 add_star_node: {
@@ -2335,7 +2335,7 @@
                         { key: 'access_token', isMust: true, type: 'string', des: '当前登录用户访问令牌' },
                         { key: 'node_id', isMust: true, type: 'string', des: '节点id' },
                         { key: 'moveto_id', isMust: true, type: 'string', des: '移到哪一个节点的id' },
-                        { key: 'location_type', isMust: true, type: 'Enum(具体看KC任务下的枚举说明)', des: '节点id' }
+                        { key: 'location_type', isMust: true, type: 'int', des: '节点id' }
                     ]
                 },
                 update_root_owner: {
@@ -2393,7 +2393,7 @@
                         { key: 'access_token', isMust: true, type: 'string', des: '当前登录用户访问令牌' },
                         { key: 'root_id', isMust: true, type: 'string', des: '节点id' },
                         { key: 'member_id', isMust: true, type: 'string', des: '成员id' },
-                        { key: 'permission', isMust: true, type: 'string', des: '根节点权限' }
+                        { key: 'permission', isMust: true, type: 'int', des: '根节点权限(无权限=-1,拥有者=1,管理员=2,普通成员=3)' }
                     ]
                 },
                 update_node_name: {
@@ -2428,7 +2428,7 @@
                         { key: 'node_id', isMust: true, type: 'string', des: '节点id' },
                         { key: 'is_downloadable', isMust: false, type: 'bool 没修改可不传', des: '是否允许下载' },
                         { key: 'is_editable', isMust: false, type: 'bool 没修改可不传', des: '是否允许编辑' },
-                        { key: 'visible_type', isMust: true, type: 'Enum(具体看KC任务下的枚举说明)', des: '分享类型' }
+                        { key: 'visible_type', isMust: true, type: 'int', des: '分享类型(关闭分享=1,所有联系人（node 归属个人时） | 网络内成员=2,有明道帐号=3,所有人=4)' }
                     ]
                 },
                 get_account_usage: {
@@ -2457,7 +2457,7 @@
                     requestMode: 'get',
                     params: [
                         { key: 'access_token', isMust: true, type: 'string', des: '当前登录用户访问令牌' },
-                        { key: 'parent_id', isMust: false, type: 'string', des: '母节点id' },
+                        { key: 'parent_id', isMust: false, type: 'string', des: '根节点id' },
                         { key: 'keywords', isMust: false, type: 'string', des: '关键字' },
                         { key: 'skip', isMust: false, type: 'int', des: '从第几个开始查找' },
                         { key: 'limit', isMust: false, type: 'int', des: '显示数量' }
@@ -2480,7 +2480,7 @@
                     requestMode: 'get',
                     params: [
                         { key: 'access_token', isMust: true, type: 'string', des: '当前登录用户访问令牌' },
-                        { key: 'root_id', isMust: true, type: 'string', des: '节点id' }
+                        { key: 'root_id', isMust: true, type: 'string', des: '根节点id' }
                     ]
                 },
                 get_roots: {
