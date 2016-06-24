@@ -2370,6 +2370,17 @@
                         { key: 'location_type', isMust: true, type: 'Enum(具体看KC任务下的枚举说明)', des: '节点id' }
                     ]
                 },
+                update_root_owner: {
+                    name: '托付共享文件夹负责人',
+                    docUrl: '',
+                    url: '/kc/update_root_owner',
+                    requestMode: 'post',
+                    params: [
+                        { key: 'access_token', isMust: true, type: 'string', des: '当前登录用户访问令牌' },
+                        { key: 'root_id', isMust: true, type: 'string', des: '节点id' },
+                        { key: 'member_id', isMust: true, type: 'string', des: '负责人id' }
+                    ]
+                },
                 remove_root_member: {
                     name: '移除根节点成员',
                     docUrl: '',
@@ -2379,6 +2390,19 @@
                         { key: 'access_token', isMust: true, type: 'string', des: '当前登录用户访问令牌' },
                         { key: 'root_id', isMust: true, type: 'string', des: '节点id' },
                         { key: 'member_id', isMust: true, type: 'string', des: '成员id' }
+                    ]
+                },
+                update_root_member_status: {
+                    name: '修改根节点成员状态',
+                    docUrl: '',
+                    url: '/kc/update_root_member_status',
+                    requestMode: 'post',
+                    params: [
+                        { key: 'access_token', isMust: true, type: 'string', des: '当前登录用户访问令牌' },
+                        { key: 'root_id', isMust: true, type: 'string', des: '节点id' },
+                        { key: 'member_id', isMust: true, type: 'string', des: '成员id' },
+                        { key: 'member_status', isMust: true, type: 'int', des: '成员状态 1=正常 2=未审核' }
+
                     ]
                 },
                 add_root_member: {
