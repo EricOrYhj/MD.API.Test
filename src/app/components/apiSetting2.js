@@ -1486,6 +1486,18 @@
                         { key: 'pagesize', isMust: false, type: 'int', des: '指定要返回的记录条数(默认值20，最大值100)' }
                     ]
                 },
+                get_project_worksite: {
+                    name: '获取网络工作地列表',
+                    docUrl: {type: 'string', url: ''},
+                    url: '/company/get_project_worksite',
+                    requestMode: 'get',
+                    params: [
+                        { key: 'access_token', isMust: true, type: 'string', des: '当前登录用户访问令牌' },
+                        { key: 'project_id', isMust: true, type: 'string', des: '要获取的网络ID' },
+                        { key: 'pageindex', isMust: false, type: 'int', des: '指定当前的页码(不指定页码返回所有)' },
+                        { key: 'pagesize', isMust: false, type: 'int', des: '指定要返回的记录条数(默认值20，最大值100)' }
+                    ]
+                },
                 get_project_byprojectcode: {
                     name: '根据企业号获取网络信息和设置',
                     docUrl: '/doc/project/project_setting.html',
@@ -1708,6 +1720,21 @@
                     requestMode: 'get',
                     params: [
                         { key: 'access_token', isMust: true, type: 'string', des: '当前登录用户访问令牌' }
+                    ]
+                },
+                update_passport_detail: {
+                    name: '修改登录用户基本信息',
+                    docUrl: '',
+                    url: '/passport/update_passport_detail',
+                    requestMode: 'post',
+                    params: [
+                        { key: 'access_token', isMust: true, type: 'string', des: '当前登录用户访问令牌' },
+                        { key: 'name', isMust: false, type: 'string', des: '姓名' },
+                        { key: 'gender', isMust: false, type: 'int', des: '1男士2女士' },
+                        { key: 'company_name', isMust: false, type: 'string', des: '公司名' },
+                        { key: 'profession', isMust: false, type: 'string', des: '职位' },
+                        { key: 'birth', isMust: false, type: 'string', des: '生日' },
+                        { key: 'avatar', isMust: false, type: 'string', des: '头像(七牛上传文件名) 用户头像上传路径加/UserAvatar' }
                     ]
                 },
                 get_passport_setting: {
@@ -2540,7 +2567,7 @@
             v1: {
                 smart_search: {
                     name: '智能搜索(全局搜索)',
-                    docUrl: '',
+                    docUrl: '/doc/search/search.html',
                     url: '/search/smart_search',
                     requestMode: 'get',
                     params: [
