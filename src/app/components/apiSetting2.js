@@ -1580,6 +1580,17 @@
                         { key: 'category_name', isMust: true, type: 'string', des: '分类的名字' }
                     ]
                 },
+                edit_category_of_an_event: {
+                    name: '更新用户分类',
+                    docUrl: '/doc/apidocumentnotavailable.html',
+                    url: '/calendar/edit_category_of_an_event',
+                    requestMode: 'post',
+                    params: [
+                        { key: 'access_token', isMust: true, type: 'string', des: '当前登录用户访问令牌' },
+                        { key: 'event_id', isMust: true, type: 'int', des: '日程id' },
+                        { key: 'category_id', isMust: true, type: 'string', des: '分类的id' }
+                    ]
+                },
                 edit_common_properties_on_event: {
                     name: '修改日程中需要重复确认的属性',
                     docUrl: 'doc/apiDocumentNotAvailable.html',
@@ -1604,6 +1615,18 @@
                         { key: 'attachments', isMust: false, type: 'string', des: '日程附件, 请参考[{"fileID":"o_1alp1tvj51ogmitb5a8fkj1gbim","fileSize":9106,"serverName":"https://dn-mdpic.qbox.me/","filePath":"pic/201606/21/","fileName":"MGpKracyNablItC_1667129483","fileExt":".jpg","originalFileName":"u=576234392,3515399049&fm=80","key":"pic/201606/21/MGpKracyNablItC_1667129483.jpg","fileNameParam":"?imageView2/1/w/119/h/83"}]' },
                         { key: 'need_members_to_confirm', isMust: false, type: 'string', des: '是否需要参与人员重新确认信息' },
                         { key: 'event_recurring_time', isMust: false, type: 'string', des: '日期类型，在选择某个循环日程的子日程时使用' }
+                    ]
+                },
+                edit_share_property_on_event: {
+                    name: '更新日程是否私有',
+                    docUrl: '/doc/apidocumentnotavailable.html',
+                    url: '/calendar/edit_share_property_on_event',
+                    requestMode: 'post',
+                    params: [
+                        { key: 'access_token', isMust: true, type: 'string', des: '当前登录用户访问令牌' },
+                        { key: 'event_id', isMust: true, type: 'string', des: '日程id' },
+                        { key: 'event_recurring_time', isMust: false, type: 'bool', des: '日程重复时间, 用于确认子日程' },
+                        { key: 'is_shareable', isMust: false, type: 'bool', des: '日程重复时间' },
                     ]
                 },
                 edit_is_private_property_on_event: {
