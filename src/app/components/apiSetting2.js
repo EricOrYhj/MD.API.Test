@@ -1522,7 +1522,8 @@
                         { key: 'work_site', isMust: false, type: 'string', des: '工作地' },
                         { key: 'department', isMust: false, type: 'string', des: '部门(从公司部门列表中选择)' },
                         { key: 'job', isMust: false, type: 'string', des: '职位' },
-                        { key: 'job_number', isMust: false, type: 'string', des: '工号' }
+                        { key: 'job_number', isMust: false, type: 'string', des: '工号' },
+                        { key: 'contact_phone', isMust: false, type: 'string', des: '坐机号码' }
                     ]
                 }
             }
@@ -2605,7 +2606,9 @@
                     params: [
                         { key: 'access_token', isMust: true, type: 'string', des: '当前登录用户访问令牌' },
                         { key: 'keywords', isMust: true, type: 'string', des: '搜索关键至少2个字符' },
-                        { key: 'search_type', isMust: false, type: 'int', des: '搜索类型（1用户账号2群组3动态4任务5知识）默认全部' }
+                        { key: 'search_type', isMust: false, type: 'int', des: '搜索类型（1用户账号2群组3动态4任务5知识）默认全部' },
+                        { key: 'pageindex', isMust: false, type: 'int', des: '指定当前的页码(不指定页码返回所有)' },
+                        { key: 'pagesize', isMust: false, type: 'int', des: '指定要返回的记录条数(默认值20，最大值100)' }
                     ]
                 }
             }
