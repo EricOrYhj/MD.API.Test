@@ -1658,6 +1658,18 @@
                         { key: 'access_token', isMust: true, type: 'string', des: '当前登录用户访问令牌' }
                     ]
                 },
+                get_conflicted_events: {
+                    name: '获取订阅日历的url',
+                    docUrl: '/doc/apidocumentnotavailable.html',
+                    url: '/calendar/get_conflicted_events',
+                    requestMode: 'get',
+                    params: [
+                        { key: 'access_token', isMust: true, type: 'string', des: '当前登录用户访问令牌' },
+                        { key: 'conflicting_account_id', isMust: true, type: 'string', des: '所要查询的用户' },
+                        { key: 'begin_date', isMust: true, type: 'string', des: '开始时间' },
+                        { key: 'end_date', isMust: true, type: 'string', des: '结束时间' }
+                    ]
+                },
                 get_events_by_conditions: {
                     name: '获取多用户待办日程列表，结果按日期分组。',
                     docUrl: '/doc/calendar/get_events_by_conditions.html',
