@@ -1849,6 +1849,18 @@
                         { key: 'access_token', isMust: true, type: 'string', des: '当前登录用户访问令牌' },
                         { key: 'category_id', isMust: true, type: 'string', des: '分类id' }
                     ]
+                },
+                search_events_by_keyword: {
+                    name: '根据Keyword和时间搜索日程',
+                    docUrl: "/doc/get_events_by_conditions.html",
+                    url: '/calendar/search_events_by_keyword',
+                    requestMode: 'get',
+                    params: [
+                        { key: 'access_token', isMust: true, type: 'string', des: '当前登录用户访问令牌' },
+                        { key: 'begin_date', isMust: true, type: 'string', des: '开始日期' },
+                        { key: 'end_date', isMust: true, type: 'string', des: '结束日期' },
+                        { key: 'keyword', isMust: true, type: 'string', des: '关键字' }
+                    ]
                 }
             }
         },
