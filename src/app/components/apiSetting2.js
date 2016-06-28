@@ -1626,7 +1626,7 @@
                         { key: 'access_token', isMust: true, type: 'string', des: '当前登录用户访问令牌' },
                         { key: 'event_id', isMust: true, type: 'string', des: '日程id' },
                         { key: 'event_recurring_time', isMust: false, type: 'bool', des: '日程重复时间, 用于确认子日程' },
-                        { key: 'is_shareable', isMust: false, type: 'bool', des: '日程重复时间' },
+                        { key: 'is_shareable', isMust: false, type: 'bool', des: '日程重复时间' }
                     ]
                 },
                 edit_is_private_property_on_event: {
