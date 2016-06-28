@@ -2501,7 +2501,7 @@
                 },
                 get_all_nodes: {
                     name: '获取可见根节点下所有节点列表',
-                    docUrl: '',
+                    docUrl: '/doc/kc/kc_get_nodes.html',
                     url: '/kc/get_all_nodes',
                     requestMode: 'get',
                     params: [
@@ -2511,7 +2511,7 @@
                 },
                 get_my_nodes: {
                     name: '获取我的节点',
-                    docUrl: '',
+                    docUrl: '/doc/kc/kc_get_nodes.html',
                     url: '/kc/get_my_nodes',
                     requestMode: 'get',
                     params: [
@@ -2544,7 +2544,7 @@
                 },
                 get_roots: {
                     name: '获取根节点列表',
-                    docUrl: '',
+                    docUrl: '/doc/kc/kc_get_roots.html',
                     url: '/kc/get_roots',
                     requestMode: 'get',
                     params: [
@@ -2557,7 +2557,7 @@
                 },
                 get_nodes: {
                     name: '获取根节点/父节点下节点列表',
-                    docUrl: '',
+                    docUrl: '/doc/kc/kc_get_nodes.html',
                     url: '/kc/get_nodes',
                     requestMode: 'get',
                     params: [
@@ -2571,7 +2571,7 @@
                 },
                 get_recentlyuserd_nodes: {
                     name: '获取最近使用的节点列表',
-                    docUrl: '',
+                    docUrl: '/doc/kc/kc_get_nodes.html',
                     url: '/kc/get_recentlyuserd_nodes',
                     requestMode: 'get',
                     params: [
@@ -2582,7 +2582,7 @@
                 },
                 get_stared_nodes: {
                     name: '获取标星节点列表',
-                    docUrl: '',
+                    docUrl: '/doc/kc/kc_get_nodes.html',
                     url: '/kc/get_stared_nodes',
                     requestMode: 'get',
                     params: [
