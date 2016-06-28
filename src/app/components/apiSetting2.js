@@ -4,6 +4,79 @@
         .module('mmpadmin')
         .factory('apiSetting2', apiSetting);
     var apiParam = {
+        oauth2: {
+            authorize: {
+                name: '请求用户授权 ',
+                docUrl: '',
+                url: '/oauth2/authorize',
+                requestMode: 'get',
+                params: [
+                    { key: 'app_key', isMust: true, type: 'string', des: '分配到的App Key' },
+                    { key: 'redirect_uri', isMust: true, type: 'string', des: '授权回调地址，站外应用需与设置的回调地址一致' },
+                    { key: 'state', isMust: false, type: 'string', des: '用于保持请求和回调的状态，在回调时，会在Query Parameter中回传该参数' }
+                ]
+            },
+            access_token: {
+                name: '获取授权过的令牌 ',
+                docUrl: '',
+                url: '/oauth2/access_token',
+                requestMode: 'get',
+                params: [
+                    { key: 'app_key', isMust: true, type: 'string', des: '分配到的App Key' },
+                    { key: 'app_secret', isMust: true, type: 'string', des: '分配到的App Secret' },
+                    { key: 'grant_type', isMust: true, type: 'string', des: '请求的类型，可以为authorization_code、refresh_token、password' }
+                ]
+            },
+            weixin_login: {
+                name: '微信登录',
+                docUrl: '/doc/oauth2/weixin_login.html',
+                url: '/oauth2/weixin_login',
+                requestMode: 'post',
+                params: [
+                    { key: 'openid', isMust: true, type: 'string', des: '微信唯一ID' },
+                    { key: 'unionid', isMust: true, type: 'string', des: '只有在用户将公众号绑定到微信开放平台帐号后，才会出现该字段' },
+                    { key: 'nickname', isMust: true, type: 'string', des: '用户昵称' },
+                    { key: 'sex', isMust: true, type: 'int', des: '1 男性 2女性 0未知' },
+                    { key: 'headimgurl', isMust: true, type: 'string', des: '用户头像' },
+                    { key: 'app_key', isMust: true, type: 'string', des: '分配到的App Key' },
+                    { key: 'app_secret', isMust: true, type: 'string', des: '分配到的App Secret' }
+                ]
+            },
+            weixin_bind: {
+                name: '微信绑定',
+                docUrl: '',
+                url: '/oauth2/weixin_bind',
+                requestMode: 'post',
+                params: [
+                    { key: 'access_token', isMust: true, type: 'string', des: '当前登录用户访问令牌' },
+                    { key: 'state', isMust: true, type: 'string', des: '如果没有绑定过微信登录会返回这个值' },
+                    { key: 'unionid', isMust: true, type: 'string', des: '如果没有绑定过微信登录会返回这个值' },
+                    { key: 'app_key', isMust: true, type: 'string', des: '分配到的App Key' },
+                    { key: 'app_secret', isMust: true, type: 'string', des: '分配到的App Secret' }
+                ]
+            },
+            verifycode: {
+                name: '图片验证码(主要用于根据企业号加入网络时)',
+                docUrl: '',
+                url: '/oauth2/verifycode',
+                requestMode: 'get',
+                params: [
+                    { key: 'access_token', isMust: true, type: 'string', des: '当前登录用户访问令牌' }
+                ]
+            },
+            device: {
+                name: '更新当前用户设备号',
+                docUrl: '',
+                url: '/oauth2/device',
+                requestMode: 'post',
+                params: [
+                    { key: 'access_token', isMust: true, type: 'string', des: '当前登录用户访问令牌' },
+                    { key: 'device_type', isMust: true, type: 'string', des: '设备类型' },
+                    { key: 'device', isMust: false, type: 'string', des: '设备号（跟reg_id二选一）' },
+                    { key: 'reg_id', isMust: false, type: 'string', des: '设备号IOS新的参数' }
+                ]
+            }
+        },
         post: {
             v1: {
                 get_all_posts: {
@@ -2695,11 +2768,16 @@
 
         function getApiSetting(module, version, port, item, scallback) {
             var param = '';
-            if (item) {
-                param = apiParam[module][version][port][item];
+            if (module == 'oauth2') {
+                param = apiParam[module][port];
             } else {
-                param = apiParam[module][version][port];
+                if (item) {
+                    param = apiParam[module][version][port][item];
+                } else {
+                    param = apiParam[module][version][port];
+                }
             }
+
             if (param) {
                 scallback(param);
             }
