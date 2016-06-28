@@ -13,7 +13,7 @@
         if ($location.port() == '80') {
             port = '/MD.API'
         } else {
-            port = ':'+$location.port();
+            port = ':' + $location.port();
         }
 
         $scope.localUrl = $location.protocol() + '://' + $location.host() + port;
@@ -44,6 +44,9 @@
         var requestUrl = '';
         var docUrl = $scope.docUrl = '';
 
+        if (!port) {
+            port = $scope.port = version;
+        }
         //现在的地址
         var urlParams = {
             port: port,
@@ -98,7 +101,11 @@
         } else {
             if ($scope.view == 'view2') {
                 apiSetting2.getApiSetting(module, version, port, item, function (data) {
-                    requestUrl = '/' + version + data.url;
+                    if (module == 'oauth2') {
+                        requestUrl = data.url;
+                    } else {
+                        requestUrl = '/' + version + data.url;
+                    }
                     $scope.requestMode = data.requestMode;
                     docUrl = $scope.docUrl = data.docUrl;
                     $scope.apiName = data.name;

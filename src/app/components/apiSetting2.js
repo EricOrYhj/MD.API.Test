@@ -4,6 +4,79 @@
         .module('mmpadmin')
         .factory('apiSetting2', apiSetting);
     var apiParam = {
+        oauth2: {
+            authorize: {
+                name: '请求用户授权 ',
+                docUrl: '',
+                url: '/oauth2/authorize',
+                requestMode: 'get',
+                params: [
+                    { key: 'app_key', isMust: true, type: 'string', des: '分配到的App Key' },
+                    { key: 'redirect_uri', isMust: true, type: 'string', des: '授权回调地址，站外应用需与设置的回调地址一致' },
+                    { key: 'state', isMust: false, type: 'string', des: '用于保持请求和回调的状态，在回调时，会在Query Parameter中回传该参数' }
+                ]
+            },
+            access_token: {
+                name: '获取授权过的令牌 ',
+                docUrl: '',
+                url: '/oauth2/access_token',
+                requestMode: 'get',
+                params: [
+                    { key: 'app_key', isMust: true, type: 'string', des: '分配到的App Key' },
+                    { key: 'app_secret', isMust: true, type: 'string', des: '分配到的App Secret' },
+                    { key: 'grant_type', isMust: true, type: 'string', des: '请求的类型，可以为authorization_code、refresh_token、password' }
+                ]
+            },
+            weixin_login: {
+                name: '微信登录',
+                docUrl: '/doc/oauth2/weixin_login.html',
+                url: '/oauth2/weixin_login',
+                requestMode: 'post',
+                params: [
+                    { key: 'openid', isMust: true, type: 'string', des: '微信唯一ID' },
+                    { key: 'unionid', isMust: true, type: 'string', des: '只有在用户将公众号绑定到微信开放平台帐号后，才会出现该字段' },
+                    { key: 'nickname', isMust: true, type: 'string', des: '用户昵称' },
+                    { key: 'sex', isMust: true, type: 'int', des: '1 男性 2女性 0未知' },
+                    { key: 'headimgurl', isMust: true, type: 'string', des: '用户头像' },
+                    { key: 'app_key', isMust: true, type: 'string', des: '分配到的App Key' },
+                    { key: 'app_secret', isMust: true, type: 'string', des: '分配到的App Secret' }
+                ]
+            },
+            weixin_bind: {
+                name: '微信绑定',
+                docUrl: '',
+                url: '/oauth2/weixin_bind',
+                requestMode: 'post',
+                params: [
+                    { key: 'access_token', isMust: true, type: 'string', des: '当前登录用户访问令牌' },
+                    { key: 'state', isMust: true, type: 'string', des: '如果没有绑定过微信登录会返回这个值' },
+                    { key: 'unionid', isMust: true, type: 'string', des: '如果没有绑定过微信登录会返回这个值' },
+                    { key: 'app_key', isMust: true, type: 'string', des: '分配到的App Key' },
+                    { key: 'app_secret', isMust: true, type: 'string', des: '分配到的App Secret' }
+                ]
+            },
+            verifycode: {
+                name: '图片验证码(主要用于根据企业号加入网络时)',
+                docUrl: '',
+                url: '/oauth2/verifycode',
+                requestMode: 'get',
+                params: [
+                    { key: 'access_token', isMust: true, type: 'string', des: '当前登录用户访问令牌' }
+                ]
+            },
+            device: {
+                name: '更新当前用户设备号',
+                docUrl: '',
+                url: '/oauth2/device',
+                requestMode: 'post',
+                params: [
+                    { key: 'access_token', isMust: true, type: 'string', des: '当前登录用户访问令牌' },
+                    { key: 'device_type', isMust: true, type: 'string', des: '设备类型' },
+                    { key: 'device', isMust: false, type: 'string', des: '设备号（跟reg_id二选一）' },
+                    { key: 'reg_id', isMust: false, type: 'string', des: '设备号IOS新的参数' }
+                ]
+            }
+        },
         post: {
             v1: {
                 get_all_posts: {
@@ -1522,7 +1595,8 @@
                         { key: 'work_site', isMust: false, type: 'string', des: '工作地' },
                         { key: 'department', isMust: false, type: 'string', des: '部门(从公司部门列表中选择)' },
                         { key: 'job', isMust: false, type: 'string', des: '职位' },
-                        { key: 'job_number', isMust: false, type: 'string', des: '工号' }
+                        { key: 'job_number', isMust: false, type: 'string', des: '工号' },
+                        { key: 'contact_phone', isMust: false, type: 'string', des: '坐机号码' }
                     ]
                 }
             }
@@ -1579,6 +1653,17 @@
                         { key: 'category_name', isMust: true, type: 'string', des: '分类的名字' }
                     ]
                 },
+                edit_category_of_an_event: {
+                    name: '更新用户分类',
+                    docUrl: '/doc/apidocumentnotavailable.html',
+                    url: '/calendar/edit_category_of_an_event',
+                    requestMode: 'post',
+                    params: [
+                        { key: 'access_token', isMust: true, type: 'string', des: '当前登录用户访问令牌' },
+                        { key: 'event_id', isMust: true, type: 'int', des: '日程id' },
+                        { key: 'category_id', isMust: true, type: 'string', des: '分类的id' }
+                    ]
+                },
                 edit_common_properties_on_event: {
                     name: '修改日程中需要重复确认的属性',
                     docUrl: 'doc/apiDocumentNotAvailable.html',
@@ -1603,6 +1688,18 @@
                         { key: 'attachments', isMust: false, type: 'string', des: '日程附件, 请参考[{"fileID":"o_1alp1tvj51ogmitb5a8fkj1gbim","fileSize":9106,"serverName":"https://dn-mdpic.qbox.me/","filePath":"pic/201606/21/","fileName":"MGpKracyNablItC_1667129483","fileExt":".jpg","originalFileName":"u=576234392,3515399049&fm=80","key":"pic/201606/21/MGpKracyNablItC_1667129483.jpg","fileNameParam":"?imageView2/1/w/119/h/83"}]' },
                         { key: 'need_members_to_confirm', isMust: false, type: 'string', des: '是否需要参与人员重新确认信息' },
                         { key: 'event_recurring_time', isMust: false, type: 'string', des: '日期类型，在选择某个循环日程的子日程时使用' }
+                    ]
+                },
+                edit_share_property_on_event: {
+                    name: '更新日程是否私有',
+                    docUrl: '/doc/apidocumentnotavailable.html',
+                    url: '/calendar/edit_share_property_on_event',
+                    requestMode: 'post',
+                    params: [
+                        { key: 'access_token', isMust: true, type: 'string', des: '当前登录用户访问令牌' },
+                        { key: 'event_id', isMust: true, type: 'string', des: '日程id' },
+                        { key: 'event_recurring_time', isMust: false, type: 'bool', des: '日程重复时间, 用于确认子日程' },
+                        { key: 'is_shareable', isMust: false, type: 'bool', des: '日程重复时间' }
                     ]
                 },
                 edit_is_private_property_on_event: {
@@ -1656,6 +1753,18 @@
                     requestMode: 'get',
                     params: [
                         { key: 'access_token', isMust: true, type: 'string', des: '当前登录用户访问令牌' }
+                    ]
+                },
+                get_conflicted_events: {
+                    name: '获取订阅日历的url',
+                    docUrl: '/doc/apidocumentnotavailable.html',
+                    url: '/calendar/get_conflicted_events',
+                    requestMode: 'get',
+                    params: [
+                        { key: 'access_token', isMust: true, type: 'string', des: '当前登录用户访问令牌' },
+                        { key: 'conflicting_account_id', isMust: true, type: 'string', des: '所要查询的用户' },
+                        { key: 'begin_date', isMust: true, type: 'string', des: '开始时间' },
+                        { key: 'end_date', isMust: true, type: 'string', des: '结束时间' }
                     ]
                 },
                 get_events_by_conditions: {
@@ -1739,6 +1848,18 @@
                     params: [
                         { key: 'access_token', isMust: true, type: 'string', des: '当前登录用户访问令牌' },
                         { key: 'category_id', isMust: true, type: 'string', des: '分类id' }
+                    ]
+                },
+                search_events_by_keyword: {
+                    name: '根据Keyword和时间搜索日程',
+                    docUrl: "/doc/get_events_by_conditions.html",
+                    url: '/calendar/search_events_by_keyword',
+                    requestMode: 'get',
+                    params: [
+                        { key: 'access_token', isMust: true, type: 'string', des: '当前登录用户访问令牌' },
+                        { key: 'begin_date', isMust: true, type: 'string', des: '开始日期' },
+                        { key: 'end_date', isMust: true, type: 'string', des: '结束日期' },
+                        { key: 'keyword', isMust: true, type: 'string', des: '关键字' }
                     ]
                 }
             }
@@ -2605,7 +2726,11 @@
                     params: [
                         { key: 'access_token', isMust: true, type: 'string', des: '当前登录用户访问令牌' },
                         { key: 'keywords', isMust: true, type: 'string', des: '搜索关键至少2个字符' },
-                        { key: 'search_type', isMust: false, type: 'int', des: '搜索类型（1用户账号2群组3动态4任务5知识）默认全部' }
+                        { key: 'search_type', isMust: false, type: 'int', des: '搜索类型（1用户账号2群组3动态4任务5知识）默认全部' },
+                        { key: 'search_range', isMust: false, type: 'int', des: '搜索范围（0全部1个人2网络）默认0' },
+                        { key: 'project_id', isMust: false, type: 'string', des: '当搜索返回为2时网络ID必传' },
+                        { key: 'pageindex', isMust: false, type: 'int', des: '指定当前的页码(不指定页码返回所有)' },
+                        { key: 'pagesize', isMust: false, type: 'int', des: '指定要返回的记录条数(默认值20，最大值100)' }
                     ]
                 }
             }
@@ -2657,11 +2782,16 @@
 
         function getApiSetting(module, version, port, item, scallback) {
             var param = '';
-            if (item) {
-                param = apiParam[module][version][port][item];
+            if (module == 'oauth2') {
+                param = apiParam[module][port];
             } else {
-                param = apiParam[module][version][port];
+                if (item) {
+                    param = apiParam[module][version][port][item];
+                } else {
+                    param = apiParam[module][version][port];
+                }
             }
+
             if (param) {
                 scallback(param);
             }
