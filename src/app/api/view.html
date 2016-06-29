@@ -12,7 +12,10 @@
     <div class="col-lg-10">
         <h2>{{apiName}}</h2>
         <ol class="breadcrumb">
-            <li class="active">
+            <li class="active" ng-if='module=="oauth2"'>
+                请求方式:{{requestMode}}提交  <a>请求地址: {{localUrl}}/{{module}}/{{port}}</a>
+            </li>
+            <li class="active" ng-if='module!="oauth2"'>
                 请求方式:{{requestMode}}提交  <a>请求地址: {{localUrl}}/{{version}}/{{module}}/{{port}}</a>
             </li>
         </ol>

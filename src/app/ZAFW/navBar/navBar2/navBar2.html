@@ -27,7 +27,12 @@
                     <span class="nav-label">{{apiItem.module}}</span>
                     <span class="fa arrow"></span>
                 </a>
-                <ul class="nav nav-second-level collapse" ng-repeat="apiParam in apiItem.value track by $index">
+                <ul class="nav nav-second-level collapse" ng-repeat="apiParam in apiItem.value track by $index" ng-if="apiItem.module=='oauth2'">
+                                    <li class="" style="margin-bottom: 0">
+                                        <a ui-sref="view2.private({module:'{{apiItem.module}}',version:'{{apiParam.version}}',port:'{{apiParamItem.port}}',item:'{{item}}'})">{{apiParam.version}}</a>
+                                    </li>
+                </ul>
+                <ul class="nav nav-second-level collapse" ng-repeat="apiParam in apiItem.value track by $index" ng-if="apiItem.module!='oauth2'">
                     <li class="">
                         <a href="">
                             <i class="fa fa-yelp"></i>
