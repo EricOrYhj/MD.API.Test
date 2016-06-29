@@ -1603,6 +1603,20 @@
         },
         calendar: {
             v1: {
+                add_members_to_event: {
+                    name: '确认日程' ,
+                    docUrl: "/doc/apidocumentnotavailable.html",
+                    url: '/calendar/add_members_to_event',
+                    requestMode: 'post',
+                    params: [
+                        { key: 'access_token', isMust: true, type: 'string', des: '当前登录用户访问令牌' },
+                        { key: 'event_id', isMust: true, type: 'string', des: '日程id' },
+                        { key: 'event_recurring_time', isMust: false, type: 'string', des: '子日程的发生时间，用于选择子日程' },
+                        { key: 'modifying_all_recurring_events', isMust: false, type: 'bool', des: '是否修改所有日程' },
+                        { key: 'invited_accounts', isMust: false, type: 'string', des: '包含邮箱和电话' },
+                        { key: 'member_ids', isMust: false, type: 'string', des: '用户id' }
+                    ]
+                },
                 confirm_event_invitation: {
                     name: '确认日程' ,
                     docUrl: "/doc/apidocumentnotavailable.html",
@@ -1801,6 +1815,19 @@
                         { key: 'access_token', isMust: true, type: 'string', des: '当前登录用户访问令牌' },
                         {"key": "page_index", "isMust": true, "type": "int", "des": "要获取的页码"            },
                         {"key": "page_size", "isMust": true, "type": "int", "des": "页面容量"            }
+                    ]
+                },
+                reinvite_a_member_to_event: {
+                    name: '拒绝日程' ,
+                    docUrl: "/doc/apidocumentnotavailable.html",
+                    url: '/calendar/reinvite_a_member_to_event',
+                    requestMode: 'post',
+                    params: [
+                        { key: 'access_token', isMust: true, type: 'string', des: '当前登录用户访问令牌' },
+                        { key: 'event_id', isMust: true, type: 'string', des: '日程id' },
+                        { key: 'event_recurring_time', isMust: false, type: 'string', des: '子日程的发生时间，用于选择子日程' },
+                        { key: 'member_id', isMust: true, type: 'string', des: '用户id' },
+                        { key: 'modifying_all_recurring_events', isMust: false, type: 'bool', des: '修改所有子日程' }
                     ]
                 },
                 reject_event_invitation: {
