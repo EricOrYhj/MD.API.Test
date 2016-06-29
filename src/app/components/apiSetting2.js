@@ -1561,7 +1561,7 @@
                         { key: 'is_recurring_event', isMust: false, type: 'bool', des: '是否为重复日程.' },
                         { key: 'repeat_frequency', isMust: false, type: 'int', des: '用那种频率单位来重复日程，is_recurring_event为true，该值必填，频率 1 表示Daily; 2 表示Weekly; 3 表示Monthly; 4 表示Yearly' },
                         { key: 'repeat_interval', isMust: false, type: 'int', des: '当is_recur为1 即为重复日程时该值选填，重复间隔 默认值 1。' },
-                        { key: 'repeat_weekday', isMust: false, type: 'string', des: '当 frequency=2 该值必填，周几重复 1:周一, 64:周日。周几即为2的几次方，选择每周多天，即为按位或的形式' },
+                        { key: 'repeat_weekday', isMust: false, type: 'int', des: '当 frequency=2 该值必填，周几重复 1:周一, 64:周日。周几即为2的几次方，选择每周多天，即为按位或的形式' },
                         { key: 'repeat_times', isMust: false, type: 'int', des: '当 is_recurring_event为1即为重复日程时该值选填，重复次数  与repeat_end_date只能存在一个' },
                         { key: 'reminder_type', isMust: false, type: 'int', des: '提醒类型 设定无提醒 - 0; 设定提醒单位: 分钟 - 1，小时 - 2，日 - 3' },
                         { key: 'repeat_end_date', isMust: false, type: 'string', des: '当 repeat_end_date 该值选填，结束日期 如果repeat_times为0且repeat_end_date为null,则为永久重复' },
@@ -1618,7 +1618,7 @@
                     ]
                 },
                 edit_share_property_on_event: {
-                    name: '更新日程是否私有',
+                    name: '更新日程是否分享属性',
                     docUrl: '/doc/apidocumentnotavailable.html',
                     url: '/calendar/edit_share_property_on_event',
                     requestMode: 'post',
