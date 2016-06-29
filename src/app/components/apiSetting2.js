@@ -2007,22 +2007,14 @@
         },
         message: {
             v1: {
-                get_inbox_first_message: {
-                    name: '获取消息的第一条信息',
-                    docUrl: '/doc/message/first_message.html',
-                    url: '/message/get_inbox_first_message',
-                    requestMode: 'get',
-                    params: [
-                        { key: 'access_token', isMust: true, type: 'string', des: '当前登录用户访问令牌' }
-                    ]
-                },
                 get_inbox_system_message: {
-                    name: '获取系统消息和日程消息',
+                    name: '获取系统消息或日程系统消息或知识系统消息',
                     docUrl: '/doc/message/system_message.html',
                     url: '/message/get_inbox_system_message',
                     requestMode: 'get',
                     params: [
                         { key: 'access_token', isMust: true, type: 'string', des: '当前登录用户访问令牌' },
+                        { key: 'inbox_load_type', isMust: false, type: 'int', des: '系统消息加载类型(1系统消息10日程系统消息14知识系统消息)' },
                         { key: 'is_unread', isMust: false, type: 'bool', des: '是否获取未读消息' },
                         { key: 'is_favorite', isMust: false, type: 'bool', des: '是否获取标记' },
                         { key: 'keywords', isMust: false, type: 'string', des: '关键字查找' },
@@ -2059,6 +2051,17 @@
                         { key: 'msg_type', isMust: false, type: 'int', des: '1系统消息2任务回复我的3任务提到我的4项目回复我的5项目提到我的' },
                         { key: 'pageindex', isMust: false, type: 'int', des: '当前页码(以1开始，1代表第一页)' },
                         { key: 'pagesize', isMust: false, type: 'int', des: '指定要返回的记录条数' }
+                    ]
+                },
+                update_inbox_message_favorite: {
+                    name: '修改inbox消息标星',
+                    docUrl: '',
+                    url: '/message/update_inbox_message_favorite',
+                    requestMode: 'post',
+                    params: [
+                        { key: 'access_token', isMust: true, type: 'string', des: '当前登录用户访问令牌' },
+                        { key: 'inbox_id', isMust: true, type: 'string', des: '是否获取未读消息' },
+                        { key: 'is_favorite', isMust: false, type: 'bool', des: '是否标星' }
                     ]
                 }
             }
