@@ -2048,7 +2048,6 @@
                         { key: 'is_unread', isMust: false, type: 'bool', des: '是否获取未读消息' },
                         { key: 'is_favorite', isMust: false, type: 'bool', des: '是否获取标记' },
                         { key: 'keywords', isMust: false, type: 'string', des: '关键字查找' },
-                        { key: 'msg_type', isMust: false, type: 'int', des: '1系统消息2任务回复我的3任务提到我的4项目回复我的5项目提到我的' },
                         { key: 'pageindex', isMust: false, type: 'int', des: '当前页码(以1开始，1代表第一页)' },
                         { key: 'pagesize', isMust: false, type: 'int', des: '指定要返回的记录条数' }
                     ]
