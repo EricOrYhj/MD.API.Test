@@ -1603,6 +1603,20 @@
         },
         calendar: {
             v1: {
+                add_members_to_event: {
+                    name: '确认日程' ,
+                    docUrl: "/doc/apidocumentnotavailable.html",
+                    url: '/calendar/add_members_to_event',
+                    requestMode: 'post',
+                    params: [
+                        { key: 'access_token', isMust: true, type: 'string', des: '当前登录用户访问令牌' },
+                        { key: 'event_id', isMust: true, type: 'string', des: '日程id' },
+                        { key: 'event_recurring_time', isMust: false, type: 'string', des: '子日程的发生时间，用于选择子日程' },
+                        { key: 'modifying_all_recurring_events', isMust: false, type: 'bool', des: '是否修改所有日程' },
+                        { key: 'invited_accounts', isMust: false, type: 'string', des: '包含邮箱和电话' },
+                        { key: 'member_ids', isMust: false, type: 'string', des: '用户id' }
+                    ]
+                },
                 confirm_event_invitation: {
                     name: '确认日程' ,
                     docUrl: "/doc/apidocumentnotavailable.html",
@@ -1634,7 +1648,7 @@
                         { key: 'is_recurring_event', isMust: false, type: 'bool', des: '是否为重复日程.' },
                         { key: 'repeat_frequency', isMust: false, type: 'int', des: '用那种频率单位来重复日程，is_recurring_event为true，该值必填，频率 1 表示Daily; 2 表示Weekly; 3 表示Monthly; 4 表示Yearly' },
                         { key: 'repeat_interval', isMust: false, type: 'int', des: '当is_recur为1 即为重复日程时该值选填，重复间隔 默认值 1。' },
-                        { key: 'repeat_weekday', isMust: false, type: 'string', des: '当 frequency=2 该值必填，周几重复 1:周一, 64:周日。周几即为2的几次方，选择每周多天，即为按位或的形式' },
+                        { key: 'repeat_weekday', isMust: false, type: 'int', des: '当 frequency=2 该值必填，周几重复 1:周一, 64:周日。周几即为2的几次方，选择每周多天，即为按位或的形式' },
                         { key: 'repeat_times', isMust: false, type: 'int', des: '当 is_recurring_event为1即为重复日程时该值选填，重复次数  与repeat_end_date只能存在一个' },
                         { key: 'reminder_type', isMust: false, type: 'int', des: '提醒类型 设定无提醒 - 0; 设定提醒单位: 分钟 - 1，小时 - 2，日 - 3' },
                         { key: 'repeat_end_date', isMust: false, type: 'string', des: '当 repeat_end_date 该值选填，结束日期 如果repeat_times为0且repeat_end_date为null,则为永久重复' },
@@ -1691,7 +1705,7 @@
                     ]
                 },
                 edit_share_property_on_event: {
-                    name: '更新日程是否私有',
+                    name: '更新日程是否分享属性',
                     docUrl: '/doc/apidocumentnotavailable.html',
                     url: '/calendar/edit_share_property_on_event',
                     requestMode: 'post',
@@ -1801,6 +1815,19 @@
                         { key: 'access_token', isMust: true, type: 'string', des: '当前登录用户访问令牌' },
                         {"key": "page_index", "isMust": true, "type": "int", "des": "要获取的页码"            },
                         {"key": "page_size", "isMust": true, "type": "int", "des": "页面容量"            }
+                    ]
+                },
+                reinvite_a_member_to_event: {
+                    name: '拒绝日程' ,
+                    docUrl: "/doc/apidocumentnotavailable.html",
+                    url: '/calendar/reinvite_a_member_to_event',
+                    requestMode: 'post',
+                    params: [
+                        { key: 'access_token', isMust: true, type: 'string', des: '当前登录用户访问令牌' },
+                        { key: 'event_id', isMust: true, type: 'string', des: '日程id' },
+                        { key: 'event_recurring_time', isMust: false, type: 'string', des: '子日程的发生时间，用于选择子日程' },
+                        { key: 'member_id', isMust: true, type: 'string', des: '用户id' },
+                        { key: 'modifying_all_recurring_events', isMust: false, type: 'bool', des: '修改所有子日程' }
                     ]
                 },
                 reject_event_invitation: {
@@ -1980,22 +2007,14 @@
         },
         message: {
             v1: {
-                get_inbox_first_message: {
-                    name: '获取消息的第一条信息',
-                    docUrl: '/doc/message/first_message.html',
-                    url: '/message/get_inbox_first_message',
-                    requestMode: 'get',
-                    params: [
-                        { key: 'access_token', isMust: true, type: 'string', des: '当前登录用户访问令牌' }
-                    ]
-                },
                 get_inbox_system_message: {
-                    name: '获取系统消息和日程消息',
+                    name: '获取系统消息或日程系统消息或知识系统消息',
                     docUrl: '/doc/message/system_message.html',
                     url: '/message/get_inbox_system_message',
                     requestMode: 'get',
                     params: [
                         { key: 'access_token', isMust: true, type: 'string', des: '当前登录用户访问令牌' },
+                        { key: 'inbox_load_type', isMust: false, type: 'int', des: '系统消息加载类型(1系统消息10日程系统消息14知识系统消息)' },
                         { key: 'is_unread', isMust: false, type: 'bool', des: '是否获取未读消息' },
                         { key: 'is_favorite', isMust: false, type: 'bool', des: '是否获取标记' },
                         { key: 'keywords', isMust: false, type: 'string', des: '关键字查找' },
@@ -2032,6 +2051,17 @@
                         { key: 'msg_type', isMust: false, type: 'int', des: '1系统消息2任务回复我的3任务提到我的4项目回复我的5项目提到我的' },
                         { key: 'pageindex', isMust: false, type: 'int', des: '当前页码(以1开始，1代表第一页)' },
                         { key: 'pagesize', isMust: false, type: 'int', des: '指定要返回的记录条数' }
+                    ]
+                },
+                update_inbox_message_favorite: {
+                    name: '修改inbox消息标星',
+                    docUrl: '',
+                    url: '/message/update_inbox_message_favorite',
+                    requestMode: 'post',
+                    params: [
+                        { key: 'access_token', isMust: true, type: 'string', des: '当前登录用户访问令牌' },
+                        { key: 'inbox_id', isMust: true, type: 'string', des: '是否获取未读消息' },
+                        { key: 'is_favorite', isMust: false, type: 'bool', des: '是否标星' }
                     ]
                 }
             }
