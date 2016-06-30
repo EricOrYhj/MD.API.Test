@@ -155,7 +155,7 @@
                     params: [
                         { key: 'access_token', isMust: true, type: 'string', des: '当前登录用户访问令牌' },
                         { key: 'keywords', isMust: false, type: 'string', des: '关键词模糊搜索，当为空时则返回所有的动态更新' },
-                        { key: 'max_id', isMust: false, type: 'int64', des: '若指定此参数，则只返回ID比max_id小的动态更新(即比max_id发表时间早的动态更新)' },
+                        { key: 'max_comment_id', isMust: false, type: 'int64', des: '若指定此参数，则只返回ID比max_id小的动态更新(即比max_id发表时间早的动态更新)' },
                         { key: 'pagesize', isMust: false, type: 'int', des: '指定要返回的记录条数(int默认值20，最大值100)' }
                     ]
                 },
@@ -2472,7 +2472,7 @@
                     params: [
                         { key: 'access_token', isMust: true, type: 'string', des: '当前登录用户访问令牌' },
                         { key: 'node_id', isMust: true, type: 'string', des: '节点id' },
-                        { key: 'is_star', isMust: true, type: 'bool', des: '是否标星 true 标星 false 取消' }
+                        { key: 'is_star', isMust: true, type: 'bool', des: '是否标星 (true 标星 false 取消)' }
                     ]
                 },
                 add_star_root: {
@@ -2482,8 +2482,8 @@
                     requestMode: 'post',
                     params: [
                         { key: 'access_token', isMust: true, type: 'string', des: '当前登录用户访问令牌' },
-                        { key: 'root_id', isMust: true, type: 'string', des: '节点id' },
-                        { key: 'is_star', isMust: true, type: 'bool', des: '是否标星 true 标星 false 取消' }
+                        { key: 'root_id', isMust: true, type: 'string', des: '根节点id' },
+                        { key: 'is_star', isMust: true, type: 'bool', des: '是否标星 (true 标星 false 取消)' }
                     ]
                 },
                 delete_node: {
@@ -2503,7 +2503,7 @@
                     requestMode: 'post',
                     params: [
                         { key: 'access_token', isMust: true, type: 'string', des: '当前登录用户访问令牌' },
-                        { key: 'root_id', isMust: true, type: 'string', des: '节点id' }
+                        { key: 'root_id', isMust: true, type: 'string', des: '根节点id' }
                     ]
                 },
                 move_node: {
@@ -2525,7 +2525,7 @@
                     requestMode: 'post',
                     params: [
                         { key: 'access_token', isMust: true, type: 'string', des: '当前登录用户访问令牌' },
-                        { key: 'root_id', isMust: true, type: 'string', des: '节点id' },
+                        { key: 'root_id', isMust: true, type: 'string', des: '根节点id' },
                         { key: 'member_id', isMust: true, type: 'string', des: '负责人id' }
                     ]
                 },
@@ -2536,7 +2536,7 @@
                     requestMode: 'post',
                     params: [
                         { key: 'access_token', isMust: true, type: 'string', des: '当前登录用户访问令牌' },
-                        { key: 'root_id', isMust: true, type: 'string', des: '节点id' },
+                        { key: 'root_id', isMust: true, type: 'string', des: '根节点id' },
                         { key: 'member_id', isMust: true, type: 'string', des: '成员id' }
                     ]
                 },
@@ -2547,9 +2547,9 @@
                     requestMode: 'post',
                     params: [
                         { key: 'access_token', isMust: true, type: 'string', des: '当前登录用户访问令牌' },
-                        { key: 'root_id', isMust: true, type: 'string', des: '节点id' },
+                        { key: 'root_id', isMust: true, type: 'string', des: '根节点id' },
                         { key: 'member_id', isMust: true, type: 'string', des: '成员id' },
-                        { key: 'member_status', isMust: true, type: 'int', des: '成员状态 1=正常 2=未审核' }
+                        { key: 'member_status', isMust: true, type: 'int', des: '成员状态(1=正常 2=未审核)' }
 
                     ]
                 },
@@ -2560,7 +2560,7 @@
                     requestMode: 'post',
                     params: [
                         { key: 'access_token', isMust: true, type: 'string', des: '当前登录用户访问令牌' },
-                        { key: 'root_id', isMust: true, type: 'string', des: '节点id' },
+                        { key: 'root_id', isMust: true, type: 'string', des: '根节点id' },
                         { key: 'member_id', isMust: true, type: 'string', des: '成员id' }
                     ]
                 },
@@ -2571,7 +2571,7 @@
                     requestMode: 'post',
                     params: [
                         { key: 'access_token', isMust: true, type: 'string', des: '当前登录用户访问令牌' },
-                        { key: 'root_id', isMust: true, type: 'string', des: '节点id' },
+                        { key: 'root_id', isMust: true, type: 'string', des: '根节点id' },
                         { key: 'member_id', isMust: true, type: 'string', des: '成员id' },
                         { key: 'permission', isMust: true, type: 'int', des: '根节点权限(无权限=-1,拥有者=1,管理员=2,普通成员=3)' }
                     ]
@@ -2594,7 +2594,7 @@
                     requestMode: 'post',
                     params: [
                         { key: 'access_token', isMust: true, type: 'string', des: '当前登录用户访问令牌' },
-                        { key: 'root_id', isMust: true, type: 'string', des: '节点id' },
+                        { key: 'root_id', isMust: true, type: 'string', des: '根节点id' },
                         { key: 'root_name', isMust: true, type: 'string', des: '根节点名字' }
                     ]
                 },
@@ -2637,7 +2637,7 @@
                     requestMode: 'get',
                     params: [
                         { key: 'access_token', isMust: true, type: 'string', des: '当前登录用户访问令牌' },
-                        { key: 'parent_id', isMust: false, type: 'string', des: '根节点id' },
+                        { key: 'parent_id', isMust: false, type: 'string', des: '父节点id' },
                         { key: 'keywords', isMust: false, type: 'string', des: '关键字' },
                         { key: 'skip', isMust: false, type: 'int', des: '从第几个开始查找' },
                         { key: 'limit', isMust: false, type: 'int', des: '显示数量' }
@@ -2671,10 +2671,7 @@
                     params: [
                         { key: 'access_token', isMust: true, type: 'string', des: '当前登录用户访问令牌' },
                         { key: 'project_id', isMust: false, type: 'string', des: '获取根节点列表，个人不传，网络传网络id' }
-
-//                        { key: 'keywords', isMust: false, type: 'string', des: '关键字' },
-//                        { key: 'filter_type', isMust: false, type: 'Enum(具体看KC任务下的枚举说明)', des: '根节点过滤类型' }
-                    ]
+                      ]
                 },
                 get_nodes: {
                     name: '获取根节点/父节点下节点列表',
