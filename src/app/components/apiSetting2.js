@@ -71,7 +71,6 @@
                 requestMode: 'post',
                 params: [
                     { key: 'access_token', isMust: true, type: 'string', des: '当前登录用户访问令牌' },
-                    { key: 'device_type', isMust: true, type: 'string', des: '设备类型' },
                     { key: 'device', isMust: false, type: 'string', des: '设备号（跟reg_id二选一）' },
                     { key: 'reg_id', isMust: false, type: 'string', des: '设备号IOS新的参数' }
                 ]
@@ -1368,8 +1367,7 @@
                     params: [
                         { key: 'access_token', isMust: true, type: 'string', des: '当前登录用户访问令牌' },
                         { key: 'group_id', isMust: true, type: 'string', des: '群组编号' },
-                        { key: 'project_id', isMust: false, type: 'string', des: '网络编号' },
-
+                        { key: 'project_id', isMust: false, type: 'string', des: '网络编号' }
                     ]
                 },
                 apply_join_group: {
