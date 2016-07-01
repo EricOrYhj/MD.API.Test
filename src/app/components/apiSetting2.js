@@ -1367,7 +1367,9 @@
                     requestMode: 'post',
                     params: [
                         { key: 'access_token', isMust: true, type: 'string', des: '当前登录用户访问令牌' },
-                        { key: 'group_id', isMust: true, type: 'string', des: '群组编号' }
+                        { key: 'group_id', isMust: true, type: 'string', des: '群组编号' },
+                        { key: 'project_id', isMust: false, type: 'string', des: '网络编号' },
+
                     ]
                 },
                 apply_join_group: {
