@@ -165,7 +165,7 @@
         }
 
         $scope.keydown = function () {
-            $rootScope[port] = {'modelList': $scope.modelList, 'requestUrl': requestUrl, 'requestMode': requestMode, 'docUrl': docUrl};
+            $rootScope[port] = {'modelList': $scope.modelList, 'requestUrl': requestUrl, 'requestMode': $scope.requestMode, 'docUrl': docUrl};
         }
 
         //提交请求
