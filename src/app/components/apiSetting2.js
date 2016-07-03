@@ -2299,6 +2299,26 @@
         },
         application: {
             v1: {
+                get_account_apps: {
+                    name: '获取用户安装的应用列表',
+                    docUrl: '/doc/application/account_apps.html',
+                    url: '/application/get_account_apps',
+                    requestMode: 'get',
+                    params: [
+                        { key: 'access_token', isMust: true, type: 'string', des: '当前登录用户访问令牌' }
+                    ]
+                },
+                get_app_access_token: {
+                    name: '获取登录用户某应用的access_token',
+                    docUrl: '',
+                    url: '/application/get_app_access_token',
+                    requestMode: 'get',
+                    params: [
+                        { key: 'access_token', isMust: true, type: 'string', des: '当前登录用户访问令牌' },
+                        { key: 'app_id', isMust: true, type: 'string', des: '应用ID' },
+                        { key: 'project_id', isMust: false, type: 'string', des: '如果是企业安装应用必须传安装的网络ID' }
+                    ]
+                },
                 get_app_admins: {
                     name: '获取应用管理员(只针对企业应用)',
                     docUrl: '',
