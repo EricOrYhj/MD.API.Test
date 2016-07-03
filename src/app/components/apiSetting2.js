@@ -289,7 +289,7 @@
                         { key: 'link_title', isMust: false, type: 'string', des: '动态更新类型是1的时候该值必填 链接标题' },
                         { key: 'link_uri', isMust: false, type: 'string', des: '动态更新类型是1的时候该值必填 链接地址' },
                         { key: 'attachments', isMust: false, type: 'string', des: '本地附件(attachments:[{"fileSize":文件大小,"serverName":"七牛服务地址","filePath":"文件路径","fileName":"文件名","fileExt":"后缀名","originalFileName":"angular","key":"pic/201605/30/ckvfUeKIEHMhyRI_2794854186.png"}])' },
-                        { key: 'knowledgeAttach', isMust: false, type: 'string', des: '知识附件' },
+                        { key: 'knowledge_attach', isMust: false, type: 'string', des: '知识附件' },
                         { key: 'vote_options', isMust: false, type: 'string', des: '投票选项：xxx[Option]xx[Option]' },
                         { key: 'vote_anonymous', isMust: false, type: 'string', des: '是否匿名投票' },
                         { key: 'last_time', isMust: false, type: 'string', des: '投票截止时间' },
@@ -2489,8 +2489,8 @@
                     params: [
                         { key: 'access_token', isMust: true, type: 'string', des: '当前登录用户访问令牌' },
                         { key: 'node_name', isMust: true, type: 'string', des: '节点名' },
-                        { key: 'parent_id', isMust: true, type: 'string', des: '父节点id' },
-                        { key: 'root_id', isMust: true, type: 'string', des: '根节点id' },
+                        { key: 'parent_id', isMust: false, type: 'string', des: '父节点id' },
+                        { key: 'root_id', isMust: false, type: 'string', des: '根节点id' },
                         { key: 'file_path', isMust: false, type: 'string', des: '文件路径' },
                         { key: 'size', isMust: false, type: 'int', des: '文件大小' },
                         { key: 'node_type', isMust: false, type: 'int', des: '节点类型(文件夹=1,文件=2)' }
