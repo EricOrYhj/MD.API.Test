@@ -2309,14 +2309,25 @@
                         { key: 'access_token', isMust: true, type: 'string', des: '当前登录用户访问令牌' }
                     ]
                 },
-                get_app_access_token: {
-                    name: '获取登录用户某应用的access_token',
+                get_app_oauth2_url: {
+                    name: '获取某应用的授权回调路径(data中返回key为url的值)',
                     docUrl: '',
-                    url: '/application/get_app_access_token',
-                    requestMode: 'get',
+                    url: '/application/get_app_oauth2_url',
+                    requestMode: 'post',
                     params: [
                         { key: 'access_token', isMust: true, type: 'string', des: '当前登录用户访问令牌' },
-                        { key: 'app_id', isMust: true, type: 'string', des: '应用ID' },
+                        { key: 'app_key', isMust: true, type: 'string', des: '应用app_key' },
+                        { key: 'project_id', isMust: false, type: 'string', des: '如果是企业安装应用必须传安装的网络ID' }
+                    ]
+                },
+                get_app_oauth2_access_token: {
+                    name: '获取某应用的SSO的token(data中返回access_token的model)',
+                    docUrl: '',
+                    url: '/application/get_app_oauth2_access_token',
+                    requestMode: 'post',
+                    params: [
+                        { key: 'access_token', isMust: true, type: 'string', des: '当前登录用户访问令牌' },
+                        { key: 'app_key', isMust: true, type: 'string', des: '应用app_key' },
                         { key: 'project_id', isMust: false, type: 'string', des: '如果是企业安装应用必须传安装的网络ID' }
                     ]
                 },
