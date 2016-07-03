@@ -324,15 +324,15 @@
         task: {
             v1: {
                 "add_an_invited_member_to_a_task": {
-                    "name": "向任务添加一个被邀请的用户",
+                    "name": "用Email地址或者电话号码邀请一个用户",
                     "docUrl": "",
                     "url": "/task/add_an_invited_member_to_a_task",
                     "requestMode": "post",
                     "params": [
                         {"key": "access_token", "isMust": true, "type": "string", "des": "当前登录用户访问令牌"},
-                        {"key": "invited_member_account", "isMust": true, "type": "string", "des": "被邀请的用户Email或者电话号码"},
+                        {"key": "invited_member_account", "isMust": true, "type": "string", "des": "被邀请的用户Email或者电话号码，参考格式{\"Email或者电话\":\"用户名\"} 例如： {\"aaa@md.com\":\"aa\"}或者 {\"11111111111\":\"11\" }到某个任务"},
                         {"key": "task_id", "isMust": true, "type": "string", "des": "任务id"},
-                        {"key": "project_id", "isMust": false, "type": "string", "des": "不填为自由网络"}
+                        {"key": "project_id", "isMust": false, "type": "string", "des": "不填为个人网络"}
                     ]
                 },
                 "add_members_to_a_task": {
@@ -343,8 +343,8 @@
                     "params": [
                         {"key": "access_token", "isMust": true, "type": "string", "des": "当前登录用户访问令牌"},
                         {"key": "task_id", "isMust": true, "type": "string", "des": "任务id"},
-                        {"key": "account_ids", "isMust": true, "type": "string", "des": "账户Id，用英文逗号隔开！"},
-                        {"key": "project_id", "isMust": false, "type": "string", "des": "不填为自由网络"}
+                        {"key": "account_ids", "isMust": true, "type": "string", "des": "账户Guid，用英文逗号隔开。"},
+                        {"key": "project_id", "isMust": false, "type": "string", "des": "不填为个人网络"}
                     ]
                 },
                 "add_a_comment_on_folder": {
@@ -359,7 +359,7 @@
                         {"key": "comment_id_to_reply", "isMust": false, "type": "string", "des": "回复的comment填写comment id"},
                         {"key": "account_id_to_reply", "isMust": false, "type": "string", "des": "回复的comment时填写被回复的account id"},
                         {"key": "message", "isMust": true, "type": "string", "des": "comment内容"},
-                        {"key": "attachments", "isMust": false, "type": "string", "des": "参看[{'fileID':'o_1aj15jdgj16aj1811180121n1hukk','fileSize':105828,'serverName':'https://dn-mdoc.qbox.me/','filePath':'doc/201605/','fileName':'gqNvxiOMGJpcBAk_553513842','fileExt':'.txt','originalFileName':'new 3','key':'doc/201605/gqNvxiOMGJpcBAk_553513842.txt','allowDown':true,'docVersionID':'','oldOriginalFileName':'new 3'}] "},
+                        {"key": "attachments", "isMust": false, "type": "string", "des": "附件JSON字符串，请参照：[{\"fileSize\":9106,\"serverName\":\"https://dn-mdpic.qbox.me/\",\"filePath\":\"pic/201607/03/\",\"fileName\":\"RLmmTwpSpytNuMX_1601286349\",\"fileExt\":\".jpg\",\"originalFileName\":\"u=576234392,3515399049&fm=80\",\"key\":\"pic/201607/03/RLmmTwpSpytNuMX_1601286349.jpg\"}]"},
                         {"key": "project_id", "isMust": false, "type": "string", "des": "不填为自由网络"}
                     ]
                 },
@@ -447,7 +447,7 @@
                         {"key": "task_id", "isMust": true, "type": "string", "des": "任务ID"            },
                         {"key": "message", "isMust": false, "type": "string", "des": "评论内容"            },
                         {"key": "reply_topic_id", "isMust": false, "type": "string", "des": "回复哪条评论的ID"            },
-                        {"key": "attachments", "isMust": false, "type": "string", "des": "附件JSON字符串，请参照：{'Value':[{'OriginalFileName':'原文件名','FileName':'新文件名','FilePath':'文件路径','FileSize':大小(int),'AttachmentType':附件类型}}]} 文件类型： Other = 0, Picture = 1, Document = 2, Compress = 3"            }
+                        {"key": "attachments", "isMust": false, "type": "string", "des": "附件JSON字符串，请参照：[{\"fileSize\":9106,\"serverName\":\"https://dn-mdpic.qbox.me/\",\"filePath\":\"pic/201607/03/\",\"fileName\":\"RLmmTwpSpytNuMX_1601286349\",\"fileExt\":\".jpg\",\"originalFileName\":\"u=576234392,3515399049&fm=80\",\"key\":\"pic/201607/03/RLmmTwpSpytNuMX_1601286349.jpg\"}]"            }
                     ]
                 },
                 "apply_folder_member": {
@@ -1635,7 +1635,7 @@
                     requestMode: 'post',
                     params: [
                         { key: 'access_token', isMust: true, type: 'string', des: '当前登录用户访问令牌' },
-                        { key: 'attachments', isMust: false, type: 'string', des: '附件[{"fileID":"o_1alp1tvj51ogmitb5a8fkj1gbim","fileSize":9106,"serverName":"https://dn-mdpic.qbox.me/","filePath":"pic/201606/21/","fileName":"MGpKracyNablItC_1667129483","fileExt":".jpg","originalFileName":"u=576234392,3515399049&fm=80","key":"pic/201606/21/MGpKracyNablItC_1667129483.jpg","fileNameParam":"?imageView2/1/w/119/h/83"}]' },
+                        { key: 'attachments', isMust: false, type: 'string', des: '附件JSON字符串，请参照：[{\"fileSize\":9106,\"serverName\":\"https://dn-mdpic.qbox.me/\",\"filePath\":\"pic/201607/03/\",\"fileName\":\"RLmmTwpSpytNuMX_1601286349\",\"fileExt\":\".jpg\",\"originalFileName\":\"u=576234392,3515399049&fm=80\",\"key\":\"pic/201607/03/RLmmTwpSpytNuMX_1601286349.jpg\"}]' },
                         { key: 'name', isMust: true, type: 'string', des: '日程主题' },
                         { key: 'begin_date', isMust: true, type: 'string', des: '日程开始时间。如：2013-05-05 10:25' },
                         { key: 'end_date', isMust: true, type: 'string', des: '日程结束时间。如：2013-05-05 10:25' },
@@ -1699,7 +1699,7 @@
                         { key: 'repeat_times', isMust: false, type: 'int', des: '重复次数  与repeat_end_date只能存在一个' },
                         { key: 'repeat_end_date', isMust: false, type: 'string', des: '结束日期 如果repeat_times为0且repeat_end_date为null,则为永久重复' },
                         { key: 'modifying_all_recurring_events', isMust: false, type: 'bool', des: '是否修改全部子日程' },
-                        { key: 'attachments', isMust: false, type: 'string', des: '日程附件, 请参考[{"fileID":"o_1alp1tvj51ogmitb5a8fkj1gbim","fileSize":9106,"serverName":"https://dn-mdpic.qbox.me/","filePath":"pic/201606/21/","fileName":"MGpKracyNablItC_1667129483","fileExt":".jpg","originalFileName":"u=576234392,3515399049&fm=80","key":"pic/201606/21/MGpKracyNablItC_1667129483.jpg","fileNameParam":"?imageView2/1/w/119/h/83"}]' },
+                        { key: 'attachments', isMust: false, type: 'string', des: '日程附件, 请参考附件JSON字符串，请参照：[{\"fileSize\":9106,\"serverName\":\"https://dn-mdpic.qbox.me/\",\"filePath\":\"pic/201607/03/\",\"fileName\":\"RLmmTwpSpytNuMX_1601286349\",\"fileExt\":\".jpg\",\"originalFileName\":\"u=576234392,3515399049&fm=80\",\"key\":\"pic/201607/03/RLmmTwpSpytNuMX_1601286349.jpg\"}]' },
                         { key: 'need_members_to_confirm', isMust: false, type: 'string', des: '是否需要参与人员重新确认信息' },
                         { key: 'event_recurring_time', isMust: false, type: 'string', des: '日期类型，在选择某个循环日程的子日程时使用' }
                     ]
