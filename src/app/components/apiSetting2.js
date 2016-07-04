@@ -92,7 +92,7 @@
                         { key: 'end_time', isMust: false, type: 'Datetime', des: '结束时间' },
                         { key: 'max_id', isMust: false, type: 'int64', des: '若指定此参数，则只返回ID比max_id小的动态更新(即比max_id发表时间早的动态更新)' },
                         { key: 'pagesize', isMust: false, type: 'int', des: '指定要返回的记录条数(int默认值20，最大值100)' },
-                        { key: 'post_filter_share', isMust: false, type: 'int', des: '动态筛选范围(全部=1,我收藏的=0,我发布的=1,我自己=2,置顶动态=3,网络=4,群组=5,个人全部=6)' },
+                        { key: 'post_filter_share', isMust: false, type: 'int', des: '动态筛选范围(全部=-1,我收藏的=0,我发布的=1,我自己=2,置顶动态=3,网络=4,群组=5,个人全部=6)' },
                         { key: 'project_id', isMust: false, type: 'string', des: '网络id(当动态筛选范围是网络 该值必填)' },
                         { key: 'group_id', isMust: false, type: 'string', des: '群组id(当动态筛选范围是群组 该值必填)' }
 
@@ -169,10 +169,10 @@
                         { key: 'post_id', isMust: true, type: 'string', des: '动态更新编号' }
                     ]
                 },
-                get_tag_posts: {
-                    name: '获取某个标签下的动态更新',
+                get_category_posts: {
+                    name: '获取某个话题下的动态更新',
                     docUrl: '/doc/post/post_detail.html',
-                    url: '/post/get_tag_posts',
+                    url: '/post/get_category_posts',
                     requestMode: 'get',
                     params: [
                         { key: 'access_token', isMust: true, type: 'string', des: '当前登录用户访问令牌' },
@@ -194,10 +194,10 @@
                         { key: 'pagesize', isMust: false, type: 'int', des: '指定要返回的记录条数(int默认值20，最大值100)' }
                     ]
                 },
-                get_all_categories: {
-                    name: '获取当前企业动态更新标签信息',
-                    docUrl: {type: '', url: ''},
-                    url: '/post/get_all_categories',
+                get_common_categories: {
+                    name: '获取常用话题',
+                    docUrl: '',
+                    url: '/post/get_common_categories',
                     requestMode: 'get',
                     params: [
                         { key: 'access_token', isMust: true, type: 'string', des: '当前登录用户访问令牌' },
@@ -288,10 +288,10 @@
                         { key: 'post_type', isMust: true, type: 'int', des: '动态更新类型(0表示普通动态更新(默认值);1表示链接动态更新 ;图片=2,文档=3,提问=4,系统自动=5,应用用户分享=6,投票=7,音视频=8,附件=9)' },
                         { key: 'link_title', isMust: false, type: 'string', des: '动态更新类型是1的时候该值必填 链接标题' },
                         { key: 'link_uri', isMust: false, type: 'string', des: '动态更新类型是1的时候该值必填 链接地址' },
-                        { key: 'attachments', isMust: false, type: 'string', des: '本地附件(attachments:[{"fileSize":文件大小,"serverName":"七牛服务地址","filePath":"文件路径","fileName":"文件名","fileExt":"后缀名","originalFileName":"angular","key":"pic/201605/30/ckvfUeKIEHMhyRI_2794854186.png"}])' },
-                        { key: 'knowledge_attach', isMust: false, type: 'string', des: '知识附件' },
+                        { key: 'attachments', isMust: false, type: 'string', des: '本地附件(attachments:[{"fileSize":文件大小,"serverName":"七牛服务地址","filePath":"文件路径","fileName":"文件名","fileExt":"后缀名","originalFileName":"原文件名","key":"七牛key"}])' },
+                        { key: 'knowledge_attach', isMust: false, type: 'string', des: '知识附件("refId":"知识id","originalFileName":"原文件名","fileExt":"后缀名","fileSize":文件大小,"allowDown":是否可下载)' },
                         { key: 'vote_options', isMust: false, type: 'string', des: '投票选项：xxx[Option]xx[Option]' },
-                        { key: 'vote_anonymous', isMust: false, type: 'string', des: '是否匿名投票' },
+                        { key: 'vote_anonymous', isMust: false, type: 'bool', des: '是否匿名投票' },
                         { key: 'last_time', isMust: false, type: 'string', des: '投票截止时间' },
                         { key: 'available_number', isMust: false, type: 'int', des: '允许投票次数' },
                         { key: 'vote_option_files', isMust: false, type: 'string', des: '投票图片：如果某选项无图只给[Option]，有图就是 https://dn-mdpic.qbox.me/VoteDoc/pic/201606/03/mdMImCeKkCWLkvT_2027623769.png[Option]' }
@@ -1937,15 +1937,6 @@
                         { key: 'access_token', isMust: true, type: 'string', des: '当前登录用户访问令牌' }
                     ]
                 },
-                get_common_category: {
-                    name: '获取当前登录用户最常用的的前10个标签',
-                    docUrl: '/doc/passport/passport_detail.html',
-                    url: '/passport/get_common_category',
-                    requestMode: 'get',
-                    params: [
-                        { key: 'access_token', isMust: true, type: 'string', des: '当前登录用户访问令牌' }
-                    ]
-                },
                 get_user_card: {
                     name: '获取加入的网络单个企业名片',
                     docUrl: '/doc/passport/user_card.html',
@@ -2310,6 +2301,15 @@
                     params: [
                         { key: 'access_token', isMust: true, type: 'string', des: '当前登录用户访问令牌' },
                         { key: 'app_id', isMust: true, type: 'string', des: '应用ID' }
+                    ]
+                },
+                get_apps: {
+                    name: '获取个人和我加入的企业的安装应用',
+                    docUrl: '',
+                    url: '/application/get_apps',
+                    requestMode: 'get',
+                    params: [
+                        { key: 'access_token', isMust: true, type: 'string', des: '当前登录用户访问令牌' }
                     ]
                 }
             }
