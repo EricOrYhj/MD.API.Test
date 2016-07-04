@@ -71,7 +71,6 @@
                 requestMode: 'post',
                 params: [
                     { key: 'access_token', isMust: true, type: 'string', des: '当前登录用户访问令牌' },
-                    { key: 'device_type', isMust: true, type: 'string', des: '设备类型' },
                     { key: 'device', isMust: false, type: 'string', des: '设备号（跟reg_id二选一）' },
                     { key: 'reg_id', isMust: false, type: 'string', des: '设备号IOS新的参数' }
                 ]
@@ -324,27 +323,27 @@
         task: {
             v1: {
                 "add_an_invited_member_to_a_task": {
-                    "name": "向任务添加一个被邀请的用户",
-                    "docUrl": "",
+                    "name": "用Email地址或者电话号码邀请一个用户",
+                    "docUrl": {type: '', url: ''},
                     "url": "/task/add_an_invited_member_to_a_task",
                     "requestMode": "post",
                     "params": [
                         {"key": "access_token", "isMust": true, "type": "string", "des": "当前登录用户访问令牌"},
-                        {"key": "invited_member_account", "isMust": true, "type": "string", "des": "被邀请的用户Email或者电话号码"},
+                        {"key": "invited_member_account", "isMust": true, "type": "string", "des": "被邀请的用户Email或者电话号码，参考格式{\"Email或者电话\":\"用户名\"} 例如： {\"aaa@md.com\":\"aa\"}或者 {\"11111111111\":\"11\" }到某个任务"},
                         {"key": "task_id", "isMust": true, "type": "string", "des": "任务id"},
-                        {"key": "project_id", "isMust": false, "type": "string", "des": "不填为自由网络"}
+                        {"key": "project_id", "isMust": false, "type": "string", "des": "不填为个人网络"}
                     ]
                 },
                 "add_members_to_a_task": {
                     "name": "向任务添加多个用户",
-                    "docUrl": "",
+                    "docUrl": {type: '', url: ''},
                     "url": "/task/add_members_to_a_task",
                     "requestMode": "post",
                     "params": [
                         {"key": "access_token", "isMust": true, "type": "string", "des": "当前登录用户访问令牌"},
                         {"key": "task_id", "isMust": true, "type": "string", "des": "任务id"},
-                        {"key": "account_ids", "isMust": true, "type": "string", "des": "账户Id，用英文逗号隔开！"},
-                        {"key": "project_id", "isMust": false, "type": "string", "des": "不填为自由网络"}
+                        {"key": "account_ids", "isMust": true, "type": "string", "des": "账户Guid，用英文逗号隔开。"},
+                        {"key": "project_id", "isMust": false, "type": "string", "des": "不填为个人网络"}
                     ]
                 },
                 "add_a_comment_on_folder": {
@@ -359,7 +358,7 @@
                         {"key": "comment_id_to_reply", "isMust": false, "type": "string", "des": "回复的comment填写comment id"},
                         {"key": "account_id_to_reply", "isMust": false, "type": "string", "des": "回复的comment时填写被回复的account id"},
                         {"key": "message", "isMust": true, "type": "string", "des": "comment内容"},
-                        {"key": "attachments", "isMust": false, "type": "string", "des": "参看[{'fileID':'o_1aj15jdgj16aj1811180121n1hukk','fileSize':105828,'serverName':'https://dn-mdoc.qbox.me/','filePath':'doc/201605/','fileName':'gqNvxiOMGJpcBAk_553513842','fileExt':'.txt','originalFileName':'new 3','key':'doc/201605/gqNvxiOMGJpcBAk_553513842.txt','allowDown':true,'docVersionID':'','oldOriginalFileName':'new 3'}] "},
+                        {"key": "attachments", "isMust": false, "type": "string", "des": "附件JSON字符串，请参照：[{\"fileSize\":9106,\"serverName\":\"https://dn-mdpic.qbox.me/\",\"filePath\":\"pic/201607/03/\",\"fileName\":\"RLmmTwpSpytNuMX_1601286349\",\"fileExt\":\".jpg\",\"originalFileName\":\"u=576234392,3515399049&fm=80\",\"key\":\"pic/201607/03/RLmmTwpSpytNuMX_1601286349.jpg\"}]"},
                         {"key": "project_id", "isMust": false, "type": "string", "des": "不填为自由网络"}
                     ]
                 },
@@ -392,7 +391,7 @@
                 },
                 "add_folder_member": {
                     "name": "新增项目成员",
-                    "docUrl": "/doc/task/add_folder_member.html",
+                    "docUrl": {type: '', url: ''},
                     "url": "/task/add_folder_member",
                     "requestMode": "post",
                     "params": [
@@ -447,12 +446,12 @@
                         {"key": "task_id", "isMust": true, "type": "string", "des": "任务ID"            },
                         {"key": "message", "isMust": false, "type": "string", "des": "评论内容"            },
                         {"key": "reply_topic_id", "isMust": false, "type": "string", "des": "回复哪条评论的ID"            },
-                        {"key": "attachments", "isMust": false, "type": "string", "des": "附件JSON字符串，请参照：{'Value':[{'OriginalFileName':'原文件名','FileName':'新文件名','FilePath':'文件路径','FileSize':大小(int),'AttachmentType':附件类型}}]} 文件类型： Other = 0, Picture = 1, Document = 2, Compress = 3"            }
+                        {"key": "attachments", "isMust": false, "type": "string", "des": "附件JSON字符串，请参照：[{\"fileSize\":9106,\"serverName\":\"https://dn-mdpic.qbox.me/\",\"filePath\":\"pic/201607/03/\",\"fileName\":\"RLmmTwpSpytNuMX_1601286349\",\"fileExt\":\".jpg\",\"originalFileName\":\"u=576234392,3515399049&fm=80\",\"key\":\"pic/201607/03/RLmmTwpSpytNuMX_1601286349.jpg\"}]"            }
                     ]
                 },
                 "apply_folder_member": {
                     "name": "申请成为项目成员",
-                    "docUrl": "/doc/task/apply_folder_member.html",
+                    "docUrl": {type: '', url: ''},
                     "url": "/task/apply_folder_member",
                     "requestMode": "post",
                     "params": [
@@ -464,7 +463,7 @@
                 },
                 "apply_for_joining_a_task": {
                     "name": "申请成为任务成员",
-                    "docUrl": "",
+                    "docUrl": {type: '', url: ''},
                     "url": "/task/apply_for_joining_a_task",
                     "requestMode": "post",
                     "params": [
@@ -474,7 +473,7 @@
                 },
                 "delete_folder": {
                     "name": "删除项目",
-                    "docUrl": "/doc/task/delete_folder.html",
+                    "docUrl": {type: '', url: ''},
                     "url": "/task/delete_folder",
                     "requestMode": "post",
                     "params": [
@@ -486,7 +485,7 @@
                 },
                 "delete_folder_file": {
                     "name": "删除项目文件夹",
-                    "docUrl": "/doc/task/delete_folder_file.html",
+                    "docUrl": {type: '', url: ''},
                     "url": "/task/delete_folder_file",
                     "requestMode": "post",
                     "params": [
@@ -497,7 +496,7 @@
                 },
                 "delete_folder_members": {
                     "name": "移除项目成员",
-                    "docUrl": "/doc/task/delete_folder_members.html",
+                    "docUrl": {type: '', url: ''},
                     "url": "/task/delete_folder_members",
                     "requestMode": "post",
                     "params": [
@@ -510,7 +509,7 @@
                 },
                 "delete_folder_stage": {
                     "name": "删除项目阶段",
-                    "docUrl": "/doc/task/delete_folder_stage.html",
+                    "docUrl": {type: '', url: ''},
                     "url": "/task/delete_folder_stage",
                     "requestMode": "post",
                     "params": [
@@ -522,7 +521,7 @@
                 },
                 "delete_task": {
                     "name": "删除任务",
-                    "docUrl": "/doc/task/delete_task.html",
+                    "docUrl": {type: '', url: ''},
                     "url": "/task/delete_task",
                     "requestMode": "post",
                     "params": [
@@ -534,7 +533,7 @@
                 },
                 "delete_task_topic": {
                     "name": "删除任务评论",
-                    "docUrl": "/doc/task/delete_task_topic.html",
+                    "docUrl": {type: '', url: ''},
                     "url": "/task/delete_task_topic",
                     "requestMode": "post",
                     "params": [
@@ -547,7 +546,7 @@
                 },
                 "duplicate_a_task": {
                     "name": "复制任务",
-                    "docUrl": "",
+                    "docUrl": {type: '', url: ''},
                     "url": "/task/duplicate_a_task",
                     "requestMode": "post",
                     "params": [
@@ -567,7 +566,7 @@
                 },
                 "duplicate_folder": {
                     "name": "复制项目",
-                    "docUrl": "/doc/task/duplicate_folder.html",
+                    "docUrl": {type: '', url: ''},
                     "url": "/task/duplicate_folder",
                     "requestMode": "post",
                     "params": [
@@ -580,7 +579,7 @@
                 },
                 "get_archived_folders": {
                     "name": "获取个人或网络下归档项目文件夹下项目",
-                    "docUrl": "/doc/task/get_archived_folders.html",
+                    "docUrl": {type: '', url: ''},
                     "url": "/task/get_archived_folders",
                     "requestMode": "get",
                     "params": [
@@ -590,7 +589,7 @@
                 },
                 "get_available_folders": {
                     "name": "修改任务的关联项目时, 根据任务Id以及关键词返回可关联的项目",
-                    "docUrl": "/doc/apiDocumentNotAvailable.html",
+                    "docUrl": {type: '', url: ''},
                     "url": "/task/get_available_folders",
                     "requestMode": "get",
                     "params": [
@@ -603,7 +602,7 @@
                 },
                 "get_available_tasks": {
                     "name": "修改任务的母任务时, 根据任务Id返回可以关联的母任务",
-                    "docUrl": "/doc/apidocumentnotavailable.html",
+                    "docUrl": {type: '', url: ''},
                     "url": "/task/get_available_tasks",
                     "requestMode": "get",
                     "params": [
@@ -614,7 +613,7 @@
                     ]
                 },
                 "get_direct_children_tasks": {
-                    "name": "获取某个任务下的直接子任务，返回值文档请参考get_task_list",
+                    "name": "获取某个任务下的直接子任务",
                     "docUrl": "/doc/task/get_direct_children_tasks.html",
                     "url": "/task/get_direct_children_tasks",
                     "requestMode": "get",
@@ -777,7 +776,7 @@
                         {"key": "page_size", "isMust": false, "type": "int", "des": "指定要返回的记录条数(默认值20，最大值100)"            },
                         {"key": "folder_id", "isMust": false, "type": "string", "des": "项目ID 没有项目要传入Null"            },
                         {"key": "stage_id", "isMust": false, "type": "string", "des": "项目阶段ID"            },
-                        {"key": "filter_type", "isMust": false, "type": "int", "des": "过滤类型 默认1：我参与的任务；2：我负责的任务；3：我托付的任务；6：全部任务  7：查看同事(与我协作的任务) 9： 我的任务"            },
+                        {"key": "filter_type", "isMust": true, "type": "int", "des": "过滤类型 默认1：我参与的任务；2：我负责的任务；3：我托付的任务；6：全部任务  7：查看同事(与我协作的任务) 9： 我的任务"            },
                         {"key": "color", "isMust": false, "type": "int", "des": "任务颜色 默认-1：全部；0：无颜色；1：蓝色；2：紫色；3：红色；4：橙色；5：黄色"            },
                         {"key": "status", "isMust": false, "type": "int", "des": "筛选任务状态 默认0：进行中；1：已完成；-1：全部"            },
                         {"key": "tags", "isMust": false, "type": "string", "des": "过滤任务标签 多个用,隔开"            },
@@ -859,7 +858,7 @@
                 },
                 "move_a_folder_into_a_file": {
                     "name": "将项目移入一个项目文件夹",
-                    "docUrl": "/doc/task/move_a_folder_into_a_file.html",
+                    "docUrl": {type: '', url: ''},
                     "url": "/task/move_a_folder_into_a_file",
                     "requestMode": "post",
                     "params": [
@@ -906,7 +905,7 @@
                 },
                 "update_folder_archived_property": {
                     "name": "修改项目是否归档",
-                    "docUrl": "/doc/task/update_folder_archived_property.html",
+                    "docUrl":{type: '', url: ''},
                     "url": "/task/update_folder_archived_property",
                     "requestMode": "post",
                     "params": [
@@ -918,7 +917,7 @@
                 },
                 "update_folder_detail": {
                     "name": "修改项目基本属性(负责人,项目名,项目描述)全部修改或多选一",
-                    "docUrl": "/doc/task/update_folder_detail.html",
+                    "docUrl":{type: '', url: ''},
                     "url": "/task/update_folder_detail",
                     "requestMode": "post",
                     "params": [
@@ -932,7 +931,7 @@
                 },
                 "update_folder_file": {
                     "name": "修改项目文件夹",
-                    "docUrl": "/doc/task/update_folder_file.html",
+                    "docUrl":{type: '', url: ''},
                     "url": "/task/update_folder_file",
                     "requestMode": "post",
                     "params": [
@@ -945,7 +944,7 @@
                 },
                 "update_folder_isHidden_property": {
                     "name": "项目隐藏",
-                    "docUrl": "",
+                    "docUrl":{type: '', url: ''},
                     "url": "/task/update_folder_isHidden_property",
                     "requestMode": "post",
                     "params": [
@@ -957,7 +956,7 @@
                 },
                 "update_folder_isTop_property": {
                     "name": "项目置顶",
-                    "docUrl": "",
+                    "docUrl":{type: '', url: ''},
                     "url": "/task/update_folder_isTop_property",
                     "requestMode": "post",
                     "params": [
@@ -969,7 +968,7 @@
                 },
                 "update_folder_member_admin": {
                     "name": "设置项目成员为管理员",
-                    "docUrl": "/doc/task/update_folder_member_admin.html",
+                    "docUrl":{type: '', url: ''},
                     "url": "/task/update_folder_member_admin",
                     "requestMode": "post",
                     "params": [
@@ -982,7 +981,7 @@
                 },
                 "update_folder_member_star": {
                     "name": "项目标星",
-                    "docUrl": "/doc/task/update_folder_member_star.html",
+                    "docUrl":{type: '', url: ''},
                     "url": "/task/update_folder_member_star",
                     "requestMode": "post",
                     "params": [
@@ -994,7 +993,7 @@
                 },
                 "update_folder_stage": {
                     "name": "修改项目阶段顺序或名字",
-                    "docUrl": "/doc/task/update_folder_stage.html",
+                    "docUrl":{type: '', url: ''},
                     "url": "/task/update_folder_stage",
                     "requestMode": "post",
                     "params": [
@@ -1008,7 +1007,7 @@
                 },
                 "update_folder_visibility_property": {
                     "name": "修改项目可见性",
-                    "docUrl": "/doc/task/update_folder_visibility_property.html",
+                    "docUrl":{type: '', url: ''},
                     "url": "/task/Update_Folder_Visibility_Property",
                     "requestMode": "post",
                     "params": [
@@ -1021,7 +1020,7 @@
                 },
                 "update_joining_status_on_task": {
                     "name": "修改当前用户加入一个Task的状态",
-                    "docUrl": "",
+                    "docUrl":  {type: '', url: ''},
                     "url": "/task/update_joining_status_on_task",
                     "requestMode": "post",
                     "params": [
@@ -1033,7 +1032,7 @@
                 },
                 "update_task_charger_property": {
                     "name": "更新任务负责人",
-                    "docUrl": "/doc/task/update_task_charger_property.html",
+                    "docUrl":  {type: '', url: ''},
                     "url": "/task/update_task_charger_property",
                     "requestMode": "post",
                     "params": [
@@ -1044,7 +1043,7 @@
                 },
                 "update_task_deadline": {
                     "name": "更新任务截止日期",
-                    "docUrl": "/doc/task/update_task_deadline.html",
+                    "docUrl":  {type: '', url: ''},
                     "url": "/task/update_task_deadline",
                     "requestMode": "post",
                     "params": [
@@ -1057,6 +1056,7 @@
                 "update_task_description": {
                     "name": "/doc/task/update_task_description.html",
                     "url": "/task/update_task_description",
+                    "docUrl":  {type: '', url: ''},
                     "requestMode": "post",
                     "params": [
                         {"key": "access_token", "isMust": true, "type": "string", "des": "当前登录用户访问令牌"            },
@@ -1066,7 +1066,7 @@
                 },
                 "update_task_folderID": {
                     "name": "更新任务所在的项目",
-                    "docUrl": "/doc/task/update_task_folderID.html",
+                    "docUrl":  {type: '', url: ''},
                     "url": "/task/update_task_folderID",
                     "requestMode": "post",
                     "params": [
@@ -1077,7 +1077,7 @@
                 },
                 "update_task_locked": {
                     "name": "是否锁定任务",
-                    "docUrl": "/doc/task/update_task_locked.html",
+                    "docUrl":  {type: '', url: ''},
                     "url": "/task/update_task_locked",
                     "requestMode": "post",
                     "params": [
@@ -1089,7 +1089,7 @@
                 },
                 "update_task_member_classify": {
                     "name": "修改任务分类（待分配，现在要做等）",
-                    "docUrl": "/doc/task/update_task_member_classify.html",
+                    "docUrl":  {type: '', url: ''},
                     "url": "/task/update_task_member_classify",
                     "requestMode": "post",
                     "params": [
@@ -1101,7 +1101,7 @@
                 },
                 "update_task_member_color": {
                     "name": "修改任务颜色",
-                    "docUrl": "/doc/task/update_task_member_color.html",
+                    "docUrl":  {type: '', url: ''},
                     "url": "/task/update_task_member_color",
                     "requestMode": "post",
                     "params": [
@@ -1113,7 +1113,7 @@
                 },
                 "update_task_member_notice": {
                     "name": "修改任务是否接收提醒",
-                    "docUrl": "/doc/task/update_task_member_notice.html",
+                    "docUrl":  {type: '', url: ''},
                     "url": "/task/update_task_member_notice",
                     "requestMode": "post",
                     "params": [
@@ -1125,7 +1125,7 @@
                 },
                 "update_task_member_star": {
                     "name": "任务标星",
-                    "docUrl": "/doc/task/update_task_member_star.html",
+                    "docUrl":  {type: '', url: ''},
                     "url": "/task/update_task_member_star",
                     "requestMode": "post",
                     "params": [
@@ -1137,7 +1137,7 @@
                 },
                 "update_task_name": {
                     "name": "更新任务名称",
-                    "docUrl": "/doc/task/update_task_name.html",
+                    "docUrl":  {type: '', url: ''},
                     "url": "/task/update_task_name",
                     "requestMode": "post",
                     "params": [
@@ -1148,7 +1148,7 @@
                 },
                 "update_task_parentID": {
                     "name": "更新母任务",
-                    "docUrl": "/doc/task/update_task_parentID.html",
+                    "docUrl":  {type: '', url: ''},
                     "url": "/task/update_task_parentID",
                     "requestMode": "post",
                     "params": [
@@ -1159,7 +1159,7 @@
                 },
                 "update_task_stage": {
                     "name": "修改任务所处项目阶段",
-                    "docUrl": "/doc/task/update_task_stage.html",
+                    "docUrl":  {type: '', url: ''},
                     "url": "/task/update_task_stage",
                     "requestMode": "post",
                     "params": [
@@ -1171,7 +1171,7 @@
                 },
                 "update_task_status": {
                     "name": "是否标记任务完成",
-                    "docUrl": "/doc/task/update_task_status.html",
+                    "docUrl":  {type: '', url: ''},
                     "url": "/task/update_task_status",
                     "requestMode": "post",
                     "params": [
@@ -1368,8 +1368,7 @@
                     params: [
                         { key: 'access_token', isMust: true, type: 'string', des: '当前登录用户访问令牌' },
                         { key: 'group_id', isMust: true, type: 'string', des: '群组编号' },
-                        { key: 'project_id', isMust: false, type: 'string', des: '网络编号' },
-
+                        { key: 'project_id', isMust: false, type: 'string', des: '网络编号' }
                     ]
                 },
                 apply_join_group: {
@@ -1607,7 +1606,7 @@
             v1: {
                 add_members_to_event: {
                     name: '确认日程' ,
-                    docUrl: "/doc/apidocumentnotavailable.html",
+                    docUrl: {type: 'string', url: ''},
                     url: '/calendar/add_members_to_event',
                     requestMode: 'post',
                     params: [
@@ -1621,7 +1620,7 @@
                 },
                 confirm_event_invitation: {
                     name: '确认日程' ,
-                    docUrl: "/doc/apidocumentnotavailable.html",
+                    docUrl: {type: 'string', url: ''},
                     url: '/calendar/confirm_event_invitation',
                     requestMode: 'post',
                     params: [
@@ -1632,12 +1631,12 @@
                 },
                 create_event: {
                     name: '创建一个新的日程',
-                    docUrl: '/doc/apidocumentnotavailable.html',
+                    docUrl: {type: 'string', url: ''},
                     url: '/calendar/create_event',
                     requestMode: 'post',
                     params: [
                         { key: 'access_token', isMust: true, type: 'string', des: '当前登录用户访问令牌' },
-                        { key: 'attachments', isMust: false, type: 'string', des: '附件[{"fileID":"o_1alp1tvj51ogmitb5a8fkj1gbim","fileSize":9106,"serverName":"https://dn-mdpic.qbox.me/","filePath":"pic/201606/21/","fileName":"MGpKracyNablItC_1667129483","fileExt":".jpg","originalFileName":"u=576234392,3515399049&fm=80","key":"pic/201606/21/MGpKracyNablItC_1667129483.jpg","fileNameParam":"?imageView2/1/w/119/h/83"}]' },
+                        { key: 'attachments', isMust: false, type: 'string', des: '附件JSON字符串，请参照：[{\"fileSize\":9106,\"serverName\":\"https://dn-mdpic.qbox.me/\",\"filePath\":\"pic/201607/03/\",\"fileName\":\"RLmmTwpSpytNuMX_1601286349\",\"fileExt\":\".jpg\",\"originalFileName\":\"u=576234392,3515399049&fm=80\",\"key\":\"pic/201607/03/RLmmTwpSpytNuMX_1601286349.jpg\"}]' },
                         { key: 'name', isMust: true, type: 'string', des: '日程主题' },
                         { key: 'begin_date', isMust: true, type: 'string', des: '日程开始时间。如：2013-05-05 10:25' },
                         { key: 'end_date', isMust: true, type: 'string', des: '日程结束时间。如：2013-05-05 10:25' },
@@ -1660,7 +1659,7 @@
                 },
                 create_user_defined_category: {
                     name: '创建用户自定义的分类',
-                    docUrl: '/doc/apidocumentnotavailable.html',
+                    docUrl: {type: 'string', url: ''},
                     url: '/calendar/create_user_defined_category',
                     requestMode: 'post',
                     params: [
@@ -1671,7 +1670,7 @@
                 },
                 edit_category_of_an_event: {
                     name: '更新用户分类',
-                    docUrl: '/doc/apidocumentnotavailable.html',
+                    docUrl: {type: 'string', url: ''},
                     url: '/calendar/edit_category_of_an_event',
                     requestMode: 'post',
                     params: [
@@ -1682,7 +1681,7 @@
                 },
                 edit_common_properties_on_event: {
                     name: '修改日程中需要重复确认的属性',
-                    docUrl: 'doc/apiDocumentNotAvailable.html',
+                    docUrl: {type: 'string', url: ''},
                     url: '/calendar/edit_common_properties_on_event',
                     requestMode: 'post',
                     params: [
@@ -1701,14 +1700,14 @@
                         { key: 'repeat_times', isMust: false, type: 'int', des: '重复次数  与repeat_end_date只能存在一个' },
                         { key: 'repeat_end_date', isMust: false, type: 'string', des: '结束日期 如果repeat_times为0且repeat_end_date为null,则为永久重复' },
                         { key: 'modifying_all_recurring_events', isMust: false, type: 'bool', des: '是否修改全部子日程' },
-                        { key: 'attachments', isMust: false, type: 'string', des: '日程附件, 请参考[{"fileID":"o_1alp1tvj51ogmitb5a8fkj1gbim","fileSize":9106,"serverName":"https://dn-mdpic.qbox.me/","filePath":"pic/201606/21/","fileName":"MGpKracyNablItC_1667129483","fileExt":".jpg","originalFileName":"u=576234392,3515399049&fm=80","key":"pic/201606/21/MGpKracyNablItC_1667129483.jpg","fileNameParam":"?imageView2/1/w/119/h/83"}]' },
+                        { key: 'attachments', isMust: false, type: 'string', des: '日程附件, 请参考附件JSON字符串，请参照：[{\"fileSize\":9106,\"serverName\":\"https://dn-mdpic.qbox.me/\",\"filePath\":\"pic/201607/03/\",\"fileName\":\"RLmmTwpSpytNuMX_1601286349\",\"fileExt\":\".jpg\",\"originalFileName\":\"u=576234392,3515399049&fm=80\",\"key\":\"pic/201607/03/RLmmTwpSpytNuMX_1601286349.jpg\"}]' },
                         { key: 'need_members_to_confirm', isMust: false, type: 'string', des: '是否需要参与人员重新确认信息' },
                         { key: 'event_recurring_time', isMust: false, type: 'string', des: '日期类型，在选择某个循环日程的子日程时使用' }
                     ]
                 },
                 edit_share_property_on_event: {
                     name: '更新日程是否分享属性',
-                    docUrl: '/doc/apidocumentnotavailable.html',
+                    docUrl: {type: 'string', url: ''},
                     url: '/calendar/edit_share_property_on_event',
                     requestMode: 'post',
                     params: [
@@ -1720,7 +1719,7 @@
                 },
                 edit_is_private_property_on_event: {
                     name: '更新日程是否私有',
-                    docUrl: '/doc/apidocumentnotavailable.html',
+                    docUrl: {type: 'string', url: ''},
                     url: '/calendar/edit_is_private_property_on_event',
                     requestMode: 'post',
                     params: [
@@ -1731,7 +1730,7 @@
                 },
                 edit_properites_on_category: {
                     name: '编辑分类的属性',
-                    docUrl: '/doc/apidocumentnotavailable.html',
+                    docUrl: {type: 'string', url: ''},
                     url: '/calendar/edit_properites_on_category',
                     requestMode: 'post',
                     params: [
@@ -1743,7 +1742,7 @@
                 },
                 edit_reminder_on_event: {
                     name: '更新日程提醒',
-                    docUrl: '/doc/apidocumentnotavailable.html',
+                    docUrl: {type: 'string', url: ''},
                     url: '/calendar/edit_reminder_on_event',
                     requestMode: 'post',
                     params: [
@@ -1821,7 +1820,7 @@
                 },
                 reinvite_a_member_to_event: {
                     name: '拒绝日程' ,
-                    docUrl: "/doc/apidocumentnotavailable.html",
+                    docUrl: {type: 'string', url: ''},
                     url: '/calendar/reinvite_a_member_to_event',
                     requestMode: 'post',
                     params: [
@@ -1834,7 +1833,7 @@
                 },
                 reject_event_invitation: {
                     name: '拒绝日程' ,
-                    docUrl: "/doc/apidocumentnotavailable.html",
+                    docUrl: {type: 'string', url: ''},
                     url: '/calendar/reject_event_invitation',
                     requestMode: 'post',
                     params: [
@@ -1846,7 +1845,7 @@
                 },
                 remove_a_member_on_event: {
                     name: '删除一个成员',
-                    docUrl: "/doc/apidocumentnotavailable.html",
+                    docUrl: {type: 'string', url: ''},
                     url: '/calendar/remove_a_member_on_event',
                     requestMode: 'post',
                     params: [
@@ -1859,7 +1858,7 @@
                 },
                 remove_event: {
                     name: '删除事件',
-                    docUrl: "/doc/apidocumentnotavailable.html",
+                    docUrl: {type: 'string', url: ''},
                     url: '/calendar/remove_event',
                     requestMode: 'post',
                     params: [
@@ -1871,7 +1870,7 @@
                 },
                 remove_user_defined_category: {
                     name: '删除用户自定义类别',
-                    docUrl: "/doc/apidocumentnotavailable.html",
+                    docUrl: {type: 'string', url: ''},
                     url: '/calendar/remove_user_defined_category',
                     requestMode: 'post',
                     params: [
@@ -2041,7 +2040,6 @@
                         { key: 'is_unread', isMust: false, type: 'bool', des: '是否获取未读消息' },
                         { key: 'is_favorite', isMust: false, type: 'bool', des: '是否获取标记' },
                         { key: 'keywords', isMust: false, type: 'string', des: '关键字查找' },
-                        { key: 'msg_type', isMust: false, type: 'int', des: '1系统消息2任务回复我的3任务提到我的4项目回复我的5项目提到我的' },
                         { key: 'pageindex', isMust: false, type: 'int', des: '当前页码(以1开始，1代表第一页)' },
                         { key: 'pagesize', isMust: false, type: 'int', des: '指定要返回的记录条数' }
                     ]
@@ -2293,6 +2291,37 @@
         },
         application: {
             v1: {
+                get_account_apps: {
+                    name: '获取用户安装的应用列表',
+                    docUrl: '/doc/application/account_apps.html',
+                    url: '/application/get_account_apps',
+                    requestMode: 'get',
+                    params: [
+                        { key: 'access_token', isMust: true, type: 'string', des: '当前登录用户访问令牌' }
+                    ]
+                },
+                get_app_oauth2_url: {
+                    name: '获取某应用的授权回调路径(data中返回key为url的值)',
+                    docUrl: '',
+                    url: '/application/get_app_oauth2_url',
+                    requestMode: 'post',
+                    params: [
+                        { key: 'access_token', isMust: true, type: 'string', des: '当前登录用户访问令牌' },
+                        { key: 'app_key', isMust: true, type: 'string', des: '应用app_key' },
+                        { key: 'project_id', isMust: false, type: 'string', des: '如果是企业安装应用必须传安装的网络ID' }
+                    ]
+                },
+                get_app_oauth2_access_token: {
+                    name: '获取某应用的SSO的token(data中返回access_token的model)',
+                    docUrl: '',
+                    url: '/application/get_app_oauth2_access_token',
+                    requestMode: 'post',
+                    params: [
+                        { key: 'access_token', isMust: true, type: 'string', des: '当前登录用户访问令牌' },
+                        { key: 'app_key', isMust: true, type: 'string', des: '应用app_key' },
+                        { key: 'project_id', isMust: false, type: 'string', des: '如果是企业安装应用必须传安装的网络ID' }
+                    ]
+                },
                 get_app_admins: {
                     name: '获取应用管理员(只针对企业应用)',
                     docUrl: '',
