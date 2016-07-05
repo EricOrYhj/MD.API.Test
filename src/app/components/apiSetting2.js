@@ -1214,6 +1214,7 @@
                     params: [
                         { key: 'access_token', isMust: true, type: 'string', des: '当前登录用户访问令牌' },
                         { key: 'project_id', isMust: true, type: 'string', des: '要获取的网络ID' },
+                        { key: 'search_type', isMust: false, type: 'int', des: '-1全部 0 我创建的 1我加入的 2我是管理员的 不传默认-1' },
                         { key: 'sort_group', isMust: false, type: 'int', des: '群组创建时间=0,群组类型=1,Post数量=2,成员数量=3,按群组名拼音=4,按群组公共=5,当前用户发布的Post数量=6,按创建者名拼音=7,官方群组=8,群组内用户名称=9,群组管理员=10,群组状态=11,群组成员创建时间=12' },
                         { key: 'sort_type', isMust: false, type: 'bool', des: 'false 降序true升序' },
                         { key: 'pageindex', isMust: false, type: 'int', des: '指定当前的页码(不指定页码返回所有)' },
