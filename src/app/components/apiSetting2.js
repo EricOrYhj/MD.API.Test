@@ -228,7 +228,9 @@
                         { key: 'attachments', isMust: false, type: 'binary', des: '本地附件' },
                         { key: 'comment_type', isMust: false, type: 'int', des: '回复类型' },
                         { key: 'is_share', isMust: false, type: 'bool', des: '同时转发动态(0表示不转发动态；1表示同时转发动态)' },
-                        { key: 'group_ids', isMust: false, type: 'string', des: '可为空，动态分享群组编号(多个群组用逗号隔开)' }
+                        { key: 'group_ids', isMust: false, type: 'string', des: '可为空，动态分享群组编号(多个群组用逗号隔开)' },
+                        { key: 'project_ids', isMust: false, type: 'string', des: '可为空，动态分享网络编号(多个群组用逗号隔开)' }
+
                     ]
                 },
                 delete_post: {
@@ -2500,7 +2502,7 @@
             v1: {
                 add_root: {
                     name: '添加根目录(共享文件夹)',
-                    docUrl: '',
+                    docUrl: '/doc/kc/kc_root_detail.html',
                     url: '/kc/add_root',
                     requestMode: 'post',
                     params: [
@@ -2512,7 +2514,7 @@
                 },
                 add_node: {
                     name: '添加节点',
-                    docUrl: '',
+                    docUrl: '/doc/kc/kc_node_detail.html',
                     url: '/kc/add_node',
                     requestMode: 'post',
                     params: [
