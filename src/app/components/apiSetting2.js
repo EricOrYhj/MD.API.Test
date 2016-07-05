@@ -223,14 +223,12 @@
                         { key: 'access_token', isMust: true, type: 'string', des: '当前登录用户访问令牌' },
                         { key: 'post_id', isMust: true, type: 'string', des: '回复的动态更新编号' },
                         { key: 'reply_id', isMust: false, type: 'string', des: '回复编号(可以对别人的回复进行回复)[可选]' },
-                        { key: 'reply_account_id', isMust: false, type: 'string', des: '原回复创建人，不填默认动态创建者[可选]' },
-                        { key: 'reply_msg', isMust: true, type: 'int', des: '回复的消息内容([aid]accountID[/aid]代表@某个人,[gid]groupID[/gid]代表@某个群组)' },
-                        { key: 'attachments', isMust: false, type: 'binary', des: '本地附件' },
+                        { key: 'reply_msg', isMust: true, type: 'string', des: '回复的消息内容([aid]accountID[/aid]代表@某个人,[gid]groupID[/gid]代表@某个群组)' },
+                        { key: 'attachments', isMust: false, type: 'string', des: '本地附件(attachments:[{"fileSize":文件大小,"serverName":"七牛服务地址","filePath":"文件路径","fileName":"文件名","fileExt":"后缀名","originalFileName":"原文件名","key":"七牛key"}])' },
                         { key: 'comment_type', isMust: false, type: 'int', des: '回复类型' },
                         { key: 'is_share', isMust: false, type: 'bool', des: '同时转发动态(0表示不转发动态；1表示同时转发动态)' },
                         { key: 'group_ids', isMust: false, type: 'string', des: '可为空，动态分享群组编号(多个群组用逗号隔开)' },
                         { key: 'project_ids', isMust: false, type: 'string', des: '可为空，动态分享网络编号(多个群组用逗号隔开)' }
-
                     ]
                 },
                 delete_post: {
