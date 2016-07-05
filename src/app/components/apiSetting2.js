@@ -731,6 +731,17 @@
                         {"key": "task_id", "isMust": true, "type": "string", "des": "任务ID"            }
                     ]
                 },
+                "get_task_in_classify": {
+                    "name": "依据分页信息获取每种classify下的任务数量",
+                    "docUrl": {type: '', url: ''},
+                    "url": "/task/get_task_in_classify",
+                    "requestMode": "get",
+                    "params": [
+                        {"key": "access_token", "isMust": true, "type": "string", "des": "当前登录用户访问令牌"            },
+                        {"key": "page_index", "isMust": true, "type": "int", "des": "分页的index"            },
+                        {"key": "page_size", "isMust": true, "type": "int", "des": "分页的页面大小"            }
+                    ]
+                },
                 "get_comments_by_folder_id": {
                     "name": "获取项目上的会话",
                     "docUrl": "/doc/task/get_comments_by_folder_id.html",
@@ -1616,7 +1627,7 @@
                         { key: 'event_id', isMust: true, type: 'string', des: '日程id' },
                         { key: 'event_recurring_time', isMust: false, type: 'string', des: '子日程的发生时间，用于选择子日程' },
                         { key: 'modifying_all_recurring_events', isMust: false, type: 'bool', des: '是否修改所有日程' },
-                        { key: 'invited_accounts', isMust: false, type: 'string', des: '包含邮箱和电话' },
+                        { key: 'invited_accounts', isMust: false, type: 'string', des: '包含邮箱和电话， 参考格式： [\"电话号码\",\"邮箱\"]' },
                         { key: 'member_ids', isMust: false, type: 'string', des: '用户id' }
                     ]
                 },
