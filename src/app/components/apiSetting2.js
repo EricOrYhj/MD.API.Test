@@ -203,10 +203,10 @@
                         { key: 'keywords', isMust: false, type: 'string', des: '关键词模糊搜索' }
                     ]
                 },
-                update_collect_or_canle_collect_post: {
+                update_collect_or_cancle_collect_post: {
                     name: '增加当前登录用户的一条动态更新 收藏/不收藏',
                     docUrl: {type: '', url: ''},
-                    url: '/post/update_collect_or_canle_collect_post',
+                    url: '/post/update_collect_or_cancle_collect_post',
                     requestMode: 'post',
                     params: [
                         { key: 'access_token', isMust: true, type: 'string', des: '当前登录用户访问令牌' },
@@ -241,10 +241,10 @@
                         { key: 'post_id', isMust: true, type: 'binary', des: '动态更新编号' }
                     ]
                 },
-                update_like_or_canle_like_post: {
+                update_like_or_cancle_like_post: {
                     name: '当前登录用户 喜欢/不喜欢 一条动态更新 ',
                     docUrl: {type: '', url: ''},
-                    url: '/post/update_like_or_canle_like_post',
+                    url: '/post/update_like_or_cancle_like_post',
                     requestMode: 'post',
                     params: [
                         { key: 'access_token', isMust: true, type: 'string', des: '当前登录用户访问令牌' },
