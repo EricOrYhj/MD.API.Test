@@ -203,10 +203,10 @@
                         { key: 'keywords', isMust: false, type: 'string', des: '关键词模糊搜索' }
                     ]
                 },
-                update_collect_or_canle_collect_post: {
+                update_collect_or_cancle_collect_post: {
                     name: '增加当前登录用户的一条动态更新 收藏/不收藏',
                     docUrl: {type: '', url: ''},
-                    url: '/post/update_collect_or_canle_collect_post',
+                    url: '/post/update_collect_or_cancle_collect_post',
                     requestMode: 'post',
                     params: [
                         { key: 'access_token', isMust: true, type: 'string', des: '当前登录用户访问令牌' },
@@ -223,14 +223,12 @@
                         { key: 'access_token', isMust: true, type: 'string', des: '当前登录用户访问令牌' },
                         { key: 'post_id', isMust: true, type: 'string', des: '回复的动态更新编号' },
                         { key: 'reply_id', isMust: false, type: 'string', des: '回复编号(可以对别人的回复进行回复)[可选]' },
-                        { key: 'reply_account_id', isMust: false, type: 'string', des: '原回复创建人，不填默认动态创建者[可选]' },
-                        { key: 'reply_msg', isMust: true, type: 'int', des: '回复的消息内容([aid]accountID[/aid]代表@某个人,[gid]groupID[/gid]代表@某个群组)' },
-                        { key: 'attachments', isMust: false, type: 'binary', des: '本地附件' },
+                        { key: 'reply_msg', isMust: true, type: 'string', des: '回复的消息内容([aid]accountID[/aid]代表@某个人,[gid]groupID[/gid]代表@某个群组)' },
+                        { key: 'attachments', isMust: false, type: 'string', des: '本地附件(attachments:[{"fileSize":文件大小,"serverName":"七牛服务地址","filePath":"文件路径","fileName":"文件名","fileExt":"后缀名","originalFileName":"原文件名","key":"七牛key"}])' },
                         { key: 'comment_type', isMust: false, type: 'int', des: '回复类型' },
                         { key: 'is_share', isMust: false, type: 'bool', des: '同时转发动态(0表示不转发动态；1表示同时转发动态)' },
                         { key: 'group_ids', isMust: false, type: 'string', des: '可为空，动态分享群组编号(多个群组用逗号隔开)' },
                         { key: 'project_ids', isMust: false, type: 'string', des: '可为空，动态分享网络编号(多个群组用逗号隔开)' }
-
                     ]
                 },
                 delete_post: {
@@ -243,10 +241,10 @@
                         { key: 'post_id', isMust: true, type: 'binary', des: '动态更新编号' }
                     ]
                 },
-                update_like_or_canle_like_post: {
+                update_like_or_cancle_like_post: {
                     name: '当前登录用户 喜欢/不喜欢 一条动态更新 ',
                     docUrl: {type: '', url: ''},
-                    url: '/post/update_like_or_canle_like_post',
+                    url: '/post/update_like_or_cancle_like_post',
                     requestMode: 'post',
                     params: [
                         { key: 'access_token', isMust: true, type: 'string', des: '当前登录用户访问令牌' },
@@ -1225,6 +1223,7 @@
                     params: [
                         { key: 'access_token', isMust: true, type: 'string', des: '当前登录用户访问令牌' },
                         { key: 'project_id', isMust: true, type: 'string', des: '要获取的网络ID' },
+                        { key: 'search_type', isMust: false, type: 'int', des: '-1全部 0 我创建的 1我加入的 2我是管理员的 不传默认-1' },
                         { key: 'sort_group', isMust: false, type: 'int', des: '群组创建时间=0,群组类型=1,Post数量=2,成员数量=3,按群组名拼音=4,按群组公共=5,当前用户发布的Post数量=6,按创建者名拼音=7,官方群组=8,群组内用户名称=9,群组管理员=10,群组状态=11,群组成员创建时间=12' },
                         { key: 'sort_type', isMust: false, type: 'bool', des: 'false 降序true升序' },
                         { key: 'pageindex', isMust: false, type: 'int', des: '指定当前的页码(不指定页码返回所有)' },
