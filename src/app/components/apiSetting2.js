@@ -426,11 +426,9 @@
                         {"key": "charge_user_account_id", "isMust": false, "type": "string", "des": "指定的任务负责人"            },
                         {"key": "members", "isMust": false, "type": "string", "des": "指定的任务成员 (多个成员用逗号隔开)"            },
                         {"key": "folder_id", "isMust": false, "type": "string", "des": "指定的隶属项目"            },
-                        {"key": "color", "isMust": false, "type": "int", "des": "任务颜色 默认0：无颜色；1：蓝色；2：紫色；3：红色；4：橙色；5：黄色"            },
                         {"key": "post_id", "isMust": false, "type": "string", "des": "动态ID（创建任务时，如果需要某个动态的附件添加到任务中必传）"            },
-                        {"key": "folder_stage_id", "isMust": false, "type": "string", "des": "指定的隶属项目下的阶段ID"            },
+                        {"key": "folder_stage_id", "isMust": false, "type": "string", "des": "指定的隶属项目下的阶段ID， 当填写folder_id时，一定要传入stage_id"            },
                         {"key": "is_star", "isMust": false, "type": "bool", "des": "是否给任务标星（默认：false：否，true：是）"            },
-                        {"key": "groups", "isMust": false, "type": "string", "des": "指定任务群组"            },
                         {"key": "project_id", "isMust": false, "type": "string", "des": "哪个网络（默认个人自由网络）"            }
                     ]
                 },
