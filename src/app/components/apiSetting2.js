@@ -356,12 +356,10 @@
                     "params": [
                         {"key": "access_token", "isMust": true, "type": "string", "des": "当前登录用户访问令牌"},
                         {"key": "folder_id", "isMust": true, "type": "string", "des": "项目id"},
-                        {"key": "has_attachment", "isMust": false, "type": "bool", "des": "是否有attachment, 默认false"},
                         {"key": "comment_id_to_reply", "isMust": false, "type": "string", "des": "回复的comment填写comment id"},
                         {"key": "account_id_to_reply", "isMust": false, "type": "string", "des": "回复的comment时填写被回复的account id"},
                         {"key": "message", "isMust": true, "type": "string", "des": "comment内容"},
-                        {"key": "attachments", "isMust": false, "type": "string", "des": "附件JSON字符串，请参照：[{\"fileSize\":9106,\"serverName\":\"https://dn-mdpic.qbox.me/\",\"filePath\":\"pic/201607/03/\",\"fileName\":\"RLmmTwpSpytNuMX_1601286349\",\"fileExt\":\".jpg\",\"originalFileName\":\"u=576234392,3515399049&fm=80\",\"key\":\"pic/201607/03/RLmmTwpSpytNuMX_1601286349.jpg\"}]"},
-                        {"key": "project_id", "isMust": false, "type": "string", "des": "不填为自由网络"}
+                        {"key": "attachments", "isMust": false, "type": "string", "des": "附件JSON字符串，请参照：[{\"fileSize\":9106,\"serverName\":\"https://dn-mdpic.qbox.me/\",\"filePath\":\"pic/201607/03/\",\"fileName\":\"RLmmTwpSpytNuMX_1601286349\",\"fileExt\":\".jpg\",\"originalFileName\":\"u=576234392,3515399049&fm=80\",\"key\":\"pic/201607/03/RLmmTwpSpytNuMX_1601286349.jpg\"}]"}
                     ]
                 },
                 "add_folder": {
