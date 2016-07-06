@@ -421,9 +421,9 @@
                         {"key": "access_token", "isMust": true, "type": "string", "des": "当前登录用户访问令牌"            },
                         {"key": "task_name", "isMust": true, "type": "string", "des": "任务名称"            },
                         {"key": "parent_id", "isMust": false, "type": "string", "des": "母任务ID"            },
-                        {"key": "describe", "isMust": false, "type": "string", "des": "任务描述"            },
-                        {"key": "dead_time", "isMust": false, "type": "string", "des": "任务截止日期，yyyy-MM-dd形式", "isDate": true},
-                        {"key": "charge_user", "isMust": false, "type": "string", "des": "指定的任务负责人"            },
+                        {"key": "task_description", "isMust": false, "type": "string", "des": "任务描述"            },
+                        {"key": "deadline", "isMust": false, "type": "string", "des": "任务截止日期，yyyy-MM-dd形式", "isDate": true},
+                        {"key": "charge_user_account_id", "isMust": false, "type": "string", "des": "指定的任务负责人"            },
                         {"key": "members", "isMust": false, "type": "string", "des": "指定的任务成员 (多个成员用逗号隔开)"            },
                         {"key": "folder_id", "isMust": false, "type": "string", "des": "指定的隶属项目"            },
                         {"key": "color", "isMust": false, "type": "int", "des": "任务颜色 默认0：无颜色；1：蓝色；2：紫色；3：红色；4：橙色；5：黄色"            },
@@ -1070,7 +1070,7 @@
                     "params": [
                         {"key": "access_token", "isMust": true, "type": "string", "des": "当前登录用户访问令牌"            },
                         {"key": "task_id", "isMust": true, "type": "string", "des": "任务id"            },
-                        {"key": "description", "isMust": true, "type": "string", "des": "任务描述"            }
+                        {"key": "task_Description", "isMust": true, "type": "string", "des": "任务描述"            }
                     ]
                 },
                 "update_task_folderID": {
