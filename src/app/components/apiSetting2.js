@@ -154,7 +154,7 @@
                     params: [
                         { key: 'access_token', isMust: true, type: 'string', des: '当前登录用户访问令牌' },
                         { key: 'keywords', isMust: false, type: 'string', des: '关键词模糊搜索，当为空时则返回所有的动态更新' },
-                        { key: 'max_comment_id', isMust: false, type: 'int64', des: '若指定此参数，则只返回ID比max_id小的动态更新(即比max_id发表时间早的动态更新)' },
+                        { key: 'max_comment_id', isMust: false, type: 'string', des: '若指定此参数，则只返回ID比max_id小的动态更新(即比max_id发表时间早的动态更新)' },
                         { key: 'pagesize', isMust: false, type: 'int', des: '指定要返回的记录条数(int默认值20，最大值100)' }
                     ]
                 },
@@ -203,10 +203,10 @@
                         { key: 'keywords', isMust: false, type: 'string', des: '关键词模糊搜索' }
                     ]
                 },
-                update_collect_or_cancle_collect_post: {
+                update_collect_or_cancel_collect_post: {
                     name: '增加当前登录用户的一条动态更新 收藏/不收藏',
                     docUrl: {type: '', url: ''},
-                    url: '/post/update_collect_or_cancle_collect_post',
+                    url: '/post/update_collect_or_cancel_collect_post',
                     requestMode: 'post',
                     params: [
                         { key: 'access_token', isMust: true, type: 'string', des: '当前登录用户访问令牌' },
@@ -241,10 +241,10 @@
                         { key: 'post_id', isMust: true, type: 'binary', des: '动态更新编号' }
                     ]
                 },
-                update_like_or_cancle_like_post: {
+                update_like_or_cancel_like_post: {
                     name: '当前登录用户 喜欢/不喜欢 一条动态更新 ',
                     docUrl: {type: '', url: ''},
-                    url: '/post/update_like_or_cancle_like_post',
+                    url: '/post/update_like_or_cancel_like_post',
                     requestMode: 'post',
                     params: [
                         { key: 'access_token', isMust: true, type: 'string', des: '当前登录用户访问令牌' },
@@ -1279,7 +1279,7 @@
 
                 create_group: {
                     name: '创建一个新的群组',
-                    docUrl: {type: '', url: '/v1group.html'},
+                    docUrl: '/doc/group/group_detail.html',
                     url: '/group/create_group',
                     requestMode: 'post',
                     params: [
@@ -1289,6 +1289,17 @@
                         { key: 'is_post', isMust: false, type: 'bool', des: '是否作为动态分享群组(false：否，true：是)' },
                         { key: 'project_id', isMust: false, type: 'string', des: '群组网络' },
                         { key: 'avatar', isMust: false, type: 'string', des: '群组头像' }
+                    ]
+                },
+
+                create_discussion_group: {
+                    name: '创建一个新的讨论组',
+                    docUrl: '/doc/group/group_detail.html',
+                    url: '/group/create_discussion_group',
+                    requestMode: 'post',
+                    params: [
+                        { key: 'access_token', isMust: true, type: 'string', des: '当前登录用户访问令牌' },
+                        { key: 'account_ids', isMust: false, type: 'string', des: '群组用户' }
                     ]
                 },
                 edit_group: {
