@@ -354,12 +354,10 @@
                     "params": [
                         {"key": "access_token", "isMust": true, "type": "string", "des": "当前登录用户访问令牌"},
                         {"key": "folder_id", "isMust": true, "type": "string", "des": "项目id"},
-                        {"key": "has_attachment", "isMust": false, "type": "bool", "des": "是否有attachment, 默认false"},
                         {"key": "comment_id_to_reply", "isMust": false, "type": "string", "des": "回复的comment填写comment id"},
                         {"key": "account_id_to_reply", "isMust": false, "type": "string", "des": "回复的comment时填写被回复的account id"},
                         {"key": "message", "isMust": true, "type": "string", "des": "comment内容"},
-                        {"key": "attachments", "isMust": false, "type": "string", "des": "附件JSON字符串，请参照：[{\"fileSize\":9106,\"serverName\":\"https://dn-mdpic.qbox.me/\",\"filePath\":\"pic/201607/03/\",\"fileName\":\"RLmmTwpSpytNuMX_1601286349\",\"fileExt\":\".jpg\",\"originalFileName\":\"u=576234392,3515399049&fm=80\",\"key\":\"pic/201607/03/RLmmTwpSpytNuMX_1601286349.jpg\"}]"},
-                        {"key": "project_id", "isMust": false, "type": "string", "des": "不填为自由网络"}
+                        {"key": "attachments", "isMust": false, "type": "string", "des": "附件JSON字符串，请参照：[{\"fileSize\":9106,\"serverName\":\"https://dn-mdpic.qbox.me/\",\"filePath\":\"pic/201607/03/\",\"fileName\":\"RLmmTwpSpytNuMX_1601286349\",\"fileExt\":\".jpg\",\"originalFileName\":\"u=576234392,3515399049&fm=80\",\"key\":\"pic/201607/03/RLmmTwpSpytNuMX_1601286349.jpg\"}]"}
                     ]
                 },
                 "add_folder": {
@@ -423,16 +421,14 @@
                         {"key": "access_token", "isMust": true, "type": "string", "des": "当前登录用户访问令牌"            },
                         {"key": "task_name", "isMust": true, "type": "string", "des": "任务名称"            },
                         {"key": "parent_id", "isMust": false, "type": "string", "des": "母任务ID"            },
-                        {"key": "describe", "isMust": false, "type": "string", "des": "任务描述"            },
-                        {"key": "dead_time", "isMust": false, "type": "string", "des": "任务截止日期，yyyy-MM-dd形式", "isDate": true},
-                        {"key": "charge_user", "isMust": false, "type": "string", "des": "指定的任务负责人"            },
+                        {"key": "task_description", "isMust": false, "type": "string", "des": "任务描述"            },
+                        {"key": "deadline", "isMust": false, "type": "string", "des": "任务截止日期，yyyy-MM-dd形式", "isDate": true},
+                        {"key": "charge_user_account_id", "isMust": false, "type": "string", "des": "指定的任务负责人"            },
                         {"key": "members", "isMust": false, "type": "string", "des": "指定的任务成员 (多个成员用逗号隔开)"            },
                         {"key": "folder_id", "isMust": false, "type": "string", "des": "指定的隶属项目"            },
-                        {"key": "color", "isMust": false, "type": "int", "des": "任务颜色 默认0：无颜色；1：蓝色；2：紫色；3：红色；4：橙色；5：黄色"            },
                         {"key": "post_id", "isMust": false, "type": "string", "des": "动态ID（创建任务时，如果需要某个动态的附件添加到任务中必传）"            },
-                        {"key": "folder_stage_id", "isMust": false, "type": "string", "des": "指定的隶属项目下的阶段ID"            },
+                        {"key": "folder_stage_id", "isMust": false, "type": "string", "des": "指定的隶属项目下的阶段ID， 当填写folder_id时，一定要传入stage_id"            },
                         {"key": "is_star", "isMust": false, "type": "bool", "des": "是否给任务标星（默认：false：否，true：是）"            },
-                        {"key": "groups", "isMust": false, "type": "string", "des": "指定任务群组"            },
                         {"key": "project_id", "isMust": false, "type": "string", "des": "哪个网络（默认个人自由网络）"            }
                     ]
                 },
@@ -727,6 +723,17 @@
                     "params": [
                         {"key": "access_token", "isMust": true, "type": "string", "des": "当前登录用户访问令牌"            },
                         {"key": "task_id", "isMust": true, "type": "string", "des": "任务ID"            }
+                    ]
+                },
+                "get_task_in_classify": {
+                    "name": "依据分页信息获取每种classify下的任务数量",
+                    "docUrl": {type: '', url: ''},
+                    "url": "/task/get_task_in_classify",
+                    "requestMode": "get",
+                    "params": [
+                        {"key": "access_token", "isMust": true, "type": "string", "des": "当前登录用户访问令牌"            },
+                        {"key": "page_index", "isMust": true, "type": "int", "des": "分页的index"            },
+                        {"key": "page_size", "isMust": true, "type": "int", "des": "分页的页面大小"            }
                     ]
                 },
                 "get_comments_by_folder_id": {
@@ -1061,7 +1068,7 @@
                     "params": [
                         {"key": "access_token", "isMust": true, "type": "string", "des": "当前登录用户访问令牌"            },
                         {"key": "task_id", "isMust": true, "type": "string", "des": "任务id"            },
-                        {"key": "description", "isMust": true, "type": "string", "des": "任务描述"            }
+                        {"key": "task_Description", "isMust": true, "type": "string", "des": "任务描述"            }
                     ]
                 },
                 "update_task_folderID": {
@@ -1626,7 +1633,7 @@
                         { key: 'event_id', isMust: true, type: 'string', des: '日程id' },
                         { key: 'event_recurring_time', isMust: false, type: 'string', des: '子日程的发生时间，用于选择子日程' },
                         { key: 'modifying_all_recurring_events', isMust: false, type: 'bool', des: '是否修改所有日程' },
-                        { key: 'invited_accounts', isMust: false, type: 'string', des: '包含邮箱和电话' },
+                        { key: 'invited_accounts', isMust: false, type: 'string', des: '包含邮箱和电话， 参考格式： [\"电话号码\",\"邮箱\"]' },
                         { key: 'member_ids', isMust: false, type: 'string', des: '用户id' }
                     ]
                 },
