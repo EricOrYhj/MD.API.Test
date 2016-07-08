@@ -1293,7 +1293,6 @@
                         { key: 'access_token', isMust: true, type: 'string', des: '当前登录用户访问令牌' },
                         { key: 'group_name', isMust: true, type: 'string', des: '要创建的群组的名称' },
                         { key: 'about', isMust: false, type: 'string', des: '群组的简介' },
-                        { key: 'is_post', isMust: false, type: 'bool', des: '是否作为动态分享群组(false：否，true：是)' },
                         { key: 'project_id', isMust: false, type: 'string', des: '群组网络' },
                         { key: 'avatar', isMust: false, type: 'string', des: '群组头像' }
                     ]
