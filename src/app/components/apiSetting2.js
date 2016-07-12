@@ -79,7 +79,7 @@
         post: {
             v1: {
                 get_all_posts: {
-                    name: '获取全公司的动态更新 ',
+                    name: '获取全公司的动态',
                     docUrl: '/doc/post/post_detail.html',
                     url: '/post/get_all_posts',
                     requestMode: 'get',
@@ -99,7 +99,7 @@
                 },
 
                 get_post_detail: {
-                    name: '根据动态更新编号获取单条动态更新内容',
+                    name: '根据动态编号获取单条动态内容',
                     docUrl: '/doc/post/post_detail.html',
                     url: '/post/get_post_detail',
                     requestMode: 'get',
@@ -110,7 +110,7 @@
                 },
 
                 get_group_posts: {
-                    name: '获取群组的动态更新',
+                    name: '获取群组的动态',
                     docUrl: '/doc/post/post_detail.html',
                     url: '/post/get_group_posts',
                     requestMode: 'get',
@@ -123,7 +123,7 @@
                     ]
                 },
                 get_company_top_posts: {
-                    name: '获取可见网络的置顶动态更新',
+                    name: '获取可见网络的置顶动态',
                     docUrl: '/doc/post/post_detail.html',
                     url: '/post/get_company_top_posts',
                     requestMode: 'get',
@@ -133,7 +133,7 @@
                     ]
                 },
                 get_my_posts: {
-                    name: '获取当前登录用户发布的动态更新',
+                    name: '获取当前登录用户发布的动态',
                     docUrl: '/doc/post/post_detail.html',
                     url: '/post/get_my_posts',
                     requestMode: 'get',
@@ -159,8 +159,8 @@
                     ]
                 },
                 get_post_reply: {
-                    name: '根据动态更新编号获取某条动态更新的回复列表信息',
-                    docUrl: '/doc/post/post_detail.html',
+                    name: '根据动态编号获取某条动态的回复列表信息',
+                    docUrl: '/doc/post/post_reply.html',
                     url: '/post/get_post_reply',
                     requestMode: 'get',
                     params: [
@@ -169,7 +169,7 @@
                     ]
                 },
                 get_category_posts: {
-                    name: '获取某个话题下的动态更新',
+                    name: '获取某个话题下的动态',
                     docUrl: '/doc/post/post_detail.html',
                     url: '/post/get_category_posts',
                     requestMode: 'get',
@@ -182,7 +182,7 @@
                     ]
                 },
                 get_user_posts: {
-                    name: '获取用户发布的动态更新',
+                    name: '获取用户发布的动态',
                     docUrl: '/doc/post/post_detail.html',
                     url: '/post/get_user_posts',
                     requestMode: 'get',
@@ -195,7 +195,7 @@
                 },
                 get_common_categories: {
                     name: '获取常用话题',
-                    docUrl: '',
+                    docUrl: '/doc/post/post_categories.html',
                     url: '/post/get_common_categories',
                     requestMode: 'get',
                     params: [
@@ -215,7 +215,7 @@
                     ]
                 },
                 add_post_reply: {
-                    name: '增加一条动态更新的回复',
+                    name: '增加一条动态回复',
                     docUrl: '',
                     url: '/post/add_post_reply',
                     requestMode: 'post',
@@ -232,7 +232,7 @@
                     ]
                 },
                 delete_post: {
-                    name: '根据动态更新编号删除一条动态更新',
+                    name: '根据动态编号删除一条动态',
                     docUrl: {type: '', url: ''},
                     url: '/post/delete_post',
                     requestMode: 'post',
@@ -242,7 +242,7 @@
                     ]
                 },
                 update_like_or_cancel_like_post: {
-                    name: '当前登录用户 喜欢/不喜欢 一条动态更新 ',
+                    name: '当前登录用户 喜欢/不喜欢 一条动态',
                     docUrl: {type: '', url: ''},
                     url: '/post/update_like_or_cancel_like_post',
                     requestMode: 'post',
@@ -264,7 +264,7 @@
                     ]
                 },
                 top_post: {
-                    name: '置顶一条动态更新(仅限网络管理员使用) ',
+                    name: '置顶一条动态(仅限网络管理员使用) ',
                     docUrl: {type: '', url: ''},
                     url: '/post/top_post',
                     requestMode: 'post',
@@ -275,7 +275,7 @@
                     ]
                 },
                 add_post: {
-                    name: '发布一条动态更新',
+                    name: '发布一条动态',
                     docUrl: '',
                     url: '/post/add_post',
                     requestMode: 'post',
@@ -1305,7 +1305,7 @@
                     requestMode: 'post',
                     params: [
                         { key: 'access_token', isMust: true, type: 'string', des: '当前登录用户访问令牌' },
-                        { key: 'account_ids', isMust: false, type: 'string', des: '群组用户' }
+                        { key: 'account_ids', isMust: false, type: 'string', des: '群组用户，多个,隔开' }
                     ]
                 },
                 edit_group: {
@@ -1323,7 +1323,7 @@
                     ]
                 },
                 exit_group: {
-                    name: '群组操作退出',
+                    name: '群组退出',
                     docUrl: {type: '', url: ''},
                     url: '/group/exit_group',
                     requestMode: 'post',
