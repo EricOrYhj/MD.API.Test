@@ -331,7 +331,7 @@
                         {"key": "access_token", "isMust": true, "type": "string", "des": "当前登录用户访问令牌"},
                         {"key": "invited_member_account", "isMust": true, "type": "string", "des": "被邀请的用户Email或者电话号码，参考格式{\"Email或者电话\":\"用户名\"} 例如： {\"aaa@md.com\":\"aa\"}或者 {\"11111111111\":\"11\" }到某个任务"},
                         {"key": "task_id", "isMust": true, "type": "string", "des": "任务id"},
-                        {"key": "project_id", "isMust": false, "type": "string", "des": "不填为个人网络"}
+                        {"key": "project_id", "isMust": false, "type": "string", "des": "网络id，不填为个人网络"}
                     ]
                 },
                 "add_members_to_a_task": {
@@ -347,7 +347,7 @@
                     ]
                 },
                 "add_a_comment_on_folder": {
-                    "name": "创建项目",
+                    "name": "向项目添加讨论",
                     "docUrl": "/doc/task/add_a_comment_on_folder.html",
                     "url": "/task/add_a_comment_on_folder",
                     "requestMode": "post",
@@ -574,7 +574,7 @@
                     ]
                 },
                 "get_archived_folders": {
-                    "name": "获取个人或网络下归档项目文件夹下项目",
+                    "name": "获取归档文件夹下项目",
                     "docUrl": {type: '', url: ''},
                     "url": "/task/get_archived_folders",
                     "requestMode": "get",
@@ -706,7 +706,7 @@
                     ]
                 },
                 "get_subordinates": {
-                    "name": "获取用户置顶项目",
+                    "name": "获取下属",
                     "docUrl": "/doc/task/get_subordinates.html",
                     "url": "/task/get_subordinates",
                     "requestMode": "get",
@@ -837,7 +837,7 @@
                     ]
                 },
                 "get_orphaned_tasks": {
-                    "name": "获取任务列表",
+                    "name": "获取任务，获取到的任务没有关联任何项目",
                     "docUrl": "/doc/task/get_orphaned_tasks.html",
                     "url": "/task/get_orphaned_tasks",
                     "requestMode": "get",
@@ -854,7 +854,7 @@
                     ]
                 },
                 "get_teamwork_member": {
-                    "name": "获取协作成员",
+                    "name": "获取任务协作成员",
                     "docUrl": "/doc/task/get_teamwork_member.html",
                     "url": "/task/get_teamwork_member",
                     "requestMode": "get",
@@ -1061,7 +1061,7 @@
                     ]
                 },
                 "update_task_description": {
-                    "name": "/doc/task/update_task_description.html",
+                    "name": "更新任务描述",
                     "url": "/task/update_task_description",
                     "docUrl":  {type: '', url: ''},
                     "requestMode": "post",
@@ -1623,7 +1623,7 @@
         calendar: {
             v1: {
                 add_members_to_event: {
-                    name: '确认日程' ,
+                    name: '向一个日程添加成员' ,
                     docUrl: {type: 'string', url: ''},
                     url: '/calendar/add_members_to_event',
                     requestMode: 'post',
@@ -1781,7 +1781,7 @@
                 },
                 get_calendar_subscription_url: {
                     name: '获取订阅日历的url',
-                    docUrl: '/doc/apidocumentnotavailable.html',
+                    docUrl: {type: 'string', url: ''},
                     url: '/calendar/get_calendar_subscription_url',
                     requestMode: 'get',
                     params: [
@@ -1789,13 +1789,13 @@
                     ]
                 },
                 get_conflicted_events: {
-                    name: '获取订阅日历的url',
-                    docUrl: '/doc/apidocumentnotavailable.html',
+                    name: '根据日期数据获取日程',
+                    docUrl: {type: 'string', url: ''},
                     url: '/calendar/get_conflicted_events',
                     requestMode: 'get',
                     params: [
                         { key: 'access_token', isMust: true, type: 'string', des: '当前登录用户访问令牌' },
-                        { key: 'conflicting_account_id', isMust: true, type: 'string', des: '所要查询的用户' },
+                        { key: 'conflicting_account_id', isMust: true, type: 'string', des: '所要查询的用户，为当前用户或者与当前用户在相同的网络下' },
                         { key: 'begin_date', isMust: true, type: 'string', des: '开始时间' },
                         { key: 'end_date', isMust: true, type: 'string', des: '结束时间' }
                     ]
@@ -1837,7 +1837,7 @@
                     ]
                 },
                 reinvite_a_member_to_event: {
-                    name: '拒绝日程' ,
+                    name: '重新邀请一个用户' ,
                     docUrl: {type: 'string', url: ''},
                     url: '/calendar/reinvite_a_member_to_event',
                     requestMode: 'post',
@@ -1871,7 +1871,8 @@
                         { key: 'event_id', isMust: true, type: 'string', des: '日程id' },
                         { key: 'event_recurring_time', isMust: false, type: 'string', des: '子日程的发生时间' },
                         { key: 'modifying_all_recurring_events', isMust: false, type: 'string', des: '修改所有循环日程' },
-                        { key: 'member_id', isMust: true, type: 'string', des: '成员id' }
+                        { key: 'member_id', isMust: false, type: 'string', des: '成员id' },
+                        { key: 'third_party_user_id', isMust: false, type: 'string', des: '成员id' }
                     ]
                 },
                 remove_event: {
@@ -2156,6 +2157,23 @@
                         { key: 'is_push', isMust: true, type: 'bool', des: '是否开启推送 ' },
                         { key: 'choose_type', isMust: true, type: 'bool', des: '单个 true/全部 false ' },
                         { key: 'group_id', isMust: false, type: 'string', des: '群组编号' }
+                    ]
+                },
+                send_message_card: {
+                    name: '发送用户或者群组卡片消息',
+                    docUrl: '',
+                    url: '/webchat/send_message_card',
+                    requestMode: 'post',
+                    params: [
+                        { key: 'access_token', isMust: true, type: 'string', des: '当前登录用户访问令牌' },
+                        { key: 'account_id', isMust: false, type: 'string', des: '用户ID ' },
+                        { key: 'group_id', isMust: false, type: 'string', des: '群组ID(用户群组二选一)' },
+                        { key: 'card_title', isMust: true, type: 'string', des: '卡片标题' },
+                        { key: 'card_msg', isMust: true, type: 'string', des: '卡片消息内容' },
+                        { key: 'card_text', isMust: true, type: 'string', des: '卡片内容' },
+                        { key: 'card_url', isMust: true, type: 'string', des: '卡片链接地址' },
+                        { key: 'card_picture', isMust: false, type: 'string', des: '卡片显示图片' },
+                        { key: 'card_entity_id', isMust: false, type: 'string', des: '卡片所属模块id' }
                     ]
                 }
             }
