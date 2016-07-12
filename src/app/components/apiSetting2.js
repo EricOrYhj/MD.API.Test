@@ -1623,7 +1623,7 @@
         calendar: {
             v1: {
                 add_members_to_event: {
-                    name: '确认日程' ,
+                    name: '向一个日程添加成员' ,
                     docUrl: {type: 'string', url: ''},
                     url: '/calendar/add_members_to_event',
                     requestMode: 'post',
@@ -1781,7 +1781,7 @@
                 },
                 get_calendar_subscription_url: {
                     name: '获取订阅日历的url',
-                    docUrl: '/doc/apidocumentnotavailable.html',
+                    docUrl: {type: 'string', url: ''},
                     url: '/calendar/get_calendar_subscription_url',
                     requestMode: 'get',
                     params: [
@@ -1789,13 +1789,13 @@
                     ]
                 },
                 get_conflicted_events: {
-                    name: '获取订阅日历的url',
-                    docUrl: '/doc/apidocumentnotavailable.html',
+                    name: '根据日期数据获取日程',
+                    docUrl: {type: 'string', url: ''},
                     url: '/calendar/get_conflicted_events',
                     requestMode: 'get',
                     params: [
                         { key: 'access_token', isMust: true, type: 'string', des: '当前登录用户访问令牌' },
-                        { key: 'conflicting_account_id', isMust: true, type: 'string', des: '所要查询的用户' },
+                        { key: 'conflicting_account_id', isMust: true, type: 'string', des: '所要查询的用户，为当前用户或者与当前用户在相同的网络下' },
                         { key: 'begin_date', isMust: true, type: 'string', des: '开始时间' },
                         { key: 'end_date', isMust: true, type: 'string', des: '结束时间' }
                     ]
