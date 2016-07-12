@@ -2158,6 +2158,23 @@
                         { key: 'choose_type', isMust: true, type: 'bool', des: '单个 true/全部 false ' },
                         { key: 'group_id', isMust: false, type: 'string', des: '群组编号' }
                     ]
+                },
+                send_message_card: {
+                    name: '发送用户或者群组卡片消息',
+                    docUrl: '',
+                    url: '/webchat/send_message_card',
+                    requestMode: 'post',
+                    params: [
+                        { key: 'access_token', isMust: true, type: 'string', des: '当前登录用户访问令牌' },
+                        { key: 'account_id', isMust: false, type: 'string', des: '用户ID ' },
+                        { key: 'group_id', isMust: false, type: 'string', des: '群组ID(用户群组二选一)' },
+                        { key: 'card_title', isMust: true, type: 'string', des: '卡片标题' },
+                        { key: 'card_msg', isMust: true, type: 'string', des: '卡片消息内容' },
+                        { key: 'card_text', isMust: true, type: 'string', des: '卡片内容' },
+                        { key: 'card_url', isMust: true, type: 'string', des: '卡片链接地址' },
+                        { key: 'card_picture', isMust: false, type: 'string', des: '卡片显示图片' },
+                        { key: 'card_entity_id', isMust: false, type: 'string', des: '卡片所属模块id' }
+                    ]
                 }
             }
         },
