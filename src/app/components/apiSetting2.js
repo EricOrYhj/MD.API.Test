@@ -2013,6 +2013,25 @@
                         { key: 'account', isMust: true, type: 'string', des: '要修改为的手机号或者邮箱' },
                         { key: 'code', isMust: true, type: 'string', des: '验证码' }
                     ]
+                },
+                log_out: {
+                    name: '登出',
+                    docUrl: '',
+                    url: '/passport/log_out',
+                    requestMode: 'post',
+                    params: [
+                        { key: 'access_token', isMust: true, type: 'string', des: '当前登录用户访问令牌' }
+                    ]
+                },
+                add_passport_scale: {
+                    name: '添加用户选择模式',
+                    docUrl: '',
+                    url: '/passport/add_passport_scale',
+                    requestMode: 'post',
+                    params: [
+                        { key: 'access_token', isMust: true, type: 'string', des: '当前登录用户访问令牌' },
+                        { key: 'scale_type', isMust: true, type: 'int', des: '1个人2部门.团队3企业' }
+                    ]
                 }
             }
         },
@@ -2159,8 +2178,20 @@
                         { key: 'group_id', isMust: false, type: 'string', des: '群组编号' }
                     ]
                 },
+                send_message: {
+                    name: '给用户或者群组发送文本消息',
+                    docUrl: '',
+                    url: '/webchat/send_message_card',
+                    requestMode: 'post',
+                    params: [
+                        { key: 'access_token', isMust: true, type: 'string', des: '当前登录用户访问令牌' },
+                        { key: 'account_id', isMust: false, type: 'string', des: '用户ID ' },
+                        { key: 'group_id', isMust: false, type: 'string', des: '群组ID(用户群组二选一)' },
+                        { key: 'message', isMust: true, type: 'string', des: '文本内容' }
+                    ]
+                },
                 send_message_card: {
-                    name: '发送用户或者群组卡片消息',
+                    name: '给用户或者群组发送卡片消息',
                     docUrl: '',
                     url: '/webchat/send_message_card',
                     requestMode: 'post',
@@ -2321,6 +2352,16 @@
                     params: [
                         { key: 'access_token', isMust: true, type: 'string', des: '当前登录用户访问令牌' },
                         { key: 'type', isMust: true, type: 'int', des: '1主站 2chat' }
+                    ]
+                },
+                add_files:{
+                    name: '上传图片或者文件',
+                    docUrl: '',
+                    url: '/qiniu/add_files',
+                    requestMode: 'post',
+                    params: [
+                        { key: 'access_token', isMust: true, type: 'string', des: '当前登录用户访问令牌' },
+                        { key: 'p_img或p_doc', isMust: true, type: 'binary', des: '要上传的图片、文档。图片仅支持JPEG,GIF,PNG,目前上传图片大小限制为<8M。文档仅支持DOC,PDF,XLS,PPT,TXT,压缩包,目前上传文件大小限制为<50M' }
                     ]
                 }
             }
