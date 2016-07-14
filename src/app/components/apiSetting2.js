@@ -1618,6 +1618,42 @@
                         { key: 'job_number', isMust: false, type: 'string', des: '工号' },
                         { key: 'contact_phone', isMust: false, type: 'string', des: '坐机号码' }
                     ]
+                },
+                get_project_byprojectid: {
+                    name: '根据企业ID获取网络信息和设置',
+                    docUrl: '/doc/project/project_setting.html',
+                    url: '/company/get_project_byprojectid',
+                    requestMode: 'get',
+                    params: [
+                        { key: 'access_token', isMust: true, type: 'string', des: '当前登录用户访问令牌' },
+                        { key: 'project_id', isMust: true, type: 'string', des: '网络ID' }
+                    ]
+                },
+                join_project_byprojectid: {
+                    name: '根据网络ID加入网络(用于主动邀请我加入)',
+                    docUrl: '',
+                    url: '/company/join_project_byprojectid',
+                    requestMode: 'post',
+                    params: [
+                        { key: 'access_token', isMust: true, type: 'string', des: '当前登录用户访问令牌' },
+                        { key: 'project_id', isMust: true, type: 'string', des: '网络ID' },
+                        { key: 'company_name', isMust: false, type: 'string', des: '公司名' },
+                        { key: 'work_site', isMust: false, type: 'string', des: '工作地' },
+                        { key: 'department', isMust: false, type: 'string', des: '部门(从公司部门列表中选择)' },
+                        { key: 'job', isMust: false, type: 'string', des: '职位' },
+                        { key: 'job_number', isMust: false, type: 'string', des: '工号' },
+                        { key: 'contact_phone', isMust: false, type: 'string', des: '坐机号码' }
+                    ]
+                },
+                refuse_Project_invitation: {
+                    name: '拒绝加入网络',
+                    docUrl: '',
+                    url: '/company/refuse_Project_invitation',
+                    requestMode: 'post',
+                    params: [
+                        { key: 'access_token', isMust: true, type: 'string', des: '当前登录用户访问令牌' },
+                        { key: 'project_id', isMust: true, type: 'string', des: '网络ID' }
+                    ]
                 }
             }
         },
@@ -2268,7 +2304,7 @@
                     requestMode: 'post',
                     params: [
                         { key: 'access_token', isMust: true, type: 'string', des: '当前登录用户访问令牌' },
-                        { key: 'source_id', isMust: true, type: 'string', des: '来源id(如账号id,网络id,任务id,日程id)' },
+                        { key: 'source_id', isMust: true, type: 'string', des: '来源id(如账号id,网络id,任务id,日程id)(重复日程特殊处理source_id为日程id|重复时间)' },
                         { key: 'from_type', isMust: true, type: 'int', des: ' 邀请来源 0邀请好友1邀请群组2邀请任务3邀请知识4邀请网络5邀请日程6邀请项目' },
                         { key: 'account_ids', isMust: false, type: 'string', des: '邀请 现有明道用户(格式[id,id]序列化)' },
                         { key: 'accounts', isMust: false, type: 'string', des: '邀请 非明道用户 手机/邮箱(格式["phone","email"]序列化)' }
