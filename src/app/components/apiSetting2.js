@@ -1173,7 +1173,8 @@
                         {"key": "access_token", "isMust": true, "type": "string", "des": "当前登录用户访问令牌"            },
                         {"key": "task_id", "isMust": true, "type": "string", "des": "任务ID"            },
                         {"key": "folder_stage_id", "isMust": true, "type": "string", "des": "项目阶段ID"            },
-                        {"key": "project_id", "isMust": false, "type": "string", "des": "哪个网络（默认个人自由网络）"            }
+                        {"key": "project_id", "isMust": false, "type": "string", "des": "哪个网络（默认个人自由网络）"            },
+                        {"key": "folder_id", "isMust": true, "type": "string", "des": "项目id"            }
                     ]
                 },
                 "update_task_status": {
@@ -1617,6 +1618,42 @@
                         { key: 'job_number', isMust: false, type: 'string', des: '工号' },
                         { key: 'contact_phone', isMust: false, type: 'string', des: '坐机号码' }
                     ]
+                },
+                get_project_byprojectid: {
+                    name: '根据企业ID获取网络信息和设置',
+                    docUrl: '/doc/project/project_setting.html',
+                    url: '/company/get_project_byprojectid',
+                    requestMode: 'get',
+                    params: [
+                        { key: 'access_token', isMust: true, type: 'string', des: '当前登录用户访问令牌' },
+                        { key: 'project_id', isMust: true, type: 'string', des: '网络ID' }
+                    ]
+                },
+                join_project_byprojectid: {
+                    name: '根据网络ID加入网络(用于主动邀请我加入)',
+                    docUrl: '',
+                    url: '/company/join_project_byprojectid',
+                    requestMode: 'post',
+                    params: [
+                        { key: 'access_token', isMust: true, type: 'string', des: '当前登录用户访问令牌' },
+                        { key: 'project_id', isMust: true, type: 'string', des: '网络ID' },
+                        { key: 'company_name', isMust: false, type: 'string', des: '公司名' },
+                        { key: 'work_site', isMust: false, type: 'string', des: '工作地' },
+                        { key: 'department', isMust: false, type: 'string', des: '部门(从公司部门列表中选择)' },
+                        { key: 'job', isMust: false, type: 'string', des: '职位' },
+                        { key: 'job_number', isMust: false, type: 'string', des: '工号' },
+                        { key: 'contact_phone', isMust: false, type: 'string', des: '坐机号码' }
+                    ]
+                },
+                refuse_Project_invitation: {
+                    name: '拒绝加入网络',
+                    docUrl: '',
+                    url: '/company/refuse_Project_invitation',
+                    requestMode: 'post',
+                    params: [
+                        { key: 'access_token', isMust: true, type: 'string', des: '当前登录用户访问令牌' },
+                        { key: 'project_id', isMust: true, type: 'string', des: '网络ID' }
+                    ]
                 }
             }
         },
@@ -2013,6 +2050,25 @@
                         { key: 'account', isMust: true, type: 'string', des: '要修改为的手机号或者邮箱' },
                         { key: 'code', isMust: true, type: 'string', des: '验证码' }
                     ]
+                },
+                log_out: {
+                    name: '登出',
+                    docUrl: '',
+                    url: '/passport/log_out',
+                    requestMode: 'post',
+                    params: [
+                        { key: 'access_token', isMust: true, type: 'string', des: '当前登录用户访问令牌' }
+                    ]
+                },
+                add_passport_scale: {
+                    name: '添加用户选择模式',
+                    docUrl: '',
+                    url: '/passport/add_passport_scale',
+                    requestMode: 'post',
+                    params: [
+                        { key: 'access_token', isMust: true, type: 'string', des: '当前登录用户访问令牌' },
+                        { key: 'scale_type', isMust: true, type: 'int', des: '1个人2部门.团队3企业' }
+                    ]
                 }
             }
         },
@@ -2159,8 +2215,20 @@
                         { key: 'group_id', isMust: false, type: 'string', des: '群组编号' }
                     ]
                 },
+                send_message: {
+                    name: '给用户或者群组发送文本消息',
+                    docUrl: '',
+                    url: '/webchat/send_message_card',
+                    requestMode: 'post',
+                    params: [
+                        { key: 'access_token', isMust: true, type: 'string', des: '当前登录用户访问令牌' },
+                        { key: 'account_id', isMust: false, type: 'string', des: '用户ID ' },
+                        { key: 'group_id', isMust: false, type: 'string', des: '群组ID(用户群组二选一)' },
+                        { key: 'message', isMust: true, type: 'string', des: '文本内容' }
+                    ]
+                },
                 send_message_card: {
-                    name: '发送用户或者群组卡片消息',
+                    name: '给用户或者群组发送卡片消息',
                     docUrl: '',
                     url: '/webchat/send_message_card',
                     requestMode: 'post',
@@ -2236,7 +2304,7 @@
                     requestMode: 'post',
                     params: [
                         { key: 'access_token', isMust: true, type: 'string', des: '当前登录用户访问令牌' },
-                        { key: 'source_id', isMust: true, type: 'string', des: '来源id(如账号id,网络id,任务id,日程id)' },
+                        { key: 'source_id', isMust: true, type: 'string', des: '来源id(如账号id,网络id,任务id,日程id)(重复日程特殊处理source_id为日程id|重复时间)' },
                         { key: 'from_type', isMust: true, type: 'int', des: ' 邀请来源 0邀请好友1邀请群组2邀请任务3邀请知识4邀请网络5邀请日程6邀请项目' },
                         { key: 'account_ids', isMust: false, type: 'string', des: '邀请 现有明道用户(格式[id,id]序列化)' },
                         { key: 'accounts', isMust: false, type: 'string', des: '邀请 非明道用户 手机/邮箱(格式["phone","email"]序列化)' }
@@ -2321,6 +2389,16 @@
                     params: [
                         { key: 'access_token', isMust: true, type: 'string', des: '当前登录用户访问令牌' },
                         { key: 'type', isMust: true, type: 'int', des: '1主站 2chat' }
+                    ]
+                },
+                add_files:{
+                    name: '上传图片或者文件',
+                    docUrl: '',
+                    url: '/qiniu/add_files',
+                    requestMode: 'post',
+                    params: [
+                        { key: 'access_token', isMust: true, type: 'string', des: '当前登录用户访问令牌' },
+                        { key: 'p_img或p_doc', isMust: true, type: 'binary', des: '要上传的图片、文档。图片仅支持JPEG,GIF,PNG,目前上传图片大小限制为<8M。文档仅支持DOC,PDF,XLS,PPT,TXT,压缩包,目前上传文件大小限制为<50M' }
                     ]
                 }
             }
