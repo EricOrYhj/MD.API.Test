@@ -85,11 +85,11 @@
                     requestMode: 'get',
                     params: [
                         { key: 'access_token', isMust: true, type: 'string', des: '当前登录用户访问令牌' },
-                        { key: 'keywords', isMust: false, type: 'string', des: '关键词模糊搜索，当为空时则返回所有的动态更新' },
-                        { key: 'post_type', isMust: false, type: 'int', des: '筛选动态更新类型,默认-1：表示全部动态；0：普通消息；1：链接；2：图片；3：文档；4：提问；7：投票；8：视频' },
+                        { key: 'keywords', isMust: false, type: 'string', des: '关键词模糊搜索，当为空时则返回所有的动态' },
+                        { key: 'post_type', isMust: false, type: 'int', des: '筛选动态类型,默认-1：表示全部动态；0：普通消息；1：链接；2：图片；3：文档；4：提问；7：投票；8：视频' },
                         { key: 'start_time', isMust: false, type: 'Datetime', des: '开始时间' },
                         { key: 'end_time', isMust: false, type: 'Datetime', des: '结束时间' },
-                        { key: 'max_id', isMust: false, type: 'int64', des: '若指定此参数，则只返回ID比max_id小的动态更新(即比max_id发表时间早的动态更新)' },
+                        { key: 'max_id', isMust: false, type: 'int64', des: '若指定此参数，则只返回ID比max_id小的动态更新(即比max_id发表时间早的动态)' },
                         { key: 'pagesize', isMust: false, type: 'int', des: '指定要返回的记录条数(int默认值20，最大值100)' },
                         { key: 'post_filter_share', isMust: false, type: 'int', des: '动态筛选范围(全部=-1,我收藏的=0,我发布的=1,我自己=2,置顶动态=3,网络=4,群组=5,个人全部=6)' },
                         { key: 'project_id', isMust: false, type: 'string', des: '网络id(当动态筛选范围是网络 该值必填)' },
@@ -105,7 +105,7 @@
                     requestMode: 'get',
                     params: [
                         { key: 'access_token', isMust: true, type: 'string', des: '当前登录用户访问令牌' },
-                        { key: 'post_id', isMust: true, type: 'string', des: '动态更新编号' }
+                        { key: 'post_id', isMust: true, type: 'string', des: '动态编号' }
                     ]
                 },
 
@@ -116,9 +116,9 @@
                     requestMode: 'get',
                     params: [
                         { key: 'access_token', isMust: true, type: 'string', des: '当前登录用户访问令牌' },
-                        { key: 'keywords', isMust: false, type: 'string', des: '关键词模糊搜索，当为空时则返回所有的动态更新' },
+                        { key: 'keywords', isMust: false, type: 'string', des: '关键词模糊搜索，当为空时则返回所有的动态' },
                         { key: 'group_id', isMust: true, type: 'string', des: '群组编号' },
-                        { key: 'max_id', isMust: false, type: 'int64', des: '若指定此参数，则只返回ID比max_id小的动态更新(即比max_id发表时间早的动态更新)' },
+                        { key: 'max_id', isMust: false, type: 'int64', des: '若指定此参数，则只返回ID比max_id小的动态(即比max_id发表时间早的动态)' },
                         { key: 'pagesize', isMust: false, type: 'int', des: '指定要返回的记录条数(int默认值20，最大值100)' }
                     ]
                 },
@@ -139,11 +139,11 @@
                     requestMode: 'get',
                     params: [
                         { key: 'access_token', isMust: true, type: 'string', des: '当前登录用户访问令牌' },
-                        { key: 'keywords', isMust: false, type: 'string', des: '关键词模糊搜索，当为空时则返回所有的动态更新' },
-                        { key: 'post_type', isMust: false, type: 'int', des: '筛选动态更新类型,默认-1：表示全部动态；0：普通消息；1：链接；2：图片；3：文档；4：提问；7：投票；8：视频' },
-                        { key: 'max_id', isMust: false, type: 'int64', des: '若指定此参数，则只返回ID比max_id小的动态更新(即比max_id发表时间早的动态更新)' },
-                        { key: 'since_id', isMust: false, type: 'int64', des: '若指定此参数，则只返回ID比since_id大的动态更新(即比since_id发表时间晚的动态更新)' },
-                        { key: 'pagesize', isMust: false, type: 'int', des: '指定要返回的记录条数(int默认值20，最大值100)' }
+                        { key: 'keywords', isMust: false, type: 'string', des: '关键词模糊搜索，当为空时则返回所有的动态' },
+                        { key: 'post_type', isMust: false, type: 'int', des: '筛选动态类型,默认-1：表示全部动态；0：普通消息；1：链接；2：图片；3：文档；4：提问；7：投票；8：视频' },
+                        { key: 'max_id', isMust: false, type: 'int64', des: '若指定此参数，则只返回ID比max_id小的动态(即比max_id发表时间早的动态)' },
+                        { key: 'since_id', isMust: false, type: 'int64', des: '若指定此参数，则只返回ID比since_id大的动态(即比since_id发表时间晚的动态)' },
+                        { key: 'pagesize', isMust: false, type: 'int', des: '指定要返回的记录条数(默认值20，最大值100)' }
                     ]
                 },
                 get_reply_by_me_posts: {
@@ -153,9 +153,9 @@
                     requestMode: 'get',
                     params: [
                         { key: 'access_token', isMust: true, type: 'string', des: '当前登录用户访问令牌' },
-                        { key: 'keywords', isMust: false, type: 'string', des: '关键词模糊搜索，当为空时则返回所有的动态更新' },
-                        { key: 'max_comment_id', isMust: false, type: 'string', des: '若指定此参数，则只返回ID比max_id小的动态更新(即比max_id发表时间早的动态更新)' },
-                        { key: 'pagesize', isMust: false, type: 'int', des: '指定要返回的记录条数(int默认值20，最大值100)' }
+                        { key: 'keywords', isMust: false, type: 'string', des: '关键词模糊搜索，当为空时则返回所有的动态' },
+                        { key: 'max_comment_id', isMust: false, type: 'string', des: '若指定此参数，则只返回ID比max_id小的动态(即比max_id发表时间早的动态)' },
+                        { key: 'pagesize', isMust: false, type: 'int', des: '指定要返回的记录条数(默认值20，最大值100)' }
                     ]
                 },
                 get_post_reply: {
@@ -165,7 +165,7 @@
                     requestMode: 'get',
                     params: [
                         { key: 'access_token', isMust: true, type: 'string', des: '当前登录用户访问令牌' },
-                        { key: 'post_id', isMust: true, type: 'string', des: '动态更新编号' }
+                        { key: 'post_id', isMust: true, type: 'string', des: '动态编号' }
                     ]
                 },
                 get_category_posts: {
@@ -175,9 +175,9 @@
                     requestMode: 'get',
                     params: [
                         { key: 'access_token', isMust: true, type: 'string', des: '当前登录用户访问令牌' },
-                        { key: 'category_id', isMust: true, type: 'string', des: '话题ID' },
+                        { key: 'category_id', isMust: true, type: 'string', des: '话题编号' },
                         { key: 'keywords', isMust: false, type: 'string', des: '关键词模糊搜索' },
-                        { key: 'max_id', isMust: false, type: 'int64', des: '若指定此参数，则只返回ID比max_id小的动态更新(即比max_id发表时间早的动态更新)' },
+                        { key: 'max_id', isMust: false, type: 'int64', des: '若指定此参数，则只返回ID比max_id小的动态(即比max_id发表时间早的动态)' },
                         { key: 'pagesize', isMust: false, type: 'int', des: '指定要返回的记录条数(默认值20，最大值100' }
                     ]
                 },
@@ -189,8 +189,8 @@
                     params: [
                         { key: 'access_token', isMust: true, type: 'string', des: '当前登录用户访问令牌' },
                         { key: 'account_id', isMust: true, type: 'string', des: '用户编号' },
-                        { key: 'max_id', isMust: false, type: 'int64', des: '若指定此参数，则只返回ID比max_id小的动态更新(即比max_id发表时间早的动态更新)' },
-                        { key: 'pagesize', isMust: false, type: 'int', des: '指定要返回的记录条数(int默认值20，最大值100)' }
+                        { key: 'max_id', isMust: false, type: 'int64', des: '若指定此参数，则只返回ID比max_id小的动态更新(即比max_id发表时间早的动态)' },
+                        { key: 'pagesize', isMust: false, type: 'int', des: '指定要返回的记录条数(默认值20，最大值100)' }
                     ]
                 },
                 get_common_categories: {
@@ -210,7 +210,7 @@
                     requestMode: 'post',
                     params: [
                         { key: 'access_token', isMust: true, type: 'string', des: '当前登录用户访问令牌' },
-                        { key: 'post_id', isMust: true, type: 'string', des: '动态更新编号' },
+                        { key: 'post_id', isMust: true, type: 'string', des: '动态编号' },
                         { key: 'is_collect', isMust: false, type: 'bool', des: '操作类型 true 收藏 false 取消收藏' }
                     ]
                 },
@@ -221,12 +221,12 @@
                     requestMode: 'post',
                     params: [
                         { key: 'access_token', isMust: true, type: 'string', des: '当前登录用户访问令牌' },
-                        { key: 'post_id', isMust: true, type: 'string', des: '回复的动态更新编号' },
+                        { key: 'post_id', isMust: true, type: 'string', des: '回复的动态编号' },
                         { key: 'reply_id', isMust: false, type: 'string', des: '回复编号(可以对别人的回复进行回复)[可选]' },
                         { key: 'reply_msg', isMust: true, type: 'string', des: '回复的消息内容([aid]accountID[/aid]代表@某个人,[gid]groupID[/gid]代表@某个群组)' },
                         { key: 'attachments', isMust: false, type: 'string', des: '本地附件(attachments:[{"fileSize":文件大小,"serverName":"七牛服务地址","filePath":"文件路径","fileName":"文件名","fileExt":"后缀名","originalFileName":"原文件名","key":"七牛key"}])' },
                         { key: 'comment_type', isMust: false, type: 'int', des: '回复类型' },
-                        { key: 'is_share', isMust: false, type: 'bool', des: '同时转发动态(0表示不转发动态；1表示同时转发动态)' },
+                        { key: 'is_share', isMust: false, type: 'bool', des: '同时转发动态(false表示不转发动态；true表示同时转发动态)' },
                         { key: 'group_ids', isMust: false, type: 'string', des: '可为空，动态分享群组编号(多个群组用逗号隔开)' },
                         { key: 'project_ids', isMust: false, type: 'string', des: '可为空，动态分享网络编号(多个群组用逗号隔开)' }
                     ]
@@ -238,7 +238,7 @@
                     requestMode: 'post',
                     params: [
                         { key: 'access_token', isMust: true, type: 'string', des: '当前登录用户访问令牌' },
-                        { key: 'post_id', isMust: true, type: 'binary', des: '动态更新编号' }
+                        { key: 'post_id', isMust: true, type: 'binary', des: '动态编号' }
                     ]
                 },
                 update_like_or_cancel_like_post: {
@@ -248,7 +248,7 @@
                     requestMode: 'post',
                     params: [
                         { key: 'access_token', isMust: true, type: 'string', des: '当前登录用户访问令牌' },
-                        { key: 'post_id', isMust: true, type: 'string', des: '动态更新编号' },
+                        { key: 'post_id', isMust: true, type: 'string', des: '动态编号' },
                         { key: 'is_like', isMust: true, type: 'bool', des: 'true 喜欢 false 取消喜欢' }
                     ]
                 },
@@ -259,7 +259,7 @@
                     requestMode: 'post',
                     params: [
                         { key: 'access_token', isMust: true, type: 'string', des: '当前登录用户访问令牌' },
-                        { key: 'post_id', isMust: true, type: 'string', des: '动态更新编号' },
+                        { key: 'post_id', isMust: true, type: 'string', des: '动态编号' },
                         { key: 'reply_id', isMust: false, type: 'string', des: '回复编号(必须是当前登录用户自己创建的回复' }
                     ]
                 },
@@ -270,7 +270,7 @@
                     requestMode: 'post',
                     params: [
                         { key: 'access_token', isMust: true, type: 'string', des: '当前登录用户访问令牌' },
-                        { key: 'post_id', isMust: true, type: 'binary', des: '动态更新编号' },
+                        { key: 'post_id', isMust: true, type: 'binary', des: '动态编号' },
                         { key: 'hour', isMust: false, type: 'int', des: '置顶时长 默认为:不限时长 传多少小时' }
                     ]
                 },
@@ -283,10 +283,10 @@
                         { key: 'access_token', isMust: true, type: 'string', des: '当前登录用户访问令牌' },
                         { key: 'group_ids', isMust: false, type: 'string', des: '可为空，动态分享群组编号(多个群组用逗号隔开)' },
                         { key: 'project_ids', isMust: false, type: 'string', des: '可为空，动态分享网络编号(多个网络用逗号隔开)' },
-                        { key: 'post_msg', isMust: true, type: 'string', des: '动态更新内容([aid]AccountID[/aid]代表@某个人,[gid]groupID[/gid]代表@某个群组，#话题内容#代表给动态增加个话题)' },
-                        { key: 'post_type', isMust: true, type: 'int', des: '动态更新类型(0表示普通动态更新(默认值);1表示链接动态更新 ;图片=2,文档=3,提问=4,系统自动=5,应用用户分享=6,投票=7,音视频=8,附件=9)' },
-                        { key: 'link_title', isMust: false, type: 'string', des: '动态更新类型是1的时候该值必填 链接标题' },
-                        { key: 'link_uri', isMust: false, type: 'string', des: '动态更新类型是1的时候该值必填 链接地址' },
+                        { key: 'post_msg', isMust: true, type: 'string', des: '动态内容([aid]AccountID[/aid]代表@某个人,[gid]groupID[/gid]代表@某个群组，#话题内容#代表给动态增加个话题)' },
+                        { key: 'post_type', isMust: true, type: 'int', des: '动态类型(0表示普通动态(默认值);1表示链接动态 ;图片=2,文档=3,提问=4,系统自动=5,应用用户分享=6,投票=7,音视频=8,附件=9)' },
+                        { key: 'link_title', isMust: false, type: 'string', des: '动态类型是1的时候该值必填 链接标题' },
+                        { key: 'link_uri', isMust: false, type: 'string', des: '动态类型是1的时候该值必填 链接地址' },
                         { key: 'attachments', isMust: false, type: 'string', des: '本地附件(attachments:[{"fileSize":文件大小,"serverName":"七牛服务地址","filePath":"文件路径","fileName":"文件名","fileExt":"后缀名","originalFileName":"原文件名","key":"七牛key"}])' },
                         { key: 'knowledge_attach', isMust: false, type: 'string', des: '知识附件("refId":"知识id","originalFileName":"原文件名","fileExt":"后缀名","fileSize":文件大小,"allowDown":是否可下载)' },
                         { key: 'vote_options', isMust: false, type: 'string', des: '投票选项：xxx[Option]xx[Option]' },
