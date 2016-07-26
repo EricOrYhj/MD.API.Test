@@ -1478,7 +1478,7 @@
                     params: [
                         { key: 'access_token', isMust: true, type: 'string', des: '当前登录用户访问令牌' },
                         { key: 'account_id', isMust: true, type: 'string', des: '请求加为好友的用户账号ID' },
-                        { key: 'message', isMust: true, type: 'string', des: '请求描述' }
+                        { key: 'message', isMust: false, type: 'string', des: '请求描述' }
                     ]
                 },
                 update_friend_status: {
@@ -2224,7 +2224,12 @@
                         { key: 'access_token', isMust: true, type: 'string', des: '当前登录用户访问令牌' },
                         { key: 'account_id', isMust: false, type: 'string', des: '用户ID ' },
                         { key: 'group_id', isMust: false, type: 'string', des: '群组ID(用户群组二选一)' },
-                        { key: 'message', isMust: true, type: 'string', des: '文本内容' }
+                        { key: 'message', isMust: true, type: 'string', des: '文本内容' },
+                        { key: 'file_type', isMust: false, type: 'int', des: '1文本2图片3语言4附件（默认1）' },
+                        { key: 'key', isMust: false, type: 'string', des: '7牛' },
+                        { key: 'hash', isMust: false, type: 'string', des: '7牛' },
+                        { key: 'name', isMust: false, type: 'string', des: '7牛' },
+                        { key: 'size', isMust: false, type: 'string', des: '7牛' }
                     ]
                 },
                 send_message_card: {
