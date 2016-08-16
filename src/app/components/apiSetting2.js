@@ -404,7 +404,6 @@
                         {"key": "status", "isMust": false, "type": "int", "des": "筛选任务状态 默认0：进行中；1：已完成；-1：全部"            },
                         {"key": "tags", "isMust": false, "type": "string", "des": "过滤任务标签 多个用,隔开"            },
                         {"key": "other", "isMust": false, "type": "string", "des": "指定用户编号 查看其他同事的任务列表"            },
-                        {"key": "classifys", "isMust": false, "type": "string", "des": "不过滤 -1 现在要做 Now = 1，将要做 Will = 2, 以后再说 After = 3"            },
                         {"key": "sort", "isMust": false, "type": "int", "des": "任务排序 1：按首字母;2:按到期日期;3:按任务创建时间；4:按项目(查询结果结构有变化);5:任务负责人；7：按颜色；8:完成时间；9:进行中;10:最近更新" },
                         {"key": "keywords", "isMust": false, "type": "string", "des": "关键词模糊搜索"            },
                         {"key": "is_star", "isMust": false, "type": "bool", "des": "过滤是否标星，true为过滤"            }
