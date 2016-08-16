@@ -221,7 +221,7 @@
                         { key: 'post_msg', isMust: true, type: 'string', des: '动态内容([aid]AccountID[/aid]代表@某个人,[gid]groupID[/gid]代表@某个群组，#话题内容#代表给动态增加个话题)' },
                         { key: 'post_type', isMust: true, type: 'int', des: '动态类型(0表示普通动态(默认值);1表示链接动态 ;图片=2,文档=3,提问=4,系统自动=5,应用用户分享=6,投票=7,音视频=8,附件=9)' },
                         { key: 'group_ids', isMust: false, type: 'string', des: '可为空，动态分享群组编号(多个群组用逗号隔开)' },
-                        { key: 'project_ids', isMust: false, type: 'string', des: '可为空，动态分享网络编号(多个网络用逗号隔开)' },
+                        { key: 'project_ids', isMust: false, type: 'string', des: '可为空，动态分享网络编号(多个网络用逗号隔开，可通过 v1/company/get_project_list 接口获取我的网络列表)' },
                         { key: 'link_title', isMust: false, type: 'string', des: '动态类型是1的时候该值必填 链接标题' },
                         { key: 'link_uri', isMust: false, type: 'string', des: '动态类型是1的时候该值必填 链接地址' },
                         { key: 'attachments', isMust: false, type: 'string', des: '附件格式:[{"fileSize":文件大小,"serverName":"七牛服务地址","filePath":"文件路径","fileName":"文件名","fileExt":"后缀名","originalFileName":"原文件名","key":"七牛key"}]' },
@@ -2160,6 +2160,21 @@
                         { key: 'since_time', isMust: false, type: 'string', des: '起始时间如 2016-06-03 13:12:58.342' },
                         { key: 'direction', isMust: false, type: 'bool', des: '向前 true/向后 false' },
                         { key: 'keyword', isMust: false, type: 'string', des: '搜索关键字' },
+                        { key: 'pageindex', isMust: false, type: 'int', des: '当前页码(以1开始，1代表第一页)' },
+                        { key: 'pagesize', isMust: false, type: 'int', des: '指定要返回的记录条数' }
+                    ]
+                },
+                get_group_files: {
+                    name: '获取与某个用户或某个群组的消息文件',
+                    docUrl: '/doc/webchat/message_list.html',
+                    url: '/webchat/get_group_files',
+                    requestMode: 'get',
+                    params: [
+                        { key: 'access_token', isMust: true, type: 'string', des: '当前登录用户访问令牌' },
+                        { key: 'group_id', isMust: false, type: 'string', des: '群组编号' },
+                        { key: 'since_time', isMust: false, type: 'string', des: '起始时间如 2016-06-03 13:12:58.342' },
+                        { key: 'end_time', isMust: false, type: 'string', des: '结束时间如 2016-06-03 13:12:58.342' },
+                        { key: 'attachment_type', isMust: true, type: 'int', des: 'webchat附件类型(全部=-1,纯文本=1，图片=2，语音=3，附件=4，卡片=5)' },
                         { key: 'pageindex', isMust: false, type: 'int', des: '当前页码(以1开始，1代表第一页)' },
                         { key: 'pagesize', isMust: false, type: 'int', des: '指定要返回的记录条数' }
                     ]
