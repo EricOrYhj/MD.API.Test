@@ -825,6 +825,19 @@
                         {"key": "project_id", "isMust": false, "type": "string", "des": "哪个网络（默认个人自由网络）"            }
                     ]
                 },
+                "get_attachments_from_a_folder": {
+                    "name": "获取项目附件",
+                    "docUrl": "/doc/task/get_task_attachments.html",
+                    "url": "/task/get_attachments_from_a_folder",
+                    "requestMode": "Get",
+                    "params": [
+                        {"key": "access_token", "isMust": true, "type": "string", "des": "当前登录用户访问令牌"            },
+                        {"key": "folder_id", "isMust": true, "type": "string", "des": "项目Id"            },
+                        {"key": "project_id", "isMust": false, "type": "string", "des": "网络Id"            },
+                        {"key": "page_index", "isMust": true, "type": "int", "des": "页码"            },
+                        {"key": "page_size", "isMust": true, "type": "int", "des": "页的大小"            }
+                    ]
+                },
                 "get_teamwork_member": {
                     "name": "获取任务协作成员",
                     "docUrl": "/doc/task/get_teamwork_member.html",
