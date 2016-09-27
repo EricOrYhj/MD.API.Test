@@ -611,7 +611,7 @@
                     "params": [
                         {"key": "access_token", "isMust": true, "type": "string", "des": "当前登录用户访问令牌"            },
                         {"key": "folder_id", "isMust": true, "type": "string", "des": "项目ID"            },
-                        {"key": "change_user", "isMust": true, "type": "string", "des": "项目负责人"            },
+                        {"key": "charge_user", "isMust": true, "type": "string", "des": "项目负责人"            },
                         {"key": "is_admin", "isMust": false, "type": "bool", "des": "是否设置为管理员(默认false)"            },
                         {"key": "project_id", "isMust": false, "type": "string", "des": "哪个网络（默认个人自由网络）"            }
                     ]
