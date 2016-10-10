@@ -1201,6 +1201,18 @@
                 }
             },
             v2: {
+                 save_task_tags:{
+                  name: '保存标签组',
+                    docUrl: "/doc/task/v2/save_task_tags.html",
+                    url: '/task/save_task_tags',
+                    requestMode: 'post',
+                    params: [
+                        { key: 'access_token', isMust: true, type: 'string', des: '当前登录用户访问令牌' },
+                        { key: 'task_id', isMust: true, type: 'string', des: '任务编号' },
+                        { key: 'tags', isMust: true, type: 'json', des: '标签名称对象数组，如：[{"tag_id":"","tag_name":"哈哈哈"},{"tag_id":"123","tag_name":"哈哈哈"}]' },
+                    ]
+                 
+                },
                 add_task_tag: {
                     name: '添加标签',
                     docUrl: "/doc/task/v2/add_task_tag.html",
