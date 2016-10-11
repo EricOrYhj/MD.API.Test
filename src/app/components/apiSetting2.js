@@ -2536,7 +2536,29 @@
                         { key: 'access_token', isMust: true, type: 'string', des: '当前登录用户访问令牌' },
                         { key: 'p_img或p_doc', isMust: true, type: 'binary', des: '要上传的图片、文档。图片仅支持JPEG,GIF,PNG,目前上传图片大小限制为<8M。文档仅支持DOC,PDF,XLS,PPT,TXT,压缩包,目前上传文件大小限制为<50M' }
                     ]
-                }
+                },
+                convert_message_attachment: {
+                    name: '转换消息附件url',
+                    docUrl: '',
+                    url: '/qiniu/convert_message_attachment',
+                    requestMode: 'post',
+                    params: [
+                        { key: 'access_token', isMust: true, type: 'string', des: '当前登录用户访问令牌' },
+                        { key: 'qn_url', isMust: true, type: 'string', des: '文件url' }
+
+                    ]
+                },
+                convert_other_attachment: {
+                    name: '转换其他附件url',
+                    docUrl: '',
+                    url: '/qiniu/convert_other_attachment',
+                    requestMode: 'post',
+                    params: [
+                        { key: 'access_token', isMust: true, type: 'string', des: '当前登录用户访问令牌' },
+                        { key: 'qn_url', isMust: true, type: 'string', des: '文件url' },
+                        { key: 'type', isMust: true, type: 'int', des: '文件类型' }
+                    ]
+                },
             }
         },
         application: {
